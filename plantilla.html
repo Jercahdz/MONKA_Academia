@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo de Plantilla</title>
+    <link rel="stylesheet" href="ccs/plantilla.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="home.html"><img src="img/escudo.png" alt="Escudo del equipo" id="escudo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="registro.html">Registro de jugadores</a></li>
+                <li><a href="categorias.html">Categorías</a></li>
+                <li><a href="estadisticas.html">Estadísticas</a></li>
+                <li><a href="jugadas.html">Jugadas destacadas</a></li>
+                <li><a href="plantilla.html">Plantilla</a></li>
+                <li><a href="chatbot.html">Chatbot</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="formacion-selector">
+            <h2>Seleccionar Formación</h2>
+            <select id="dropdown-formaciones">
+                <option value="4-4-2">4-4-2</option>
+                <option value="4-3-3">4-3-3</option>
+                <option value="3-5-2">3-5-2</option>
+                <option value="4-2-3-1">4-2-3-1</option>
+            </select>
+            <button id="btn-regresar">Regresar a formación anterior</button>
+        </section>
+        <section id="imagen-formacion">
+            <h2>Formación Actual</h2>
+            <img id="img-formacion" src="img/4-4-2.png" alt="Formación 4-4-2">
+        </section>
+    </main>
+
+
+    <script src="js/plantilla.js"></script>
+</body>
+
+</html>

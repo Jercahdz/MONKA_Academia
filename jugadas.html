@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jugadas Destacadas</title>
+    <link rel="stylesheet" href="ccs/jugadas.css">
+</head>
+
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <a href="home.html"><img src="img/escudo.png" alt="Escudo del equipo" id="escudo"></a>
+            </div>
+            <ul class="nav-links">
+                <li><a href="registro.html">Registro de jugadores</a></li>
+                <li><a href="categorias.html">Categorías</a></li>
+                <li><a href="estadisticas.html">Estadísticas</a></li>
+                <li><a href="jugadas.html">Jugadas destacadas</a></li>
+                <li><a href="plantilla.html">Plantilla</a></li>
+                <li><a href="chatbot.html">Chatbot</a></li>
+                <li><a href="login.html">Login</a></li>
+            </ul>
+            <div class="burger">
+                <div class="line1"></div>
+                <div class="line2"></div>
+                <div class="line3"></div>
+            </div>
+        </nav>
+        <div id="app">
+            <h1>Módulo de Jugadas Destacadas</h1>
+
+            <section id="upload-section">
+                <h2>Subir Video</h2>
+                <form id="upload-form">
+                    <input type="file" id="video-file" accept="video/*" required>
+                    <input type="text" id="player-name" placeholder="Nombre del jugador" required>
+                    <select id="video-category" required>
+                        <option value="">Selecciona una categoría</option>
+                        <option value="jugada-destacada">Jugada Destacada</option>
+                        <option value="mejor-gol">Mejor Gol</option>
+                    </select>
+                    <button type="submit">Subir Video</button>
+                </form>
+            </section>
+
+            <section id="video-player">
+                <h2>Reproductor de Video</h2>
+                <video id="current-video" controls style="display: none;">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+            </section>
+
+            <section id="video-list">
+                <h2>Videos Subidos</h2>
+                <select id="filter-category">
+                    <option value="todos">Todos</option>
+                    <option value="jugada-destacada">Jugadas Destacadas</option>
+                    <option value="mejor-gol">Mejores Goles</option>
+                </select>
+                <ul id="videos"></ul>
+            </section>
+        </div>
+    </header>
+    <script src="js/jugadas.js"></script>
+</body>
+
+</html>
