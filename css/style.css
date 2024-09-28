@@ -125,7 +125,7 @@ body{
     margin: -100px 0 0 -100px;
     width: 200px;
     height: 200px;
-    background-image: url("../images/apple-touch-icon.png");
+    background-image: url("../images/escudo52x52.png");
     background-position: center;
     background-repeat: no-repeat;
 }
@@ -449,6 +449,13 @@ strong, b{
 	padding-bottom: 200px;
 	text-align:left;
 }
+
+.item img {
+    width: 1440px;
+    height: 768px;
+    object-fit: cover; /* Mantiene la proporción de la imagen ajustándola al tamaño del contenedor */
+}
+
 .item .carousel-caption .caption-heading {
     text-align: left;
     font-size: 30px;
@@ -1177,6 +1184,11 @@ td.tw10{
 	width:100%;
 	margin-bottom:10px;
 }
+.w-item a img {
+    width: 508px;
+    height: 300px;
+    object-fit: cover; /* Para mantener la proporción ajustándose al tamaño del contenedor */
+}
 .w-item a, .w-item a img{
 	display: block;
 	max-width: 100%;
@@ -1723,7 +1735,7 @@ td.tw10{
 	background-color: #29ABE2;
 }
 .bg-client{
-	background:url('http://placehold.it/1920x700') no-repeat center center; 
+	background:url('https://plus.unsplash.com/premium_photo-1701090940014-320b715b5a8c?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8Zm9uZG8lMjBncmlzfGVufDB8fDB8fHww') no-repeat center center; 
 	-webkit-background-size: cover; 
 	-moz-background-size: cover; 
 	-o-background-size: cover; 
