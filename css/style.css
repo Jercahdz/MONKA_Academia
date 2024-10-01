@@ -2339,7 +2339,44 @@ p.help-block.text-danger li {
 		  box-shadow: none;
 }
 
+/* ==========================
+14. ESTADISTICAS
+============================= */
+.table-responsive-xl {
+	max-width: 90%;
+	margin: 0 auto;
+}
 
+.btn-table {
+	background-color: #115959;
+	border-color: #115959;
+	border-radius: 3px;
+	color: #fff;
+	padding: 6px 35px;
+	font-weight: bold;
+	border: 1px solid transparent;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+	transition: all 0.3s ease;
+}
+
+.btn-table:hover {
+	background-color: #1a4747;
+	color: #fff;
+}
+
+@media (max-width: 768px) {
+	.btn-table {
+		padding: 6px 20px;
+		font-size: 14px;
+	}
+}
+
+@media (max-width: 480px) {
+	.btn-table {
+		padding: 6px 10px;
+		font-size: 12px;
+	}
+}
 
 
 @media (max-width: 1199px) {
