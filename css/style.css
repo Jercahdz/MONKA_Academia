@@ -103,8 +103,56 @@ body{
 	background-color: #f4f4f4;
 }
 
+.registro-jugador {
+    max-width: 800px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: #FFFFFF;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
 
+.form-group {
+    margin-bottom: 20px;
+}
 
+label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #0C1A26;
+}
+
+input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #A0D9C9;
+    border-radius: 4px;
+    background-color: #E8F0F2;
+    color: #0C1A26;
+}
+
+.btn-registrar {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #115959;
+    color: #F2F2F2;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: background-color 0.3s ease;
+}
+
+select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #A0D9C9;
+    border-radius: 4px;
+    background-color: #E8F0F2;
+    color: #0C1A26;
+}
 
 /* ==========================
 1. General
@@ -239,6 +287,8 @@ p {
 	-o-background-size: cover; 
 	background-size: cover;
 }
+
+
 
 /* Box */
 .box-wrap {
@@ -2456,4 +2506,7 @@ p.help-block.text-danger li {
 	.comments-box .media-body {
 		padding-left: 0px;
 	}
+
+
+	
 }

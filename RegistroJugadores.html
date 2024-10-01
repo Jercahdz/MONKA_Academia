@@ -112,7 +112,7 @@
 		<div class="container">
 			<div class="row">
 				<div class="col-sm-12 col-md-12">
-					<div class="caption">SHOP</div>
+					<div class="caption">REGISTRO</div>
 				</div>
 			</div>
 		</div>
@@ -126,117 +126,57 @@
 			<div class="row">
 				<div class="col-sm-12 col-md-12">
 					<div class="page-title">
-						<h2 class="lead">RECENT PRODUCTS</h2>
+						<h2 class="lead">REGISTRO DE JUGADORES</h2>
 						<div class="border-style"></div>
 					</div>
 				</div>
 			</div>
 			
-			<div class="row pbot-main">
-			
-				<div class="col-sm-12 col-md-3">
-					<div class="sidenav">
-						<h4 class="sidenav-heading">CATEGORY</h4>
-						<a href="#" title="" class="active">SHIRTS</a>
-						<a href="#" title="">SHORTS</a>
-						<a href="#" title="">SOUVERNIRS</a>
-						<a href="#" title="">TRAINING</a>
-					</div>
-				</div>
-			
-			
-				<div class="col-sm-12 col-md-9">
-					
-					<div class="row">
-						<div class="col-sm-12 col-md-4">
-							<div class="shop-item">
-								<div class="gambar">
-									<img src="http://placehold.it/715x875" alt="" class="img-responsive">
-								</div>
-								<div class="item-body">
-									<div class="name">
-										HOME SHIRTS 2016
-									</div>
-									<div class="price">
-										$ 45.00
-										
-										<a href="#" title="" class="shop-buy">BUY</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-12 col-md-4">
-							<div class="shop-item">
-								<div class="gambar">
-									<img src="http://placehold.it/715x875" alt="" class="img-responsive">
-								</div>
-								<div class="item-body">
-									<div class="name">
-										HOME SHIRTS 2016
-									</div>
-									<div class="price">
-										$ 45.00
-										
-										<a href="#" title="" class="shop-buy">BUY</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-12 col-md-4">
-							<div class="shop-item">
-								<div class="gambar">
-									<img src="http://placehold.it/715x875" alt="" class="img-responsive">
-								</div>
-								<div class="item-body">
-									<div class="name">
-										HOME SHIRTS 2016
-									</div>
-									<div class="price">
-										$ 45.00
-										
-										<a href="#" title="" class="shop-buy">BUY</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-sm-12 col-md-4">
-							<div class="shop-item">
-								<div class="gambar">
-									<img src="http://placehold.it/715x875" alt="" class="img-responsive">
-								</div>
-								<div class="item-body">
-									<div class="name">
-										HOME SHIRTS 2016
-									</div>
-									<div class="price">
-										$ 45.00
-										
-										<a href="#" title="" class="shop-buy">BUY</a>
-									</div>
-								</div>
-							</div>
-						</div>
-						
-					
-					</div>
-					
-					
-					
-					<ul class="pagination">
-						<li class="active"><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-					</ul>
-					
-				</div>
-				
-			</div>
-			
-			
-			
 		</div>
 	</div>
 
+<main>
+        <section class="registro-jugador">
+            <h1>Registro de Jugador</h1>
+            <form id="registro-form">
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" id="nombre" name="nombre" required>
+                </div>
+                <div class="form-group">
+                    <label for="apellidos">Apellidos:</label>
+                    <input type="text" id="apellidos" name="apellidos" required>
+                </div>
+                <div class="form-group">
+                    <label for="edad">Edad:</label>
+                    <input type="number" id="edad" name="edad" required>
+                </div>
+                <div class="form-group">
+                    <label for="posicion">Posición:</label>
+                    <input type="text" id="posicion" name="posicion" required>
+                </div>
+                <div class="form-group">
+                    <label for="dorsal">Dorsal:</label>
+                    <input type="number" id="dorsal" name="dorsal" required>
+                </div>
+                <div class="form-group">
+                    <label for="pie-habil">Pie hábil:</label>
+                    <input type="text" id="pie-habil" name="pie-habil" required>
+                </div>
+                <div class="form-group">
+                    <label for="categoria">Categoría:</label>
+                    <select id="categoria" name="categoria" required>
+                        <option value="">Seleccione una categoría</option>
+                        <option value="U-15">U-15</option>
+                        <option value="U-17">U-17</option>
+                        <option value="U-20">U-20</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn-registrar">Registrar</button>
+            </form>
+            <div id="mensaje-registro"></div>
+        </section>
+    </main>
 	
 	<!-- CLIENT SECTION --> 
 	<div class="section stat-client p-main bg-client">
