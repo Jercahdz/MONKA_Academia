@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
 $username = "root";
-$password = "Ryzen@Nitro5@";
-$database = "AcademiaMonka"; #Pendiente
+$password = "Ryzen@Nitro5";
+$database = "academiamonka";
 
 try {
     // Create connection
