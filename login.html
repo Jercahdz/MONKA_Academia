@@ -12,41 +12,43 @@
 
     <div class="container">
         <div class="container-form">
-            <form class="sign-in">
+            <form class="sign-in" action="php/inicioSesion.php" method="POST">
                 <h2>Iniciar Sesión</h2>
                 <span>Use su correo y contraseña</span>
                 <div class="container-input">
                     <ion-icon name="mail-outline"></ion-icon>
-                    <input type="text" placeholder="Email">
+                    <input type="email" name="correo" placeholder="Email" required>
                 </div>
                 <div class="container-input">
                     <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="password" placeholder="Password">
+                    <input type="password" name="password" placeholder="Password" required>
                 </div>
                 <a href="#">¿Olvidaste tu contraseña?</a>
-                <button class="button">INICIAR SESIÓN</button>
+                <button type="submit" name="login" class="button">INICIAR SESIÓN</button>
             </form>
         </div>
 
+        <!-- Formulario de registro -->
         <div class="container-form">
-            <form class="sign-up">
+            <form class="sign-up" action="php/registroUsuarios.php" method="POST">
                 <h2>Registrarse</h2>
                 <span>Use su correo electrónico para registrarse</span>
                 <div class="container-input">
                     <ion-icon name="person-outline"></ion-icon>
-                    <input type="text" placeholder="Nombre">
+                    <input type="text" name="nombre" placeholder="Nombre" required>
                 </div>
                 <div class="container-input">
                     <ion-icon name="mail-outline"></ion-icon>
-                    <input type="text" placeholder="Email">
+                    <input type="email" name="correo" placeholder="Email" required>
                 </div>
                 <div class="container-input">
                     <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="password" placeholder="Password">
+                    <input type="password" name="password" placeholder="Password" required>
                 </div>
-                <button class="button">REGISTRARSE</button>
+                <button type="submit" name="register" class="button">REGISTRARSE</button>
             </form>
-        </div>
+        </div>  
+        
 
         <div class="container-welcome">
             <div class="welcome-sign-up welcome">
