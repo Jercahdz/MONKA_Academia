@@ -124,37 +124,6 @@
 <main>
         <section class="registro-jugador">
             <h1>Registro de Jugador</h1>
-			<?php
-			// Conexion a la base de datos
-			include 'conexion.php';
-
-			// Datos del formulario
-			if(isset($_POST["submit"])){
-				$nombre = $_POST["nombre"];
-				$apellidos = $_POST["apellidos"];
-				$edad = $_POST["edad"];
-				$posicion = $_POST["posicion"];
-				$dorsal = $_POST["dorsal"];
-				$pie-habil = $_POST["pie-habil"];
-				$categoria = $_POST["categoria"];
-
-				// Insertar los datos a la base
-				$sql = "INSERT INTO Jugadores(nombreJugador, apellidos, edad, posicion, dorsal, pieHabil, categoriaId) 
-                VALUES (?, ?, ?, ?, ?, ?, (SELECT categoriaId FROM Categoria WHERE nombreCategoria = ?))";
-
-				$stmt = $conn->prepare($sql);
-				$stmt->bind_param("ssisisi", $nombre, $apellidos, $edad, $posicion, $dorsal, $pie_habil, $categoria);
-
-				if ($stmt->execute()) {
-					echo "<p>Registro exitoso</p>";
-				} else {
-					echo "<p>Error: " . $stmt->error . "</p>";
-				}
-		
-				$stmt->close();
-			}
-			$conn->close();
-			?>
             <form action="registro.html" id="registro-form" method="post">
                 <div class="form-group">
                     <label for="nombre">Nombre:</label>
@@ -332,7 +301,8 @@
 	
 	<script type="text/javascript" src="js/script.js"></script>
 	
-	
+	// Conexion al registro.js
+	<script src="js/registro.js"></script>
 	
 	
 </body>
