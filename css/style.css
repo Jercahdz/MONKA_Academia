@@ -1798,15 +1798,20 @@ td.tw10{
 	text-align:center;
 	margin-bottom:40px;
 }
-.client-img img{
-	margin:0 auto;
-	filter: alpha(opacity=80);
-	opacity: .8;
+.client-img img {
+    margin: 0 auto;
+    filter: alpha(opacity=80);
+    opacity: .8;
+    width: 150px; 
+    height: 150px; 
+    object-fit: contain; 
 }
-.client-img:hover img{
-	opacity: 1;
-	filter: alpha(opacity=100);
+
+.client-img:hover img {
+    opacity: 1;
+    filter: alpha(opacity=100);
 }
+
 
 /* ==========================
 10. FAQ
@@ -2363,6 +2368,31 @@ p.help-block.text-danger li {
 	background-color: #1a4747;
 	color: #fff;
 }
+
+#selector-categoria {
+	color: #000000; /* Color claro para el texto */
+	border: 1px solid #d1e7e7;
+	border-radius: 5px;
+	padding: 8px 18px;
+	font-weight: bold;
+	font-size: 14px;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+	transition: all 0.3s ease;
+	cursor: pointer;
+	width: 200px; /* Ajuste de ancho para una mejor apariencia */
+}
+
+#selector-categoria:hover {
+	background-color: #b3cccc; /* Tono más claro al hacer hover */
+	color: #000000; /* Texto oscuro al hacer hover */
+	border-color: #b3cccc; /* Mantener el borde claro */
+}
+
+#selector-categoria:focus {
+	outline: none; /* Eliminar el borde de enfoque predeterminado */
+	box-shadow: 0 0 5px rgba(209, 231, 231, 0.5); /* Enfoque más marcado con un tono claro */
+}
+
 
 @media (max-width: 768px) {
 	.btn-table {
