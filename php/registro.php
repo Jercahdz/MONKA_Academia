@@ -1,31 +1,62 @@
 <?php
-	// Conexion a la base de datos
-	include 'conexion.php';
+session_start();
+include("conexion.php");
 
-	// Datos del formulario
-	if(isset($_POST["submit"])){
-	    $nombre = $_POST["nombre"];
-		$apellidos = $_POST["apellidos"];
-		$edad = $_POST["edad"];
-		$posicion = $_POST["posicion"];
-		$dorsal = $_POST["dorsal"];
-		$pie_habil = $_POST["pie-habil"];
-		$categoria = $_POST["categoria"];
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $nombreJugador = $_POST['nombre'];
+    $apellidos = $_POST['apellidos'];
+    $edad = $_POST['edad'];
+    $posicion = $_POST['posicion'];
+    $dorsal = $_POST['dorsal'];
+    $pieHabil = $_POST['pieHabil'];
+    $categoriaId = $_POST['categoria']; // El valor ya será 1, 2 o 3 según el dropdown
 
-		// Insertar los datos a la base
-		$sql = "INSERT INTO Jugadores(nombreJugador, apellidos, edad, posicion, dorsal, pieHabil, categoriaId) 
-        VALUES (?, ?, ?, ?, ?, ?, (SELECT categoriaId FROM Categoria WHERE nombreCategoria = ?))";
+    // Validaciones básicas
+    if (empty($nombreJugador) || strlen($nombreJugador) > 50) {
+        echo "<script>alert('El nombre del jugador no es válido.');</script>";
+        exit();
+    }
 
-		$stmt = $conn->prepare($sql);
-		$stmt->bind_param("ssisisi", $nombre, $apellidos, $edad, $posicion, $dorsal, $pie_habil, $categoria);
+    if (empty($apellidos) || strlen($apellidos) > 50) {
+        echo "<script>alert('Los apellidos no son válidos.');</script>";
+        exit();
+    }
 
-		if ($stmt->execute()) {
-            echo json_encode(["status" => "suceess", "message" => "Registro Exitoso!"]);
-		} else {
-			echo json_encode(["status" => "error", "message" => "Error: " . $stmt->error]);
-		}
-		
-		$stmt->close();
-	}
-$conn->close();
+    if ($edad <= 0 || $edad > 100) {
+        echo "<script>alert('La edad no es válida.');</script>";
+        exit();
+    }
+
+    if (empty($posicion)) {
+        echo "<script>alert('La posición no es válida.');</script>";
+        exit();
+    }
+
+    if ($dorsal <= 0 || $dorsal > 99) {
+        echo "<script>alert('El número dorsal no es válido.');</script>";
+        exit();
+    }
+
+    if (empty($pieHabil) || ($pieHabil != 'Derecho' && $pieHabil != 'Izquierdo')) {
+        echo "<script>alert('El pie hábil no es válido.');</script>";
+        exit();
+    }
+
+    // Preparar la consulta para insertar el nuevo jugador
+    $sql = "INSERT INTO Jugadores (nombreJugador, apellidos, edad, posicion, dorsal, pieHabil, categoriaId) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)";
+    
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("ssiissi", $nombreJugador, $apellidos, $edad, $posicion, $dorsal, $pieHabil, $categoriaId);
+
+    if ($stmt->execute() === TRUE) {
+        echo "<script>alert('Jugador registrado con éxito'); window.location.href = '../registro.html';</script>";
+        exit();
+    } else {
+        echo "Error: " . $sql . "<br>" . $stmt->error;
+    }
+
+    $stmt->close();
+    $conn->close();
+}
 ?>
