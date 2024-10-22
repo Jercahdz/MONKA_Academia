@@ -42,7 +42,6 @@
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 
 
-
 	<script type="text/javascript" src="js/modernizr.min.js"></script>
 
 
@@ -128,8 +127,14 @@
 				<input type="number" id="edad" name="edad" required>
 			</div>
 			<div class="form-group">
-				<label for="posicion">Posición:</label>
-				<input type="text" id="posicion" name="posicion" required>
+				<label for="posicion">Posición:</label>posicion
+				<select id="posicion" name="posicion" required>
+					<option value="">Seleccione una posición</option>
+					<option value="Portero">Portero</option>
+					<option value="Defensa">Defensa</option>
+					<option value="Mediocampo">Mediocampo</option>
+					<option value="Delantero">Delantero</option>
+				</select>
 			</div>
 			<div class="form-group">
 				<label for="dorsal">Dorsal:</label>
@@ -284,9 +289,6 @@
 	<script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
 
 	<script type="text/javascript" src="js/script.js"></script>
-
-	// Conexion al registro.js
-	<script src="js/registro.js"></script>
 
 
 </body>

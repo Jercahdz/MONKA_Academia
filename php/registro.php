@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit();
     }
 
-    if (empty($posicion)) {
+    if (empty($posicion)|| ($posicion != 'Portero' && $posicion != 'Defensa' && $posicion != 'Mediocampo' && $posicion != 'Delantero')) {
         echo "<script>alert('La posición no es válida.');</script>";
         exit();
     }
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             VALUES (?, ?, ?, ?, ?, ?, ?)";
     
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssiissi", $nombreJugador, $apellidos, $edad, $posicion, $dorsal, $pieHabil, $categoriaId);
+    $stmt->bind_param("ssisisi", $nombreJugador, $apellidos, $edad, $posicion, $dorsal, $pieHabil, $categoriaId);
 
     if ($stmt->execute() === TRUE) {
         echo "<script>alert('Jugador registrado con éxito'); window.location.href = '../registro.html';</script>";
