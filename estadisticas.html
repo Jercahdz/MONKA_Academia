@@ -44,6 +44,8 @@
 	
 	
     <script type="text/javascript" src="js/modernizr.min.js"></script>
+	<script type="text/javascript" src="js/estadisticas.js"></script>
+
 	
 	
 
@@ -89,6 +91,13 @@
 					<li><a href="estadisticas.html">ESTADISTICAS</a></li>
 					<li><a href="registro.html">REGISTRO DE JUGADORES</a></li>
 					<li><a href="login.html">LOGIN</a></li>
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">Jerson <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><button type="button" class="btn btn-link">Cerrar Sesión</button></li>
+						</ul>
+					</li>
 				</ul>
 			</nav>
 		</div>
@@ -136,6 +145,56 @@
 			</table>
 		</div>		
 	</section>
+	
+	<!-- Modal para Agregar Anotaciones -->
+<div id="modalAgregar" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Agregar Anotaciones</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="formAgregar">
+                    <div class="form-group">
+                        <label for="nombreJugador">Nombre:</label>
+                        <input type="text" class="form-control" id="nombreJugador" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="goles">Cantidad de Goles:</label>
+                        <input type="number" class="form-control" id="goles" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Agregar</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal para Editar Anotaciones -->
+<div id="modalEditar" class="modal fade" tabindex="-1" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Editar Anotación</h5>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="formEditar">
+                    <div class="form-group">
+                        <label for="nombreJugadorEdit">Nombre:</label>
+                        <input type="text" class="form-control" id="nombreJugadorEdit" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="golesEdit">Cantidad de Goles:</label>
+                        <input type="number" class="form-control" id="golesEdit" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 	<!-- ASISTENCIAS -->
 	<section>
@@ -165,6 +224,60 @@
 			</table>
 		</div>		
 	</section>
+
+	<!-- Modal Agregar Asistencia -->
+<div class="modal fade" id="modalAgregarAsistencia" tabindex="-1" role="dialog" aria-labelledby="modalAgregarAsistenciaLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="modalAgregarAsistenciaLabel">Agregar Asistencia</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <form id="formAgregarAsistencia">
+			<div class="form-group">
+			  <label for="nombreJugador">Nombre del Jugador</label>
+			  <input type="text" class="form-control" id="nombreJugador" required>
+			</div>
+			<div class="form-group">
+			  <label for="cantidadAsistencias">Cantidad de Asistencias</label>
+			  <input type="number" class="form-control" id="cantidadAsistencias" required>
+			</div>
+			<button type="submit" class="btn btn-primary">Agregar</button>
+		  </form>
+		</div>
+	  </div>
+	</div>
+  </div>  
+  
+  <!-- Modal Editar Asistencia -->
+  <div class="modal fade" id="modalEditarAsistencia" tabindex="-1" role="dialog" aria-labelledby="modalEditarAsistenciaLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="modalEditarAsistenciaLabel">Editar Asistencia</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <form id="formEditarAsistencia">
+			<div class="form-group">
+			  <label for="nombreJugadorEditar">Nombre del Jugador</label>
+			  <input type="text" class="form-control" id="nombreJugadorEditar" required>
+			</div>
+			<div class="form-group">
+			  <label for="cantidadAsistenciasEditar">Cantidad de Asistencias</label>
+			  <input type="number" class="form-control" id="cantidadAsistenciasEditar" required>
+			</div>
+			<button type="submit" class="btn btn-primary">Guardar Cambios</button>
+		  </form>
+		</div>
+	  </div>
+	</div>
+  </div>  
 
 	<!-- SANCIONES -->
 	<section>
@@ -196,6 +309,68 @@
 		</div>	
 	</section>
 
+	<!-- Modal Agregar Sanción -->
+<div class="modal fade" id="modalAgregarSancion" tabindex="-1" role="dialog" aria-labelledby="modalAgregarSancionLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="modalAgregarSancionLabel">Agregar Sanción</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <form id="formAgregarSancion">
+			<div class="form-group">
+			  <label for="nombreJugadorSancion">Nombre del Jugador</label>
+			  <input type="text" class="form-control" id="nombreJugadorSancion" required>
+			</div>
+			<div class="form-group">
+			  <label for="tipoSancion">Tipo de Sanción</label>
+			  <input type="text" class="form-control" id="tipoSancion" required>
+			</div>
+			<div class="form-group">
+			  <label for="duracionSancion">Duración de la Sanción (días)</label>
+			  <input type="number" class="form-control" id="duracionSancion" required>
+			</div>
+			<button type="submit" class="btn btn-primary">Agregar</button>
+		  </form>
+		</div>
+	  </div>
+	</div>
+  </div>
+  
+  <!-- Modal Editar Sanción -->
+  <div class="modal fade" id="modalEditarSancion" tabindex="-1" role="dialog" aria-labelledby="modalEditarSancionLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="modalEditarSancionLabel">Editar Sanción</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <form id="formEditarSancion">
+			<div class="form-group">
+			  <label for="nombreJugadorEditarSancion">Nombre del Jugador</label>
+			  <input type="text" class="form-control" id="nombreJugadorEditarSancion" required>
+			</div>
+			<div class="form-group">
+			  <label for="tipoSancionEditar">Tipo de Sanción</label>
+			  <input type="text" class="form-control" id="tipoSancionEditar" required>
+			</div>
+			<div class="form-group">
+			  <label for="duracionSancionEditar">Duración de la Sanción (días)</label>
+			  <input type="number" class="form-control" id="duracionSancionEditar" required>
+			</div>
+			<button type="submit" class="btn btn-primary">Guardar Cambios</button>
+		  </form>
+		</div>
+	  </div>
+	</div>
+  </div>  
+
 	<!-- EVALUACIONES -->
 	<section>
 		
@@ -224,6 +399,68 @@
 			</table>
 		</div>		
 	</section>
+
+	<!-- Modal Agregar Evaluación -->
+<div class="modal fade" id="modalAgregarEvaluacion" tabindex="-1" role="dialog" aria-labelledby="modalAgregarEvaluacionLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="modalAgregarEvaluacionLabel">Agregar Evaluación</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <form id="formAgregarEvaluacion">
+			<div class="form-group">
+			  <label for="nombreJugadorEvaluacion">Nombre del Jugador</label>
+			  <input type="text" class="form-control" id="nombreJugadorEvaluacion" required>
+			</div>
+			<div class="form-group">
+			  <label for="evaluacionPuntaje">Puntaje de Evaluación</label>
+			  <input type="number" class="form-control" id="evaluacionPuntaje" required>
+			</div>
+			<div class="form-group">
+			  <label for="comentariosEvaluacion">Comentarios</label>
+			  <textarea class="form-control" id="comentariosEvaluacion" rows="3" required></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">Agregar</button>
+		  </form>
+		</div>
+	  </div>
+	</div>
+  </div>
+  
+  <!-- Modal Editar Evaluación -->
+  <div class="modal fade" id="modalEditarEvaluacion" tabindex="-1" role="dialog" aria-labelledby="modalEditarEvaluacionLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+	  <div class="modal-content">
+		<div class="modal-header">
+		  <h5 class="modal-title" id="modalEditarEvaluacionLabel">Editar Evaluación</h5>
+		  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			<span aria-hidden="true">&times;</span>
+		  </button>
+		</div>
+		<div class="modal-body">
+		  <form id="formEditarEvaluacion">
+			<div class="form-group">
+			  <label for="nombreJugadorEditarEvaluacion">Nombre del Jugador</label>
+			  <input type="text" class="form-control" id="nombreJugadorEditarEvaluacion" required>
+			</div>
+			<div class="form-group">
+			  <label for="evaluacionPuntajeEditar">Puntaje de Evaluación</label>
+			  <input type="number" class="form-control" id="evaluacionPuntajeEditar" required>
+			</div>
+			<div class="form-group">
+			  <label for="comentariosEvaluacionEditar">Comentarios</label>
+			  <textarea class="form-control" id="comentariosEvaluacionEditar" rows="3" required></textarea>
+			</div>
+			<button type="submit" class="btn btn-primary">Guardar Cambios</button>
+		  </form>
+		</div>
+	  </div>
+	</div>
+  </div>  
 
 	<!-- CLIENT SECTION -->
 	<div class="section stat-client p-main bg-client">
