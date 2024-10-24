@@ -2,6 +2,13 @@
 session_start();
 include("conexion.php");
 
+// Validacion 
+if (!isset($_SESSION['usuarioId']) ||!isset($_SESSION['rolId']) || $_SESSION['rolId']!= 1) {
+    echo "<script>alert('Solo los administradores pueden registrar jugadores.'); window.location.href = '../login.html';</script>";
+    exit();
+}
+
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombreJugador = $_POST['nombre'];
     $apellidos = $_POST['apellidos'];
