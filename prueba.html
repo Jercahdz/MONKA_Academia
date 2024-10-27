@@ -3,27 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Seleccionar Imágenes por Categoría</title>
+    <title>Mostrar Imágenes</title>
+    
     <script src="js/imagenes.js"></script> 
 </head>
 <body>
 
-<h2>Seleccionar una Categoría</h2>
+<h2>Imágenes de Sponsor</h2>
+<div id="sponsor-imagenes" style="display: flex; flex-wrap: wrap;"></div>
 
-<select id="selectCategoria">
-    <option value="plantillas">Plantillas</option>
-    <option value="escudo">Escudo</option>
-    <option value="sponsor">Sponsor</option>
-    <option value="todas">Todas</option> 
+<h2>Seleccionar Plantilla</h2>
+<select id="plantilla-select">
+    <option value="">Selecciona una plantilla</option>
 </select>
+<img id="plantilla-imagen" alt=""
+				style="width: 400px; display: none; margin-top: 10px; margin-left: auto; margin-right: auto; display: block;" />
 
-<h2>Seleccionar una Imagen</h2>
+<h2>Imágenes de Escudo</h2>
+<div id="escudo-imagenes" style="display: flex; flex-wrap: wrap;"></div>
 
-<select id="selectImagen">
-    <option value="">Selecciona una imagen</option>
-</select>
-
-<div id="imagenSeleccionada" style="margin-top: 20px;"></div>
 
 </body>
 </html>

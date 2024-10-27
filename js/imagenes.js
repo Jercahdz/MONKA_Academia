@@ -1,65 +1,62 @@
 function cargarImagenes() {
     var xhr = new XMLHttpRequest();
-    xhr.open("GET", "php/imagenes.php", true); 
+    xhr.open("GET", "php/imagenes.php", true);
     xhr.onload = function() {
         if (this.status === 200) {
             var imagenes = JSON.parse(this.responseText); 
-            var selectImagen = document.getElementById('selectImagen');
-            var selectCategoria = document.getElementById('selectCategoria');
-            var todasLasImagenes = imagenes; 
 
-            selectCategoria.addEventListener('change', function() {
-                var categoriaSeleccionada = selectCategoria.value;
-                var imagenesFiltradas = filtrarImagenesPorCategoria(todasLasImagenes, categoriaSeleccionada);
-
-                llenarSelectImagenes(imagenesFiltradas);
-            });
-
-            llenarSelectImagenes(filtrarImagenesPorCategoria(todasLasImagenes, 'plantillas'));
+            mostrarImagenes('sponsor', imagenes);
+            crearSelectPlantillas(imagenes);
+            mostrarImagenes('escudo', imagenes);
         }
     };
     xhr.send(); 
 }
 
-// Aqui de ven las imagenes segun su categoria
-function filtrarImagenesPorCategoria(imagenes, categoria) {
-    return imagenes.filter(function(imagen) {
-        if (categoria === 'plantillas') {
-            return imagen.nombre.includes('3-5-2') || imagen.nombre.includes('4-2-3-1') || imagen.nombre.includes('4-3-3') || imagen.nombre.includes('4-4-2');
-        } else if (categoria === 'escudo') {
-            return imagen.nombre.includes('escudo');
-        } else if (categoria === 'sponsor') {
-            return imagen.nombre.includes('sponsor');
-        } else {
-            return true; 
+function mostrarImagenes(categoria, imagenes) {
+    var contenedor = document.getElementById(categoria + '-imagenes');
+    contenedor.innerHTML = ''; 
+
+    var imagenesFiltradas = imagenes.filter(function(imagen) {
+        return imagen.nombre.toLowerCase().includes(categoria); 
+    });
+
+    imagenesFiltradas.forEach(function(imagen) {
+        var imgElement = document.createElement('img');
+        imgElement.src = imagen.ruta;
+        imgElement.alt = imagen.nombre;
+        imgElement.style.width = '200px'; 
+        imgElement.style.margin = '10px';
+        contenedor.appendChild(imgElement);
+    });
+}
+
+function crearSelectPlantillas(imagenes) {
+    var select = document.getElementById('plantilla-select');
+    select.innerHTML = ''; 
+
+    var defaultOption = document.createElement('option');
+    defaultOption.value = '';
+    defaultOption.textContent = 'Seleccione';
+    defaultOption.disabled = true;
+    defaultOption.selected = true;
+    select.appendChild(defaultOption);
+
+    imagenes.forEach(function(imagen) {
+        if (imagen.nombre.match(/^\d[-]\d[-]\d\.png$/) || 
+            imagen.nombre.match(/^\d[-]\d[-]\d[-]\d\.png$/)) { 
+            var option = document.createElement('option');
+            option.value = imagen.ruta;
+            option.textContent = imagen.nombre.replace('.png', ''); 
+            select.appendChild(option);
         }
     });
-}
 
-function llenarSelectImagenes(imagenes) {
-    var selectImagen = document.getElementById('selectImagen');
-    selectImagen.innerHTML = ''; 
-
-    imagenes.forEach(function(imagen, index) {
-        var option = document.createElement('option');
-        option.value = index;
-        option.text = imagen.nombre;
-        selectImagen.add(option);
-    });
-
-    if (imagenes.length > 0) {
-        mostrarImagen(imagenes[0].ruta, imagenes[0].nombre);
-    }
-
-    selectImagen.addEventListener('change', function() {
-        var imagenSeleccionada = imagenes[selectImagen.value];
-        mostrarImagen(imagenSeleccionada.ruta, imagenSeleccionada.nombre);
-    });
-}
-
-function mostrarImagen(ruta, nombre) {
-    var output = '<img src="' + ruta + '" alt="' + nombre + '" style="width: 300px; height: auto;">';
-    document.getElementById('imagenSeleccionada').innerHTML = output;
+    select.onchange = function() {
+        var imgMostrar = document.getElementById('plantilla-imagen');
+        imgMostrar.src = select.value;
+        imgMostrar.style.display = 'block'; 
+    };
 }
 
 window.onload = cargarImagenes;

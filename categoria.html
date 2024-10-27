@@ -40,7 +40,7 @@
 	=============================================== -->
 	<link rel="stylesheet" type="text/css" href="css/style.css" />
 
-
+	<script src="js/imagenes.js"></script>
 
 	<script type="text/javascript" src="js/modernizr.min.js"></script>
 
@@ -253,20 +253,14 @@
 				</div>
 			</div>
 			<div class="col-sm-12 col-md-12"></div>
-			<section id="formacion-selector">
-				<h2>Seleccionar Formación</h2>
-				<select id="dropdown-formaciones">
-					<option value="4-4-2">4-4-2</option>
-					<option value="4-3-3">4-3-3</option>
-					<option value="3-5-2">3-5-2</option>
-					<option value="4-2-3-1">4-2-3-1</option>
-				</select>
-				<button id="btn-regresar">Regresar a formación anterior</button>
-			</section>
-			<section id="imagen-formacion">
-				<h2>Formación Actual</h2>
-				<img id="img-formacion" src="images/4-4-2.png" alt="Formación 4-4-2">
-			</section>
+			<h2>Seleccionar Plantilla</h2>
+			<select id="plantilla-select">
+				<option value="">Selecciona una plantilla</option>
+
+			</select>
+			<img id="plantilla-imagen" alt=""
+				style="width: 400px; display: none; margin-top: 10px; margin-left: auto; margin-right: auto; display: block;" />
+
 		</div>
 	</div>
 	</div>
@@ -274,46 +268,12 @@
 
 
 
-	<!-- Seccion SPONSORS  -->
+	<!-- CLIENT SECTION -->
 	<div class="section stat-client p-main bg-client">
 		<div class="container">
 			<div class="row">
 
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/sponsor1.jpg" alt="" class="img-responsive" />
-					</div>
-				</div>
-
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/sponsor2.png" alt="" class="img-responsive" />
-					</div>
-				</div>
-
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/sponsor3.png" alt="" class="img-responsive" />
-					</div>
-				</div>
-
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/sponsor4.png" alt="" class="img-responsive" />
-					</div>
-				</div>
-
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/sponsor5.png" alt="" class="img-responsive" />
-					</div>
-				</div>
-
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/campeones.jpeg" alt="" class="img-responsive" />
-					</div>
-				</div>
+				<div id="sponsor-imagenes" style="display: flex; flex-wrap: wrap;"></div>
 
 
 			</div>
