@@ -1,0 +1,119 @@
+document.addEventListener("DOMContentLoaded", function () {
+    // Variable para almacenar el evaluacionId
+    let evaluacionId = null;
+
+    // Función para recargar los datos de la tabla de evaluaciones
+    function recargarTablaEvaluaciones() {
+        // Usamos fetch para actualizar la tabla sin recargar la página
+        fetch('php/evaluaciones.php')
+            .then(response => response.text())
+            .then(data => {
+                document.getElementById('tabla-evaluaciones').innerHTML = data;
+            })
+            .catch(error => console.error("Error al recargar la tabla:", error));
+    }
+
+    // Escuchar el clic en los botones de "Agregar Evaluación"
+    document.addEventListener("click", function (event) {
+        if (event.target.classList.contains("btn-agregar-evaluacion")) {
+            // Abrir el modal de agregar evaluación
+            $("#modalAgregarEvaluacion").modal("show");
+        }
+    });
+
+    // Manejar el envío del formulario de agregar evaluación
+    document.getElementById("formAgregarEvaluacion").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Obtener el puntaje de evaluación ingresado
+        const evaluacionPuntaje = document.getElementById("evaluacionPuntaje").value;
+
+        // Enviar los datos al servidor mediante fetch
+        fetch("php/agregarEvaluacion.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: `evaluacionPuntaje=${evaluacionPuntaje}`,
+        })
+        .then(response => response.text())
+        .then(data => {
+            // Cerrar el modal
+            $("#modalAgregarEvaluacion").modal("hide");
+
+            // Recargar la tabla de evaluaciones sin recargar la página
+            recargarTablaEvaluaciones();
+        })
+        .catch(error => console.error("Error al agregar evaluación:", error));
+    });
+
+    // Escuchar el clic en los botones de "Editar"
+    document.addEventListener("click", function (event) {
+        if (event.target.classList.contains("btn-editar-evaluacion")) {
+            // Obtener el ID de la evaluación y el puntaje actual desde los atributos data
+            evaluacionId = event.target.getAttribute("data-evaluacion-id");
+            const evaluacionPuntaje = event.target.getAttribute("data-evaluacion-puntaje");
+
+            // Colocar el puntaje actual en el campo del modal de edición
+            document.getElementById("evaluacionPuntajeEditar").value = evaluacionPuntaje;
+
+            // Mostrar el modal de edición
+            $("#modalEditarEvaluacion").modal("show");
+        }
+    });
+
+    // Manejar el envío del formulario de edición
+    document.getElementById("formEditarEvaluacion").addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        // Obtener el puntaje de evaluación modificado
+        const evaluacionPuntaje = document.getElementById("evaluacionPuntajeEditar").value;
+
+        // Enviar los datos al servidor mediante fetch
+        fetch("php/editarEvaluacion.php", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: `evaluacionId=${evaluacionId}&evaluacionPuntaje=${evaluacionPuntaje}`,
+        })
+        .then(response => response.text())
+        .then(data => {
+            // Cerrar el modal de edición
+            $("#modalEditarEvaluacion").modal("hide");
+
+            // Recargar la tabla de evaluaciones sin recargar la página
+            recargarTablaEvaluaciones();
+        })
+        .catch(error => console.error("Error al editar evaluación:", error));
+    });
+
+    // Escuchar el clic en los botones de "Borrar"
+    document.addEventListener("click", function (event) {
+        if (event.target.classList.contains("btn-borrar-evaluacion")) {
+            // Obtener el ID de la evaluación desde el atributo data
+            evaluacionId = event.target.getAttribute("data-evaluacion-id");
+
+            // Confirmar la acción de borrar
+            if (confirm("¿Estás seguro de que deseas eliminar esta evaluación?")) {
+                // Enviar los datos al servidor mediante fetch
+                fetch("php/borrarEvaluacion.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/x-www-form-urlencoded",
+                    },
+                    body: `evaluacionId=${evaluacionId}`,
+                })
+                .then(response => response.text())
+                .then(data => {
+                    // Mostrar mensaje de éxito o error
+                    alert(data);
+
+                    // Recargar la tabla de evaluaciones sin recargar la página
+                    recargarTablaEvaluaciones();
+                })
+                .catch(error => console.error("Error al borrar evaluación:", error));
+            }
+        }
+    });
+});

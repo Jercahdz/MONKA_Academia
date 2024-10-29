@@ -5,7 +5,7 @@ include("conexion.php");
 // Consulta SQL para obtener los datos de los jugadores y sus sanciones (tarjetas rojas y amarillas)
 $sql = "
     SELECT 
-        j.nombreJugador, j.apellidos, j.edad, 
+        j.jugadorId, j.nombreJugador, j.apellidos, j.edad, 
         IFNULL(s.rojas, 0) AS rojas,
         IFNULL(s.amarillas, 0) AS amarillas
     FROM Jugadores j
@@ -26,18 +26,15 @@ if ($result->num_rows > 0) {
                 <td>" . htmlspecialchars($row['rojas']) . "</td>
                 <td>" . htmlspecialchars($row['amarillas']) . "</td>
                 <td>
-                    <button class='btn-table btn-sm'>Ver Detalles</button>
-                    <button class='btn-table btn-sm'>Editar</button>
-                    <button class='btn-table btn-sm'>Borrar</button>
-                    <button class='btn-table btn-sm'>Agregar Sanciones</button>
+                    <button class='btn-table btn-sm btn-agregar-sancion' data-jugador-id='" . $row['jugadorId'] . "'>Agregar Sanciones</button>
+                    <button class='btn-table btn-sm btn-editar' data-jugador-id='" . $row['jugadorId'] . "' data-rojas='" . $row['rojas'] . "' data-amarillas='" . $row['amarillas'] . "'>Editar</button>
+                    <button class='btn-table btn-sm btn-borrar' data-jugador-id='" . $row['jugadorId'] . "'>Borrar</button>
                 </td>
               </tr>";
     }
 } else {
-    // Si no hay resultados, mostrar mensaje en la tabla
     echo "<tr><td colspan='6'>No hay datos disponibles.</td></tr>";
 }
 
-// Cerrar la conexión
 $conn->close();
 ?>
