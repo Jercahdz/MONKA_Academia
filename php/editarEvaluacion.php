@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $jugadorId = intval($_POST['jugadorId']);
     $evaluaciones = $_POST['evaluaciones'];
 
-    // Actualizar la evaluación
+    // Actualizar las evaluaciones
     $sql = "UPDATE Evaluaciones SET evaluaciones = ? WHERE jugadorId = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("si", $evaluaciones, $jugadorId);

@@ -2,7 +2,11 @@
 session_start();
 include("conexion.php");
 
-// Consulta SQL para obtener los datos de los jugadores y sus evaluaciones
+// Obtener el parámetro de búsqueda
+$search = isset($_GET['search']) ? trim($_GET['search']) : '';
+$searchParam = '%' . $search . '%';
+
+// Consulta SQL para obtener los datos
 $sql = "
     SELECT 
         j.jugadorId, j.nombreJugador, j.apellidos, j.edad, 
@@ -11,12 +15,27 @@ $sql = "
     LEFT JOIN Evaluaciones e ON j.jugadorId = e.jugadorId
 ";
 
-// Ejecutar la consulta
-$result = $conn->query($sql);
+// Agregar cláusula WHERE si hay búsqueda
+if (!empty($search)) {
+    $sql .= " WHERE CONCAT(j.nombreJugador, ' ', j.apellidos) LIKE ?";
+}
 
-// Comprobar si hay resultados
+// Preparar la consulta
+$stmt = $conn->prepare($sql);
+if (!$stmt) {
+    die("Error al preparar la consulta: " . $conn->error);
+}
+
+// Vincular parámetros si hay búsqueda
+if (!empty($search)) {
+    $stmt->bind_param("s", $searchParam);
+}
+
+$stmt->execute();
+$result = $stmt->get_result();
+
+// Generar la tabla
 if ($result->num_rows > 0) {
-    // Recorrer cada fila de los resultados y generar las filas de la tabla
     while ($row = $result->fetch_assoc()) {
         echo "<tr>
             <td>" . htmlspecialchars($row['nombreJugador']) . "</td>
@@ -25,16 +44,15 @@ if ($result->num_rows > 0) {
             <td>" . htmlspecialchars($row['evaluaciones']) . "</td>
             <td>
                 <button class='btn-agregar-evaluacion btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Agregar Evaluación</button>
-                <button class='btn-editar btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "' data-evaluaciones='" . htmlspecialchars($row['evaluaciones']) . "'>Editar</button>
-                <button class='btn-borrar btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Borrar</button>
+                <button class='btn-editar-evaluacion btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "' data-evaluaciones='" . htmlspecialchars($row['evaluaciones']) . "'>Editar</button>
+                <button class='btn-borrar-evaluacion btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Borrar</button>
             </td>
         </tr>";
     }
 } else {
-    // Si no hay resultados, mostrar mensaje en la tabla
     echo "<tr><td colspan='5'>No hay datos disponibles.</td></tr>";
 }
 
-// Cerrar la conexión
+$stmt->close();
 $conn->close();
 ?>

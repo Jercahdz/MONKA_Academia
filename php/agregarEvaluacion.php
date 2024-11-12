@@ -13,7 +13,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-    // Actualizar la evaluación si ya existe una
+    // Actualizar la evaluación si ya existe (sólo guardamos el nuevo puntaje)
     $sqlActualizar = "UPDATE Evaluaciones SET evaluaciones = ? WHERE jugadorId = ?";
     $stmtActualizar = $conn->prepare($sqlActualizar);
     $stmtActualizar->bind_param("si", $evaluaciones, $jugadorId);

@@ -14,7 +14,7 @@ $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-    // Actualizar las sanciones existentes
+    // Actualizar la cantidad de tarjetas si ya existe una sanción
     $sqlActualizar = "UPDATE Sanciones SET amarillas = amarillas + ?, rojas = rojas + ? WHERE jugadorId = ?";
     $stmtActualizar = $conn->prepare($sqlActualizar);
     $stmtActualizar->bind_param("iii", $tarjetasAmarillas, $tarjetasRojas, $jugadorId);
@@ -22,13 +22,14 @@ if ($result->num_rows > 0) {
     $stmtActualizar->close();
 } else {
     // Insertar una nueva sanción si no existe
-    $sqlInsertar = "INSERT INTO Sanciones (jugadorId, amarillas, rojas) VALUES (?, ?, ?)";
+    $sqlInsertar = "INSERT INTO Sanciones (amarillas, rojas, jugadorId) VALUES (?, ?, ?)";
     $stmtInsertar = $conn->prepare($sqlInsertar);
-    $stmtInsertar->bind_param("iii", $jugadorId, $tarjetasAmarillas, $tarjetasRojas);
+    $stmtInsertar->bind_param("iii", $tarjetasAmarillas, $tarjetasRojas, $jugadorId);
     $stmtInsertar->execute();
     $stmtInsertar->close();
 }
 
+// Cerrar la conexión
 $stmt->close();
 $conn->close();
 ?>

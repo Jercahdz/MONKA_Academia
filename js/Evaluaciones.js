@@ -1,6 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Variable para almacenar el evaluacionId
-    let evaluacionId = null;
+    // Variable para almacenar el jugadorId
+    let jugadorId = null;
 
     // Función para recargar los datos de la tabla de evaluaciones
     function recargarTablaEvaluaciones() {
@@ -16,6 +16,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Escuchar el clic en los botones de "Agregar Evaluación"
     document.addEventListener("click", function (event) {
         if (event.target.classList.contains("btn-agregar-evaluacion")) {
+            // Obtener el ID del jugador desde el atributo data
+            jugadorId = event.target.getAttribute("data-jugador-id");
+
             // Abrir el modal de agregar evaluación
             $("#modalAgregarEvaluacion").modal("show");
         }
@@ -34,7 +37,7 @@ document.addEventListener("DOMContentLoaded", function () {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
             },
-            body: `evaluacionPuntaje=${evaluacionPuntaje}`,
+            body: `jugadorId=${jugadorId}&evaluaciones=${evaluacionPuntaje}`,
         })
         .then(response => response.text())
         .then(data => {
@@ -50,9 +53,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // Escuchar el clic en los botones de "Editar"
     document.addEventListener("click", function (event) {
         if (event.target.classList.contains("btn-editar-evaluacion")) {
-            // Obtener el ID de la evaluación y el puntaje actual desde los atributos data
-            evaluacionId = event.target.getAttribute("data-evaluacion-id");
-            const evaluacionPuntaje = event.target.getAttribute("data-evaluacion-puntaje");
+            // Obtener el ID del jugador y el puntaje de evaluación actual desde los atributos data
+            jugadorId = event.target.getAttribute("data-jugador-id");
+            const evaluacionPuntaje = event.target.getAttribute("data-evaluaciones");
 
             // Colocar el puntaje actual en el campo del modal de edición
             document.getElementById("evaluacionPuntajeEditar").value = evaluacionPuntaje;
@@ -75,7 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
             },
-            body: `evaluacionId=${evaluacionId}&evaluacionPuntaje=${evaluacionPuntaje}`,
+            body: `jugadorId=${jugadorId}&evaluaciones=${evaluacionPuntaje}`,
         })
         .then(response => response.text())
         .then(data => {
@@ -91,18 +94,18 @@ document.addEventListener("DOMContentLoaded", function () {
     // Escuchar el clic en los botones de "Borrar"
     document.addEventListener("click", function (event) {
         if (event.target.classList.contains("btn-borrar-evaluacion")) {
-            // Obtener el ID de la evaluación desde el atributo data
-            evaluacionId = event.target.getAttribute("data-evaluacion-id");
+            // Obtener el ID del jugador desde el atributo data
+            jugadorId = event.target.getAttribute("data-jugador-id");
 
             // Confirmar la acción de borrar
-            if (confirm("¿Estás seguro de que deseas eliminar esta evaluación?")) {
+            if (confirm("¿Estás seguro de que deseas eliminar las evaluaciones de este jugador?")) {
                 // Enviar los datos al servidor mediante fetch
                 fetch("php/borrarEvaluacion.php", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded",
                     },
-                    body: `evaluacionId=${evaluacionId}`,
+                    body: `jugadorId=${jugadorId}`,
                 })
                 .then(response => response.text())
                 .then(data => {

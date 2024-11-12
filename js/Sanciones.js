@@ -51,15 +51,15 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error("Error al agregar sanción:", error));
     });
 
-    // Escuchar el clic en los botones de "Editar Sanción"
+    // Escuchar el clic en los botones de "Editar"
     document.addEventListener("click", function (event) {
         if (event.target.classList.contains("btn-editar-sancion")) {
-            // Obtener el ID del jugador y la cantidad de sanciones actuales desde los atributos data
+            // Obtener el ID del jugador y la cantidad de tarjetas actuales desde los atributos data
             jugadorId = event.target.getAttribute("data-jugador-id");
             const tarjetasAmarillas = event.target.getAttribute("data-tarjetas-amarillas");
             const tarjetasRojas = event.target.getAttribute("data-tarjetas-rojas");
 
-            // Colocar la cantidad de tarjetas actuales en los campos del modal de edición
+            // Colocar la cantidad de tarjetas actual en los campos del modal de edición
             document.getElementById("tarjetasAmarillasEditar").value = tarjetasAmarillas;
             document.getElementById("tarjetasRojasEditar").value = tarjetasRojas;
 
@@ -95,7 +95,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .catch(error => console.error("Error al editar sanción:", error));
     });
 
-    // Escuchar el clic en los botones de "Borrar Sanción"
+    // Escuchar el clic en los botones de "Borrar"
     document.addEventListener("click", function (event) {
         if (event.target.classList.contains("btn-borrar-sancion")) {
             // Obtener el ID del jugador desde el atributo data

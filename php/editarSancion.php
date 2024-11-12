@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $tarjetasAmarillas = intval($_POST['tarjetasAmarillas']);
     $tarjetasRojas = intval($_POST['tarjetasRojas']);
 
-    // Actualizar las sanciones
+    // Actualizar la cantidad de tarjetas amarillas y rojas
     $sql = "UPDATE Sanciones SET amarillas = ?, rojas = ? WHERE jugadorId = ?";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("iii", $tarjetasAmarillas, $tarjetasRojas, $jugadorId);
