@@ -44,6 +44,7 @@
 
 	<script type="text/javascript" src="js/modernizr.min.js"></script>
 
+	<script src="js/categorias.js"></script>
 
 
 </head>
@@ -136,7 +137,6 @@
 
 			<!-- Seccion Categoria -->
 			<div class="row">
-
 				<div class="col-sm-12 col-md-12">
 					<section id="lista-jugadores">
 						<h2>Lista de Jugadores</h2>
@@ -159,28 +159,8 @@
 										<th>Acciones</th>
 									</tr>
 								</thead>
-								<tbody>
+								<tbody id="tabla-jugadores">
 									<!-- Aquí se insertarán los jugadores dinámicamente -->
-									<tr>
-										<td>Juan</td>
-										<td>Pérez</td>
-										<td>16</td>
-										<td>10</td>
-										<td>
-											<button class="btn-table btn-sm">Ver Detalles</button>
-											<button class="btn-table btn-sm">Editar</button>
-										</td>
-									</tr>
-									<tr>
-										<td>Carlos</td>
-										<td>González</td>
-										<td>17</td>
-										<td>7</td>
-										<td>
-											<button class="btn-table btn-sm">Ver Detalles</button>
-											<button class="btn-table btn-sm">Editar</button>
-										</td>
-									</tr>
 								</tbody>
 							</table>
 					</section>
@@ -253,11 +233,20 @@
 				</div>
 			</div>
 			<div class="col-sm-12 col-md-12"></div>
-			<h2>Seleccionar Plantilla</h2>
-			<select id="plantilla-select">
-				<option value="">Selecciona una plantilla</option>
-
-			</select>
+			<section id="formacion-selector">
+				<h2>Seleccionar Formación</h2>
+				<select id="dropdown-formaciones">
+					<option value="4-4-2">4-4-2</option>
+					<option value="4-3-3">4-3-3</option>
+					<option value="3-5-2">3-5-2</option>
+					<option value="4-2-3-1">4-2-3-1</option>
+				</select>
+				<button id="btn-regresar">Regresar a formación anterior</button>
+			</section>
+			<section id="imagen-formacion">
+				<h2>Formación Actual</h2>
+				<img id="img-formacion" src="images/4-4-2.png" alt="Formación 4-4-2">
+			</section>
 			<img id="plantilla-imagen" alt=""
 				style="width: 400px; display: none; margin-top: 10px; margin-left: auto; margin-right: auto; display: block;" />
 
@@ -273,7 +262,41 @@
 		<div class="container">
 			<div class="row">
 
-				<div id="sponsor-imagenes" style="display: flex; flex-wrap: wrap;"></div>
+				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+					<div class="client-img">
+						<img src="images/sponsor1.jpg" alt="" class="img-responsive" />
+					</div>
+				</div>
+
+				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+					<div class="client-img">
+						<img src="images/sponsor2.png" alt="" class="img-responsive" />
+					</div>
+				</div>
+
+				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+					<div class="client-img">
+						<img src="images/sponsor3.png" alt="" class="img-responsive" />
+					</div>
+				</div>
+
+				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+					<div class="client-img">
+						<img src="images/sponsor4.png" alt="" class="img-responsive" />
+					</div>
+				</div>
+
+				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+					<div class="client-img">
+						<img src="images/sponsor5.png" alt="" class="img-responsive" />
+					</div>
+				</div>
+
+				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+					<div class="client-img">
+						<img src="images/campeones.jpeg" alt="" class="img-responsive" />
+					</div>
+				</div>
 
 
 			</div>
