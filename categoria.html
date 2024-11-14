@@ -166,13 +166,19 @@
 					</section>
 
 					<!-- Modal para ver detalles del jugador -->
-					<section id="detalles-jugador" class="modal">
+					<div id="detallesModal" style="display:none;">
 						<div class="modal-content">
-							<span class="close">&times;</span>
+							<span class="close" onclick="document.getElementById('detallesModal').style.display='none'">&times;</span>
 							<h2>Detalles del Jugador</h2>
-							<div id="info-jugador"></div>
+							<p><strong>Nombre:</strong> <span id="modal-nombre"></span></p>
+							<p><strong>Apellidos:</strong> <span id="modal-apellidos"></span></p>
+							<p><strong>Edad:</strong> <span id="modal-edad"></span></p>
+							<p><strong>Dorsal:</strong> <span id="modal-dorsal"></span></p>
+							<p><strong>Pie Hábil:</strong> <span id="modal-pieHabil"></span></p>
+							<p><strong>Categoría:</strong> <span id="modal-categoria"></span></p>
+							<p><strong>Anotaciones:</strong> <span id="modal-anotaciones"></span></p>
 						</div>
-					</section>
+					</div>
 
 					<!-- Modal para editar jugador -->
 					<section id="editar-jugador" class="modal">
