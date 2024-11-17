@@ -150,11 +150,13 @@
 							<table class="table table-striped table-bordered">
 								<thead class="thead-dark">
 									<br>
+									<!--Aqui se muetran los datos en la tabla Categorias-->
 									<tr>
 										<th>Nombre</th>
 										<th>Apellidos</th>
 										<th>Edad</th>
 										<th>Dorsal</th>
+										<th>Pie Hábil</th>
 										<th>Acciones</th>
 									</tr>
 								</thead>
@@ -165,99 +167,123 @@
 					</section>
 
 					<!-- Modal para ver detalles del jugador -->
-					<div id="detallesModal" style="display:none;">
-						<div class="modal-content">
-							<span class="close" onclick="document.getElementById('detallesModal').style.display='none'">&times;</span>
-							<h2>Detalles del Jugador</h2>
-							<p><strong>Nombre:</strong> <span id="modal-nombre"></span></p>
-							<p><strong>Apellidos:</strong> <span id="modal-apellidos"></span></p>
-							<p><strong>Edad:</strong> <span id="modal-edad"></span></p>
-							<p><strong>Dorsal:</strong> <span id="modal-dorsal"></span></p>
-							<p><strong>Pie Hábil:</strong> <span id="modal-pieHabil"></span></p>
-							<p><strong>Categoría:</strong> <span id="modal-categoria"></span></p>
-							<p><strong>Anotaciones:</strong> <span id="modal-anotaciones"></span></p>
+					<div id="detallesModal" class="modal fade" tabindex="-1" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title">Detalles del Jugador</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<p><strong>Nombre:</strong> <span id="modal-nombre"></span></p>
+									<p><strong>Apellidos:</strong> <span id="modal-apellidos"></span></p>
+									<p><strong>Edad:</strong> <span id="modal-edad"></span></p>
+									<p><strong>Dorsal:</strong> <span id="modal-dorsal"></span></p>
+									<p><strong>Pie Hábil:</strong> <span id="modal-pieHabil"></span></p>
+									<p><strong>Categoría:</strong> <span id="modal-categoria"></span></p>
+
+								</div>
+								<div class="modal-footer">
+									<button type="button" class="btn btn-secondary btn-table"
+										data-dismiss="modal">Aceptar</button>
+								</div>
+							</div>
 						</div>
 					</div>
 
-					<!-- Modal para editar jugador -->
-					<section id="editar-jugador" class="modal">
-						<div class="modal-content">
-							<span class="close">&times;</span>
-							<h2>Editar Jugador</h2>
-							<form id="form-editar-jugador">
-								<label for="edit-nombre">Nombre:</label>
-								<input type="text" id="edit-nombre" required>
+					<!-- Modal para editar los datos del jugador -->
+					<div id="editarModal" class="modal fade" tabindex="-1" role="dialog">
+						<div class="modal-dialog">
+							<div class="modal-content">
+								<div class="modal-header">
+									<h5 class="modal-title">Editar Jugador</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+										<span aria-hidden="true">&times;</span>
+									</button>
+								</div>
+								<div class="modal-body">
+									<form id="formEditarJugador">
+										<input type="hidden" id="editar-jugador-id">
 
-								<label for="edit-apellidos">Apellidos:</label>
-								<input type="text" id="edit-apellidos" required>
+										<div class="form-group">
+											<label for="editar-nombre-jugador">Nombre:</label>
+											<input type="text" id="editar-nombre-jugador" class="form-control" required>
+										</div>
 
-								<label for="edit-edad">Edad:</label>
-								<input type="number" id="edit-edad" required>
+										<div class="form-group">
+											<label for="editar-apellidos">Apellidos:</label>
+											<input type="text" id="editar-apellidos" class="form-control" required>
+										</div>
 
-								<label for="edit-dorsal">Dorsal:</label>
-								<input type="number" id="edit-dorsal" required>
+										<div class="form-group">
+											<label for="editar-edad">Edad:</label>
+											<input type="number" id="editar-edad" class="form-control" required>
+										</div>
 
-								<label for="edit-posicion">Posición:</label>
-								<input type="text" id="edit-posicion" required>
+										<div class="form-group">
+											<label for="editar-dorsal">Dorsal:</label>
+											<input type="number" id="editar-dorsal" class="form-control" required>
+										</div>
 
-								<label for="edit-pie-habil">Pie Hábil:</label>
-								<select id="edit-pie-habil" required>
-									<option value="Derecho">Derecho</option>
-									<option value="Izquierdo">Izquierdo</option>
-								</select>
+										<div class="form-group">
+											<label for="editar-pieHabil">Pie Hábil:</label>
+											<select id="editar-pieHabil" name="pieHabil">
+												<option value="0">Izquierdo</option>
+												<option value="1">Derecho</option>
+											</select>
+										</div>
 
-								<label for="edit-categoria">Categoría:</label>
-								<select id="edit-categoria" required>
-									<option value="U-15">U-15</option>
-									<option value="U-17">U-17</option>
-									<option value="U-20">U-20</option>
-								</select>
-
-								<button type="submit">Guardar Cambios</button>
-							</form>
+										<button type="submit" class="btn btn-table">Guardar Cambios</button>
+									</form>
+								</div>
+							</div>
 						</div>
+					</div>
+
+
+					<!-- Seccion Plantilla   -->
+					<div class="row"></div>
+					<div class="col-sm-12 col-md-12">
+						<div class="page-title">
+							<h2 class="lead">Plantilla</h2>
+							<div class="border-style"></div>
+							<div class="page-description">
+								<p><strong>Academia de Fútbol MONKÁ</strong> Lorem ipsum dolor sit amet, libero turpis
+									non cras
+									ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi
+									suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel
+									varius
+									eget sit mollis. Commodo enim aliquam suspendisse tortor cum diam, commodo
+									facilisis, rutrum
+									et duis nisl porttitor, vel eleifend odio ultricies ut, orci in adipiscing felis
+									velit nibh.
+								</p>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-12 col-md-12"></div>
+					<section id="formacion-selector">
+						<h2>Seleccionar Formación</h2>
+						<select id="dropdown-formaciones">
+							<option value="4-4-2">4-4-2</option>
+							<option value="4-3-3">4-3-3</option>
+							<option value="3-5-2">3-5-2</option>
+							<option value="4-2-3-1">4-2-3-1</option>
+						</select>
+						<button id="btn-regresar">Regresar a formación anterior</button>
 					</section>
-				</div>
+					<section id="imagen-formacion">
+						<h2>Formación Actual</h2>
+						<img id="img-formacion" src="images/4-4-2.png" alt="Formación 4-4-2">
+					</section>
+					<img id="plantilla-imagen" alt=""
+						style="width: 400px; display: none; margin-top: 10px; margin-left: auto; margin-right: auto; display: block;" />
 
-			</div>
-
-			<!-- Seccion Plantilla   -->
-			<div class="row"></div>
-			<div class="col-sm-12 col-md-12">
-				<div class="page-title">
-					<h2 class="lead">Plantilla</h2>
-					<div class="border-style"></div>
-					<div class="page-description">
-						<p><strong>Academia de Fútbol MONKÁ</strong> Lorem ipsum dolor sit amet, libero turpis non cras
-							ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi
-							suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel varius
-							eget sit mollis. Commodo enim aliquam suspendisse tortor cum diam, commodo facilisis, rutrum
-							et duis nisl porttitor, vel eleifend odio ultricies ut, orci in adipiscing felis velit nibh.
-						</p>
-					</div>
 				</div>
 			</div>
-			<div class="col-sm-12 col-md-12"></div>
-			<section id="formacion-selector">
-				<h2>Seleccionar Formación</h2>
-				<select id="dropdown-formaciones">
-					<option value="4-4-2">4-4-2</option>
-					<option value="4-3-3">4-3-3</option>
-					<option value="3-5-2">3-5-2</option>
-					<option value="4-2-3-1">4-2-3-1</option>
-				</select>
-				<button id="btn-regresar">Regresar a formación anterior</button>
-			</section>
-			<section id="imagen-formacion">
-				<h2>Formación Actual</h2>
-				<img id="img-formacion" src="images/4-4-2.png" alt="Formación 4-4-2">
-			</section>
-			<img id="plantilla-imagen" alt=""
-				style="width: 400px; display: none; margin-top: 10px; margin-left: auto; margin-right: auto; display: block;" />
-
 		</div>
-	</div>
-	</div>
 	</div>
 
 
