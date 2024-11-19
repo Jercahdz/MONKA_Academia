@@ -14,7 +14,7 @@ $sql = "UPDATE Jugadores
 $stmt = $conn->prepare($sql);
 
 // Nota: La cadena es "sssiii" porque hay 3 strings y 3 enteros
-$stmt->bind_param("sssiii", $nombreJugador, $apellidos, $edad, $dorsal, $pieHabil, $jugadorId);
+$stmt->bind_param("sssiss", $nombreJugador, $apellidos, $edad, $dorsal, $pieHabil, $jugadorId);
 
 if ($stmt->execute()) {
     echo "Jugador actualizado con éxito";  // Mensaje simple de éxito

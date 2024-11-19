@@ -87,7 +87,12 @@ document.addEventListener("DOMContentLoaded", function () {
                     document.getElementById('editar-apellidos').value = data.apellidos;
                     document.getElementById('editar-edad').value = data.edad;
                     document.getElementById('editar-dorsal').value = data.dorsal;
-                    document.getElementById('editar-pieHabil').value = data.pieHabil;
+                    const pieHabilSelect = document.getElementById('editar-pieHabil');
+                    if (data.pieHabil === 'Izquierdo' || data.pieHabil === 'Derecho') {
+                        pieHabilSelect.value = data.pieHabil;
+                    } else {
+                        pieHabilSelect.value = ''; // Opción por defecto si el valor es desconocido
+                    }
                     // Mostrar el modal de edición
                     $('#editarModal').modal('show');
                 }
@@ -116,7 +121,7 @@ document.addEventListener("DOMContentLoaded", function () {
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: `jugadorId=${jugadorId}&nombreJugador=${encodeURIComponent(nombreJugador)}&apellidos=${encodeURIComponent(apellidos)}&edad=${edad}&dorsal=${dorsal}&pieHabil=${encodeURIComponent(pieHabil)}`,
         })
-            .then(response => response.text())  
+            .then(response => response.text())
             .then(responseText => {
                 if (responseText === "Jugador actualizado con éxito") {
                     alert("Jugador actualizado con éxito");
@@ -141,7 +146,12 @@ document.addEventListener("DOMContentLoaded", function () {
         const apellidos = document.getElementById('editar-apellidos').value.trim();
         const edad = document.getElementById('editar-edad').value;
         const dorsal = document.getElementById('editar-dorsal').value;
-        const pieHabil = document.getElementById('editar-pieHabil').value.trim();
+        const pieHabil = document.getElementById('editar-pieHabil').value;
+        if (pieHabil !== 'Izquierdo' && pieHabil !== 'Derecho') {
+            alert("El valor de 'Pie Hábil' debe ser 'Izquierdo' o 'Derecho'.");
+            return false;
+        }
+        return true;
         if (!nombre || !apellidos || !edad || !dorsal || !pieHabil) {
             alert("Por favor, completa todos los campos.");
             return false;
