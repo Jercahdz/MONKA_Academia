@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Gráficos Estadísticos</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="graficos.js" defer></script>
+        <script src="js/graficos.js" defer></script>
+    </head>
+    <body>
+            <h1>Estadísticas</h1>
+            <label for="categoria">Categoría:</label>
+            <select id="categoria">
+                <option value disabled selected>Selecciona una
+                    categoría</option>
+                <option value="1">U-15</option>
+                <option value="2">U-17</option>
+                <option value="3">U-20</option>
+            </select>
+
+            <h3>Filtrar por fecha:</h3>
+            <label for="fechaInicio">Fecha Inicio:</label>
+            <input type="date" id="fechaInicio">
+            <label for="fechaFin">Fecha Fin:</label>
+            <input type="date" id="fechaFin">
+
+            <button id="aplicarFiltro">Aplicar Filtro</button>
+
+            <h3>Opciones de Estadísticas:</h3>
+            <div>
+                <label><input type="checkbox" id="mostrarAnotaciones" checked>
+                    Anotaciones</label>
+                <label><input type="checkbox" id="mostrarAsistencias" checked>
+                    Asistencias</label>
+                <label><input type="checkbox" id="mostrarSanciones" checked>
+                    Sanciones</label>
+                <label><input type="checkbox" id="mostrarEvaluaciones" checked>
+                    Evaluaciones</label>
+            </div>
+
+            <canvas id="grafico" width="400" height="200"></canvas>
+        </body>
+    </html>

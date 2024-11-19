@@ -5,31 +5,31 @@ include("conexion.php");
 $jugadorId = $_POST['jugadorId'];
 $tarjetasAmarillas = $_POST['tarjetasAmarillas'];
 $tarjetasRojas = $_POST['tarjetasRojas'];
+$fecha = date('Y-m-d'); // Fecha actual
 
-// Verificar si ya existe una sanción para el jugador
-$sqlVerificar = "SELECT * FROM Sanciones WHERE jugadorId = ?";
+// Verificar si ya existe una sanción para el jugador en la fecha actual
+$sqlVerificar = "SELECT * FROM Sanciones WHERE jugadorId = ? AND fecha = ?";
 $stmt = $conn->prepare($sqlVerificar);
-$stmt->bind_param("i", $jugadorId);
+$stmt->bind_param("is", $jugadorId, $fecha);
 $stmt->execute();
 $result = $stmt->get_result();
 
 if ($result->num_rows > 0) {
-    // Actualizar la cantidad de tarjetas si ya existe una sanción
-    $sqlActualizar = "UPDATE Sanciones SET amarillas = amarillas + ?, rojas = rojas + ? WHERE jugadorId = ?";
+    // Actualizar las tarjetas si ya existe una sanción para hoy
+    $sqlActualizar = "UPDATE Sanciones SET amarillas = amarillas + ?, rojas = rojas + ? WHERE jugadorId = ? AND fecha = ?";
     $stmtActualizar = $conn->prepare($sqlActualizar);
-    $stmtActualizar->bind_param("iii", $tarjetasAmarillas, $tarjetasRojas, $jugadorId);
+    $stmtActualizar->bind_param("iiis", $tarjetasAmarillas, $tarjetasRojas, $jugadorId, $fecha);
     $stmtActualizar->execute();
     $stmtActualizar->close();
 } else {
-    // Insertar una nueva sanción si no existe
-    $sqlInsertar = "INSERT INTO Sanciones (amarillas, rojas, jugadorId) VALUES (?, ?, ?)";
+    // Insertar una nueva sanción para la fecha actual
+    $sqlInsertar = "INSERT INTO Sanciones (amarillas, rojas, jugadorId, fecha) VALUES (?, ?, ?, ?)";
     $stmtInsertar = $conn->prepare($sqlInsertar);
-    $stmtInsertar->bind_param("iii", $tarjetasAmarillas, $tarjetasRojas, $jugadorId);
+    $stmtInsertar->bind_param("iiis", $tarjetasAmarillas, $tarjetasRojas, $jugadorId, $fecha);
     $stmtInsertar->execute();
     $stmtInsertar->close();
 }
 
-// Cerrar la conexión
 $stmt->close();
 $conn->close();
 ?>

@@ -9,12 +9,10 @@ $searchParam = '%' . $search . '%';
 // Consulta SQL para obtener los datos
 $sql = "
     SELECT 
-        j.jugadorId, j.nombreJugador, j.apellidos, j.edad, j.dorsal,
-        IFNULL(a.cantidadAnotaciones, 0) AS cantidadAnotaciones,
-        c.nombreCategoria
+        j.jugadorId, j.nombreJugador, j.apellidos, j.edad, 
+        IFNULL(asistencias.cantidadAsistencias, 0) AS cantidadAsistencias
     FROM Jugadores j
-    LEFT JOIN Anotaciones a ON j.jugadorId = a.jugadorId
-    LEFT JOIN Categoria c ON j.categoriaId = c.categoriaId
+    LEFT JOIN Asistencias asistencias ON j.jugadorId = asistencias.jugadorId
 ";
 
 // Agregar cláusula WHERE si hay búsqueda

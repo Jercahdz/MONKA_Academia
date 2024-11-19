@@ -2805,55 +2805,108 @@ p.help-block.text-danger li {
 ============================= */
 /* Estilo para el contenedor */
 .wrap {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	height: 10vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10vh;
 }
 
 /* Estilo para la caja de búsqueda */
 .search {
-	display: flex;
-	align-items: center;
-	border: 2px solid #ddd;
-	border-radius: 30px;
-	padding: 5px;
-	width: 300px;
-	background-color: #f9f9f9;
-	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    border: 2px solid #ddd;
+    border-radius: 30px;
+    padding: 10px;
+    width: 750px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    gap: 10px;
 }
 
 /* Estilo para el campo de entrada */
 .searchTerm {
-	width: 100%;
-	border: none;
-	outline: none;
-	background: none;
-	padding: 10px;
-	font-size: 16px;
-	color: #333;
+    width: 100%;
+    border: none;
+    outline: none;
+    background: none;
+    margin-left: 20px;
+    padding: 10px;
+    font-size: 16px;
+    color: #333;
 }
 
-/* Estilo para el botón */
+/* Estilo para el botón de búsqueda */
 .searchButton {
-	background-color: #115959;
-	color: white;
-	border: none;
-	border-radius: 50%;
-	padding: 10px;
-	cursor: pointer;
-	transition: background-color 0.3s ease;
+    background-color: #115959;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    min-width: 40px; 
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .searchButton:hover {
-	background-color: #115959;
+    background-color: #003737;
+	transform: scale(1.05);
+    color: white;
 }
 
 .searchButton i {
-	font-size: 16px;
-	color: white;
+    font-size: 20px;
+    color: white;
 }
 
+/* Estilo para el botón de gráficos */
+.btn-graficos {
+    background-color: #115959;
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    margin-left: auto;
+}
+
+.btn-graficos:hover {
+    background-color: #003737;
+    transform: scale(1.05);
+    color: white;
+}
+
+/* Estilos responsivos */
+@media (max-width: 768px) {
+    .search {
+        width: 95%;
+        flex-wrap: wrap;
+        padding: 15px;
+    }
+
+    .searchTerm {
+        margin-left: 10px;
+    }
+
+    .btn-graficos {
+        width: 100%;
+        justify-content: center;
+        margin-top: 10px;
+        margin-left: 0;
+    }
+}
+
+
+/* Tablas */
 
 .table-responsive-xl {
 	max-width: 90%;
