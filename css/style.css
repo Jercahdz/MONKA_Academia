@@ -505,7 +505,7 @@ b {
 }
 
 .navbar-main .navbar-nav>li.active a {
-	color: #000;
+	color: #000000;
 	background-color: transparent;
 	border-bottom: 3px solid #000;
 }
@@ -2918,7 +2918,7 @@ p.help-block.text-danger li {
 	border-color: #115959;
 	border-radius: 3px;
 	color: #fff;
-	padding: 6px 35px;
+	padding: 6px 10px;
 	font-weight: bold;
 	border: 1px solid transparent;
 	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);

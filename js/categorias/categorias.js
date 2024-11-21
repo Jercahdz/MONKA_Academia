@@ -21,12 +21,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const selectorCategoria = document.getElementById('selector-categoria');
     selectorCategoria.addEventListener('change', function () {
         const categoria = selectorCategoria.value;
-        const url = categoria === 'todos' ? 'php/jugadores.php' : `php/jugadores.php?categoria=${categoria}`;
+        const url = categoria === 'todos' ? 'php/jugadores/jugadores.php' : `php/jugadores/jugadores.php?categoria=${categoria}`;
         cargarDatos(url, 'tabla-jugadores');
     });
 
     // Cargar todos los jugadores al iniciar la página
-    cargarDatos('php/jugadores.php', 'tabla-jugadores');
+    cargarDatos('php/jugadores/jugadores.php', 'tabla-jugadores');
 
     // Función para agregar eventos dinámicos a los botones (detalles y edición)
     function agregarEventosBotones() {
@@ -49,7 +49,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Mostrar los detalles de un jugador en un modal
     function mostrarDetallesJugador(jugadorId) {
-        fetch(`php/detallesJugador.php?jugadorId=${jugadorId}`)
+        fetch(`php/jugadores/detallesJugador.php?jugadorId=${jugadorId}`)
             .then(response => response.json())
             .then(data => {
                 if (data.error) {
@@ -75,7 +75,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Cargar los datos de un jugador en el modal de edición
     function cargarDatosJugadorParaEdicion(jugadorId) {
-        fetch(`php/detallesJugador.php?jugadorId=${jugadorId}`)
+        fetch(`php/jugadores/detallesJugador.php?jugadorId=${jugadorId}`)
             .then(response => response.json())
             .then(data => {
                 if (data.error) {
@@ -116,7 +116,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const dorsal = document.getElementById('editar-dorsal').value;
         const pieHabil = document.getElementById('editar-pieHabil').value.trim();
 
-        fetch('php/editarJugador.php', {
+        fetch('php/jugadores/editarJugador.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
             body: `jugadorId=${jugadorId}&nombreJugador=${encodeURIComponent(nombreJugador)}&apellidos=${encodeURIComponent(apellidos)}&edad=${edad}&dorsal=${dorsal}&pieHabil=${encodeURIComponent(pieHabil)}`,
@@ -128,7 +128,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     $('#editarModal').modal('hide');
                     // Recargar la tabla con la categoría seleccionada
                     const categoria = selectorCategoria.value;
-                    const url = categoria === 'todos' ? 'php/jugadores.php' : `php/jugadores.php?categoria=${categoria}`;
+                    const url = categoria === 'todos' ? 'php/jugadores/jugadores.php' : `php/jugadores/jugadores.php?categoria=${categoria}`;
                     cargarDatos(url, 'tabla-jugadores');
                 } else {
                     alert(`Error al actualizar el jugador: ${responseText || "Desconocido"}`);

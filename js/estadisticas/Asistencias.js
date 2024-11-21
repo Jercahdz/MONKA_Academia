@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Función para recargar los datos de la tabla de asistencias
     function recargarTablaAsistencias() {
         // Usamos fetch para actualizar la tabla sin recargar la página
-        fetch('php/asistencias.php')
+        fetch('php/estadisticas/asistencias/asistencias.php')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('tabla-asistencias').innerHTML = data;
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const cantidadAsistencias = document.getElementById("cantidadAsistencias").value;
 
         // Enviar los datos al servidor mediante fetch
-        fetch("php/agregarAsistencia.php", {
+        fetch("php/estadisticas/asistencias/agregarAsistencia.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const cantidadAsistencias = document.getElementById("cantidadAsistenciasEditar").value;
 
         // Enviar los datos al servidor mediante fetch
-        fetch("php/editarAsistencia.php", {
+        fetch("php/estadisticas/asistencias/editarAsistencia.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Confirmar la acción de borrar
             if (confirm("¿Estás seguro de que deseas eliminar las asistencias de este jugador?")) {
                 // Enviar los datos al servidor mediante fetch
-                fetch("php/borrarAsistencia.php", {
+                fetch("php/estadisticas/asistencias/borrarAsistencia.php", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded",

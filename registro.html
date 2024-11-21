@@ -107,7 +107,7 @@ include("conexion.php");
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['nombreUsuario']; ?> <span class="caret"></span></a>
 						<ul class="dropdown-menu">
-							<li><a href="php/cerrarSesion.php" class="btn btn-link">Cerrar Sesión</a></li>
+							<li><a href="php/usuarios/cerrarSesion.php" class="btn btn-link">Cerrar Sesión</a></li>
 						</ul>
 					</li>
 				</ul>
@@ -136,7 +136,7 @@ include("conexion.php");
 
 	<main>
 		<section class="registro-jugador">
-			<form action="php/registro.php" method="POST">
+			<form action="php/jugadores/registro.php" method="POST">
 				<div class="form-group">
 					<label for="nombre">Nombre:</label>
 					<input type="text" id="nombre" name="nombre" required>

@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Función para recargar los datos de la tabla de sanciones
     function recargarTablaSanciones() {
         // Usamos fetch para actualizar la tabla sin recargar la página
-        fetch('php/sanciones.php')
+        fetch('php/estadisticas/sanciones/sanciones.php')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('tabla-sanciones').innerHTML = data;
@@ -33,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const tarjetasRojas = document.getElementById("tarjetasRojas").value;
 
         // Enviar los datos al servidor mediante fetch
-        fetch("php/agregarSancion.php", {
+        fetch("php/estadisticas/sanciones/agregarSancion.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -77,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const tarjetasRojas = document.getElementById("tarjetasRojasEditar").value;
 
         // Enviar los datos al servidor mediante fetch
-        fetch("php/editarSancion.php", {
+        fetch("php/estadisticas/sanciones/editarSancion.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -104,7 +104,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Confirmar la acción de borrar
             if (confirm("¿Estás seguro de que deseas eliminar las sanciones de este jugador?")) {
                 // Enviar los datos al servidor mediante fetch
-                fetch("php/borrarSancion.php", {
+                fetch("php/estadisticas/sanciones/borrarSancion.php", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded",

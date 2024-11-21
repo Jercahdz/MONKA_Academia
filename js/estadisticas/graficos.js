@@ -70,7 +70,7 @@ function actualizarGrafico(data) {
 // Obtener datos con AJAX
 function obtenerDatos(categoria, fechaInicio, fechaFin) {
     const xhr = new XMLHttpRequest();
-    xhr.open("POST", "php/graficos.php", true);
+    xhr.open("POST", "php/estadisticas/graficos.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     xhr.onload = function () {

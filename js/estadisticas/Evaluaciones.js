@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     // Función para recargar los datos de la tabla de evaluaciones
     function recargarTablaEvaluaciones() {
         // Usamos fetch para actualizar la tabla sin recargar la página
-        fetch('php/evaluaciones.php')
+        fetch('php/estadisticas/evaluaciones/evaluaciones.php')
             .then(response => response.text())
             .then(data => {
                 document.getElementById('tabla-evaluaciones').innerHTML = data;
@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const evaluacionPuntaje = document.getElementById("evaluacionPuntaje").value;
 
         // Enviar los datos al servidor mediante fetch
-        fetch("php/agregarEvaluacion.php", {
+        fetch("php/estadisticas/evaluaciones/agregarEvaluacion.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const evaluacionPuntaje = document.getElementById("evaluacionPuntajeEditar").value;
 
         // Enviar los datos al servidor mediante fetch
-        fetch("php/editarEvaluacion.php", {
+        fetch("php/estadisticas/evaluaciones/editarEvaluacion.php", {
             method: "POST",
             headers: {
                 "Content-Type": "application/x-www-form-urlencoded",
@@ -100,7 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
             // Confirmar la acción de borrar
             if (confirm("¿Estás seguro de que deseas eliminar las evaluaciones de este jugador?")) {
                 // Enviar los datos al servidor mediante fetch
-                fetch("php/borrarEvaluacion.php", {
+                fetch("php/estadisticas/evaluaciones/borrarEvaluacion.php", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/x-www-form-urlencoded",
