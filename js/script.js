@@ -208,7 +208,7 @@ function handleSendMessage() {
 
 		// Enviar el mensaje al backend con AJAX
 		$.ajax({
-			url: 'php/chatbot.php',       // Tu archivo backend PHP
+			url: 'php/chatbot/chatbot.php',       // Tu archivo backend PHP
 			type: 'POST',
 			data: { text: message },
 			success: function (response) {
