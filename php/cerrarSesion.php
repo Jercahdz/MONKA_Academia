@@ -7,6 +7,6 @@ $_SESSION = array();
 session_destroy();
 
 
-header("Location: ../login.html"); // Change this to your desired location
+header("Location: ../index.html");
 exit();
 ?>
