@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("conexion.php");
+include("../../conexion.php");
 
 // Validacion 
 if (!isset($_SESSION['usuarioId']) ||!isset($_SESSION['rolId']) || $_SESSION['rolId']!= 1) {

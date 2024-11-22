@@ -1,5 +1,5 @@
 <?php
-include("conexion.php");
+include("../../conexion.php");
 
 $jugadorId = intval($_POST['jugadorId']);
 $nombreJugador = $_POST['nombreJugador'];

@@ -1,5 +1,5 @@
 <?php
-include("conexion.php");
+include("../../conexion.php");
 
 $jugadorId = $_POST['jugadorId'];
 $cantidadAsistencias = $_POST['cantidadAsistencias'];

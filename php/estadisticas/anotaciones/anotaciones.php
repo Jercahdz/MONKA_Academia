@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("conexion.php");
+include("../../conexion.php");
 
 // Parámetros para la paginación
 $page = isset($_GET['page']) ? intval($_GET['page']) : 1;

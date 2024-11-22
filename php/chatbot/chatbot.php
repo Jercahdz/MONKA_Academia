@@ -1,5 +1,5 @@
 <?php
-include("conexion.php");
+include("../../conexion.php");
  
 if (isset($_POST['text'])) {
     // Obteniendo el mensaje del usuario a través de AJAX y limpiándolo

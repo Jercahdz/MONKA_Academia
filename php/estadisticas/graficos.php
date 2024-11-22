@@ -1,5 +1,5 @@
 <?php
-include("conexion.php");
+include("../../conexion.php");
 
 // Obtener los datos enviados
 $categoria = $_POST['categoria'];

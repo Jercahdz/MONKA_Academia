@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("conexion.php");
+include("../../conexion.php");
 
 // Obtener el parámetro de búsqueda
 $search = isset($_GET['search']) ? trim($_GET['search']) : '';
