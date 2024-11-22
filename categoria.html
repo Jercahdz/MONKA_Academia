@@ -46,6 +46,8 @@
 
 	<script src="js/categorias/categorias.js"></script>
 
+	<script src="js/categorias/plantilla.js"></script>
+
 
 </head>
 
@@ -244,42 +246,48 @@
 
 
 					<!-- Seccion Plantilla   -->
-					<div class="row"></div>
 					<div class="col-sm-12 col-md-12">
 						<div class="page-title">
 							<h2 class="lead">Plantilla</h2>
 							<div class="border-style"></div>
 							<div class="page-description">
-								<p><strong>Academia de Fútbol MONKÁ</strong> Lorem ipsum dolor sit amet, libero turpis
-									non cras
-									ligula, id commodo, aenean est in volutpat amet sodales, porttitor bibendum facilisi
-									suspendisse, aliquam ipsum ante morbi sed ipsum mollis. Sollicitudin viverra, vel
-									varius
-									eget sit mollis. Commodo enim aliquam suspendisse tortor cum diam, commodo
-									facilisis, rutrum
-									et duis nisl porttitor, vel eleifend odio ultricies ut, orci in adipiscing felis
-									velit nibh.
+								<p>
+									<strong>Academia de Fútbol MONKÁ</strong>
+									Selecciona una formación y visualiza su distribución en el campo.
 								</p>
 							</div>
 						</div>
 					</div>
-					<div class="col-sm-12 col-md-12"></div>
-					<section id="formacion-selector">
-						<h2>Seleccionar Formación</h2>
-						<select id="dropdown-formaciones">
-							<option value="4-4-2">4-4-2</option>
-							<option value="4-3-3">4-3-3</option>
-							<option value="3-5-2">3-5-2</option>
-							<option value="4-2-3-1">4-2-3-1</option>
-						</select>
-						<button id="btn-regresar">Regresar a formación anterior</button>
-					</section>
-					<section id="imagen-formacion">
-						<h2>Formación Actual</h2>
-						<img id="img-formacion" src="images/4-4-2.png" alt="Formación 4-4-2">
-					</section>
-					<img id="plantilla-imagen" alt=""
-						style="width: 400px; display: none; margin-top: 10px; margin-left: auto; margin-right: auto; display: block;" />
+					<div class="col-sm-12 col-md-12">
+						<!-- Contenedor para la sección de plantillas -->
+						<div class="container">
+							<div class="row">
+								<!-- Menú de formaciones -->
+								<div class="col-md-4">
+									<div class="list-group" id="formation-menu">
+										<button class="list-group-item list-group-item-action" onclick="loadFormation('3-5-2')">3-5-2</button>
+										<button class="list-group-item list-group-item-action" onclick="loadFormation('4-1-2-1-2')">4-1-2-1-2</button>
+										<button class="list-group-item list-group-item-action" onclick="loadFormation('4-1-3-2')">4-1-3-2</button>
+										<button class="list-group-item list-group-item-action" onclick="loadFormation('4-2-1-3')">4-2-1-3</button>
+										<button class="list-group-item list-group-item-action" onclick="loadFormation('4-3-2-1')">4-3-2-1</button>
+										<button class="list-group-item list-group-item-action" onclick="loadFormation('4-4-2')">4-4-2</button>
+										<button class="list-group-item list-group-item-action" onclick="loadFormation('4-5-1')">4-5-1</button>
+										<button class="list-group-item list-group-item-action" onclick="loadFormation('5-3-2')">5-3-2</button>
+										<button class="list-group-item list-group-item-action" onclick="loadFormation('5-4-1')">5-4-1</button>
+									</div>
+								</div>
+					
+								<!-- Contenedor para la imagen de la formación -->
+								<div class="col-md-8 text-center">
+									<h4>Formación Seleccionada</h4>
+									<div class="border p-3">
+										<img id="formationImage" src="images/placeholder.png" alt="Selecciona una formación" class="img-fluid" style="border: 2px solid lime; max-height: 400px; max-width: 100%;">
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+					
 
 				</div>
 			</div>

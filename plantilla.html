@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formaciones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            display: flex;
+            height: 100vh;
+            border: 2px solid black;
+        }
+        .menu {
+            width: 30%;
+            border-right: 2px solid black;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+        }
+        .menu div {
+            border: 1px solid red;
+            padding: 10px;
+            margin: 5px 0;
+            cursor: pointer;
+            text-align: center;
+            width: 80%;
+        }
+        .menu div:hover {
+            background-color: #f2f2f2;
+        }
+        .display {
+            width: 70%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .display img {
+            max-width: 90%;
+            max-height: 90%;
+            border: 2px solid lime;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="menu">
+            <div onclick="loadFormation('3-5-2')">3-5-2</div>
+            <div onclick="loadFormation('4-1-2-1-2')">4-1-2-1-2</div>
+            <div onclick="loadFormation('4-1-3-2')">4-1-3-2</div>
+            <div onclick="loadFormation('4-2-1-3')">4-2-1-3</div>
+            <div onclick="loadFormation('4-3-2-1')">4-3-2-1</div>
+            <div onclick="loadFormation('4-4-2')">4-4-2</div>
+            <div onclick="loadFormation('4-5-1')">4-5-1</div>
+            <div onclick="loadFormation('5-3-2')">5-3-2</div>
+            <div onclick="loadFormation('5-4-1')">5-4-1</div>
+        </div>
+        <div class="display">
+            <img id="formationImage" src="" alt="Selecciona una formación">
+        </div>
+    </div>
+
+    <script src="js/categorias/plantilla.js"></script>
+</body>
+</html>
