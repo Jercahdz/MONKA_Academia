@@ -1,5 +1,5 @@
 <?php
-include("../../conexion.php");
+include("../conexion.php");
 
 // Validar que se reciba un ID válido
 $jugadorId = isset($_GET['jugadorId']) ? intval($_GET['jugadorId']) : 0;

@@ -1,5 +1,5 @@
 <?php
-include("../../conexion.php");
+include("../conexion.php");
 
 $categoria = isset($_GET['categoria']) ? $_GET['categoria'] : 'todos';
 
