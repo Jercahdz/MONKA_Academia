@@ -587,6 +587,53 @@ b {
 	font-size: 18px;
 }
 
+/* ==========================
+Responsiveness for Navbar
+============================= */
+
+/* Tablets y móviles grandes */
+@media (max-width: 992px) {
+	.navbar-brand {
+		margin-top: -50px;
+	}
+
+	.navbar-main .navbar-nav>li>a {
+		font-size: 10px;
+		padding: 10px 15px;
+	}
+
+	.header-top {
+		height: auto;
+		text-align: center;
+	}
+}
+
+/* Móviles pequeños */
+@media (max-width: 576px) {
+	.navbar-brand {
+		margin-top: -30px;
+	}
+
+	.navbar-main .navbar-nav>li>a {
+		font-size: 10px;
+		padding: 8px 10px;
+		min-height: auto;
+	}
+
+	.info {
+		margin-left: 0;
+		text-align: center;
+	}
+
+	.top-sosmed span {
+		width: 25px;
+		height: 25px;
+		padding-top: 5px;
+		margin-right: 5px;
+	}
+}
+
+
 
 /* ==========================
 3. Banner
@@ -650,10 +697,9 @@ b {
 }
 
 .item img {
-	width: 1440px;
-	height: 768px;
+	width: 100%; /* Asegura que las imágenes sean responsivas */
+	height: auto; /* Mantiene las proporciones */
 	object-fit: cover;
-	/* Mantiene la proporción de la imagen ajustándola al tamaño del contenedor */
 }
 
 .item .carousel-caption .caption-heading {
@@ -773,6 +819,42 @@ b {
 	padding: 0 5px;
 	color: #fff;
 	content: "/\00a0";
+}
+
+/* ==========================
+Responsiveness for Banner
+============================= */
+
+/* Tablets y móviles grandes */
+@media (max-width: 992px) {
+	.banner .caption {
+		top: 80px;
+		left: 10px;
+		max-width: 90%;
+	}
+
+	.carousel-caption {
+		padding-bottom: 100px;
+	}
+}
+
+/* Móviles pequeños */
+@media (max-width: 576px) {
+	.banner .title-box h2 {
+		font-size: 24px;
+		line-height: 32px;
+	}
+
+	.banner .caption {
+		top: 60px;
+		left: 10px;
+	}
+
+	.item .carousel-caption .caption-heading {
+		font-size: 18px;
+		line-height: 28px;
+		padding: 10px 15px;
+	}
 }
 
 
@@ -2854,7 +2936,7 @@ p.help-block.text-danger li {
 
 .searchButton:hover {
     background-color: #003737;
-	transform: scale(1.05);
+    transform: scale(1.05);
     color: white;
 }
 
@@ -2862,6 +2944,50 @@ p.help-block.text-danger li {
     font-size: 20px;
     color: white;
 }
+
+/* ==========================
+Responsiveness
+============================= */
+
+/* Tablets y dispositivos más pequeños */
+@media (max-width: 992px) {
+    .search {
+        width: 90%; /* Reduce el ancho para tablets */
+        padding: 8px;
+    }
+    .searchTerm {
+        font-size: 14px;
+        padding: 8px;
+    }
+    .searchButton {
+        padding: 8px;
+        min-width: 35px;
+        height: 35px;
+    }
+    .searchButton i {
+        font-size: 18px;
+    }
+}
+
+/* Móviles pequeños */
+@media (max-width: 576px) {
+    .search {
+        flex-direction: column; /* Cambia el diseño a columnas para móviles */
+        gap: 5px;
+        padding: 10px;
+    }
+    .searchTerm {
+        margin-left: 0;
+        width: 100%; /* Asegura que ocupe todo el ancho */
+    }
+    .searchButton {
+        width: 100%; /* Botón de búsqueda ocupa todo el ancho */
+        border-radius: 30px;
+        min-width: unset;
+        height: 40px;
+    }
+}
+
 
 /* Estilo para el botón de gráficos */
 .btn-graficos {
@@ -2911,8 +3037,11 @@ p.help-block.text-danger li {
 .table-responsive-xl {
 	max-width: 90%;
 	margin: 0 auto;
+	overflow-x: auto;
+	/* Habilitar desplazamiento horizontal en dispositivos más pequeños */
 }
 
+/* Botones en tablas */
 .btn-table {
 	background-color: #115959;
 	border-color: #115959;
@@ -2930,9 +3059,9 @@ p.help-block.text-danger li {
 	color: #fff;
 }
 
+/* Selector de categoría */
 #selector-categoria {
 	color: #000000;
-	/* Color claro para el texto */
 	border: 1px solid #d1e7e7;
 	border-radius: 5px;
 	padding: 8px 18px;
@@ -2942,24 +3071,61 @@ p.help-block.text-danger li {
 	transition: all 0.3s ease;
 	cursor: pointer;
 	width: 200px;
-	/* Ajuste de ancho para una mejor apariencia */
 }
 
 #selector-categoria:hover {
 	background-color: #b3cccc;
-	/* Tono más claro al hacer hover */
 	color: #000000;
-	/* Texto oscuro al hacer hover */
 	border-color: #b3cccc;
-	/* Mantener el borde claro */
 }
 
 #selector-categoria:focus {
 	outline: none;
-	/* Eliminar el borde de enfoque predeterminado */
 	box-shadow: 0 0 5px rgba(209, 231, 231, 0.5);
-	/* Enfoque más marcado con un tono claro */
 }
+
+/* ==========================
+Responsiveness for Tables
+============================= */
+
+/* Tablets y móviles grandes */
+@media (max-width: 992px) {
+	.table-responsive-xl {
+		max-width: 100%;
+		margin: 0 auto;
+	}
+
+	.btn-table {
+		padding: 5px 8px;
+		font-size: 12px;
+	}
+
+	#selector-categoria {
+		width: 180px;
+		font-size: 12px;
+		padding: 6px 14px;
+	}
+}
+
+/* Móviles pequeños */
+@media (max-width: 576px) {
+	.table-responsive-xl {
+		max-width: 100%;
+		margin: 0 auto;
+	}
+
+	.btn-table {
+		padding: 4px 6px;
+		font-size: 10px;
+	}
+
+	#selector-categoria {
+		width: 150px;
+		font-size: 10px;
+		padding: 4px 10px;
+	}
+}
+
 
 
 @media (max-width: 768px) {
@@ -3307,4 +3473,107 @@ p.help-block.text-danger li {
 
 .chat-input button:hover {
 	background-color: #115959;
+}
+
+/* Plantillas */
+
+/* Estilos para el menú de formaciones */
+.list-group {
+    height: 100%;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 8px;
+    background-color: #f8f9fa;
+}
+
+/* Estilos para los botones del menú */
+.list-group-item {
+    width: 100%;
+    padding: 12px 10px;
+    border: 1px solid #dee2e6;
+    background-color: #ffffff;
+    transition: all 0.3s ease;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 6px !important;
+    margin: 0;
+    font-size: 0.9rem;
+}
+
+.list-group-item:hover {
+    background-color: #f8f9fa;
+    transform: translateY(-2px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.list-group-item.active {
+    background-color: #007bff;
+    border-color: #007bff;
+    color: white;
+}
+
+/* Estilos para el contenedor de la imagen */
+.col-md-8 {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Título de la formación */
+h4 {
+    margin-bottom: 20px;
+    color: #333;
+}
+
+/* Contenedor de la imagen */
+.border {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Estilos para la imagen */
+#formationImage {
+    max-height: 400px;
+    width: auto;
+    object-fit: contain;
+}
+
+/* Responsive ajustes */
+@media (max-width: 768px) {
+    .row {
+        flex-direction: column;
+    }
+    
+    .col-md-4, .col-md-8 {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+    
+    .border {
+        min-height: 300px;
+    }
+    
+    /* Mantener los botones en 2 columnas incluso en móvil */
+    .list-group {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .list-group-item {
+        padding: 8px 5px;
+        font-size: 0.8rem;
+    }
+}
+
+/* Para pantallas muy pequeñas */
+@media (max-width: 360px) {
+    .list-group {
+        grid-template-columns: 1fr;
+    }
 }
