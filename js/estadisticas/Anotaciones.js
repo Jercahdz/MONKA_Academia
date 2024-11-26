@@ -55,28 +55,13 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Botón "Borrar"
-        if (target.classList.contains("btn-borrar")) {
+        if (target.classList.contains("btn-borrar-anotacion")) {
             jugadorId = target.getAttribute("data-jugador-id");
-
-            if (confirm("¿Estás seguro de que deseas eliminar las anotaciones de este jugador?")) {
-                fetch("php/estadisticas/anotaciones/borrarAnotacion.php", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/x-www-form-urlencoded",
-                    },
-                    body: `jugadorId=${jugadorId}`,
-                })
-                    .then(response => response.text())
-                    .then(data => {
-                        alert(data);
-                        recargarTablaAnotaciones(searchTerm, currentPage);
-                    })
-                    .catch(error => console.error("Error al borrar anotación:", error));
-            }
+            $("#modalBorrarAnotacion").modal("show");
         }
     });
 
-    // Manejo del formulario de agregar goles
+    // Manejo del modal de agregar goles
     document.getElementById("formAgregar").addEventListener("submit", function (event) {
         event.preventDefault();
         const cantidadGoles = document.getElementById("goles").value;
@@ -96,7 +81,7 @@ document.addEventListener("DOMContentLoaded", function () {
             .catch(error => console.error("Error al agregar anotación:", error));
     });
 
-    // Manejo del formulario de editar goles
+    // Manejo del modal de editar goles
     document.getElementById("formEditar").addEventListener("submit", function (event) {
         event.preventDefault();
         const cantidadGoles = document.getElementById("golesEdit").value;
@@ -114,5 +99,25 @@ document.addEventListener("DOMContentLoaded", function () {
                 recargarTablaAnotaciones(searchTerm, currentPage);
             })
             .catch(error => console.error("Error al editar anotación:", error));
+    });
+
+    // Manejo del modal de borrar
+    document.getElementById("confirmarBorrar").addEventListener("click", function () {
+        if (jugadorId) {
+            fetch("php/estadisticas/anotaciones/borrarAnotacion.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: `jugadorId=${jugadorId}`,
+            })
+                .then(response => response.text())
+                .then(data => {
+                    $("#modalBorrar").modal("hide");
+                    alert(data);
+                    recargarTablaAnotaciones(searchTerm, currentPage);
+                })
+                .catch(error => console.error("Error al borrar anotación:", error));
+        }
     });
 });

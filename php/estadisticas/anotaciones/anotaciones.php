@@ -49,7 +49,7 @@ while ($row = $result->fetch_assoc()) {
         <td>
             <button class='btn-agregar-goles btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Agregar Goles</button>
             <button class='btn-editar btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "' data-cantidad-anotaciones='" . htmlspecialchars($row['cantidadAnotaciones']) . "'>Editar</button>
-            <button class='btn-borrar btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Borrar</button>
+            <button class='btn-borrar-anotacion btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Borrar</button>
         </td>
     </tr>";
 }

@@ -1,126 +1,123 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Variable para almacenar el jugadorId
     let jugadorId = null;
+    let searchTerm = '';
+    let currentPage = 1;
 
-    // Función para recargar los datos de la tabla de sanciones
-    function recargarTablaSanciones() {
-        // Usamos fetch para actualizar la tabla sin recargar la página
-        fetch('php/estadisticas/sanciones/sanciones.php')
+    // Función para recargar la tabla
+    function recargarTablaSanciones(search = '', page = 1) {
+        const url = `php/estadisticas/sanciones/sanciones.php?search=${encodeURIComponent(search)}&page=${page}`;
+
+        fetch(url)
             .then(response => response.text())
             .then(data => {
                 document.getElementById('tabla-sanciones').innerHTML = data;
+
+                // Reasignar eventos de paginación
+                document.querySelectorAll('.pagination a').forEach(link => {
+                    link.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        currentPage = this.getAttribute("data-page");
+                        recargarTablaSanciones(searchTerm, currentPage);
+                    });
+                });
             })
             .catch(error => console.error("Error al recargar la tabla:", error));
     }
 
-    // Escuchar el clic en los botones de "Agregar Sanción"
-    document.addEventListener("click", function (event) {
-        if (event.target.classList.contains("btn-agregar-sancion")) {
-            // Obtener el ID del jugador desde el atributo data
-            jugadorId = event.target.getAttribute("data-jugador-id");
+    // Llamada inicial
+    recargarTablaSanciones();
 
-            // Abrir el modal de agregar sanción
+    // Búsqueda
+    document.getElementById("searchInput").addEventListener("input", function (e) {
+        searchTerm = e.target.value;
+        recargarTablaSanciones(searchTerm, 1);
+    });
+
+    // Delegación de eventos en la tabla
+    document.getElementById("tabla-sanciones").addEventListener("click", function (event) {
+        const target = event.target;
+
+        // Botón "Agrear Sanción"
+        if (target.classList.contains("btn-agregar-sancion")) {
+            jugadorId = target.getAttribute("data-jugador-id");
             $("#modalAgregarSancion").modal("show");
         }
-    });
 
-    // Manejar el envío del formulario de agregar sanción
-    document.getElementById("formAgregarSancion").addEventListener("submit", function (event) {
-        event.preventDefault();
+        // Botón "Editar"
+        if (target.classList.contains("btn-editar-sancion")) {
+            jugadorId = target.getAttribute("data-jugador-id");
+            const rojas = target.getAttribute("data-rojas");
+            const amarillas = target.getAttribute("data-amarillas");
 
-        // Obtener la cantidad de tarjetas amarillas y rojas ingresadas
-        const tarjetasAmarillas = document.getElementById("tarjetasAmarillas").value;
-        const tarjetasRojas = document.getElementById("tarjetasRojas").value;
-
-        // Enviar los datos al servidor mediante fetch
-        fetch("php/estadisticas/sanciones/agregarSancion.php", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-            },
-            body: `jugadorId=${jugadorId}&tarjetasAmarillas=${tarjetasAmarillas}&tarjetasRojas=${tarjetasRojas}`,
-        })
-        .then(response => response.text())
-        .then(data => {
-            // Cerrar el modal
-            $("#modalAgregarSancion").modal("hide");
-
-            // Recargar la tabla de sanciones sin recargar la página
-            recargarTablaSanciones();
-        })
-        .catch(error => console.error("Error al agregar sanción:", error));
-    });
-
-    // Escuchar el clic en los botones de "Editar"
-    document.addEventListener("click", function (event) {
-        if (event.target.classList.contains("btn-editar-sancion")) {
-            // Obtener el ID del jugador y la cantidad de tarjetas actuales desde los atributos data
-            jugadorId = event.target.getAttribute("data-jugador-id");
-            const tarjetasAmarillas = event.target.getAttribute("data-tarjetas-amarillas");
-            const tarjetasRojas = event.target.getAttribute("data-tarjetas-rojas");
-
-            // Colocar la cantidad de tarjetas actual en los campos del modal de edición
-            document.getElementById("tarjetasAmarillasEditar").value = tarjetasAmarillas;
-            document.getElementById("tarjetasRojasEditar").value = tarjetasRojas;
-
-            // Mostrar el modal de edición
+            document.getElementById("tarjetasAmarillasEditar").value = amarillas;
+            document.getElementById("tarjetasRojasEditar").value = rojas;
             $("#modalEditarSancion").modal("show");
+        }
+
+        // Botón "Borrar"
+        if (target.classList.contains("btn-borrar-sancion")) {
+            jugadorId = target.getAttribute("data-jugador-id");
+            $("#modalBorrarSancion").modal("show");
         }
     });
 
-    // Manejar el envío del formulario de edición
-    document.getElementById("formEditarSancion").addEventListener("submit", function (event) {
+    // Manejo de los formularios
+
+    // Manejo del modal de agregar sanciones
+    document.getElementById("formAgregarSancion").addEventListener("submit", function (event) {
         event.preventDefault();
+        const amarillas = document.getElementById("tarjetasAmarillas").value;
+        const rojas = document.getElementById("tarjetasRojas").value;
 
-        // Obtener la cantidad de tarjetas modificadas
-        const tarjetasAmarillas = document.getElementById("tarjetasAmarillasEditar").value;
-        const tarjetasRojas = document.getElementById("tarjetasRojasEditar").value;
-
-        // Enviar los datos al servidor mediante fetch
-        fetch("php/estadisticas/sanciones/editarSancion.php", {
+        fetch("php/estadisticas/sanciones/agregarSancion.php", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-            },
-            body: `jugadorId=${jugadorId}&tarjetasAmarillas=${tarjetasAmarillas}&tarjetasRojas=${tarjetasRojas}`,
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: `jugadorId=${jugadorId}&tarjetasAmarillas=${amarillas}&tarjetasRojas=${rojas}`,
         })
-        .then(response => response.text())
-        .then(data => {
-            // Cerrar el modal de edición
-            $("#modalEditarSancion").modal("hide");
-
-            // Recargar la tabla de sanciones sin recargar la página
-            recargarTablaSanciones();
-        })
-        .catch(error => console.error("Error al editar sanción:", error));
+            .then(response => response.text())
+            .then(data => {
+                $("#modalAgregarSancion").modal("hide");
+                recargarTablaSanciones(searchTerm, currentPage);
+            })
+            .catch(error => console.error("Error al agregar sanción:", error));
     });
 
-    // Escuchar el clic en los botones de "Borrar"
-    document.addEventListener("click", function (event) {
-        if (event.target.classList.contains("btn-borrar-sancion")) {
-            // Obtener el ID del jugador desde el atributo data
-            jugadorId = event.target.getAttribute("data-jugador-id");
+    // Manejo del modal de editar sanciones
+    document.getElementById("formEditarSancion").addEventListener("submit", function (event) {
+        event.preventDefault();
+        const amarillas = document.getElementById("tarjetasAmarillasEditar").value;
+        const rojas = document.getElementById("tarjetasRojasEditar").value;
 
-            // Confirmar la acción de borrar
-            if (confirm("¿Estás seguro de que deseas eliminar las sanciones de este jugador?")) {
-                // Enviar los datos al servidor mediante fetch
-                fetch("php/estadisticas/sanciones/borrarSancion.php", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/x-www-form-urlencoded",
-                    },
-                    body: `jugadorId=${jugadorId}`,
-                })
+        fetch("php/estadisticas/sanciones/editarSancion.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: `jugadorId=${jugadorId}&tarjetasAmarillas=${amarillas}&tarjetasRojas=${rojas}`,
+        })
+            .then(response => response.text())
+            .then(data => {
+                $("#modalEditarSancion").modal("hide");
+                recargarTablaSanciones(searchTerm, currentPage);
+            })
+            .catch(error => console.error("Error al editar sanción:", error));
+    });
+
+    // Manejo del modal de borrar sanciones
+    document.getElementById("confirmarBorrarSancion").addEventListener("click", function () {
+        if (jugadorId) {
+            fetch("php/estadisticas/sanciones/borrarSancion.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: `jugadorId=${jugadorId}`,
+            })
                 .then(response => response.text())
                 .then(data => {
-                    // Mostrar mensaje de éxito o error
+                    $("#modalBorrarSancion").modal("hide");
                     alert(data);
-
-                    // Recargar la tabla de sanciones sin recargar la página
-                    recargarTablaSanciones();
+                    recargarTablaAsistencias(searchTerm, currentPage);
                 })
-                .catch(error => console.error("Error al borrar sanción:", error));
-            }
+                .catch(error => console.error("Error al borrar sanciones:", error));
         }
     });
 });

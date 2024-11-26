@@ -1,37 +1,71 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Variable para almacenar el jugadorId
+    // Variables globales
     let jugadorId = null;
+    let searchTerm = '';
+    let currentPage = 1;
 
-    // Función para recargar los datos de la tabla de asistencias
-    function recargarTablaAsistencias() {
-        // Usamos fetch para actualizar la tabla sin recargar la página
-        fetch('php/estadisticas/asistencias/asistencias.php')
+    // Función para recargar la tabla
+    function recargarTablaAsistencias(search = '', page = 1) {
+        const url = `php/estadisticas/asistencias/asistencias.php?search=${encodeURIComponent(search)}&page=${page}`;
+
+        fetch(url)
             .then(response => response.text())
             .then(data => {
                 document.getElementById('tabla-asistencias').innerHTML = data;
+
+                // Reasignar los eventos de paginación después de recargar
+                const paginacionLinks = document.querySelectorAll('.pagination a');
+                paginacionLinks.forEach(link => {
+                    link.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        currentPage = this.getAttribute("data-page");
+                        recargarTablaAsistencias(searchTerm, currentPage);
+                    });
+                });
             })
             .catch(error => console.error("Error al recargar la tabla:", error));
     }
 
-    // Escuchar el clic en los botones de "Agregar Asistencias"
-    document.addEventListener("click", function (event) {
-        if (event.target.classList.contains("btn-agregar-asistencias")) {
-            // Obtener el ID del jugador desde el atributo data
-            jugadorId = event.target.getAttribute("data-jugador-id");
+    // Llamada inicial para cargar la tabla
+    recargarTablaAsistencias(searchTerm, currentPage);
 
-            // Abrir el modal de agregar asistencias
+    // Asignar evento para la barra de búsqueda
+    const searchInput = document.getElementById("searchInput");
+    searchInput.addEventListener("input", function (e) {
+        searchTerm = e.target.value;
+        recargarTablaAsistencias(searchTerm, 1);
+    });
+
+    // Delegación de eventos en la tabla
+    document.getElementById("tabla-asistencias").addEventListener("click", function (event) {
+        const target = event.target;
+
+        // Botón "Agregar Asistencias"
+        if (target.classList.contains("btn-agregar-asistencias")) {
+            jugadorId = target.getAttribute("data-jugador-id");
             $("#modalAgregarAsistencia").modal("show");
+        }
+
+        // Botón "Editar"
+        if (target.classList.contains("btn-editar-asistencias")) {
+            jugadorId = target.getAttribute("data-jugador-id");
+            const cantidadAsistencias = target.getAttribute("data-cantidad-asistencias");
+            document.getElementById("cantidadAsistenciasEditar").value = cantidadAsistencias;
+            $("#modalEditarAsistencia").modal("show");
+        }
+
+        // Botón "Borrar"
+        if (target.classList.contains("btn-borrar-asistencias")) {
+            jugadorId = target.getAttribute("data-jugador-id");
+            $("#modalBorrarAsistencia").modal("show");
         }
     });
 
-    // Manejar el envío del formulario de agregar asistencias
+    // Manejo del modal de agregar asistencias
     document.getElementById("formAgregarAsistencia").addEventListener("submit", function (event) {
         event.preventDefault();
-
-        // Obtener la cantidad de asistencias ingresada
         const cantidadAsistencias = document.getElementById("cantidadAsistencias").value;
 
-        // Enviar los datos al servidor mediante fetch
         fetch("php/estadisticas/asistencias/agregarAsistencia.php", {
             method: "POST",
             headers: {
@@ -39,40 +73,19 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             body: `jugadorId=${jugadorId}&cantidadAsistencias=${cantidadAsistencias}`,
         })
-        .then(response => response.text())
-        .then(data => {
-            // Cerrar el modal
-            $("#modalAgregarAsistencia").modal("hide");
-
-            // Recargar la tabla de asistencias sin recargar la página
-            recargarTablaAsistencias();
-        })
-        .catch(error => console.error("Error al agregar asistencia:", error));
+            .then(response => response.text())
+            .then(data => {
+                $("#modalAgregarAsistencia").modal("hide");
+                recargarTablaAsistencias(searchTerm, currentPage);
+            })
+            .catch(error => console.error("Error al agregar asistencia:", error));
     });
 
-    // Escuchar el clic en los botones de "Editar"
-    document.addEventListener("click", function (event) {
-        if (event.target.classList.contains("btn-editar-asistencias")) {
-            // Obtener el ID del jugador y la cantidad de asistencias actuales desde los atributos data
-            jugadorId = event.target.getAttribute("data-jugador-id");
-            const cantidadAsistencias = event.target.getAttribute("data-cantidad-asistencias");
-
-            // Colocar la cantidad de asistencias actual en el campo del modal de edición
-            document.getElementById("cantidadAsistenciasEditar").value = cantidadAsistencias;
-
-            // Mostrar el modal de edición
-            $("#modalEditarAsistencia").modal("show");
-        }
-    });
-
-    // Manejar el envío del formulario de edición
+    // Manejo del modal de editar asistencias
     document.getElementById("formEditarAsistencia").addEventListener("submit", function (event) {
         event.preventDefault();
-
-        // Obtener la cantidad de asistencias modificada
         const cantidadAsistencias = document.getElementById("cantidadAsistenciasEditar").value;
 
-        // Enviar los datos al servidor mediante fetch
         fetch("php/estadisticas/asistencias/editarAsistencia.php", {
             method: "POST",
             headers: {
@@ -80,43 +93,31 @@ document.addEventListener("DOMContentLoaded", function () {
             },
             body: `jugadorId=${jugadorId}&cantidadAsistencias=${cantidadAsistencias}`,
         })
-        .then(response => response.text())
-        .then(data => {
-            // Cerrar el modal de edición
-            $("#modalEditarAsistencia").modal("hide");
-
-            // Recargar la tabla de asistencias sin recargar la página
-            recargarTablaAsistencias();
-        })
-        .catch(error => console.error("Error al editar asistencia:", error));
+            .then(response => response.text())
+            .then(data => {
+                $("#modalEditarAsistencia").modal("hide");
+                recargarTablaAsistencias(searchTerm, currentPage);
+            })
+            .catch(error => console.error("Error al editar asistencia:", error));
     });
 
-    // Escuchar el clic en los botones de "Borrar"
-    document.addEventListener("click", function (event) {
-        if (event.target.classList.contains("btn-borrar-asistencias")) {
-            // Obtener el ID del jugador desde el atributo data
-            jugadorId = event.target.getAttribute("data-jugador-id");
-
-            // Confirmar la acción de borrar
-            if (confirm("¿Estás seguro de que deseas eliminar las asistencias de este jugador?")) {
-                // Enviar los datos al servidor mediante fetch
-                fetch("php/estadisticas/asistencias/borrarAsistencia.php", {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/x-www-form-urlencoded",
-                    },
-                    body: `jugadorId=${jugadorId}`,
-                })
+    // Manejo del modal de borrar asistencias
+    document.getElementById("confirmarBorrarAsistencia").addEventListener("click", function () {
+        if (jugadorId) {
+            fetch("php/estadisticas/asistencias/borrarAsistencia.php", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/x-www-form-urlencoded",
+                },
+                body: `jugadorId=${jugadorId}`,
+            })
                 .then(response => response.text())
                 .then(data => {
-                    // Mostrar mensaje de éxito o error
+                    $("#modalBorrarAsistencia").modal("hide");
                     alert(data);
-
-                    // Recargar la tabla de asistencias sin recargar la página
-                    recargarTablaAsistencias();
+                    recargarTablaAsistencias(searchTerm, currentPage);
                 })
                 .catch(error => console.error("Error al borrar asistencia:", error));
-            }
         }
     });
 });
