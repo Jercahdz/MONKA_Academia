@@ -1,32 +1,38 @@
 document.addEventListener("DOMContentLoaded", function () {
-    // Función genérica para cargar datos dinámicos en una tabla
-    function cargarDatos(url, idTabla) {
+    let currentPage = 1;
+    let categoriaSeleccionada = 'todos';
+
+    // Función genérica para cargar datos dinámicos en una tabla con paginación
+    function cargarJugadores(categoria, page = 1) {
+        const url = `php/jugadores/jugadores.php?categoria=${categoria}&page=${page}`;
         fetch(url)
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`Error al obtener los datos de ${url}`);
-                }
-                return response.text();
-            })
+            .then(response => response.text())
             .then(data => {
-                document.getElementById(idTabla).innerHTML = data;
-                agregarEventosBotones(); // Agregar eventos dinámicos a los botones
+                document.getElementById('tabla-jugadores').innerHTML = data;
+
+                // Reasignar eventos dinámicos
+                agregarEventosBotones();
+
+                // Reasignar eventos a los links de paginación
+                const paginacionLinks = document.querySelectorAll('.pagination a');
+                paginacionLinks.forEach(link => {
+                    link.addEventListener("click", function (e) {
+                        e.preventDefault();
+                        currentPage = this.getAttribute("data-page");
+                        cargarJugadores(categoriaSeleccionada, currentPage);
+                    });
+                });
             })
-            .catch(error => {
-                console.error(`Hubo un problema al cargar los datos: ${error.message}`);
-            });
+            .catch(error => console.error("Error al cargar la tabla:", error));
     }
 
     // Manejo del cambio en el selector de categorías
     const selectorCategoria = document.getElementById('selector-categoria');
     selectorCategoria.addEventListener('change', function () {
-        const categoria = selectorCategoria.value;
-        const url = categoria === 'todos' ? 'php/jugadores/jugadores.php' : `php/jugadores/jugadores.php?categoria=${categoria}`;
-        cargarDatos(url, 'tabla-jugadores');
+        categoriaSeleccionada = this.value;
+        currentPage = 1; // Reiniciar a la primera página al cambiar de categoría
+        cargarJugadores(categoriaSeleccionada, currentPage);
     });
-
-    // Cargar todos los jugadores al iniciar la página
-    cargarDatos('php/jugadores/jugadores.php', 'tabla-jugadores');
 
     // Función para agregar eventos dinámicos a los botones (detalles y edición)
     function agregarEventosBotones() {
@@ -63,14 +69,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     document.getElementById('modal-pieHabil').textContent = data.pieHabil;
                     document.getElementById('modal-categoria').textContent = data.nombreCategoria;
 
-
                     // Mostrar el modal
                     $('#detallesModal').modal('show');
                 }
             })
-            .catch(error => {
-                console.error(`Error al cargar los detalles del jugador: ${error.message}`);
-            });
+            .catch(error => console.error(`Error al cargar los detalles del jugador: ${error.message}`));
     }
 
     // Cargar los datos de un jugador en el modal de edición
@@ -97,9 +100,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     $('#editarModal').modal('show');
                 }
             })
-            .catch(error => {
-                console.error(`Error al cargar los datos del jugador: ${error.message}`);
-            });
+            .catch(error => console.error(`Error al cargar los datos del jugador: ${error.message}`));
     }
 
     // Manejo del formulario de edición
@@ -127,18 +128,13 @@ document.addEventListener("DOMContentLoaded", function () {
                     alert("Jugador actualizado con éxito");
                     $('#editarModal').modal('hide');
                     // Recargar la tabla con la categoría seleccionada
-                    const categoria = selectorCategoria.value;
-                    const url = categoria === 'todos' ? 'php/jugadores/jugadores.php' : `php/jugadores/jugadores.php?categoria=${categoria}`;
-                    cargarDatos(url, 'tabla-jugadores');
+                    cargarJugadores(categoriaSeleccionada, currentPage);
                 } else {
                     alert(`Error al actualizar el jugador: ${responseText || "Desconocido"}`);
                 }
             })
-            .catch(error => {
-                console.error(`Error al enviar los datos de edición: ${error.message}`);
-            });
+            .catch(error => console.error(`Error al enviar los datos de edición: ${error.message}`));
     });
-
 
     // Validar los campos del formulario de edición
     function validarFormularioEditar() {
@@ -147,11 +143,7 @@ document.addEventListener("DOMContentLoaded", function () {
         const edad = document.getElementById('editar-edad').value;
         const dorsal = document.getElementById('editar-dorsal').value;
         const pieHabil = document.getElementById('editar-pieHabil').value;
-        if (pieHabil !== 'Izquierdo' && pieHabil !== 'Derecho') {
-            alert("El valor de 'Pie Hábil' debe ser 'Izquierdo' o 'Derecho'.");
-            return false;
-        }
-        return true;
+
         if (!nombre || !apellidos || !edad || !dorsal || !pieHabil) {
             alert("Por favor, completa todos los campos.");
             return false;
@@ -162,6 +154,14 @@ document.addEventListener("DOMContentLoaded", function () {
             return false;
         }
 
+        if (pieHabil !== 'Izquierdo' && pieHabil !== 'Derecho') {
+            alert("El valor de 'Pie Hábil' debe ser 'Izquierdo' o 'Derecho'.");
+            return false;
+        }
+
         return true;
     }
+
+    // Cargar jugadores al iniciar
+    cargarJugadores(categoriaSeleccionada, currentPage);
 });
