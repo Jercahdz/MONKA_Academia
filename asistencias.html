@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+	<head>
+		<!-- ==============================================
+		Basic Page Needs
+    	================================================== -->
+		<meta charset="utf-8">
+		<!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>Pro Soccer - Football Club Template</title>
+		<meta name="description"
+			content="Pro Soccer - Football Club Template. It is built using bootstrap 3.3.2 framework, works totally responsive, easy to customise, well commented codes and seo friendly.">
+		<meta name="keywords" content="prosoccer, football, club, soccer, bootstrap">
+		<meta name="author" content="rudhisasmito.com">
+
+		<!-- ==============================================
+		Favicons
+		=============================================== -->
+		<link rel="shortcut icon" href="images/escudo.png">
+		<link rel="apple-touch-icon" href="images/escudo.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="images/escudo.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="images/escudo.png">
+
+		<!-- ==============================================
+		CSS
+		=============================================== -->
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+		<link rel="stylesheet" type="text/css" href="css/owl.theme.css">
+		<link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
+
+		<!-- ==============================================
+		Google Fonts
+		=============================================== -->
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700'
+			rel='stylesheet' type='text/css'>
+
+		<!-- ==============================================
+		Custom Stylesheet
+		=============================================== -->
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
+
+		<!-- ==============================================
+		JavaScript
+		=============================================== -->
+		<script type="text/javascript" src="js/modernizr.min.js"></script>
+
+		<script src="js/estadisticas/estadisticas.js"></script>
+		<script src="js/estadisticas/asistencias.js"></script>
+
+	</head>
+
+	<body>
+
+		<!-- Load page -->
+		<div class="animationload">
+			<div class="loader"></div>
+		</div>
+
+		<!-- NAVBAR SECTION -->
+		<div class="navbar navbar-main navbar-fixed-top">
+			<div class="header-top">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html"><img src="images/escudo.png"
+							alt /></a>
+				</div>
+				<nav class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html">INICIO</a></li>
+						<li><a href="about.html">SOBRE NOSOTROS</a></li>
+						<li><a href="categoria.html">CATEGORIA</a></li>
+						<!-- Menú desplegable para ESTADÍSTICAS -->
+						<li class="dropdown active">
+							<a href="estadisticas.html" class="dropdown-toggle"
+								data-toggle="dropdown" role="button" aria-haspopup="true"
+								aria-expanded="false">
+								ESTADÍSTICAS <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="anotaciones.html">Anotaciones</a></li>
+								<li><a href="asistencias.html">Asistencias</a></li>
+								<li><a href="sanciones.html">Sanciones</a></li>
+								<li><a href="evaluaciones.html">Evaluaciones</a></li>
+							</ul>
+						</li>
+						<li><a href="registro.html">REGISTRO DE JUGADORES</a></li>
+						<li><a href="login.html">LOGIN</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+								aria-haspopup="true" aria-expanded="false">
+								Jerson <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><button type="button" class="btn btn-link">Cerrar
+										Sesión</button></li>
+							</ul>
+						</li>
+					</ul>
+				</nav>
+			</div>
+		</div>
+
+		<!-- BANNER -->
+		<div class="section subbanner">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 col-md-12">
+						<div class="caption">ANOTACIONES</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- SEARCHBAR -->
+		<div class="wrap">
+			<div class="search">
+				<input type="text" class="searchTerm" id="searchInput"
+					placeholder="Buscar por nombre o apellido">
+				<button type="submit" class="searchButton" id="searchButton">
+					<i class="fa fa-search"></i>
+				</button>
+				<a href="graficos.html" class="btn btn-lg btn-graficos">Ver Gráficos</a>
+			</div>
+		</div>
+
+		<!-- ASISTENCIAS -->
+		<section id="titulo-asistencias">
+			<div class="row">
+				<div class="col-sm-12 col-md-12">
+					<div class="page-title">
+						<h2 class="lead">ASISTENCIAS</h2>
+						<div class="border-style"></div>
+					</div>
+				</div>
+			</div>
+
+			<div class="table-responsive-xl">
+				<table class="table table-striped table-bordered">
+					<thead class="thead-dark">
+						<tr>
+							<th>Nombre</th>
+							<th>Apellidos</th>
+							<th>Edad</th>
+							<th>Asistencias</th>
+							<th>Acciones</th>
+						</tr>
+					</thead>
+					<tbody id="tabla-asistencias">
+					</tbody>
+				</table>
+			</div>
+		</section>
+
+		<!-- MODAL AGREGAR ASISTENCIA -->
+		<div class="modal fade" id="modalAgregarAsistencia" tabindex="-1"
+			role="dialog" aria-labelledby="modalAgregarAsistenciaLabel"
+			aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="modalAgregarAsistenciaLabel">Agregar
+							Asistencia</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form id="formAgregarAsistencia">
+							<div class="form-group">
+								<label for="cantidadAsistencias">Cantidad de Asistencias</label>
+								<input type="number" class="form-control" id="cantidadAsistencias"
+									required>
+							</div>
+							<button type="submit" class="btn btn-primary">Agregar</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- MODAL EDITAR ASISTENCIA -->
+		<div class="modal fade" id="modalEditarAsistencia" tabindex="-1" role="dialog"
+			aria-labelledby="modalEditarAsistenciaLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="modalEditarAsistenciaLabel">Editar
+							Asistencia</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form id="formEditarAsistencia">
+							<div class="form-group">
+								<label for="cantidadAsistenciasEditar">Cantidad de Asistencias</label>
+								<input type="number" class="form-control" id="cantidadAsistenciasEditar"
+									required>
+							</div>
+							<button type="submit" class="btn btn-primary">Guardar Cambios</button>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- MODAL PARA CONFIRMAR BORRADO DE ASISTENCIAS -->
+		<div id="modalBorrarAsistencia" class="modal fade" tabindex="-1"
+			role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Borrar Asistencias</h5>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						<p class="text-start">¿Estás seguro de que deseas eliminar esta
+							asistencia? Esta acción no se
+							puede deshacer.</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Cancelar</button>
+						<button type="button" id="confirmarBorrarAsistencia"
+							class="btn btn-danger">Eliminar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+
+        <!-- CLIENT SECTION -->
+		<div class="section stat-client p-main bg-client">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/sponsor1.jpg" alt class="img-responsive" />
+						</div>
+					</div>
+
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/sponsor2.png" alt class="img-responsive" />
+						</div>
+					</div>
+
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/sponsor3.png" alt class="img-responsive" />
+						</div>
+					</div>
+
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/sponsor4.png" alt class="img-responsive" />
+						</div>
+					</div>
+
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/sponsor5.png" alt class="img-responsive" />
+						</div>
+					</div>
+
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/campeones.jpeg" alt class="img-responsive" />
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- FOOTER SECTION -->
+		<div class="footer">
+
+			<div class="f-desc">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+							<div class="footer-item">
+								<div class="footer-title">
+									<h4>ACERCA DEL EQUIPO</h4>
+								</div>
+								<p>Academia Monká | Comprometidos con la formación integral de jóvenes
+									talentos, fomentando
+									el desarrollo técnico, táctico y humano dentro y fuera del campo.
+									¡Unidos por el fútbol
+									y la pasión por el deporte!"</p>
+								<div class="footer-sosmed">
+									<a
+										href="https://www.facebook.com/profile.php?id=100076718043028&locale=es_LA"
+										title>
+										<div class="item">
+											<i class="fa fa-facebook"></i>
+										</div>
+									</a>
+									<a href="https://www.instagram.com/academia_de_futbol_monka/" title>
+										<div class="item">
+											<i class="fa fa-instagram"></i>
+										</div>
+
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+							</div>
+							<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+								<div class="footer-item">
+									<div class="footer-title">
+										<h4>INFORMATION</h4>
+									</div>
+									<ul class="sitemap">
+										<li><a href="index.html" title>Inicio</a></li>
+										<li><a href="about.html" title>Sobre Nosotros</a></li>
+										<li><a href="categoria.html" title>Categoria</a></li>
+										<li><a href="gallery.html" title>Gallery</a></li>
+										<li><a href="estadisticas.html" title>Estadisticas</a></li>
+										<li><a href="registro.html" title>Reguistro</a></li>
+										<li><a href="login.html" title>Login</a></li>
+										<li><a href="faq.html" title>FAQs</a></li>
+
+									</ul>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+
+				<div class="fcopy">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<p class="ftex">&copy; 2015 Pro Soccer by Rudhi Sasmito - All Rights
+									Reserved</p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<script type="text/javascript" src="js/jquery.min.js"></script>
+			<script type='text/javascript' src='js/jqBootstrapValidation.js'></script>
+			<script type="text/javascript" src="js/bootstrap.min.js"></script>
+			<script type="text/javascript" src="js/owl.carousel.min.js"></script>
+			<script type="text/javascript"
+				src="js/bootstrap-hover-dropdown.min.js"></script>
+			<script type="text/javascript"
+				src="js/jquery.magnific-popup.min.js"></script>
+
+			<script type="text/javascript" src="js/script.js"></script>
+		</body>
+
+</html>

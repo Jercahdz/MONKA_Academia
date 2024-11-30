@@ -13,7 +13,9 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: #0C1A26;
+    background: url('../images/fondoLogin5.jpeg') no-repeat center center fixed;
+    background-size: cover;
+    background-color: #2e7272;
 }
 
 .container {
@@ -22,7 +24,7 @@ body {
     height: 500px;
     display: flex;
     position: relative;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.9);
     border-radius: 15px;
     overflow: hidden;
     box-shadow: 0 0 10px rgb(0, 0, 0, 0.3);
@@ -45,11 +47,13 @@ body {
 .container-form h2 {
     font-size: 30px;
     margin-bottom: 20px;
+    color: #115959; /* Ajuste de color */
 }
 
 .container-form span {
     font-size: 12px;
     margin-bottom: 15px;
+    color: #555; /* Texto suave */
 }
 
 .container-input {
@@ -63,6 +67,7 @@ body {
     gap: 8px;
     padding: 0 15px;
     background-color: #EEEEEE;
+    border-radius: 5px;
 }
 
 .container-input input {
@@ -74,10 +79,11 @@ body {
 }
 
 .container-form a {
-    color: black;
+    color: #115959; /* Cambiado para mejorar el contraste */
     font-size: 14px;
     margin-bottom: 20px;
     margin-top: 5px;
+    text-decoration: none;
 }
 
 .button {
@@ -90,9 +96,14 @@ body {
     margin-top: 10px;
     background-color: #115959;
     color: white;
+    transition: background-color 0.3s ease;
 }
 
-/*Animation form*/
+.button:hover {
+    background-color: #0d4444;
+}
+
+/* Animation form */
 .sign-up {
     transform: translateX(-100%);
 }
@@ -105,7 +116,7 @@ body {
     transform: translateX(0);
 }
 
-/*Welcome*/
+/* Welcome */
 .container-welcome {
     position: absolute;
     width: 50%;
@@ -152,6 +163,7 @@ body {
 .container-welcome .button {
     border: 2px solid white;
     background-color: transparent;
+    color: white;
 }
 
 .container.toggle .welcome-sign-in {

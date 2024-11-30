@@ -68,9 +68,7 @@
 				<div class="container">
 					<div class="row">
 						<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
-
 						</div>
-
 					</div>
 				</div>
 			</div>
@@ -84,20 +82,33 @@
 					</button>
 					<a class="navbar-brand" href="index.html"><img src="images/escudo.png"
 							alt /></a>
-
 				</div>
 				<nav class="navbar-collapse collapse">
 					<ul class="nav navbar-nav navbar-right">
 						<li><a href="index.html">INICIO</a></li>
 						<li><a href="about.html">SOBRE NOSOTROS</a></li>
 						<li><a href="categoria.html">CATEGORIA</a></li>
-						<li class="active"><a href="estadisticas.html">ESTADISTICAS</a></li>
+						<!-- Menú desplegable para ESTADÍSTICAS -->
+						<li class="dropdown">
+							<a href="estadisticas.html" class="dropdown-toggle"
+								data-toggle="dropdown" role="button" aria-haspopup="true"
+								aria-expanded="false">
+								ESTADISTICAS <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="anotaciones.html">Anotaciones</a></li>
+								<li><a href="asistencias.html">Asistencias</a></li>
+								<li><a href="sanciones.html">Sanciones</a></li>
+								<li><a href="evaluaciones.html">Evaluaciones</a></li>
+							</ul>
+						</li>
 						<li><a href="registro.html">REGISTRO DE JUGADORES</a></li>
 						<li><a href="login.html">LOGIN</a></li>
 						<li class="dropdown">
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-								aria-haspopup="true"
-								aria-expanded="false">Jerson <span class="caret"></span></a>
+								aria-haspopup="true" aria-expanded="false">
+								Jerson <span class="caret"></span>
+							</a>
 							<ul class="dropdown-menu">
 								<li><button type="button" class="btn btn-link">Cerrar
 										Sesión</button></li>
@@ -134,7 +145,7 @@
 		<!-- ESTADISTICAS -->
 
 		<!-- ANOTACIONES -->
-		<section>
+		<section id="titulo-anotaciones">
 			<div class="row">
 				<div class="col-sm-12 col-md-12">
 					<div class="page-title">
@@ -213,7 +224,8 @@
 					</div>
 					<div class="modal-body">
 						<p class="text-start">¿Estás seguro de que deseas eliminar esta
-							anotación?</p>
+							evaluación? Esta acción no se
+							puede deshacer.</p>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
@@ -226,8 +238,7 @@
 		</div>
 
 		<!-- ASISTENCIAS -->
-		<section>
-
+		<section id="titulo-asistencias">
 			<div class="row">
 				<div class="col-sm-12 col-md-12">
 					<div class="page-title">
@@ -319,7 +330,9 @@
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
-						<p class="text-start">¿Estás seguro de que deseas eliminar esta asistencia?</p>
+						<p class="text-start">¿Estás seguro de que deseas eliminar esta
+							asistencia? Esta acción no se
+							puede deshacer.</p>
 					</div>
 					<div class="modal-footer">
 						<button type="button" class="btn btn-secondary"
@@ -332,8 +345,7 @@
 		</div>
 
 		<!-- SANCIONES -->
-		<section>
-
+		<section id="titulo-sanciones">
 			<div class="row">
 				<div class="col-sm-12 col-md-12">
 					<div class="page-title">
@@ -432,7 +444,8 @@
 						<button type="button" class="close" data-dismiss="modal">&times;</button>
 					</div>
 					<div class="modal-body">
-						<p class="text-start">¿Estás seguro de que deseas eliminar esta sanción? Esta acción no se
+						<p class="text-start">¿Estás seguro de que deseas eliminar esta sanción?
+							Esta acción no se
 							puede deshacer.</p>
 					</div>
 					<div class="modal-footer">
@@ -446,8 +459,8 @@
 		</div>
 
 		<!-- EVALUACIONES -->
-		<section>
-			<div class="row"></div>
+		<section id="titulo-evaluaciones">
+			<div class="row">
 				<div class="col-sm-12 col-md-12">
 					<div class="page-title">
 						<h2 class="lead">EVALUACIONES</h2>
@@ -470,210 +483,214 @@
 					</tbody>
 				</table>
 			</div>
-	</section>
+		</section>
 
-	<!-- MODAL AGREGAR EVALUACIÓN -->
-	<div class="modal fade" id="modalAgregarEvaluacion" tabindex="-1" role="dialog"
-		aria-labelledby="modalAgregarEvaluacionLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="modalAgregarEvaluacionLabel">Agregar
-						Evaluación</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form id="formAgregarEvaluacion">
-						<div class="form-group">
-							<label for="evaluacionPuntaje">Puntaje de Evaluación</label>
-							<input type="number" class="form-control" id="evaluacionPuntaje"
-								required>
-						</div>
-						<button type="submit" class="btn btn-primary">Agregar</button>
-					</form>
+		<!-- MODAL AGREGAR EVALUACIÓN -->
+		<div class="modal fade" id="modalAgregarEvaluacion" tabindex="-1"
+			role="dialog"
+			aria-labelledby="modalAgregarEvaluacionLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="modalAgregarEvaluacionLabel">Agregar
+							Evaluación</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form id="formAgregarEvaluacion">
+							<div class="form-group">
+								<label for="evaluacionPuntaje">Puntaje de Evaluación</label>
+								<input type="number" class="form-control" id="evaluacionPuntaje"
+									required>
+							</div>
+							<button type="submit" class="btn btn-primary">Agregar</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<!-- MODAL EDITAR EVALUACIÓN -->
-	<div class="modal fade" id="modalEditarEvaluacion" tabindex="-1" role="dialog"
-		aria-labelledby="modalEditarEvaluacionLabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="modalEditarEvaluacionLabel">Editar
-						Evaluación</h5>
-					<button type="button" class="close" data-dismiss="modal"
-						aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form id="formEditarEvaluacion">
-						<div class="form-group">
-							<label for="evaluacionPuntajeEditar">Puntaje de Evaluación</label>
-							<input type="number" class="form-control" id="evaluacionPuntajeEditar"
-								required>
-						</div>
-						<button type="submit" class="btn btn-primary">Guardar Cambios</button>
-					</form>
+		<!-- MODAL EDITAR EVALUACIÓN -->
+		<div class="modal fade" id="modalEditarEvaluacion" tabindex="-1" role="dialog"
+			aria-labelledby="modalEditarEvaluacionLabel" aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="modalEditarEvaluacionLabel">Editar
+							Evaluación</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body">
+						<form id="formEditarEvaluacion">
+							<div class="form-group">
+								<label for="evaluacionPuntajeEditar">Puntaje de Evaluación</label>
+								<input type="number" class="form-control" id="evaluacionPuntajeEditar"
+									required>
+							</div>
+							<button type="submit" class="btn btn-primary">Guardar Cambios</button>
+						</form>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<!-- MODAL PARA CONFIRMAR BORRADO DE EVALUACIÓN -->
-	<div id="modalBorrarEvaluacion" class="modal fade" tabindex="-1" role="dialog">
-		<div class="modal-dialog">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title">Borrar Evaluaciones</h5>
-					<button type="button" class="close" data-dismiss="modal">&times;</button>
-				</div>
-				<div class="modal-body">
-					<p class="text-start">¿Estás seguro de que deseas eliminar esta evaluación? Esta acción no se
-						puede deshacer.</p>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary"
-						data-dismiss="modal">Cancelar</button>
-					<button type="button" id="confirmarBorrarEvaluacion"
-						class="btn btn-danger">Eliminar</button>
+		<!-- MODAL PARA CONFIRMAR BORRADO DE EVALUACIÓN -->
+		<div id="modalBorrarEvaluacion" class="modal fade" tabindex="-1"
+			role="dialog">
+			<div class="modal-dialog">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title">Borrar Evaluaciones</h5>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+					<div class="modal-body">
+						<p class="text-start">¿Estás seguro de que deseas eliminar esta
+							evaluación? Esta acción no se
+							puede deshacer.</p>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Cancelar</button>
+						<button type="button" id="confirmarBorrarEvaluacion"
+							class="btn btn-danger">Eliminar</button>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<!-- CLIENT SECTION -->
-	<div class="section stat-client p-main bg-client">
-		<div class="container">
-			<div class="row">
-
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/sponsor1.jpg" alt class="img-responsive" />
-					</div>
-				</div>
-
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/sponsor2.png" alt class="img-responsive" />
-					</div>
-				</div>
-
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/sponsor3.png" alt class="img-responsive" />
-					</div>
-				</div>
-
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/sponsor4.png" alt class="img-responsive" />
-					</div>
-				</div>
-
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/sponsor5.png" alt class="img-responsive" />
-					</div>
-				</div>
-
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/campeones.jpeg" alt class="img-responsive" />
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</div>
-
-	<!-- FOOTER SECTION -->
-	<div class="footer">
-
-		<div class="f-desc">
+		<!-- CLIENT SECTION -->
+		<div class="section stat-client p-main bg-client">
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-						<div class="footer-item">
-							<div class="footer-title">
-								<h4>ACERCA DEL EQUIPO</h4>
-							</div>
-							<p>Academia Monká | Comprometidos con la formación integral de jóvenes
-								talentos, fomentando
-								el desarrollo técnico, táctico y humano dentro y fuera del campo.
-								¡Unidos por el fútbol
-								y la pasión por el deporte!"</p>
-							<div class="footer-sosmed">
-								<a
-									href="https://www.facebook.com/profile.php?id=100076718043028&locale=es_LA"
-									title>
-									<div class="item">
-										<i class="fa fa-facebook"></i>
-									</div>
-								</a>
-								<a href="https://www.instagram.com/academia_de_futbol_monka/" title>
-									<div class="item">
-										<i class="fa fa-instagram"></i>
-									</div>
 
-								</div>
-							</div>
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/sponsor1.jpg" alt class="img-responsive" />
 						</div>
-						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+					</div>
+
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/sponsor2.png" alt class="img-responsive" />
 						</div>
+					</div>
+
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/sponsor3.png" alt class="img-responsive" />
+						</div>
+					</div>
+
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/sponsor4.png" alt class="img-responsive" />
+						</div>
+					</div>
+
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/sponsor5.png" alt class="img-responsive" />
+						</div>
+					</div>
+
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/campeones.jpeg" alt class="img-responsive" />
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- FOOTER SECTION -->
+		<div class="footer">
+
+			<div class="f-desc">
+				<div class="container">
+					<div class="row">
 						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
 							<div class="footer-item">
 								<div class="footer-title">
-									<h4>INFORMATION</h4>
+									<h4>ACERCA DEL EQUIPO</h4>
 								</div>
-								<ul class="sitemap">
-									<li><a href="index.html" title>Inicio</a></li>
-									<li><a href="about.html" title>Sobre Nosotros</a></li>
-									<li><a href="categoria.html" title>Categoria</a></li>
-									<li><a href="gallery.html" title>Gallery</a></li>
-									<li><a href="estadisticas.html" title>Estadisticas</a></li>
-									<li><a href="registro.html" title>Reguistro</a></li>
-									<li><a href="login.html" title>Login</a></li>
-									<li><a href="faq.html" title>FAQs</a></li>
+								<p>Academia Monká | Comprometidos con la formación integral de jóvenes
+									talentos, fomentando
+									el desarrollo técnico, táctico y humano dentro y fuera del campo.
+									¡Unidos por el fútbol
+									y la pasión por el deporte!"</p>
+								<div class="footer-sosmed">
+									<a
+										href="https://www.facebook.com/profile.php?id=100076718043028&locale=es_LA"
+										title>
+										<div class="item">
+											<i class="fa fa-facebook"></i>
+										</div>
+									</a>
+									<a href="https://www.instagram.com/academia_de_futbol_monka/" title>
+										<div class="item">
+											<i class="fa fa-instagram"></i>
+										</div>
 
-								</ul>
+									</div>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+							</div>
+							<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+								<div class="footer-item">
+									<div class="footer-title">
+										<h4>INFORMATION</h4>
+									</div>
+									<ul class="sitemap">
+										<li><a href="index.html" title>Inicio</a></li>
+										<li><a href="about.html" title>Sobre Nosotros</a></li>
+										<li><a href="categoria.html" title>Categoria</a></li>
+										<li><a href="gallery.html" title>Gallery</a></li>
+										<li><a href="estadisticas.html" title>Estadisticas</a></li>
+										<li><a href="registro.html" title>Reguistro</a></li>
+										<li><a href="login.html" title>Login</a></li>
+										<li><a href="faq.html" title>FAQs</a></li>
+
+									</ul>
+								</div>
+							</div>
+							<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+							</div>
+
+						</div>
+					</div>
+
+				</div>
+
+				<div class="fcopy">
+					<div class="container">
+						<div class="row">
+							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+								<p class="ftex">&copy; 2015 Pro Soccer by Rudhi Sasmito - All Rights
+									Reserved</p>
 							</div>
 						</div>
-						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-						</div>
-
 					</div>
 				</div>
 
 			</div>
+			<script type="text/javascript" src="js/jquery.min.js"></script>
+			<script type='text/javascript' src='js/jqBootstrapValidation.js'></script>
+			<script type="text/javascript" src="js/bootstrap.min.js"></script>
+			<script type="text/javascript" src="js/owl.carousel.min.js"></script>
+			<script type="text/javascript"
+				src="js/bootstrap-hover-dropdown.min.js"></script>
+			<script type="text/javascript"
+				src="js/jquery.magnific-popup.min.js"></script>
 
-			<div class="fcopy">
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							<p class="ftex">&copy; 2015 Pro Soccer by Rudhi Sasmito - All Rights
-								Reserved</p>
-						</div>
-					</div>
-				</div>
-			</div>
+			<script type="text/javascript" src="js/script.js"></script>
+		</body>
 
-		</div>
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type='text/javascript' src='js/jqBootstrapValidation.js'></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/owl.carousel.min.js"></script>
-		<script type="text/javascript"
-			src="js/bootstrap-hover-dropdown.min.js"></script>
-		<script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
-
-		<script type="text/javascript" src="js/script.js"></script>
-	</body>
-
-</html>
+	</html>

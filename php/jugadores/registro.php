@@ -4,7 +4,7 @@ include("../conexion.php");
 
 // Validacion 
 if (!isset($_SESSION['usuarioId']) ||!isset($_SESSION['rolId']) || $_SESSION['rolId']!= 1) {
-    echo "<script>alert('Solo los administradores pueden registrar jugadores.'); window.location.href = '../login.html';</script>";
+    echo "<script>alert('Solo los administradores pueden registrar jugadores.'); window.location.href = '../../login.html';</script>";
     exit();
 }
 
@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->bind_param("ssisisi", $nombreJugador, $apellidos, $edad, $posicion, $dorsal, $pieHabil, $categoriaId);
 
     if ($stmt->execute() === TRUE) {
-        echo "<script>alert('Jugador registrado con éxito'); window.location.href = '../registro.html';</script>";
+        echo "<script>alert('Jugador registrado con éxito'); window.location.href = '../../registro.html';</script>";
         exit();
     } else {
         echo "Error: " . $sql . "<br>" . $stmt->error;

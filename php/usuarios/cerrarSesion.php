@@ -1,12 +1,16 @@
 <?php
-session_start(); 
+session_start();
 
-$_SESSION = array();
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    if (isset($_SESSION['usuarioId'])) {
+        session_unset(); 
+        session_destroy();
+    }
 
-
-session_destroy();
-
-
-header("Location: ../index.html");
-exit();
+    header("Location: ../../index.html");
+    exit();
+} else {
+    header("Location: ../../index.html");
+    exit();
+}
 ?>

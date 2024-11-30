@@ -1,17 +1,20 @@
 <?php
 session_start();
+include("../conexion.php");
 
-// Assume you have a way to set this when the user logs in
-// For example, after a successful login, you might set:
-// $_SESSION['userName'] = 'JohnDoe';
-// $_SESSION['loggedIn'] = true;
+// Verificar si hay un usuario logueado
+if (isset($_SESSION['nombreUsuario'])) {
+    $userName = $_SESSION['nombreUsuario'];
+    $loggedIn = true;
+} else {
+    $userName = 'Invitado';
+    $loggedIn = false;
+}
 
-$userLoggedIn = isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'];
-$userName = $userLoggedIn ? $_SESSION['userName'] : 'Guest';
+// Devolver datos como texto plano separados por comas
+if ($loggedIn) {
+    echo "$userName, Conectado";
+} else {
+    echo "$userName, Desconectado";
+}
 ?>
-
-<script>
-    // Pass PHP variables to JavaScript
-    const userLoggedIn = <?php echo json_encode($userLoggedIn); ?>;
-    const userName = <?php echo json_encode($userName); ?>;
-</script>

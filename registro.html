@@ -48,7 +48,6 @@ include("conexion.php");
 
 
 	<script type="text/javascript" src="js/modernizr.min.js"></script>
-	<script src="js/imagenes.js"></script>
 
 
 </head>
@@ -90,20 +89,8 @@ include("conexion.php");
 					<li><a href="about.html">SOBRE NOSOTROS</a></li>
 					<li><a href="categoria.html">CATEGORIA</a></li>
 					<li><a href="estadisticas.html">ESTADISTICAS</a></li>
-					<?php if (isset($_SESSION['usuarioId'])): ?>
-					<!-- ACA DEBERIA MOSTRARSE SOLO SI ESTA LOGGEADO -->
 					<li><a href="registro.html">REGISTRO DE JUGADORES</a></li>
-				<?php endif; ?>
 					<li><a href="login.html">LOGIN</a></li>
-					<!-- CIERRE QUEMADO 
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false">Jerson <span class="caret"></span></a>
-						<ul class="dropdown-menu">
-							<li><button type="button" class="btn btn-link">Cerrar Sesión</button></li>
-						</ul>
-					</li>
-					-->
 					<li class="dropdown">
 						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['nombreUsuario']; ?> <span class="caret"></span></a>
 						<ul class="dropdown-menu">
@@ -150,7 +137,7 @@ include("conexion.php");
 					<input type="number" id="edad" name="edad" required>
 				</div>
 				<div class="form-group">
-					<label for="posicion">Posición:</label>posicion
+					<label for="posicion">Posición:</label>
 					<select id="posicion" name="posicion" required>
 						<option value="">Seleccione una posición</option>
 						<option value="Portero">Portero</option>
