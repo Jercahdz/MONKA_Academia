@@ -163,31 +163,50 @@
 					</section>
 
 					<!-- Modal para ver detalles del jugador -->
-					<div id="detallesModal" class="modal fade" tabindex="-1" role="dialog">
+					<div id="detallesModal" class="modal fade" tabindex="-1" role="dialog"
+						aria-labelledby="detallesModalLabel" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
-								<div class="modal-header">
-									<h5 class="modal-title">Detalles del Jugador</h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<!-- Encabezado del modal -->
+								<div class="modal-header" style="background-color: #115959; color: white;">
+									<h5 class="modal-title" id="detallesModalLabel" style="margin: 0;">Detalles del Jugador</h5>
+									<button type="button" class="close" data-dismiss="modal" aria-label="Close"
+										style="color: white;">
 										<span aria-hidden="true">&times;</span>
 									</button>
 								</div>
-								<div class="modal-body">
-									<p><strong>Nombre:</strong> <span id="modal-nombre"></span></p>
-									<p><strong>Apellidos:</strong> <span id="modal-apellidos"></span></p>
-									<p><strong>Edad:</strong> <span id="modal-edad"></span></p>
-									<p><strong>Dorsal:</strong> <span id="modal-dorsal"></span></p>
-									<p><strong>Pie Hábil:</strong> <span id="modal-pieHabil"></span></p>
-									<p><strong>Categoría:</strong> <span id="modal-categoria"></span></p>
-
+								<!-- Cuerpo del modal -->
+								<div class="modal-body" style="background-color: #f8f8f8; color: #333;">
+									<p style="background-color: #ffffff; padding: 10px; border-radius: 5px;">
+										<strong>Nombre:</strong> <span id="modal-nombre"></span>
+									</p>
+									<p style="background-color: #e7f6f5; padding: 10px; border-radius: 5px;">
+										<strong>Apellidos:</strong> <span id="modal-apellidos"></span>
+									</p>
+									<p style="background-color: #ffffff; padding: 10px; border-radius: 5px;">
+										<strong>Edad:</strong> <span id="modal-edad"></span>
+									</p>
+									<p style="background-color: #e7f6f5; padding: 10px; border-radius: 5px;">
+										<strong>Dorsal:</strong> <span id="modal-dorsal"></span>
+									</p>
+									<p style="background-color: #ffffff; padding: 10px; border-radius: 5px;">
+										<strong>Pie Hábil:</strong> <span id="modal-pieHabil"></span>
+									</p>
+									<p style="background-color: #e7f6f5; padding: 10px; border-radius: 5px;">
+										<strong>Categoría:</strong> <span id="modal-categoria"></span>
+									</p>
 								</div>
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary btn-table"
-										data-dismiss="modal">Aceptar</button>
+								<!-- Pie del modal -->
+								<div class="modal-footer" style="background-color: #115959;">
+									<button type="button" class="btn btn-secondary btn-table" data-dismiss="modal"
+										style="background-color: #ffffff; color: #115959; border: none;">
+										Aceptar
+									</button>
 								</div>
 							</div>
 						</div>
 					</div>
+
 
 					<!-- Modal para editar los datos del jugador -->
 					<div id="editarModal" class="modal fade" tabindex="-1" role="dialog">
@@ -249,6 +268,7 @@
 									<strong>Academia de Fútbol MONKÁ</strong>
 									Selecciona una formación y visualiza su distribución en el campo.
 								</p>
+								<h4>Formación Seleccionada</h4>
 							</div>
 						</div>
 					</div>
@@ -259,29 +279,40 @@
 								<!-- Menú de formaciones -->
 								<div class="col-md-4">
 									<div class="list-group" id="formation-menu">
-										<button class="list-group-item list-group-item-action" onclick="loadFormation('3-5-2')">3-5-2</button>
-										<button class="list-group-item list-group-item-action" onclick="loadFormation('4-1-2-1-2')">4-1-2-1-2</button>
-										<button class="list-group-item list-group-item-action" onclick="loadFormation('4-1-3-2')">4-1-3-2</button>
-										<button class="list-group-item list-group-item-action" onclick="loadFormation('4-2-1-3')">4-2-1-3</button>
-										<button class="list-group-item list-group-item-action" onclick="loadFormation('4-3-2-1')">4-3-2-1</button>
-										<button class="list-group-item list-group-item-action" onclick="loadFormation('4-4-2')">4-4-2</button>
-										<button class="list-group-item list-group-item-action" onclick="loadFormation('4-5-1')">4-5-1</button>
-										<button class="list-group-item list-group-item-action" onclick="loadFormation('5-3-2')">5-3-2</button>
-										<button class="list-group-item list-group-item-action" onclick="loadFormation('5-4-1')">5-4-1</button>
+										<button class="list-group-item list-group-item-action"
+											onclick="loadFormation('3-5-2')">3-5-2</button>
+										<button class="list-group-item list-group-item-action"
+											onclick="loadFormation('4-1-2-1-2')">4-1-2-1-2</button>
+										<button class="list-group-item list-group-item-action"
+											onclick="loadFormation('4-1-3-2')">4-1-3-2</button>
+										<button class="list-group-item list-group-item-action"
+											onclick="loadFormation('4-2-1-3')">4-2-1-3</button>
+										<button class="list-group-item list-group-item-action"
+											onclick="loadFormation('4-3-2-1')">4-3-2-1</button>
+										<button class="list-group-item list-group-item-action"
+											onclick="loadFormation('4-4-2')">4-4-2</button>
+										<button class="list-group-item list-group-item-action"
+											onclick="loadFormation('4-5-1')">4-5-1</button>
+										<button class="list-group-item list-group-item-action"
+											onclick="loadFormation('5-3-2')">5-3-2</button>
+										<button class="list-group-item list-group-item-action"
+											onclick="loadFormation('5-4-1')">5-4-1</button>
 									</div>
 								</div>
-					
+
 								<!-- Contenedor para la imagen de la formación -->
 								<div class="col-md-8 text-center">
-									<h4>Formación Seleccionada</h4>
+
 									<div class="border p-3">
-										<img id="formationImage" src="images/placeholder.png" alt="Selecciona una formación" class="img-fluid" style="max-height: 400px; max-width: 100%;">
+										<img id="formationImage" src="images/placeholder.png"
+											alt="Selecciona una formación" class="img-fluid"
+											style="max-height: 400px; max-width: 100%;">
 									</div>
 								</div>
 							</div>
 						</div>
 					</div>
-					
+
 
 				</div>
 			</div>
