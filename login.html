@@ -11,59 +11,46 @@
 <body>
 
     <div class="container">
+        <!-- Login Form -->
         <div class="container-form">
-            <form class="sign-in" action="php/usuarios/inicioSesion.php" method="POST">
+            <form class="sign-in">
                 <h2>Iniciar Sesión</h2>
-                <span>Use su correo y contraseña</span>
                 <div class="container-input">
                     <ion-icon name="mail-outline"></ion-icon>
-                    <input type="email" name="correo" placeholder="Email" required>
+                    <input type="email" placeholder="Correo electrónico" required>
                 </div>
                 <div class="container-input">
                     <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="password" placeholder="Contraseña" required>
                 </div>
-                <button type="submit" name="login" class="button">INICIAR SESIÓN</button>
+                <button type="submit" class="button">Iniciar Sesión</button>
             </form>
-        </div>
 
-        <!-- Formulario de registro -->
-        <div class="container-form">
-            <form class="sign-up" action="php/usuarios/registroUsuarios.php" method="POST">
+            <form class="sign-up" style="display: none;">
                 <h2>Registrarse</h2>
-                <span>Use su correo electrónico para registrarse</span>
                 <div class="container-input">
                     <ion-icon name="person-outline"></ion-icon>
-                    <input type="text" name="nombre" placeholder="Nombre" required>
+                    <input type="text" placeholder="Nombre" required>
                 </div>
                 <div class="container-input">
                     <ion-icon name="mail-outline"></ion-icon>
-                    <input type="email" name="correo" placeholder="Email" required>
+                    <input type="email" placeholder="Correo electrónico" required>
                 </div>
                 <div class="container-input">
                     <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="password" placeholder="Contraseña" required>
                 </div>
-                <button type="submit" name="register" class="button">REGISTRARSE</button>
+                <button type="submit" class="button">Registrarse</button>
             </form>
-        </div>  
-        
-
-        <div class="container-welcome">
-            <div class="welcome-sign-up welcome">
-                <h3>¡Bienvenido!</h3>
-                <p>Ingrese sus datos personales </p>
-                <button class="button" id="btn-sign-up">Registrarse</button>
-            </div>
-            <div class="welcome-sign-in welcome">
-                <h3>¡Hola!</h3>
-                <p>Regístrese con sus datos personales </p>
-                <button class="button" id="btn-sign-in">Iniciar Sesión</button>
-            </div>
         </div>
 
+        <!-- Welcome Section -->
+        <div class="container-welcome">
+            <h3>¡Bienvenido!</h3>
+            <p>Registra una nueva cuenta o inicia sesión para acceder a nuestra plataforma</p>
+            <button class="toggle-button">Registrarse</button>
+        </div>
     </div>
-
 
     <script src="js/cuentas/login.js"></script>
     <script src="js/cuentas/controlSesion.js"></script>

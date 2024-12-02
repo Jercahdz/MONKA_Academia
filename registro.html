@@ -81,7 +81,7 @@ include("conexion.php");
 					<span class="icon-bar"></span>
 				</button>
 				<a class="navbar-brand" href="index.html"><img src="images/escudo.png" alt="" /></a>
-				
+
 			</div>
 			<nav class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
@@ -89,15 +89,29 @@ include("conexion.php");
 					<li><a href="about.html">SOBRE NOSOTROS</a></li>
 					<li><a href="categoria.html">CATEGORIA</a></li>
 					<li><a href="estadisticas.html">ESTADISTICAS</a></li>
-					<li><a href="registro.html">REGISTRO DE JUGADORES</a></li>
-					<li><a href="login.html">LOGIN</a></li>
+
+					<!-- User Status and Dropdown -->
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><?php echo $_SESSION['nombreUsuario']; ?> <span class="caret"></span></a>
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false" id="userName">
+							Invitado <span class="caret"></span>
+						</a>
 						<ul class="dropdown-menu">
-							<li><a href="php/usuarios/cerrarSesion.php" class="btn btn-link">Cerrar Sesión</a></li>
+							<li id="loginOption"><a href="login.html">Iniciar Sesión</a></li>
+							<!-- Enlace para cerrar sesión -->
+							<li id="logoutOption" style="display: none;">
+								<a href="#" onclick="document.getElementById('logoutForm').submit();">Cerrar Sesión</a>
+							</li>
 						</ul>
 					</li>
+
+					<li id="registroLink" style="display: none;"><a href="registro.html">REGISTRO DE JUGADORES</a></li>
 				</ul>
+
+				<!-- Formulario de logout (oculto) -->
+				<form id="logoutForm" action="php/usuarios/cerrarSesion.php" method="POST" style="display: none;">
+					<input type="hidden" name="logout" value="true">
+				</form>
 			</nav>
 		</div>
 	</div>

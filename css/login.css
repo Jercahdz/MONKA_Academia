@@ -1,223 +1,209 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap');
+:root {
+    --primary-color: #115959;
+    --secondary-color: #0d4444;
+    --background-color: #f4f4f4;
+    --text-color: #333;
+    --input-background: #EEEEEE;
+}
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: "Arial", sans-serif;
+    font-family: 'Arial', sans-serif;
 }
 
 body {
     width: 100%;
-    height: 100vh;
+    min-height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-    background: url('../images/fondoLogin5.jpeg') no-repeat center center fixed;
+    background: linear-gradient(135deg, rgba(17, 89, 89, 0.1) 0%, rgba(17, 89, 89, 0.3) 100%), url('../images/fondoLogin5.jpeg') no-repeat center center fixed;
     background-size: cover;
-    background-color: #2e7272;
+    padding: 20px;
+    background-color: var(--primary-color);
 }
 
 .container {
-    width: 90%;
-    max-width: 760px;
-    height: 500px;
+    width: 100%;
+    max-width: 1000px;
+    min-height: 600px;
     display: flex;
     position: relative;
-    background-color: rgba(255, 255, 255, 0.9);
+    background-color: rgba(255, 255, 255, 0.95);
     border-radius: 15px;
     overflow: hidden;
-    box-shadow: 0 0 10px rgb(0, 0, 0, 0.3);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
 }
 
 .container-form {
-    width: 100%;
-    overflow: hidden;
-}
-
-.container-form form {
-    height: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     justify-content: center;
+    padding: 50px;
+    transition: all 0.5s ease;
+}
+
+.container-form form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    transition: transform 0.5s ease-in;
 }
 
 .container-form h2 {
-    font-size: 30px;
-    margin-bottom: 20px;
-    color: #115959; /* Ajuste de color */
-}
-
-.container-form span {
-    font-size: 12px;
-    margin-bottom: 15px;
-    color: #555; /* Texto suave */
+    font-size: 2rem;
+    margin-bottom: 30px;
+    color: var(--primary-color);
+    text-align: center;
 }
 
 .container-input {
     width: 100%;
-    max-width: 300px;
-    height: 40px;
-    margin-bottom: 10px;
+    max-width: 350px;
+    height: 50px;
+    margin-bottom: 20px;
     display: flex;
-    justify-content: center;
     align-items: center;
-    gap: 8px;
+    background-color: var(--input-background);
+    border-radius: 8px;
     padding: 0 15px;
-    background-color: #EEEEEE;
-    border-radius: 5px;
+}
+
+.container-input ion-icon {
+    color: var(--primary-color);
+    opacity: 0.7;
+    margin-right: 10px;
 }
 
 .container-input input {
-    border: none;
-    outline: none;
     width: 100%;
     height: 100%;
-    background-color: inherit;
-}
-
-.container-form a {
-    color: #115959; /* Cambiado para mejorar el contraste */
-    font-size: 14px;
-    margin-bottom: 20px;
-    margin-top: 5px;
-    text-decoration: none;
+    border: none;
+    outline: none;
+    background: transparent;
+    font-size: 1rem;
 }
 
 .button {
-    width: 170px;
-    height: 45px;
-    font-size: 15px;
+    width: 100%;
+    max-width: 350px;
+    height: 50px;
     border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    margin-top: 10px;
-    background-color: #115959;
+    border-radius: 8px;
+    background-color: var(--primary-color);
     color: white;
+    font-size: 1rem;
+    cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
 .button:hover {
-    background-color: #0d4444;
+    background-color: var(--secondary-color);
 }
 
-/* Animation form */
-.sign-up {
-    transform: translateX(-100%);
-}
-
-.container.toggle .sign-in {
-    transform: translateX(100%);
-}
-
-.container.toggle .sign-up {
-    transform: translateX(0);
-}
-
-/* Welcome */
 .container-welcome {
-    position: absolute;
     width: 50%;
-    height: 100%;
-    display: flex;
-    align-items: center;
-    transform: translateX(100%);
-    background-color: #115959;
-    transition: transform 0.5s ease-in-out, border-radius 0.5s ease-in-out;
-    overflow: hidden;
-    border-radius: 50% 0 0 50%;
-}
-
-.container.toggle .container-welcome {
-    transform: translateX(0);
-    border-radius: 0 50% 50% 0;
-    background-color: #115959;
-}
-
-.container-welcome .welcome {
-    position: absolute;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    gap: 20px;
-    padding: 0 50px;
+    background-color: var(--primary-color);
     color: white;
-    transition: transform 0.5s ease-in-out;
-}
-
-.welcome-sign-in {
-    transform: translateX(100%);
+    text-align: center;
+    padding: 50px;
+    transition: all 0.5s ease;
 }
 
 .container-welcome h3 {
-    font-size: 40px;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
 }
 
 .container-welcome p {
-    font-size: 14px;
-    text-align: center;
+    font-size: 1rem;
+    margin-bottom: 30px;
+    line-height: 1.6;
 }
 
-.container-welcome .button {
-    border: 2px solid white;
+.toggle-button {
     background-color: transparent;
+    border: 2px solid white;
     color: white;
+    padding: 12px 30px;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.container.toggle .welcome-sign-in {
-    transform: translateX(0);
+.toggle-button:hover {
+    background-color: rgba(255,255,255,0.2);
 }
 
-.container.toggle .welcome-sign-up {
-    transform: translateX(-100%);
-}
-
-/* ==========================
-Responsiveness
-============================= */
-
-@media (max-width: 768px) {
+/* Tablet Responsive Design */
+@media screen and (max-width: 1024px) {
     .container {
-        height: auto;
-        flex-direction: column;
+        max-width: 90%;
+        min-height: 500px;
     }
+
+    .container-form, 
+    .container-welcome {
+        padding: 30px;
+    }
+
+    .container-form h2 {
+        font-size: 1.8rem;
+    }
+
+    .container-input {
+        max-width: 300px;
+        height: 45px;
+    }
+
+    .container-welcome h3 {
+        font-size: 2rem;
+    }
+}
+
+/* Mobile Responsive Design */
+@media screen and (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        max-width: 100%;
+        height: auto;
+    }
+
+    .container-form, 
     .container-welcome {
         width: 100%;
-        height: 50%;
-        border-radius: 0 0 50% 50%;
+        padding: 30px;
     }
-    .container.toggle .container-welcome {
-        transform: translateY(0);
-        border-radius: 50% 50% 0 0;
-    }
-    .container-form {
-        padding: 20px;
-    }
-    .container-form h2 {
-        font-size: 24px;
-    }
-    .container-input {
-        max-width: 90%;
-    }
-    .button {
-        width: 150px;
-    }
-}
 
-@media (max-width: 576px) {
-    .container-welcome h3 {
-        font-size: 24px;
+    .container-form {
+        order: 2;
     }
-    .container-welcome p {
-        font-size: 12px;
+
+    .container-welcome {
+        order: 1;
     }
+
+    .container-form h2 {
+        font-size: 1.5rem;
+    }
+
     .container-input {
         max-width: 100%;
-        height: 35px;
     }
-    .button {
-        height: 40px;
+
+    .container-welcome h3 {
+        font-size: 1.8rem;
+    }
+
+    .container-welcome p {
+        font-size: 0.9rem;
     }
 }
