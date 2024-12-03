@@ -6,7 +6,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
     $nombreUsuario = $_POST['nombre'];
     $correo = $_POST['correo'];
     $contrasenna = $_POST['password'];
-    $rolId = 1;
+    $rolId = 2;
 
     // Validaciones
     if (empty($nombreUsuario) || strlen($nombreUsuario) > 50) {
@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
     $stmt->bind_param("sssi", $nombreUsuario, $correo, $contrasena, $rolId);
 
     if ($stmt->execute() === TRUE) {
-        echo "<script>window.location.href = '../login.html';</script>";
+        echo "<script>window.location.href = '../../login.html';</script>";
         exit();
     } else {
         echo "Error: " . $sql . "<br>" . $stmt->error;
@@ -56,3 +56,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
     $stmt->close();
 }
 ?>
+d

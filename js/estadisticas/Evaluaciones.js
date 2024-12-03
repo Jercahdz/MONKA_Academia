@@ -42,7 +42,7 @@ document.addEventListener("DOMContentLoaded", function () {
         }
 
         // Botón "Editar"
-        if (target.classList.contains("btn-editar")) {
+        if (target.classList.contains("btn-editar-evaluacion")) {
             jugadorId = target.getAttribute("data-jugador-id");
             const evaluaciones = target.getAttribute("data-evaluaciones");
             document.getElementById("evaluacionEdit").value = evaluaciones;
