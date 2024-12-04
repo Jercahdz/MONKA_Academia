@@ -38,15 +38,15 @@ document.addEventListener("DOMContentLoaded", function () {
         // Botón "Agregar Evaluacion"
         if (target.classList.contains("btn-agregar-evaluacion")) {
             jugadorId = target.getAttribute("data-jugador-id");
-            $("#modalAgregar").modal("show");
+            $("#modalAgregarEvaluacion").modal("show");
         }
 
         // Botón "Editar"
         if (target.classList.contains("btn-editar-evaluacion")) {
             jugadorId = target.getAttribute("data-jugador-id");
             const evaluaciones = target.getAttribute("data-evaluaciones");
-            document.getElementById("evaluacionEdit").value = evaluaciones;
-            $("#modalEditar").modal("show");
+            document.getElementById("evaluacionPuntajeEditar").value = evaluaciones;
+            $("#modalEditarEvaluacion").modal("show");
         }
 
         // Botón "Borrar"
@@ -57,40 +57,36 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     // Manejo del modal de agregar evaluaciones
-    document.getElementById("formAgregar").addEventListener("submit", function (event) {
+    document.getElementById("formAgregarEvaluacion").addEventListener("submit", function (event) {
         event.preventDefault();
-        const evaluaciones = document.getElementById("evaluacion").value;
+        const evaluaciones = document.getElementById("evaluacionPuntaje").value;
 
         fetch("php/estadisticas/evaluaciones/agregarEvaluacion.php", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-            },
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: `jugadorId=${jugadorId}&evaluaciones=${evaluaciones}`,
         })
             .then(response => response.text())
             .then(data => {
-                $("#modalAgregar").modal("hide");
+                $("#modalAgregarEvaluacion").modal("hide");
                 recargarTablaEvaluaciones(searchTerm, currentPage);
             })
             .catch(error => console.error("Error al agregar evaluación:", error));
     });
 
     // Manejo del modal de editar evaluaciones
-    document.getElementById("formEditar").addEventListener("submit", function (event) {
+    document.getElementById("formEditarEvaluacion").addEventListener("submit", function (event) {
         event.preventDefault();
-        const evaluaciones = document.getElementById("evaluacionEdit").value;
+        const evaluaciones = document.getElementById("evaluacionPuntajeEditar").value;
 
         fetch("php/estadisticas/evaluaciones/editarEvaluacion.php", {
             method: "POST",
-            headers: {
-                "Content-Type": "application/x-www-form-urlencoded",
-            },
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
             body: `jugadorId=${jugadorId}&evaluaciones=${evaluaciones}`,
         })
             .then(response => response.text())
             .then(data => {
-                $("#modalEditar").modal("hide");
+                $("#modalEditarEvaluacion").modal("hide");
                 recargarTablaEvaluaciones(searchTerm, currentPage);
             })
             .catch(error => console.error("Error al editar evaluación:", error));

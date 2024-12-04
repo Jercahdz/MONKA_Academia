@@ -9,9 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $jugadorId);
 
-    if ($stmt->execute()) {
-        echo "Se eliminaron con éxito las evaluaciones del jugador";
-    } else {
+    if (!$stmt->execute()) {
         echo "Error al eliminar la evaluación: " . $conn->error;
     }
 
