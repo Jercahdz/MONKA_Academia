@@ -12,7 +12,7 @@ $offset = ($page - 1) * $recordsPerPage;
 
 // Contar el total de registros
 $sqlCount = "
-    SELECT COUNT(*) as total
+    SELECT COUNT(DISTINCT j.jugadorId) as total
     FROM Jugadores j
     LEFT JOIN Sanciones s ON j.jugadorId = s.jugadorId
     WHERE CONCAT(j.nombreJugador, ' ', j.apellidos) LIKE ?
@@ -28,11 +28,12 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
 $sql = "
     SELECT 
         j.jugadorId, j.nombreJugador, j.apellidos, j.edad, 
-        IFNULL(s.rojas, 0) AS rojas,
-        IFNULL(s.amarillas, 0) AS amarillas
+        IFNULL(SUM(s.rojas), 0) AS rojas,
+        IFNULL(SUM(s.amarillas), 0) AS amarillas
     FROM Jugadores j
     LEFT JOIN Sanciones s ON j.jugadorId = s.jugadorId
     WHERE CONCAT(j.nombreJugador, ' ', j.apellidos) LIKE ?
+    GROUP BY j.jugadorId
     LIMIT ? OFFSET ?
 ";
 $stmt = $conn->prepare($sql);
@@ -48,12 +49,16 @@ while ($row = $result->fetch_assoc()) {
         <td>" . htmlspecialchars($row['edad']) . "</td>
         <td>" . htmlspecialchars($row['rojas']) . "</td>
         <td>" . htmlspecialchars($row['amarillas']) . "</td>
-        <td>
+        <td>";
+    // Mostrar botones solo para administradores
+    if (isset($_SESSION['rolId']) && $_SESSION['rolId'] == 1) { // 1 es el rolId del Administrador
+        echo "
             <button class='btn-agregar-sancion btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Agregar Sanciones</button>
             <button class='btn-editar-sancion btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "' data-rojas='" . htmlspecialchars($row['rojas']) . "' data-amarillas='" . htmlspecialchars($row['amarillas']) . "'>Editar</button>
             <button class='btn-borrar-sancion btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Borrar</button>
-        </td>
-    </tr>";
+        ";
+    }
+    echo "</td></tr>";
 }
 
 // Generar paginación

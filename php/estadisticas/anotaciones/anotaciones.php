@@ -10,9 +10,9 @@ $searchParam = '%' . $search . '%';
 $recordsPerPage = 15;
 $offset = ($page - 1) * $recordsPerPage;
 
-// Contar el total de registros
+// Contar el total de registros (sin duplicados por fecha)
 $sqlCount = "
-    SELECT COUNT(*) as total
+    SELECT COUNT(DISTINCT j.jugadorId) as total
     FROM Jugadores j
     LEFT JOIN Anotaciones a ON j.jugadorId = a.jugadorId
     WHERE CONCAT(j.nombreJugador, ' ', j.apellidos) LIKE ?
@@ -24,14 +24,18 @@ $resultCount = $stmtCount->get_result();
 $totalRecords = $resultCount->fetch_assoc()['total'];
 $totalPages = ceil($totalRecords / $recordsPerPage);
 
-// Obtener registros para la página actual
+// Obtener registros agrupados por jugador
 $sql = "
     SELECT 
-        j.jugadorId, j.nombreJugador, j.apellidos, j.edad, 
-        IFNULL(a.cantidadAnotaciones, 0) AS cantidadAnotaciones
+        j.jugadorId, 
+        j.nombreJugador, 
+        j.apellidos, 
+        j.edad, 
+        IFNULL(SUM(a.cantidadAnotaciones), 0) AS cantidadAnotaciones
     FROM Jugadores j
     LEFT JOIN Anotaciones a ON j.jugadorId = a.jugadorId
     WHERE CONCAT(j.nombreJugador, ' ', j.apellidos) LIKE ?
+    GROUP BY j.jugadorId, j.nombreJugador, j.apellidos, j.edad
     LIMIT ? OFFSET ?
 ";
 $stmt = $conn->prepare($sql);
@@ -46,12 +50,16 @@ while ($row = $result->fetch_assoc()) {
         <td>" . htmlspecialchars($row['apellidos']) . "</td>
         <td>" . htmlspecialchars($row['edad']) . "</td>
         <td>" . htmlspecialchars($row['cantidadAnotaciones']) . "</td>
-        <td>
+        <td>";
+    // Mostrar botones solo para administradores
+    if (isset($_SESSION['rolId']) && $_SESSION['rolId'] == 1) { // 1 es el rolId del Administrador
+        echo "
             <button class='btn-agregar-goles btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Agregar Goles</button>
             <button class='btn-editar btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "' data-cantidad-anotaciones='" . htmlspecialchars($row['cantidadAnotaciones']) . "'>Editar</button>
             <button class='btn-borrar-anotacion btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Borrar</button>
-        </td>
-    </tr>";
+        ";
+    }
+    echo "</td></tr>";
 }
 
 // Generar los controles de paginación

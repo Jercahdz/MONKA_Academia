@@ -1,4 +1,5 @@
 <?php
+session_start();
 include("../conexion.php");
 
 // Parámetros para la paginación
@@ -65,11 +66,15 @@ while ($row = $result->fetch_assoc()) {
             <td>" . htmlspecialchars($row['edad']) . "</td>
             <td>" . htmlspecialchars($row['dorsal']) . "</td>
             <td>" . htmlspecialchars($row['pieHabil'] ?: 'Desconocido') . "</td>
-            <td>
+            <td>";
+    // Mostrar botones solo para administradores
+    if (isset($_SESSION['rolId']) && $_SESSION['rolId'] == 1) { // 1 es el rolId del Administrador
+        echo "
                 <button class='btn-ver-detalles btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Ver Detalles</button>
                 <button class='btn-editar btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Editar</button>
-            </td>
-          </tr>";
+        ";
+    }
+    echo "</td></tr>";
 }
 
 // Generar los controles de paginación

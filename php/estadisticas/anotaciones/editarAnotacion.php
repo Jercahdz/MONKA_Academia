@@ -10,10 +10,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ii", $cantidadGoles, $jugadorId);
 
-    if ($stmt->execute()) {
-        echo "Anotación actualizada exitosamente";
-    } else {
-        echo "Error al actualizar la anotación: " . $conn->error;
+    if (!$stmt->execute()) {
+        error_log("Error al actualizar la anotación: " . $stmt->error);
     }
 
     $stmt->close();

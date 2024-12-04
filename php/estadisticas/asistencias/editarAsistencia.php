@@ -9,10 +9,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("ii", $cantidadAsistencias, $jugadorId);
 
-    if ($stmt->execute()) {
-        echo "Asistencia actualizada exitosamente";
-    } else {
-        echo "Error al actualizar la asistencia: " . $conn->error;
+    if (!$stmt->execute()) {
+        error_log("Error al actualizar la asistencia: " . $conn->error);
     }
 
     $stmt->close();

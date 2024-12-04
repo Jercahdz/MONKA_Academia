@@ -11,10 +11,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("iii", $tarjetasAmarillas, $tarjetasRojas, $jugadorId);
 
-    if ($stmt->execute()) {
-        echo "Sanción actualizada exitosamente";
-    } else {
-        echo "Error al actualizar la sanción: " . $conn->error;
+    if (!$stmt->execute()) {
+        error_log("Error al actualizar la sanción: " . $conn->error);
     }
 
     $stmt->close();

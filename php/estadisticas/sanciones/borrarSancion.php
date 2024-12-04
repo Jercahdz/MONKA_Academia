@@ -9,10 +9,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("i", $jugadorId);
 
-    if ($stmt->execute()) {
-        echo "Se eliminaron con éxito las sanciones del jugador";
-    } else {
-        echo "Error al actualizar las sanciones: " . $conn->error;
+    if (!$stmt->execute()) {
+        error_log("Error al actualizar las sanciones: " . $conn->error);
     }
 
     $stmt->close();

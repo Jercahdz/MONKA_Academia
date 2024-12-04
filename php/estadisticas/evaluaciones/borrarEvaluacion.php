@@ -10,7 +10,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $stmt->bind_param("i", $jugadorId);
 
     if (!$stmt->execute()) {
-        echo "Error al eliminar la evaluación: " . $conn->error;
+        error_log("Error al eliminar la evaluación: " . $conn->error);
     }
 
     $stmt->close();
