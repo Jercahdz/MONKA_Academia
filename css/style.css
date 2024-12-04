@@ -3802,3 +3802,207 @@ Graficos
         padding: 10px;
     }
 }
+
+
+/* ==========================
+
+/* MODALES */
+
+/* Estilo para el Encabezado del Modal */
+.modal-estilo .modal-header {
+	background-color: #115959; /* Verde oscuro */
+	color: white;
+  }
+  
+  .modal-estilo .modal-title {
+	margin: 0;
+	font-weight: bold;
+  }
+  
+  .modal-estilo .close {
+	color: white;
+  }
+  
+  /* Estilo para el Cuerpo del Modal */
+  .modal-estilo .modal-body {
+	background-color: #f8f8f8; /* Gris claro */
+	color: #333; /* Gris oscuro */
+  }
+  
+  .modal-estilo .form-group label {
+	color: #115959; /* Verde oscuro */
+	font-weight: bold;
+  }
+  
+  .modal-estilo .form-control {
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	padding: 6px;
+  }
+  
+  /* Botón Guardar Cambios */
+  .modal-estilo .boton-guardar {
+	background-color: #115959; /* Verde oscuro */
+	color: white;
+	border: none;
+	padding: 6px;
+	font-size: 16px;
+	border-radius: 5px;
+	transition: background-color 0.3s ease;
+  }
+  
+  .modal-estilo .boton-guardar:hover {
+	background-color: #0e4949; /* Verde más oscuro */
+  }
+  
+  /* Estilo para el Pie del Modal */
+  .modal-estilo .modal-footer {
+	background-color: #115959; /* Verde oscuro */
+  }
+  
+  .modal-estilo .boton-cerrar {
+	background-color: #ffffff; /* Blanco */
+	color: #115959; /* Verde oscuro */
+	border: none;
+	padding: 10px;
+	font-size: 16px;
+	border-radius: 5px;
+  }
+  
+  .modal-estilo .boton-cerrar:hover {
+	background-color: #d9d9d9; /* Gris claro */
+	color: #0e4949; /* Verde más oscuro */
+  }
+
+  /* MODAL VER DETALLES */
+
+  /* Estilo para las filas del cuerpo del modal */
+.detalle-par {
+	background-color: #ffffff; /* Blanco */
+	padding: 10px;
+	border-radius: 5px;
+	margin-bottom: 10px;
+  }
+  
+  .detalle-par.alterno {
+	background-color: #e7f6f5; /* Verde claro */
+  }
+  
+  .detalle-par strong {
+	color: #115959; /* Verde oscuro */
+	font-weight: bold;
+  }
+
+  
+  /* x de los modales */
+
+/* Estilo para la 'X' (botón de cierre) */
+.modal-header .close {
+	font-size: 1.5rem; /* Tamaño de la 'X' */
+	line-height: 1; /* Ajusta el alineamiento */
+	color: white; /* Color de la 'X' */
+	background-color: transparent; /* Sin fondo */
+	border: none; /* Sin bordes */
+	position: absolute; /* Posición absoluta */
+	top: 15px; /* Ajusta la posición vertical */
+	right: 15px; /* Ajusta la posición horizontal */
+	width: 40px; /* Aumenta el área clickeable */
+	height: 40px; /* Aumenta el área clickeable */
+	display: flex; /* Centra el contenido */
+	align-items: center; /* Centra verticalmente */
+	justify-content: center; /* Centra horizontalmente */
+	border-radius: 50%; /* Hace que el área sea circular */
+	transition: background-color 0.3s ease; /* Efecto suave al hover */
+  }
+  
+  /* Efecto hover para el botón de cierre */
+  .modal-header .close:hover {
+	background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente al hover */
+	cursor: pointer; /* Cambia el cursor al hover */
+  }
+
+  /* modal de anotaciones */
+
+  /* Botones del Modal */
+.modal-estilo .botonModal {
+	background-color: #115959; /* Verde oscuro */
+	color: white;
+	border: none;
+	padding: 10px;
+	font-size: 16px;
+	border-radius: 5px;
+	width: 100%; /* Botón ancho */
+	transition: background-color 0.3s ease;
+  }
+  
+  .modal-estilo .botonModal:hover {
+	background-color: #0e4949; /* Verde más oscuro */
+  }
+
+
+/* Estilo adicional específico para botones de guardar cambios */
+.modal-estilo .guardar-btn {
+	background-color: #115959; /* Verde oscuro */
+	color: white; /* Texto blanco */
+	border: none;
+	padding: 10px;
+	font-size: 16px;
+	border-radius: 5px;
+	width: 100%; /* Botón ancho */
+	transition: background-color 0.3s ease;
+  }
+  
+  .modal-estilo .guardar-btn:hover {
+	background-color: #0e4949; /* Verde más oscuro */
+  }
+
+  /*Modal eliminar anotaciones*/
+
+ /* Encabezado y Pie del Modal en Rojo */
+.modal-estilo-rojo .modal-header,
+.modal-estilo-rojo .modal-footer {
+  background-color: #c15700; /* Rojo intenso */
+  color: white; /* Texto blanco */
+}
+
+/* Botón Cancelar (Estilo Diferenciado) */
+.modal-estilo-rojo .cancelar-btn {
+  background-color: #ffffff; /* Blanco */
+  color: #d9534f; /* Rojo intenso */
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.modal-estilo-rojo .cancelar-btn:hover {
+  background-color: #f7e2e2; /* Rojo muy claro */
+  color: #c9302c; /* Rojo más oscuro */
+}
+
+/* Botón Eliminar (Color Más Oscuro) */
+.modal-estilo-rojo .eliminar-btn {
+  background-color: #c9302c; /* Rojo oscuro */
+  color: white; /* Texto blanco */
+  border: none;
+  padding: 10px;
+  font-size: 16px;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.modal-estilo-rojo .eliminar-btn:hover {
+  background-color: #a72820; /* Rojo aún más oscuro */
+}
+
+/* Espaciado entre botones */
+.modal-estilo-rojo .modal-footer .btn {
+  margin: 0 5px; /* Añade espacio entre botones */
+}
+
+ /**/
+
+  
+  
+

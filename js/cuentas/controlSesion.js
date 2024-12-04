@@ -13,14 +13,20 @@ document.addEventListener('DOMContentLoaded', function () {
             const response = xhr.responseText.trim().split(', ');
             const userName = response[0]; // Nombre del usuario
             const status = response[1];  // Estado de conexión
+            const rolId = parseInt(response[2]); // Rol del usuario
 
-            // Actualizar la interfaz según el estado
+            // Actualizar la interfaz según el estado y el rol
             userNameElement.textContent = userName;
 
             if (status === 'Conectado') {
                 logoutOption.style.display = 'block';
                 loginOption.style.display = 'none';
-                registroLink.style.display = 'block';
+
+                if (rolId === 1) { // Mostrar "Registro de Jugadores" solo si es admin
+                    registroLink.style.display = 'block';
+                } else {
+                    registroLink.style.display = 'none';
+                }
             } else {
                 userNameElement.textContent = 'Invitado';
                 logoutOption.style.display = 'none';

@@ -17,9 +17,9 @@ $stmt = $conn->prepare($sql);
 $stmt->bind_param("sssiss", $nombreJugador, $apellidos, $edad, $dorsal, $pieHabil, $jugadorId);
 
 if ($stmt->execute()) {
-    echo "Jugador actualizado con éxito";  // Mensaje simple de éxito
+    echo "Jugador actualizado con éxito";  
 } else {
-    echo "Error al actualizar el jugador: " . $stmt->error;  // Mensaje de error detallado
+    echo "Error al actualizar el jugador: " . $stmt->error;  
 }
 
 $stmt->close();

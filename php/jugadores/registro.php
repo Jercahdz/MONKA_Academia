@@ -2,12 +2,10 @@
 session_start();
 include("../conexion.php");
 
-// Validacion 
-if (!isset($_SESSION['usuarioId']) ||!isset($_SESSION['rolId']) || $_SESSION['rolId']!= 1) {
-    echo "<script>alert('Solo los administradores pueden registrar jugadores.'); window.location.href = '../../login.html';</script>";
+if (!isset($_SESSION['usuarioId']) || !isset($_SESSION['rolId']) || $_SESSION['rolId'] != 1) {
+    header("Location: ../../login.html");
     exit();
 }
-
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $nombreJugador = $_POST['nombre'];
@@ -16,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $posicion = $_POST['posicion'];
     $dorsal = $_POST['dorsal'];
     $pieHabil = $_POST['pieHabil'];
-    $categoriaId = $_POST['categoria']; // El valor ya será 1, 2 o 3 según el dropdown
+    $categoriaId = $_POST['categoria'];
 
     // Validaciones básicas
     if (empty($nombreJugador) || strlen($nombreJugador) > 50) {

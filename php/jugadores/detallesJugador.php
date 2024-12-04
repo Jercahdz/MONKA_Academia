@@ -28,7 +28,7 @@ if ($jugadorId > 0) {
     // Verificar si se encontraron resultados
     if ($result->num_rows > 0) {
         $jugador = $result->fetch_assoc();
-        echo json_encode($jugador); // Enviar los datos en formato JSON
+        echo json_encode($jugador); 
     } else {
         echo json_encode(["error" => "Jugador no encontrado."]);
     }
