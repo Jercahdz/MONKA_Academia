@@ -1645,7 +1645,7 @@ td.tw10 {
 	-webkit-transition: all ease .25s;
 	transition: all ease .25s;
 	width: 100%;
-	color: #115959;
+	color: #ffffff;
 }
 
 .w-item a .project-info .project-icon .fa {
@@ -3598,64 +3598,66 @@ h4 {
 	padding: 20px;
 }
 
-/* Título */
-.monka-estadisticas-titulo {
-	text-align: center;
-	margin-bottom: 30px;
-	font-size: 24px;
-	font-weight: bold;
-	color: #333;
-}
-
-/* Contenedor de botones */
 .monka-botones-grid {
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	gap: 20px;
-	width: 100%;
-	max-width: 800px;
+	grid-template-columns: repeat(2, 1fr);
+	gap: 30px; /* Ajusta este valor para cambiar la separación entre botones */
 }
 
-/* Estilo base de botón cuadrado */
+/* AQUÍ ESTÁN LOS PUNTOS CLAVE PARA AJUSTAR TAMAÑO */
 .monka-boton-estadistica {
-	width: 350px;  /* Ancho que puedes ajustar */
-    height: 250px; /* Altura que puedes ajustar */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+	/* Ajusta HEIGHT para cambiar altura */
+	height: 300px; /* Valor default que puedes modificar */
+	
+	/* Ajusta WIDTH para cambiar ancho */
+	width: 400px; /* Valor default que puedes modificar */
+	
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	text-decoration: none;
-	font-weight: bold;
-	text-transform: uppercase;
-	color: white;
+	background-color: white;
 	border-radius: 15px;
-	transition: all 0.3s ease;
-	aspect-ratio: 1 / 1;
-	/* Mantiene la proporción cuadrada */
 	text-align: center;
-	padding: 0px;
-	box-shadow: 0 4px 6px rgba(255, 255, 255, 0.1);
+	transition: all 0.3s ease;
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+	position: relative;
+	overflow: hidden;
 }
 
-.monka-boton-estadistica:hover {
-	transform: scale(1.05);
-	box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+.monka-boton-estadistica .boton-icono {
+	margin-bottom: 15px;
+	color: #32a4a4;
+	transition: transform 0.3s ease;
+}
+
+.monka-boton-estadistica:hover .boton-icono {
+	transform: scale(1.1);
+}
+
+.monka-boton-estadistica .boton-texto {
+	font-weight: 600;
+	color: #333;
+	font-size: 1.1rem;
+	text-transform: uppercase;
+	letter-spacing: 1px;
 }
 
 /* Colores específicos para cada botón */
-.monka-btn-anotaciones {
-	background-color: #32a4a4;
-}
+.monka-btn-anotaciones { border-top: 5px solid #32a4a4; }
+.monka-btn-asistencias { border-top: 5px solid #4a90e2; }
+.monka-btn-sanciones { border-top: 5px solid #e74c3c; }
+.monka-btn-evaluaciones { border-top: 5px solid #f39c12; }
 
-.monka-btn-asistencias {
-	background-color: #32a4a4;
-}
-
-.monka-btn-sanciones {
-	background-color: #32a4a4;
-}
-
-.monka-btn-evaluaciones {
-	background-color: #32a4a4;
+/* Responsive */
+@media (max-width: 768px) {
+	.monka-botones-grid {
+		grid-template-columns: 1fr;
+	}
+	.monka-boton-estadistica {
+		width: 100%; /* Botones full width en móviles */
+	}
 }
 
 /* ==========================

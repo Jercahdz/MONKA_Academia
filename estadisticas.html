@@ -8,7 +8,7 @@
 	<meta charset="utf-8">
 	<!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Pro Soccer - Football Club Template</title>
+	<title>MONKÁ - Estadisticas</title>
 	<meta name="description"
 		content="Pro Soccer - Football Club Template. It is built using bootstrap 3.3.2 framework, works totally responsive, easy to customise, well commented codes and seo friendly.">
 	<meta name="keywords" content="prosoccer, football, club, soccer, bootstrap">
@@ -35,6 +35,8 @@
 		Google Fonts
 		=============================================== -->
 	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
 
 	<!-- ==============================================
 		Custom Stylesheet
@@ -44,13 +46,15 @@
 	<!-- ==============================================
 		JavaScript
 		=============================================== -->
-		<script type="text/javascript" src="js/modernizr.min.js"></script>
-		
-		<script src="js/estadisticas/estadisticas.js"></script>
-		<script src="js/estadisticas/Anotaciones.js"></script>
-		<script src="js/estadisticas/Asistencias.js"></script>
-		<script src="js/estadisticas/Sanciones.js"></script>
-		<script src="js/estadisticas/Evaluaciones.js"></script>
+	<script type="text/javascript" src="js/modernizr.min.js"></script>
+
+	<script src="js/estadisticas/estadisticas.js"></script>
+	<script src="js/estadisticas/Anotaciones.js"></script>
+	<script src="js/estadisticas/Asistencias.js"></script>
+	<script src="js/estadisticas/Sanciones.js"></script>
+	<script src="js/estadisticas/Evaluaciones.js"></script>
+	<script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
 
 </head>
 
@@ -61,67 +65,61 @@
 		<div class="loader"></div>
 	</div>
 
-		<!-- NAVBAR SECTION -->
-		<div class="navbar navbar-main navbar-fixed-top">
-			<div class="header-top">
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
-
-						</div>
+	<!-- NAVBAR SECTION -->
+	<div class="navbar navbar-main navbar-fixed-top">
+		<div class="header-top">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
 
 					</div>
-				</div>
-			</div>
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target=".navbar-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index.html"><img src="images/escudo.png"
-							alt /></a>
 
 				</div>
-				<nav class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="index.html">INICIO</a></li>
-						<li><a href="about.html">SOBRE NOSOTROS</a></li>
-						<li><a href="categoria.html">CATEGORIA</a></li>
-						<li><a href="estadisticas.html">ESTADISITCAS</a></li>
-
-						<!-- User Status and Dropdown -->
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-								aria-haspopup="true"
-								aria-expanded="false" id="userName">
-								Invitado <span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu">
-								<li id="loginOption"><a href="login.html">Iniciar Sesión</a></li>
-								<!-- Enlace para cerrar sesión -->
-								<li id="logoutOption" style="display: none;">
-									<a href="#"
-										onclick="document.getElementById('logoutForm').submit();">Cerrar
-										Sesión</a>
-								</li>
-							</ul>
-						</li>
-
-						<li id="registroLink" style="display: none;"><a
-								href="registro.html">REGISTRO DE JUGADORES</a></li>
-					</ul>
-
-					<!-- Formulario de logout (oculto) -->
-					<form id="logoutForm" action="php/usuarios/cerrarSesion.php" method="POST"
-						style="display: none;">
-						<input type="hidden" name="logout" value="true">
-					</form>
-				</nav>
 			</div>
 		</div>
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html"><img src="images/escudo.png" alt /></a>
+
+			</div>
+			<nav class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="index.html">INICIO</a></li>
+					<li><a href="about.html">SOBRE NOSOTROS</a></li>
+					<li><a href="categoria.html">CATEGORIA</a></li>
+					<li><a href="estadisticas.html">ESTADISITCAS</a></li>
+
+					<!-- User Status and Dropdown -->
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false" id="userName">
+							Invitado <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li id="loginOption"><a href="login.html">Iniciar Sesión</a></li>
+							<!-- Enlace para cerrar sesión -->
+							<li id="logoutOption" style="display: none;">
+								<a href="#" onclick="document.getElementById('logoutForm').submit();">Cerrar
+									Sesión</a>
+							</li>
+						</ul>
+					</li>
+
+					<li id="registroLink" style="display: none;"><a href="registro.html">REGISTRO DE JUGADORES</a></li>
+				</ul>
+
+				<!-- Formulario de logout (oculto) -->
+				<form id="logoutForm" action="php/usuarios/cerrarSesion.php" method="POST" style="display: none;">
+					<input type="hidden" name="logout" value="true">
+				</form>
+			</nav>
+		</div>
+	</div>
 
 	<!-- BANNER -->
 	<div class="section subbanner">
@@ -134,112 +132,141 @@
 		</div>
 	</div>
 
-    <body>
-        <div class="monka-estadisticas-container">
-            <div class="monka-estadisticas-titulo">
-                Elige la estadística que deseas
-            </div>
-            <div class="monka-botones-grid">
-                <a href="anotaciones.html" class="monka-boton-estadistica monka-btn-anotaciones">
-                    Anotaciones
-                </a>
-                <a href="asistencias.html" class="monka-boton-estadistica monka-btn-asistencias">
-                    Asistencias
-                </a>
-                <a href="sanciones.html" class="monka-boton-estadistica monka-btn-sanciones">
-                    Sanciones
-                </a>
-                <a href="evaluaciones.html" class="monka-boton-estadistica monka-btn-evaluaciones">
-                    Evaluaciones
-                </a>
-            </div>
-        </div>
-    </body>
-
-
-    <!-- FOOTER SECTION -->
-		<div class="footer">
-
-			<div class="f-desc">
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-							<div class="footer-item">
-								<div class="footer-title">
-									<h4>ACERCA DEL EQUIPO</h4>
-								</div>
-								<p>Academia Monká | Comprometidos con la formación integral de jóvenes
-									talentos, fomentando
-									el desarrollo técnico, táctico y humano dentro y fuera del campo.
-									¡Unidos por el fútbol
-									y la pasión por el deporte!"</p>
-								<div class="footer-sosmed">
-									<a
-										href="https://www.facebook.com/profile.php?id=100076718043028&locale=es_LA"
-										title>
-										<div class="item">
-											<i class="fa fa-facebook"></i>
-										</div>
-									</a>
-									<a href="https://www.instagram.com/academia_de_futbol_monka/" title>
-										<div class="item">
-											<i class="fa fa-instagram"></i>
-										</div>
-
-									</div>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-								<div class="footer-item">
-									<div class="footer-title">
-										<h4>INFORMATION</h4>
-									</div>
-									<ul class="sitemap">
-										<li><a href="index.html" title>Inicio</a></li>
-										<li><a href="about.html" title>Sobre Nosotros</a></li>
-										<li><a href="categoria.html" title>Categoria</a></li>
-										<li><a href="gallery.html" title>Gallery</a></li>
-										<li><a href="estadisticas.html" title>Estadisticas</a></li>
-										<li><a href="registro.html" title>Reguistro</a></li>
-										<li><a href="login.html" title>Login</a></li>
-										<li><a href="faq.html" title>FAQs</a></li>
-
-									</ul>
-								</div>
-							</div>
-							<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-							</div>
-
-						</div>
+	<body>
+		<div class="monka-estadisticas-container">
+			<div class="monka-botones-grid">
+				<a href="anotaciones.html" class="monka-boton-estadistica monka-btn-anotaciones">
+					<div class="boton-icono">
+						<!-- Ícono de pelota de fútbol -->
+						<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+							<circle cx="12" cy="12" r="10"/>
+							<path d="M16 8l2.5-2.5"/>
+							<path d="M5.5 5.5L8 8"/>
+							<path d="M16 16l2.5 2.5"/>
+							<path d="M5.5 18.5L8 16"/>
+							<path d="M9 9h6v6H9z"/>
+							<path d="M3 12h18"/>
+						</svg>
 					</div>
-
-				</div>
-
-				<div class="fcopy">
-					<div class="container">
-						<div class="row">
-							<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-								<p class="ftex">&copy; 2015 Pro Soccer by Rudhi Sasmito - All Rights
-									Reserved</p>
-							</div>
-						</div>
+					<span class="boton-texto">Anotaciones</span>
+				</a>
+				<!-- Los otros botones permanecen igual -->
+				<a href="asistencias.html" class="monka-boton-estadistica monka-btn-asistencias">
+					<div class="boton-icono">
+						<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-users">
+							<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+							<circle cx="9" cy="7" r="4"/>
+							<path d="M22 21v-2a4 4 0 0 0-3-3.87"/>
+							<path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+						</svg>
 					</div>
-				</div>
-
+					<span class="boton-texto">Asistencias</span>
+				</a>
+				<a href="sanciones.html" class="monka-boton-estadistica monka-btn-sanciones">
+					<div class="boton-icono">
+						<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-alert-triangle">
+							<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/>
+							<path d="M12 9v4"/>
+							<path d="M12 17h.01"/>
+						</svg>
+					</div>
+					<span class="boton-texto">Sanciones</span>
+				</a>
+				<a href="evaluaciones.html" class="monka-boton-estadistica monka-btn-evaluaciones">
+					<div class="boton-icono">
+						<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-clipboard-list">
+							<rect width="8" height="4" x="8" y="2" rx="1"/>
+							<path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
+							<path d="M12 11h4"/>
+							<path d="M12 16h4"/>
+							<path d="M8 11h.01"/>
+							<path d="M8 16h.01"/>
+						</svg>
+					</div>
+					<span class="boton-texto">Evaluaciones</span>
+				</a>
 			</div>
-			<script type="text/javascript" src="js/jquery.min.js"></script>
-			<script type='text/javascript' src='js/jqBootstrapValidation.js'></script>
-			<script type="text/javascript" src="js/bootstrap.min.js"></script>
-			<script type="text/javascript" src="js/owl.carousel.min.js"></script>
-			<script type="text/javascript"
-				src="js/bootstrap-hover-dropdown.min.js"></script>
-			<script type="text/javascript"
-				src="js/jquery.magnific-popup.min.js"></script>
+		</div>
+	</body>
 
-			<script type="text/javascript" src="js/script.js"></script>
-			<script type="text/javascript" src="js/cuentas/controlSesion.js"></script>
-		</body>
+
+	<!-- FOOTER SECTION -->
+	<div class="footer">
+
+		<div class="f-desc">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+						<div class="footer-item">
+							<div class="footer-title">
+								<h4>ACERCA DEL EQUIPO</h4>
+							</div>
+							<h5><strong>Academia Monká</strong></h5>
+							<p>Comprometidos con la formación integral de jóvenes talentos, fomentando
+								el desarrollo técnico, táctico y humano dentro y fuera del campo. ¡Unidos por el fútbol
+								y la pasión por el deporte!</p>
+							<div class="footer-sosmed">
+								<a href="https://www.facebook.com/profile.php?id=100076718043028&locale=es_LA" title="">
+									<div class="item">
+										<i class="fa fa-facebook"></i>
+									</div>
+								</a>
+								<a href="https://www.instagram.com/academia_de_futbol_monka/" title="">
+									<div class="item">
+										<i class="fa fa-instagram"></i>
+									</div>
+								</a>
+
+							</div>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+						<div class="footer-item">
+							<div class="footer-title">
+								<h4>INFORMACION</h4>
+							</div>
+							<ul class="sitemap">
+								<li><a href="index.html" title="">Inicio</a></li>
+								<li><a href="about.html" title="">Sobre Nosotros</a></li>
+								<li><a href="categoria.html" title="">Categoría</a></li>
+								<li><a href="estadisticas.html" title="">Estadísticas</a></li>
+								<li><a href="login.html" title="">Login</a></li>
+
+							</ul>
+						</div>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+					</div>
+
+				</div>
+			</div>
+
+		</div>
+
+		<div class="fcopy">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<p class="ftex">&copy; 2024 Monká Academia - Derechos Reservados</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	</div>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type='text/javascript' src='js/jqBootstrapValidation.js'></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/owl.carousel.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-hover-dropdown.min.js"></script>
+	<script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
+
+	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript" src="js/cuentas/controlSesion.js"></script>
+</body>
 
 </html>

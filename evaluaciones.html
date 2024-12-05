@@ -8,7 +8,7 @@
 	<meta charset="utf-8">
 	<!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Pro Soccer - Football Club Template</title>
+	<title>MONKÁ - Evaluaciones</title>
 	<meta name="description"
 		content="Pro Soccer - Football Club Template. It is built using bootstrap 3.3.2 framework, works totally responsive, easy to customise, well commented codes and seo friendly.">
 	<meta name="keywords" content="prosoccer, football, club, soccer, bootstrap">
@@ -186,7 +186,7 @@
 				</div>
 				<!-- Pie del Modal -->
 				<div class="modal-footer">
-					
+
 				</div>
 			</div>
 		</div>
@@ -219,7 +219,7 @@
 				</div>
 				<!-- Pie del Modal -->
 				<div class="modal-footer">
-					
+
 				</div>
 			</div>
 		</div>
@@ -255,7 +255,10 @@
 	<div class="section stat-client p-main bg-client">
 		<div class="container">
 			<div class="row">
-
+				<div class="page-title">
+					<h2 class="lead">PATROCINADORES</h2>
+					<div class="border-style"></div>
+				</div>
 				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
 					<div class="client-img">
 						<img src="images/sponsor1.jpg" alt class="img-responsive" />
@@ -307,21 +310,21 @@
 							<div class="footer-title">
 								<h4>ACERCA DEL EQUIPO</h4>
 							</div>
-							<p>Academia Monká | Comprometidos con la formación integral de jóvenes
-								talentos, fomentando
-								el desarrollo técnico, táctico y humano dentro y fuera del campo.
-								¡Unidos por el fútbol
-								y la pasión por el deporte!"</p>
+							<h5><strong>Academia Monká</strong></h5>
+							<p>Comprometidos con la formación integral de jóvenes talentos, fomentando
+								el desarrollo técnico, táctico y humano dentro y fuera del campo. ¡Unidos por el fútbol
+								y la pasión por el deporte!</p>
 							<div class="footer-sosmed">
-								<a href="https://www.facebook.com/profile.php?id=100076718043028&locale=es_LA" title>
+								<a href="https://www.facebook.com/profile.php?id=100076718043028&locale=es_LA" title="">
 									<div class="item">
 										<i class="fa fa-facebook"></i>
 									</div>
 								</a>
-								<a href="https://www.instagram.com/academia_de_futbol_monka/" title>
+								<a href="https://www.instagram.com/academia_de_futbol_monka/" title="">
 									<div class="item">
 										<i class="fa fa-instagram"></i>
 									</div>
+								</a>
 
 							</div>
 						</div>
@@ -331,17 +334,14 @@
 					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
 						<div class="footer-item">
 							<div class="footer-title">
-								<h4>INFORMATION</h4>
+								<h4>INFORMACION</h4>
 							</div>
 							<ul class="sitemap">
-								<li><a href="index.html" title>Inicio</a></li>
-								<li><a href="about.html" title>Sobre Nosotros</a></li>
-								<li><a href="categoria.html" title>Categoria</a></li>
-								<li><a href="gallery.html" title>Gallery</a></li>
-								<li><a href="estadisticas.html" title>Estadisticas</a></li>
-								<li><a href="registro.html" title>Reguistro</a></li>
-								<li><a href="login.html" title>Login</a></li>
-								<li><a href="faq.html" title>FAQs</a></li>
+								<li><a href="index.html" title="">Inicio</a></li>
+								<li><a href="about.html" title="">Sobre Nosotros</a></li>
+								<li><a href="categoria.html" title="">Categoría</a></li>
+								<li><a href="estadisticas.html" title="">Estadísticas</a></li>
+								<li><a href="login.html" title="">Login</a></li>
 
 							</ul>
 						</div>
@@ -358,14 +358,42 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<p class="ftex">&copy; 2015 Pro Soccer by Rudhi Sasmito - All Rights
-							Reserved</p>
+						<p class="ftex">&copy; 2024 Monká Academia - Derechos Reservados</p>
 					</div>
 				</div>
 			</div>
 		</div>
 
 	</div>
+
+	</div>
+
+	<!-- Botón flotante -->
+	<button class="chat-button" id="chatButton">
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+			stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path
+				d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+		</svg>
+	</button>
+
+	<!-- Contenedor del chat -->
+	<div class="chat-container" id="chatContainer">
+		<div class="chat-header">
+			<h3>Chat de Soporte</h3>
+			<button class="close-chat" id="closeChat">×</button>
+		</div>
+		<div class="chat-messages" id="chatMessages">
+			<div class="message bot-message">
+				¡Hola! ¿En qué puedo ayudarte?
+			</div>
+		</div>
+		<div class="chat-input">
+			<input type="text" placeholder="Escribe un mensaje..." id="messageInput">
+			<button id="sendMessage">Enviar</button>
+		</div>
+	</div>
+
 	<script type="text/javascript" src="js/jquery.min.js"></script>
 	<script type='text/javascript' src='js/jqBootstrapValidation.js'></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
