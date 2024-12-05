@@ -19,7 +19,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(135deg, rgba(17, 89, 89, 0.1) 0%, rgba(17, 89, 89, 0.3) 100%), url('../images/fondoLogin5.jpeg') no-repeat center center fixed;
+    background: linear-gradient(135deg, rgba(17, 89, 89, 0.1) 0%, rgba(17, 89, 89, 0.3) 100%), url('../images/fondoLogin.jpeg') no-repeat center center fixed;
     background-size: cover;
     padding: 20px;
     background-color: var(--primary-color);
