@@ -3049,7 +3049,7 @@ Responsiveness
 /* Cabecera de las tablas */
 .table {
     border-collapse: collapse;
-    width: 100%;
+    width: 95%;
     margin: 0 auto;
 }
 
@@ -3113,9 +3113,7 @@ Responsiveness
 
 /* Selector de categoría */
 #selector-categoria {
-    background-color: #115959; /* Fondo similar al botón */
-    border: 1px solid #115959; /* Borde igual al fondo */
-    border-radius: 4px; /* Bordes redondeados como el botón */
+    border-radius: 41px; /* Bordes redondeados como el botón */
     color: #ffffff; /* Texto blanco */
     padding: 10px 20px; /* Más espacio interno para mayor comodidad */
     font-size: 16px; /* Texto un poco más grande */
@@ -3129,10 +3127,13 @@ Responsiveness
     letter-spacing: 1px; /* Espaciado entre letras para un diseño más estilizado */
 }
 
+#selector-categoria option {
+    text-align: center; /* Asegura que las opciones estén centradas */
+}
+
 #selector-categoria:hover {
     background-color: #1a4747; /* Fondo más oscuro en hover */
     color: #ffffff; /* Mantener texto blanco */
-    transform: scale(1.05); /* Efecto de aumento al pasar el cursor */
     border-color: #1a4747; /* Cambiar borde al color del hover */
 }
 
