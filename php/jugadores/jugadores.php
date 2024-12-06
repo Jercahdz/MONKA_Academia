@@ -58,24 +58,39 @@ if ($categoria !== 'todos') {
 $stmt->execute();
 $result = $stmt->get_result();
 
+// Generar el encabezado de la tabla
+echo '<thead class="thead-dark">';
+echo '<tr>
+        <th>Nombre</th>
+        <th>Apellidos</th>
+        <th>Edad</th>
+        <th>Dorsal</th>
+        <th>Pie Hábil</th>';
+if (isset($_SESSION['rolId']) && $_SESSION['rolId'] == 1) { // Mostrar columna de acciones para administradores
+    echo '<th>Acciones</th>';
+}
+echo '</tr>';
+echo '</thead>';
+
 // Generar las filas de la tabla
+echo '<tbody>';
 while ($row = $result->fetch_assoc()) {
     echo "<tr>
             <td>" . htmlspecialchars($row['nombreJugador']) . "</td>
             <td>" . htmlspecialchars($row['apellidos']) . "</td>
             <td>" . htmlspecialchars($row['edad']) . "</td>
             <td>" . htmlspecialchars($row['dorsal']) . "</td>
-            <td>" . htmlspecialchars($row['pieHabil'] ?: 'Desconocido') . "</td>
-            <td>";
-    // Mostrar botones solo para administradores
-    if (isset($_SESSION['rolId']) && $_SESSION['rolId'] == 1) { // 1 es el rolId del Administrador
+            <td>" . htmlspecialchars($row['pieHabil'] ?: 'Desconocido') . "</td>";
+    if (isset($_SESSION['rolId']) && $_SESSION['rolId'] == 1) { // Botones solo para administradores
         echo "
+            <td>
                 <button class='btn-ver-detalles btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Ver Detalles</button>
                 <button class='btn-editar btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Editar</button>
-        ";
+            </td>";
     }
-    echo "</td></tr>";
+    echo "</tr>";
 }
+echo '</tbody>';
 
 // Generar los controles de paginación
 echo '<tr><td colspan="6"><nav><ul class="pagination justify-content-center">';

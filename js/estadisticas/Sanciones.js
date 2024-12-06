@@ -3,17 +3,36 @@ document.addEventListener("DOMContentLoaded", function () {
     let searchTerm = '';
     let currentPage = 1;
 
-    // Función para recargar la tabla
     function recargarTablaSanciones(search = '', page = 1) {
         const url = `php/estadisticas/sanciones/sanciones.php?search=${encodeURIComponent(search)}&page=${page}`;
-
+    
         fetch(url)
             .then(response => response.text())
             .then(data => {
-                document.getElementById('tabla-sanciones').innerHTML = data;
-
-                // Reasignar eventos de paginación
-                document.querySelectorAll('.pagination a').forEach(link => {
+                // Crear un contenedor temporal para procesar la tabla
+                const tempDiv = document.createElement("div");
+                tempDiv.innerHTML = data;
+    
+                // Extraer y reemplazar el contenido del thead y tbody
+                const newThead = tempDiv.querySelector("thead");
+                const newTbody = tempDiv.querySelector("tbody");
+    
+                if (newThead) {
+                    const theadElement = document.getElementById("tabla-cabecera-sanciones");
+                    theadElement.innerHTML = newThead.innerHTML;
+    
+                    // Asegurar que la clase thead-dark esté aplicada
+                    if (!theadElement.classList.contains("thead-dark")) {
+                        theadElement.classList.add("thead-dark");
+                    }
+                }
+                if (newTbody) {
+                    document.getElementById("tabla-sanciones").innerHTML = newTbody.innerHTML;
+                }
+    
+                // Reasignar eventos de paginación después de recargar
+                const paginacionLinks = document.querySelectorAll('.pagination a');
+                paginacionLinks.forEach(link => {
                     link.addEventListener("click", function (e) {
                         e.preventDefault();
                         currentPage = this.getAttribute("data-page");
@@ -23,9 +42,8 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .catch(error => console.error("Error al recargar la tabla:", error));
     }
-
-    // Llamada inicial
-    recargarTablaSanciones();
+    
+    recargarTablaAnotaciones(searchTerm, currentPage);
 
     // Búsqueda
     document.getElementById("searchInput").addEventListener("input", function (e) {

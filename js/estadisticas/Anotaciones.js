@@ -7,12 +7,31 @@ document.addEventListener("DOMContentLoaded", function () {
     // Función para recargar la tabla
     function recargarTablaAnotaciones(search = '', page = 1) {
         const url = `php/estadisticas/anotaciones/anotaciones.php?search=${encodeURIComponent(search)}&page=${page}`;
-
+    
         fetch(url)
             .then(response => response.text())
             .then(data => {
-                document.getElementById('tabla-anotaciones').innerHTML = data;
-
+                // Crear un contenedor temporal para procesar la tabla
+                const tempDiv = document.createElement("div");
+                tempDiv.innerHTML = data;
+    
+                // Extraer y reemplazar solo el contenido del thead y tbody
+                const newThead = tempDiv.querySelector("thead");
+                const newTbody = tempDiv.querySelector("tbody");
+    
+                if (newThead) {
+                    const theadElement = document.getElementById("tabla-cabecera");
+                    theadElement.innerHTML = newThead.innerHTML;
+    
+                    // Asegurar que la clase thead-dark esté aplicada
+                    if (!theadElement.classList.contains("thead-dark")) {
+                        theadElement.classList.add("thead-dark");
+                    }
+                }
+                if (newTbody) {
+                    document.getElementById("tabla-anotaciones").innerHTML = newTbody.innerHTML;
+                }
+    
                 // Reasignar los eventos de paginación después de recargar
                 const paginacionLinks = document.querySelectorAll('.pagination a');
                 paginacionLinks.forEach(link => {
@@ -24,7 +43,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 });
             })
             .catch(error => console.error("Error al recargar la tabla:", error));
-    }
+    }    
 
     // Llamada inicial para cargar la tabla
     recargarTablaAnotaciones(searchTerm, currentPage);

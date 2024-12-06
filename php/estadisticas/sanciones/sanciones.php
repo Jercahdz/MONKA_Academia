@@ -41,25 +41,40 @@ $stmt->bind_param("sii", $searchParam, $recordsPerPage, $offset);
 $stmt->execute();
 $result = $stmt->get_result();
 
-// Generar filas de la tabla
+// Generar el encabezado de la tabla
+echo '<thead class="thead-dark">';
+echo '<tr>
+    <th>Nombre</th>
+    <th>Apellidos</th>
+    <th>Edad</th>
+    <th>Rojas</th>
+    <th>Amarillas</th>';
+if (isset($_SESSION['rolId']) && $_SESSION['rolId'] == 1) {
+    echo '<th>Acciones</th>';
+}
+echo '</tr>';
+echo '</thead>';
+
+// Generar las filas de la tabla
+echo '<tbody>';
 while ($row = $result->fetch_assoc()) {
     echo "<tr>
         <td>" . htmlspecialchars($row['nombreJugador']) . "</td>
         <td>" . htmlspecialchars($row['apellidos']) . "</td>
         <td>" . htmlspecialchars($row['edad']) . "</td>
         <td>" . htmlspecialchars($row['rojas']) . "</td>
-        <td>" . htmlspecialchars($row['amarillas']) . "</td>
-        <td>";
-    // Mostrar botones solo para administradores
-    if (isset($_SESSION['rolId']) && $_SESSION['rolId'] == 1) { // 1 es el rolId del Administrador
+        <td>" . htmlspecialchars($row['amarillas']) . "</td>";
+    if (isset($_SESSION['rolId']) && $_SESSION['rolId'] == 1) {
         echo "
+        <td>
             <button class='btn-agregar-sancion btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Agregar Sanciones</button>
             <button class='btn-editar-sancion btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "' data-rojas='" . htmlspecialchars($row['rojas']) . "' data-amarillas='" . htmlspecialchars($row['amarillas']) . "'>Editar</button>
             <button class='btn-borrar-sancion btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Borrar</button>
-        ";
+        </td>";
     }
-    echo "</td></tr>";
+    echo "</tr>";
 }
+echo '</tbody>';
 
 // Generar paginación
 echo '<tr><td colspan="6"><nav><ul class="pagination justify-content-center">';

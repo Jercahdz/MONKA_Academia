@@ -3,14 +3,34 @@ document.addEventListener("DOMContentLoaded", function () {
     let searchTerm = '';
     let currentPage = 1;
 
+    // Función para recargar la tabla
     function recargarTablaEvaluaciones(search = '', page = 1) {
         const url = `php/estadisticas/evaluaciones/evaluaciones.php?search=${encodeURIComponent(search)}&page=${page}`;
-
+    
         fetch(url)
             .then(response => response.text())
             .then(data => {
-                document.getElementById('tabla-evaluaciones').innerHTML = data;
-
+                // Crear un contenedor temporal para procesar la tabla
+                const tempDiv = document.createElement("div");
+                tempDiv.innerHTML = data;
+    
+                // Extraer y reemplazar solo el contenido del thead y tbody
+                const newThead = tempDiv.querySelector("thead");
+                const newTbody = tempDiv.querySelector("tbody");
+    
+                if (newThead) {
+                    const theadElement = document.getElementById("tabla-cabecera-evaluaciones");
+                    theadElement.innerHTML = newThead.innerHTML;
+    
+                    // Asegurar que la clase thead-dark esté aplicada
+                    if (!theadElement.classList.contains("thead-dark")) {
+                        theadElement.classList.add("thead-dark");
+                    }
+                }
+                if (newTbody) {
+                    document.getElementById("tabla-evaluaciones").innerHTML = newTbody.innerHTML;
+                }
+    
                 // Reasignar los eventos de paginación después de recargar
                 const paginacionLinks = document.querySelectorAll('.pagination a');
                 paginacionLinks.forEach(link => {
@@ -26,12 +46,14 @@ document.addEventListener("DOMContentLoaded", function () {
 
     recargarTablaEvaluaciones(searchTerm, currentPage);
 
+    // Asignar evento para la barra de búsqueda
     const searchInput = document.getElementById("searchInput");
     searchInput.addEventListener("input", function (e) {
         searchTerm = e.target.value;
         recargarTablaEvaluaciones(searchTerm, 1);
     });
 
+    // Delegación de eventos en la tabla
     document.getElementById("tabla-evaluaciones").addEventListener("click", function (event) {
         const target = event.target;
 

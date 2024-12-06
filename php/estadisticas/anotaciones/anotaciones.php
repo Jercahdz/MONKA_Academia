@@ -43,24 +43,39 @@ $stmt->bind_param("sii", $searchParam, $recordsPerPage, $offset);
 $stmt->execute();
 $result = $stmt->get_result();
 
+// Generar la cabecera de la tabla
+echo '<thead class="thead-dark">';
+echo '<tr>
+    <th>Nombre</th>
+    <th>Apellidos</th>
+    <th>Edad</th>
+    <th>Goles</th>';
+if (isset($_SESSION['rolId']) && $_SESSION['rolId'] == 1) {
+    echo '<th>Acciones</th>';
+}
+echo '</tr>';
+echo '</thead>';
+
 // Generar las filas de la tabla
+echo '<tbody>';
 while ($row = $result->fetch_assoc()) {
     echo "<tr>
         <td>" . htmlspecialchars($row['nombreJugador']) . "</td>
         <td>" . htmlspecialchars($row['apellidos']) . "</td>
         <td>" . htmlspecialchars($row['edad']) . "</td>
-        <td>" . htmlspecialchars($row['cantidadAnotaciones']) . "</td>
-        <td>";
-    // Mostrar botones solo para administradores
-    if (isset($_SESSION['rolId']) && $_SESSION['rolId'] == 1) { // 1 es el rolId del Administrador
+        <td>" . htmlspecialchars($row['cantidadAnotaciones']) . "</td>";
+    if (isset($_SESSION['rolId']) && $_SESSION['rolId'] == 1) {
         echo "
+        <td>
             <button class='btn-agregar-goles btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Agregar Goles</button>
             <button class='btn-editar btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "' data-cantidad-anotaciones='" . htmlspecialchars($row['cantidadAnotaciones']) . "'>Editar</button>
             <button class='btn-borrar-anotacion btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Borrar</button>
-        ";
+        </td>";
     }
-    echo "</td></tr>";
+    echo "</tr>";
 }
+echo '</tbody>';
+
 
 // Generar los controles de paginación
 echo '<tr><td colspan="5"><nav><ul class="pagination justify-content-center">';

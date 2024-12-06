@@ -3046,55 +3046,177 @@ Responsiveness
 
 
 /* Tablas */
+/* Cabecera de las tablas */
+.table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.thead-dark {
+    background-color: #000000;
+    color: #ffffff;    
+}
+
+.table th {
+    background-color: #000000;
+    color: #ffffff;
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap;
+    font-weight: bold;
+}
+.table td {
+    padding: 8px;
+    text-align: center;
+    vertical-align: middle; 
+    white-space: nowrap;
+}
+
+.table th:last-child, .table td:last-child {
+    width: 1%; 
+    white-space: nowrap; 
+}
 
 .table-responsive-xl {
-	max-width: 90%;
-	margin: 0 auto;
-	overflow-x: auto;
-	/* Habilitar desplazamiento horizontal en dispositivos más pequeños */
+    max-width: 100%;
+    margin: 0 auto;
+    overflow-x: auto; 
+    padding: 0; 
 }
 
 /* Botones en tablas */
 .btn-table {
-	background-color: #115959;
-	border-color: #115959;
-	border-radius: 3px;
-	color: #fff;
-	padding: 6px 10px;
-	font-weight: bold;
-	border: 1px solid transparent;
-	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
-	transition: all 0.3s ease;
+    background-color: #115959;
+    border-color: #115959;
+    border-radius: 4px;
+    color: #fff;
+    padding: 8px 12px;
+    font-size: 14px;
+    font-weight: bold;
+    border: 1px solid transparent;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); 
+    transition: all 0.3s ease;
+    white-space: nowrap; 
 }
 
 .btn-table:hover {
-	background-color: #1a4747;
-	color: #fff;
+    background-color: #1a4747;
+    color: #fff;
+    transform: scale(1.08); 
+}
+
+.btn-sm {
+    padding: 6px 10px; 
+    font-size: 13px;
 }
 
 /* Selector de categoría */
 #selector-categoria {
-	color: #000000;
-	border: 1px solid #d1e7e7;
-	border-radius: 5px;
-	padding: 8px 18px;
-	font-weight: bold;
-	font-size: 14px;
-	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
-	transition: all 0.3s ease;
-	cursor: pointer;
-	width: 200px;
+    background-color: #115959; /* Fondo similar al botón */
+    border: 1px solid #115959; /* Borde igual al fondo */
+    border-radius: 4px; /* Bordes redondeados como el botón */
+    color: #ffffff; /* Texto blanco */
+    padding: 10px 20px; /* Más espacio interno para mayor comodidad */
+    font-size: 16px; /* Texto un poco más grande */
+    font-weight: bold; /* Texto en negrita */
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra ligera */
+    transition: all 0.3s ease; /* Transición suave */
+    cursor: pointer;
+    width: 260px; /* Más ancho para acomodar texto largo */
+    text-align: center; /* Centrar el texto */
+    text-transform: uppercase; /* Convertir texto a mayúsculas para mayor impacto */
+    letter-spacing: 1px; /* Espaciado entre letras para un diseño más estilizado */
 }
 
 #selector-categoria:hover {
-	background-color: #b3cccc;
-	color: #000000;
-	border-color: #b3cccc;
+    background-color: #1a4747; /* Fondo más oscuro en hover */
+    color: #ffffff; /* Mantener texto blanco */
+    transform: scale(1.05); /* Efecto de aumento al pasar el cursor */
+    border-color: #1a4747; /* Cambiar borde al color del hover */
 }
 
 #selector-categoria:focus {
-	outline: none;
-	box-shadow: 0 0 5px rgba(209, 231, 231, 0.5);
+    outline: none; /* Quitar borde azul predeterminado */
+    box-shadow: 0 0 8px rgba(26, 71, 71, 0.5); /* Resaltar enfoque */
+    background-color: #1a4747; /* Mantener fondo oscuro en foco */
+    color: #ffffff; /* Mantener texto blanco */
+}
+
+/* Contenedor de la lista de jugadores */
+#lista-jugadores {
+    max-width: 500px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #ffffff; /* Fondo blanco */
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+}
+
+/* Título principal */
+#lista-jugadores h2 {
+    text-align: center;
+    color: #115959; /* Color verde oscuro */
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    position: relative;
+    font-size: 1.5rem; /* Tamaño grande */
+    font-weight: bold;
+    text-transform: uppercase; /* Texto en mayúsculas */
+    letter-spacing: 2px; /* Espaciado entre letras */
+}
+
+#lista-jugadores h2::before {
+    width: 50px;
+}
+
+#lista-jugadores h2::after {
+    width: 50px;
+    background-color: #32a4a4; /* Color verde claro */
+    bottom: -5px;
+}
+
+/* Subtítulo (Filtrar por Categoría) */
+#lista-jugadores h3 {
+    text-align: center;
+    color: #2c3e50; /* Color gris oscuro */
+    margin-bottom: 15px;
+    font-size: 1.1rem; /* Tamaño de texto moderado */
+    font-weight: bold;
+    text-transform: uppercase; /* Texto en mayúsculas */
+    letter-spacing: 1px; /* Espaciado entre letras */
+}
+
+/* Selector de categoría */
+#lista-jugadores #selector-categoria {
+	display: block; /* Hacer que el selector ocupe todo el ancho */
+	margin: 0 auto; /* Centrar el selector */
+	text-align: center; /* Centrar el texto */
+	background-color: #115959;
+	border: 1px solid #115959;
+	border-radius: 15px;
+	color: #ffffff;
+	padding: 10px 16px;
+	font-size: 12px;
+	font-weight: bold;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+	transition: all 0.3s ease;
+	cursor: pointer;
+	text-transform: uppercase;
+	width: 260px; /* Ancho del selector */
+}
+
+#lista-jugadores #selector-categoria:hover {
+    background-color: #1a4747;
+    color: #ffffff;
+    border-color: #1a4747;
+}
+
+#lista-jugadores #selector-categoria:focus {
+    outline: none;
+    box-shadow: 0 0 8px rgba(26, 71, 71, 0.5);
+    background-color: #1a4747;
+    color: #ffffff;
 }
 
 /* ==========================
