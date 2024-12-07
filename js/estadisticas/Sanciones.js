@@ -1,141 +1,173 @@
+window.sancionesJsActiva = true;
+
 document.addEventListener("DOMContentLoaded", function () {
+    // Variables globales
     let jugadorId = null;
+    let sancionId = null;
     let searchTerm = '';
     let currentPage = 1;
 
-    function recargarTablaSanciones(search = '', page = 1) {
-        const url = `php/estadisticas/sanciones/sanciones.php?search=${encodeURIComponent(search)}&page=${page}`;
-    
-        fetch(url)
-            .then(response => response.text())
+    // Función para cargar los datos de la tabla
+    function cargarDatos(url, idTabla, search = '', page = 1) {
+        const fullUrl = `${url}?search=${encodeURIComponent(search)}&page=${page}`;
+        const tablaElement = document.getElementById(idTabla);
+
+        // Verificar si el elemento existe antes de manipularlo
+        if (!tablaElement) {
+            console.error(`No se encontró el contenedor con ID: ${idTabla}`);
+            return;
+        }
+
+        fetch(fullUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Error al obtener los datos de ${url}`);
+                }
+                return response.text();
+            })
             .then(data => {
-                // Crear un contenedor temporal para procesar la tabla
-                const tempDiv = document.createElement("div");
-                tempDiv.innerHTML = data;
-    
-                // Extraer y reemplazar el contenido del thead y tbody
-                const newThead = tempDiv.querySelector("thead");
-                const newTbody = tempDiv.querySelector("tbody");
-    
-                if (newThead) {
-                    const theadElement = document.getElementById("tabla-cabecera-sanciones");
-                    theadElement.innerHTML = newThead.innerHTML;
-    
-                    // Asegurar que la clase thead-dark esté aplicada
-                    if (!theadElement.classList.contains("thead-dark")) {
-                        theadElement.classList.add("thead-dark");
-                    }
-                }
-                if (newTbody) {
-                    document.getElementById("tabla-sanciones").innerHTML = newTbody.innerHTML;
-                }
-    
-                // Reasignar eventos de paginación después de recargar
-                const paginacionLinks = document.querySelectorAll('.pagination a');
+                tablaElement.innerHTML = data;
+
+                // Reasignar eventos a los enlaces de paginación
+                const paginacionLinks = tablaElement.querySelectorAll('.pagination a');
                 paginacionLinks.forEach(link => {
                     link.addEventListener("click", function (e) {
                         e.preventDefault();
-                        currentPage = this.getAttribute("data-page");
-                        recargarTablaSanciones(searchTerm, currentPage);
+                        const page = this.getAttribute("data-page");
+                        cargarDatos(url, idTabla, search, page);
                     });
                 });
+
+                // Reasignar eventos de botones en la tabla
+                inicializarEventosTabla();
             })
-            .catch(error => console.error("Error al recargar la tabla:", error));
+            .catch(error => {
+                console.error(`Hubo un problema con la solicitud AJAX para ${url}:`, error);
+                tablaElement.innerHTML = '<tr><td colspan="5">Error al cargar datos.</td></tr>';
+            });
     }
-    
-    recargarTablaAnotaciones(searchTerm, currentPage);
 
-    // Búsqueda
-    document.getElementById("searchInput").addEventListener("input", function (e) {
-        searchTerm = e.target.value;
-        recargarTablaSanciones(searchTerm, 1);
-    });
+    // Función para inicializar eventos en la tabla
+    function inicializarEventosTabla() {
+        const tablaContainer = document.getElementById("tabla-sanciones");
 
-    // Delegación de eventos en la tabla
-    document.getElementById("tabla-sanciones").addEventListener("click", function (event) {
-        const target = event.target;
+        if (!tablaContainer) return;
 
-        // Botón "Agrear Sanción"
-        if (target.classList.contains("btn-agregar-sancion")) {
-            jugadorId = target.getAttribute("data-jugador-id");
-            $("#modalAgregarSancion").modal("show");
-        }
+        tablaContainer.addEventListener("click", function (event) {
+            const target = event.target;
 
-        // Botón "Editar"
-        if (target.classList.contains("btn-editar-sancion")) {
-            jugadorId = target.getAttribute("data-jugador-id");
-            const rojas = target.getAttribute("data-rojas");
-            const amarillas = target.getAttribute("data-amarillas");
+            // Botón "Agregar Sanción"
+            if (target.classList.contains("btn-agregar-sancion")) {
+                jugadorId = target.getAttribute("data-jugador-id");
+                $("#modalAgregarSancion").modal("show");
+            }
 
-            document.getElementById("tarjetasAmarillasEditar").value = amarillas;
-            document.getElementById("tarjetasRojasEditar").value = rojas;
-            $("#modalEditarSancion").modal("show");
-        }
+            // Botón "Editar"
+            if (target.classList.contains("btn-editar-sancion")) {
+                jugadorId = target.getAttribute("data-jugador-id");
+                cargarSancionesJugador(jugadorId); // Cargar las opciones dinámicas
+                $("#modalEditarSancion").modal("show");
+            }
 
-        // Botón "Borrar"
-        if (target.classList.contains("btn-borrar-sancion")) {
-            jugadorId = target.getAttribute("data-jugador-id");
-            $("#modalBorrarSancion").modal("show");
-        }
-    });
+            // Botón "Borrar"
+            if (target.classList.contains("btn-borrar-sancion")) {
+                jugadorId = target.getAttribute("data-jugador-id");
+                $("#modalBorrarSancion").modal("show");
+            }
+        });
+    }
 
-    // Manejo de los formularios
+    // Asignar evento para la barra de búsqueda (actualiza mientras se escribe)
+    const searchInput = document.getElementById("searchInput");
+    if (searchInput) {
+        searchInput.addEventListener("input", function (e) {
+            searchTerm = e.target.value;
+            cargarDatos('php/estadisticas/sanciones/sanciones.php', 'tabla-sanciones', searchTerm, 1); // Reiniciar a la primera página
+        });
+    }
 
     // Manejo del modal de agregar sanciones
-    document.getElementById("formAgregarSancion").addEventListener("submit", function (event) {
-        event.preventDefault();
-        const amarillas = document.getElementById("tarjetasAmarillas").value;
-        const rojas = document.getElementById("tarjetasRojas").value;
+    const formAgregar = document.getElementById("formAgregarSancion");
+    if (formAgregar) {
+        formAgregar.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const amarillas = document.getElementById("tarjetasAmarillas").value;
+            const rojas = document.getElementById("tarjetasRojas").value;
 
-        fetch("php/estadisticas/sanciones/agregarSancion.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: `jugadorId=${jugadorId}&tarjetasAmarillas=${amarillas}&tarjetasRojas=${rojas}`,
-        })
-            .then(response => response.text())
-            .then(data => {
-                $("#modalAgregarSancion").modal("hide");
-                recargarTablaSanciones(searchTerm, currentPage);
+            fetch("php/estadisticas/sanciones/agregarSancion.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `jugadorId=${jugadorId}&tarjetasAmarillas=${amarillas}&tarjetasRojas=${rojas}`,
             })
-            .catch(error => console.error("Error al agregar sanción:", error));
-    });
+                .then(() => {
+                    $("#modalAgregarSancion").modal("hide");
+                    cargarDatos('php/estadisticas/sanciones/sanciones.php', 'tabla-sanciones', searchTerm, currentPage);
+                })
+                .catch(error => console.error("Error al agregar sanción:", error));
+        });
+    }
 
     // Manejo del modal de editar sanciones
-    document.getElementById("formEditarSancion").addEventListener("submit", function (event) {
-        event.preventDefault();
-        const amarillas = document.getElementById("tarjetasAmarillasEditar").value;
-        const rojas = document.getElementById("tarjetasRojasEditar").value;
+    const formEditar = document.getElementById("formEditarSancion");
+    if (formEditar) {
+        formEditar.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const amarillas = document.getElementById("tarjetasAmarillasEditar").value;
+            const rojas = document.getElementById("tarjetasRojasEditar").value;
+            const sancionId = document.getElementById("sancionSelect").value;
 
-        fetch("php/estadisticas/sanciones/editarSancion.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: `jugadorId=${jugadorId}&tarjetasAmarillas=${amarillas}&tarjetasRojas=${rojas}`,
-        })
-            .then(response => response.text())
-            .then(data => {
-                $("#modalEditarSancion").modal("hide");
-                recargarTablaSanciones(searchTerm, currentPage);
+            fetch("php/estadisticas/sanciones/editarSancion.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `sancionId=${sancionId}&tarjetasAmarillas=${amarillas}&tarjetasRojas=${rojas}`,
             })
-            .catch(error => console.error("Error al editar sanción:", error));
-    });
+                .then(() => {
+                    $("#modalEditarSancion").modal("hide");
+                    cargarDatos('php/estadisticas/sanciones/sanciones.php', 'tabla-sanciones', searchTerm, currentPage);
+                })
+                .catch(error => console.error("Error al editar sanción:", error));
+        });
+    }
 
     // Manejo del modal de borrar sanciones
-    document.getElementById("confirmarBorrarSancion").addEventListener("click", function () {
-        if (jugadorId) {
-            fetch("php/estadisticas/sanciones/borrarSancion.php", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                },
-                body: `jugadorId=${jugadorId}`,
-            })
-                .then(response => response.text())
-                .then(data => {
-                    $("#modalBorrarSancion").modal("hide");
-                    alert(data);
-                    recargarTablaAsistencias(searchTerm, currentPage);
+    const confirmarBorrar = document.getElementById("confirmarBorrarSancion");
+    if (confirmarBorrar) {
+        confirmarBorrar.addEventListener("click", function () {
+            if (jugadorId) {
+                fetch("php/estadisticas/sanciones/borrarSancion.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: `jugadorId=${jugadorId}`,
                 })
-                .catch(error => console.error("Error al borrar sanciones:", error));
-        }
-    });
+                    .then(() => {
+                        $("#modalBorrarSancion").modal("hide");
+                        cargarDatos('php/estadisticas/sanciones/sanciones.php', 'tabla-sanciones', searchTerm, currentPage);
+                    })
+                    .catch(error => console.error("Error al borrar sanción:", error));
+            }
+        });
+    }
+
+    // Cargar sanciones de un jugador en el modal de edición
+    function cargarSancionesJugador(jugadorId) {
+        fetch(`php/estadisticas/sanciones/obtenerFechaSancion.php?jugadorId=${jugadorId}`)
+            .then(response => response.json())
+            .then(data => {
+                const select = document.getElementById("sancionSelect");
+                if (select) {
+                    select.innerHTML = ""; // Limpiar opciones previas
+
+                    data.forEach(sancion => {
+                        const option = document.createElement("option");
+                        option.value = sancion.sancionId; // Usar el ID único
+                        option.textContent = `Fecha: ${sancion.fecha}, Amarillas: ${sancion.amarillas}, Rojas: ${sancion.rojas}`;
+                        select.appendChild(option);
+                    });
+                }
+            })
+            .catch(error => console.error("Error al cargar sanciones:", error));
+    }
+
+    // Cargar datos iniciales de la tabla
+    cargarDatos('php/estadisticas/sanciones/sanciones.php', 'tabla-sanciones');
 });

@@ -3,6 +3,11 @@ document.addEventListener("DOMContentLoaded", function () {
         const fullUrl = `${url}?search=${encodeURIComponent(search)}&page=${page}`;
         const tablaElement = document.getElementById(idTabla);
 
+        // Verificar si el elemento existe antes de manipularlo
+        if (!tablaElement) {
+            return;
+        }
+
         fetch(fullUrl)
             .then(response => {
                 if (!response.ok) {
@@ -29,7 +34,7 @@ document.addEventListener("DOMContentLoaded", function () {
             });
     }
 
-    // Inicializar tablas
+    // Cargar datos iniciales solo para las tablas que no son anotaciones
     cargarDatos('php/estadisticas/anotaciones/anotaciones.php', 'tabla-anotaciones');
     cargarDatos('php/estadisticas/asistencias/asistencias.php', 'tabla-asistencias');
     cargarDatos('php/estadisticas/sanciones/sanciones.php', 'tabla-sanciones');
@@ -43,20 +48,24 @@ document.addEventListener("DOMContentLoaded", function () {
         const searchValue = searchInput.value;
 
         // Recargar tablas con búsqueda aplicada
-        cargarDatos('php/estadisticas/anotaciones/anotaciones.php', 'tabla-anotaciones', searchValue);
         cargarDatos('php/estadisticas/asistencias/asistencias.php', 'tabla-asistencias', searchValue);
         cargarDatos('php/estadisticas/sanciones/sanciones.php', 'tabla-sanciones', searchValue);
         cargarDatos('php/estadisticas/evaluaciones/evaluaciones.php', 'tabla-evaluaciones', searchValue);
+        cargarDatos('php/estadisticas/anotaciones/anotaciones.php', 'tabla-anotaciones', searchValue);
     }
 
     // Buscar al presionar Enter en la barra de búsqueda
-    searchInput.addEventListener("keydown", function (event) {
-        if (event.key === "Enter") {
-            event.preventDefault();
-            realizarBusqueda();
-        }
-    });
+    if (searchInput) {
+        searchInput.addEventListener("keydown", function (event) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                realizarBusqueda();
+            }
+        });
+    }
 
     // Buscar al hacer clic en el botón de búsqueda
-    searchButton.addEventListener("click", realizarBusqueda);
+    if (searchButton) {
+        searchButton.addEventListener("click", realizarBusqueda);
+    }
 });

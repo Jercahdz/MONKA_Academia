@@ -46,7 +46,6 @@
 		=============================================== -->
 	<script type="text/javascript" src="js/modernizr.min.js"></script>
 
-	<script src="js/estadisticas/estadisticas.js"></script>
 	<script src="js/estadisticas/asistencias.js"></script>
 
 </head>
@@ -184,34 +183,35 @@
 	</div>
 
 	<!-- MODAL EDITAR ASISTENCIA -->
-	<div class="modal fade modal-estilo" id="modalEditarAsistencia" tabindex="-1" role="dialog"
-		aria-labelledby="modalEditarAsistenciaLabel" aria-hidden="true">
+	<div class="modal fade modal-estilo" id="modalEditarAsistencia" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
-				<!-- Encabezado del Modal -->
 				<div class="modal-header">
-					<h5 class="modal-title" id="modalEditarAsistenciaLabel">Editar Asistencia</h5>
+					<h5 class="modal-title">Editar Asistencia</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
-				<!-- Cuerpo del Modal -->
 				<div class="modal-body">
 					<form id="formEditarAsistencia">
+						<!-- Campo para seleccionar asistencia -->
 						<div class="form-group">
-							<label for="cantidadAsistenciasEditar" class="etiquetaModal">Cantidad de Asistencias</label>
-							<input type="number" class="form-control entradaModal" id="cantidadAsistenciasEditar"
-								required>
+							<label for="asistenciaSelect" class="etiquetaModal">Selecciona una Asistencia:</label>
+							<select class="form-control entradaModal" id="asistenciaSelect" required>
+								<!-- Opciones dinámicas -->
+							</select>
+						</div>
+						<!-- Campo para editar la cantidad de asistencias -->
+						<div class="form-group">
+							<label for="cantidadAsistenciasEditar" class="etiquetaModal">Nueva Cantidad de Asistencias:</label>
+							<input type="number" class="form-control entradaModal" id="cantidadAsistenciasEditar" required>
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn guardar-btn">Guardar Cambios</button>
 						</div>
 					</form>
 				</div>
-				<!-- Pie del Modal -->
-				<div class="modal-footer">
-
-				</div>
+				<div class="modal-footer"></div>
 			</div>
 		</div>
 	</div>
@@ -245,7 +245,7 @@
 	<div class="section stat-client p-main bg-client">
 		<div class="container">
 			<div class="row">
-				<div class="page-title">
+				<div class="page-title-sponsores">
 					<h2 class="lead">PATROCINADORES</h2>
 					<div class="border-style"></div>
 				</div>

@@ -27,10 +27,15 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
 // Obtener registros para la página actual
 $sql = "
     SELECT 
-        j.jugadorId, j.nombreJugador, j.apellidos, j.edad, 
-        IFNULL(MAX(e.evaluaciones), 'Sin evaluaciones') AS evaluaciones
+        j.jugadorId, 
+        j.nombreJugador, 
+        j.apellidos, 
+        j.edad, 
+        (SELECT e.evaluaciones 
+         FROM Evaluaciones e 
+         WHERE e.jugadorId = j.jugadorId 
+         ORDER BY e.fecha DESC LIMIT 1) AS ultima_evaluacion
     FROM Jugadores j
-    LEFT JOIN Evaluaciones e ON j.jugadorId = e.jugadorId
     WHERE CONCAT(j.nombreJugador, ' ', j.apellidos) LIKE ?
     GROUP BY j.jugadorId
     LIMIT ? OFFSET ?
@@ -40,7 +45,6 @@ $stmt->bind_param("sii", $searchParam, $recordsPerPage, $offset);
 $stmt->execute();
 $result = $stmt->get_result();
 
-// Generar las filas de la tabla
 // Generar el encabezado de la tabla
 echo '<thead class="thead-dark">';
 echo '<tr>
@@ -57,16 +61,17 @@ echo '</thead>';
 // Generar las filas de la tabla
 echo '<tbody>';
 while ($row = $result->fetch_assoc()) {
+    $evaluacion = $row['ultima_evaluacion'] ?? 'Sin evaluaciones';
     echo "<tr>
         <td>" . htmlspecialchars($row['nombreJugador']) . "</td>
         <td>" . htmlspecialchars($row['apellidos']) . "</td>
         <td>" . htmlspecialchars($row['edad']) . "</td>
-        <td>" . htmlspecialchars($row['evaluaciones']) . "</td>";
+        <td>" . htmlspecialchars($evaluacion) . "</td>";
     if (isset($_SESSION['rolId']) && $_SESSION['rolId'] == 1) {
         echo "
         <td>
             <button class='btn-agregar-evaluacion btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Agregar Evaluación</button>
-            <button class='btn-editar-evaluacion btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "' data-evaluaciones='" . htmlspecialchars($row['evaluaciones']) . "'>Editar</button>
+            <button class='btn-editar-evaluacion btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "' data-evaluaciones='" . htmlspecialchars($evaluacion) . "'>Editar</button>
             <button class='btn-borrar-evaluacion btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Borrar</button>
         </td>";
     }

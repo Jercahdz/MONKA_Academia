@@ -46,7 +46,6 @@
 		=============================================== -->
 	<script type="text/javascript" src="js/modernizr.min.js"></script>
 
-	<script src="js/estadisticas/estadisticas.js"></script>
 	<script src="js/estadisticas/evaluaciones.js"></script>
 
 </head>
@@ -184,13 +183,12 @@
 	</div>
 
 	<!-- MODAL EDITAR EVALUACIÓN -->
-	<div class="modal fade modal-estilo" id="modalEditarEvaluacion" tabindex="-1" role="dialog"
-		aria-labelledby="modalEditarEvaluacionLabel" aria-hidden="true">
+	<div class="modal fade modal-estilo" id="modalEditarEvaluacion" tabindex="-1" role="dialog" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<!-- Encabezado del Modal -->
 				<div class="modal-header">
-					<h5 class="modal-title" id="modalEditarEvaluacionLabel">Editar Evaluación</h5>
+					<h5 class="modal-title">Editar Evaluación</h5>
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
@@ -198,23 +196,30 @@
 				<!-- Cuerpo del Modal -->
 				<div class="modal-body">
 					<form id="formEditarEvaluacion">
+						<!-- Campo para seleccionar evaluación -->
 						<div class="form-group">
-							<label for="evaluacionPuntajeEditar" class="etiquetaModal">Puntaje de Evaluación</label>
-							<input type="number" class="form-control entradaModal" id="evaluacionPuntajeEditar"
-								required>
+							<label for="evaluacionSelect" class="etiquetaModal">Selecciona una Evaluación:</label>
+							<select class="form-control entradaModal" id="evaluacionSelect" required>
+								<!-- Opciones dinámicas -->
+							</select>
 						</div>
+						<!-- Campo para editar el puntaje de evaluación -->
+						<div class="form-group">
+							<label for="evaluacionPuntajeEditar" class="etiquetaModal">Nuevo Puntaje de Evaluación:</label>
+							<input type="number" class="form-control entradaModal" id="evaluacionPuntajeEditar" required>
+						</div>
+						<!-- Botón para guardar cambios -->
 						<div class="form-group">
 							<button type="submit" class="btn guardar-btn">Guardar Cambios</button>
 						</div>
 					</form>
 				</div>
 				<!-- Pie del Modal -->
-				<div class="modal-footer">
-
-				</div>
+				<div class="modal-footer"></div>
 			</div>
 		</div>
 	</div>
+
 
 	<!-- MODAL PARA CONFIRMAR BORRADO DE EVALUACIÓN -->
 	<div id="modalBorrarEvaluacion" class="modal fade modal-estilo-rojo" tabindex="-1" role="dialog">
@@ -246,7 +251,7 @@
 	<div class="section stat-client p-main bg-client">
 		<div class="container">
 			<div class="row">
-				<div class="page-title">
+				<div class="page-title-sponsores">
 					<h2 class="lead">PATROCINADORES</h2>
 					<div class="border-style"></div>
 				</div>

@@ -1,136 +1,173 @@
+window.evaluacionesJsActiva = true;
+
 document.addEventListener("DOMContentLoaded", function () {
+    // Variables globales
     let jugadorId = null;
     let searchTerm = '';
     let currentPage = 1;
 
-    // Función para recargar la tabla
-    function recargarTablaEvaluaciones(search = '', page = 1) {
-        const url = `php/estadisticas/evaluaciones/evaluaciones.php?search=${encodeURIComponent(search)}&page=${page}`;
-    
-        fetch(url)
-            .then(response => response.text())
+    // Función para cargar los datos de la tabla
+    function cargarDatos(url, idTabla, search = '', page = 1) {
+        const fullUrl = `${url}?search=${encodeURIComponent(search)}&page=${page}`;
+        const tablaElement = document.getElementById(idTabla);
+
+        // Verificar si el elemento existe antes de manipularlo
+        if (!tablaElement) {
+            console.error(`No se encontró el contenedor con ID: ${idTabla}`);
+            return;
+        }
+
+        fetch(fullUrl)
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`Error al obtener los datos de ${url}`);
+                }
+                return response.text();
+            })
             .then(data => {
-                // Crear un contenedor temporal para procesar la tabla
-                const tempDiv = document.createElement("div");
-                tempDiv.innerHTML = data;
-    
-                // Extraer y reemplazar solo el contenido del thead y tbody
-                const newThead = tempDiv.querySelector("thead");
-                const newTbody = tempDiv.querySelector("tbody");
-    
-                if (newThead) {
-                    const theadElement = document.getElementById("tabla-cabecera-evaluaciones");
-                    theadElement.innerHTML = newThead.innerHTML;
-    
-                    // Asegurar que la clase thead-dark esté aplicada
-                    if (!theadElement.classList.contains("thead-dark")) {
-                        theadElement.classList.add("thead-dark");
-                    }
-                }
-                if (newTbody) {
-                    document.getElementById("tabla-evaluaciones").innerHTML = newTbody.innerHTML;
-                }
-    
-                // Reasignar los eventos de paginación después de recargar
-                const paginacionLinks = document.querySelectorAll('.pagination a');
+                tablaElement.innerHTML = data;
+
+                // Reasignar eventos a los enlaces de paginación
+                const paginacionLinks = tablaElement.querySelectorAll('.pagination a');
                 paginacionLinks.forEach(link => {
                     link.addEventListener("click", function (e) {
                         e.preventDefault();
-                        currentPage = this.getAttribute("data-page");
-                        recargarTablaEvaluaciones(searchTerm, currentPage);
+                        const page = this.getAttribute("data-page");
+                        cargarDatos(url, idTabla, search, page);
                     });
                 });
+
+                // Reasignar eventos de botones en la tabla
+                inicializarEventosTabla();
             })
-            .catch(error => console.error("Error al recargar la tabla:", error));
+            .catch(error => {
+                console.error(`Hubo un problema con la solicitud AJAX para ${url}:`, error);
+                tablaElement.innerHTML = '<tr><td colspan="5">Error al cargar datos.</td></tr>';
+            });
     }
 
-    recargarTablaEvaluaciones(searchTerm, currentPage);
+    // Función para inicializar eventos en la tabla
+    function inicializarEventosTabla() {
+        const tablaContainer = document.getElementById("tabla-evaluaciones");
 
-    // Asignar evento para la barra de búsqueda
+        if (!tablaContainer) return;
+
+        tablaContainer.addEventListener("click", function (event) {
+            const target = event.target;
+
+            // Botón "Agregar Evaluación"
+            if (target.classList.contains("btn-agregar-evaluacion")) {
+                jugadorId = target.getAttribute("data-jugador-id");
+                $("#modalAgregarEvaluacion").modal("show");
+            }
+
+            // Botón "Editar"
+            if (target.classList.contains("btn-editar-evaluacion")) {
+                jugadorId = target.getAttribute("data-jugador-id");
+                cargarEvaluacionesJugador(jugadorId); // Cargar las opciones dinámicas
+                $("#modalEditarEvaluacion").modal("show");
+            }
+
+            // Botón "Borrar"
+            if (target.classList.contains("btn-borrar-evaluacion")) {
+                jugadorId = target.getAttribute("data-jugador-id");
+                $("#modalBorrarEvaluacion").modal("show");
+            }
+        });
+    }
+
+    // Asignar evento para la barra de búsqueda (actualiza mientras se escribe)
     const searchInput = document.getElementById("searchInput");
-    searchInput.addEventListener("input", function (e) {
-        searchTerm = e.target.value;
-        recargarTablaEvaluaciones(searchTerm, 1);
-    });
-
-    // Delegación de eventos en la tabla
-    document.getElementById("tabla-evaluaciones").addEventListener("click", function (event) {
-        const target = event.target;
-
-        // Botón "Agregar Evaluacion"
-        if (target.classList.contains("btn-agregar-evaluacion")) {
-            jugadorId = target.getAttribute("data-jugador-id");
-            $("#modalAgregarEvaluacion").modal("show");
-        }
-
-        // Botón "Editar"
-        if (target.classList.contains("btn-editar-evaluacion")) {
-            jugadorId = target.getAttribute("data-jugador-id");
-            const evaluaciones = target.getAttribute("data-evaluaciones");
-            document.getElementById("evaluacionPuntajeEditar").value = evaluaciones;
-            $("#modalEditarEvaluacion").modal("show");
-        }
-
-        // Botón "Borrar"
-        if (target.classList.contains("btn-borrar-evaluacion")) {
-            jugadorId = target.getAttribute("data-jugador-id");
-            $("#modalBorrarEvaluacion").modal("show");
-        }
-    });
+    if (searchInput) {
+        searchInput.addEventListener("input", function (e) {
+            searchTerm = e.target.value;
+            cargarDatos('php/estadisticas/evaluaciones/evaluaciones.php', 'tabla-evaluaciones', searchTerm, 1); // Reiniciar a la primera página
+        });
+    }
 
     // Manejo del modal de agregar evaluaciones
-    document.getElementById("formAgregarEvaluacion").addEventListener("submit", function (event) {
-        event.preventDefault();
-        const evaluaciones = document.getElementById("evaluacionPuntaje").value;
+    const formAgregar = document.getElementById("formAgregarEvaluacion");
+    if (formAgregar) {
+        formAgregar.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const evaluaciones = document.getElementById("evaluacionPuntaje").value;
 
-        fetch("php/estadisticas/evaluaciones/agregarEvaluacion.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: `jugadorId=${jugadorId}&evaluaciones=${evaluaciones}`,
-        })
-            .then(response => response.text())
-            .then(data => {
-                $("#modalAgregarEvaluacion").modal("hide");
-                recargarTablaEvaluaciones(searchTerm, currentPage);
-            })
-            .catch(error => console.error("Error al agregar evaluación:", error));
-    });
-
-    // Manejo del modal de editar evaluaciones
-    document.getElementById("formEditarEvaluacion").addEventListener("submit", function (event) {
-        event.preventDefault();
-        const evaluaciones = document.getElementById("evaluacionPuntajeEditar").value;
-
-        fetch("php/estadisticas/evaluaciones/editarEvaluacion.php", {
-            method: "POST",
-            headers: { "Content-Type": "application/x-www-form-urlencoded" },
-            body: `jugadorId=${jugadorId}&evaluaciones=${evaluaciones}`,
-        })
-            .then(response => response.text())
-            .then(data => {
-                $("#modalEditarEvaluacion").modal("hide");
-                recargarTablaEvaluaciones(searchTerm, currentPage);
-            })
-            .catch(error => console.error("Error al editar evaluación:", error));
-    });
-
-    // Manejo del modal de borrar evaluaciones
-    document.getElementById("confirmarBorrarEvaluacion").addEventListener("click", function () {
-        if (jugadorId) {
-            fetch("php/estadisticas/evaluaciones/borrarEvaluacion.php", {
+            fetch("php/estadisticas/evaluaciones/agregarEvaluacion.php", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/x-www-form-urlencoded",
-                },
-                body: `jugadorId=${jugadorId}`,
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `jugadorId=${jugadorId}&evaluaciones=${evaluaciones}`,
             })
                 .then(response => response.text())
-                .then(data => {
-                    $("#modalBorrarEvaluacion").modal("hide");
-                    alert(data);
-                    recargarTablaAsistencias(searchTerm, currentPage);
+                .then(() => {
+                    $("#modalAgregarEvaluacion").modal("hide");
+                    cargarDatos('php/estadisticas/evaluaciones/evaluaciones.php', 'tabla-evaluaciones', searchTerm, currentPage);
                 })
-                .catch(error => console.error("Error al borrar evaluacion:", error));
-        }
-    });
+                .catch(error => console.error("Error al agregar evaluación:", error));
+        });
+    }
+
+    // Manejo del modal de editar evaluaciones
+    const formEditar = document.getElementById("formEditarEvaluacion");
+    if (formEditar) {
+        formEditar.addEventListener("submit", function (event) {
+            event.preventDefault();
+            const evaluaciones = document.getElementById("evaluacionPuntajeEditar").value;
+            const evaluacionId = document.getElementById("evaluacionSelect").value;
+
+            fetch("php/estadisticas/evaluaciones/editarEvaluacion.php", {
+                method: "POST",
+                headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                body: `evaluacionId=${evaluacionId}&evaluaciones=${evaluaciones}`,
+            })
+                .then(response => response.text())
+                .then(() => {
+                    $("#modalEditarEvaluacion").modal("hide");
+                    cargarDatos('php/estadisticas/evaluaciones/evaluaciones.php', 'tabla-evaluaciones', searchTerm, currentPage);
+                })
+                .catch(error => console.error("Error al editar evaluación:", error));
+        });
+    }
+
+    // Manejo del modal de borrar evaluaciones
+    const confirmarBorrar = document.getElementById("confirmarBorrarEvaluacion");
+    if (confirmarBorrar) {
+        confirmarBorrar.addEventListener("click", function () {
+            if (jugadorId) {
+                fetch("php/estadisticas/evaluaciones/borrarEvaluacion.php", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: `jugadorId=${jugadorId}`,
+                })
+                    .then(response => response.text())
+                    .then(() => {
+                        $("#modalBorrarEvaluacion").modal("hide");
+                        cargarDatos('php/estadisticas/evaluaciones/evaluaciones.php', 'tabla-evaluaciones', searchTerm, currentPage);
+                    })
+                    .catch(error => console.error("Error al borrar evaluación:", error));
+            }
+        });
+    }
+
+    // Cargar evaluaciones de un jugador en el modal de edición
+    function cargarEvaluacionesJugador(jugadorId) {
+        fetch(`php/estadisticas/evaluaciones/obtenerFechaEvaluacion.php?jugadorId=${jugadorId}`)
+            .then(response => response.json())
+            .then(data => {
+                const select = document.getElementById("evaluacionSelect");
+                if (select) {
+                    select.innerHTML = ""; // Limpiar opciones previas
+
+                    data.forEach(evaluacion => {
+                        const option = document.createElement("option");
+                        option.value = evaluacion.evaluacionId; // Usar el ID único
+                        option.textContent = `Fecha: ${evaluacion.fecha}, Evaluación: ${evaluacion.evaluaciones}`;
+                        select.appendChild(option);
+                    });
+                }
+            })
+            .catch(error => console.error("Error al cargar evaluaciones:", error));
+    }
+
+    // Cargar datos iniciales de la tabla
+    cargarDatos('php/estadisticas/evaluaciones/evaluaciones.php', 'tabla-evaluaciones');
 });

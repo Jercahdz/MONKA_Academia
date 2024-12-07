@@ -2,16 +2,16 @@
 include("../../conexion.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $jugadorId = intval($_POST['jugadorId']);
+    $evaluacionId = intval($_POST['evaluacionId']);
     $evaluaciones = $_POST['evaluaciones'];
 
-    // Actualizar las evaluaciones
-    $sql = "UPDATE Evaluaciones SET evaluaciones = ? WHERE jugadorId = ?";
+    // Actualizar solo la evaluación seleccionada
+    $sql = "UPDATE Evaluaciones SET evaluaciones = ? WHERE evaluacionId = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("si", $evaluaciones, $jugadorId);
+    $stmt->bind_param("si", $evaluaciones, $evaluacionId);
 
     if (!$stmt->execute()) {
-        error_log("Error al actualizar la evaluación: " . $conn->error);
+        error_log("Error al actualizar la evaluación: " . $stmt->error);
     }
 
     $stmt->close();

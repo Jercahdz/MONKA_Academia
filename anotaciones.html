@@ -46,7 +46,6 @@
 		=============================================== -->
 	<script type="text/javascript" src="js/modernizr.min.js"></script>
 
-	<script src="js/estadisticas/estadisticas.js"></script>
 	<script src="js/estadisticas/anotaciones.js"></script>
 
 </head>
@@ -185,8 +184,8 @@
 	</div>
 
 	<!-- MODAL PARA EDITAR ANOTACIONES -->
-	<div id="modalEditar" class="modal fade modal-estilo" tabindex="-1" role="dialog">
-		<div class="modal-dialog">
+	<div id="modalEditar" class="modal fade modal-estilo" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<!-- Encabezado del Modal -->
 				<div class="modal-header">
@@ -198,19 +197,26 @@
 				<!-- Cuerpo del Modal -->
 				<div class="modal-body">
 					<form id="formEditar">
+						<!-- Campo para seleccionar anotación -->
 						<div class="form-group">
-							<label for="golesEdit" class="etiquetaModal">Cantidad de Anotaciones:</label>
+							<label for="anotacionSelect" class="etiquetaModal">Selecciona una Anotación:</label>
+							<select class="form-control entradaModal" id="anotacionSelect" required>
+								<!-- Opciones dinámicas -->
+							</select>
+						</div>
+						<!-- Campo para editar la cantidad de anotaciones -->
+						<div class="form-group">
+							<label for="golesEdit" class="etiquetaModal">Nueva Cantidad de Goles:</label>
 							<input type="number" class="form-control entradaModal" id="golesEdit" required>
 						</div>
+						<!-- Botón para guardar cambios -->
 						<div class="form-group">
 							<button type="submit" class="btn guardar-btn">Guardar Cambios</button>
 						</div>
 					</form>
 				</div>
 				<!-- Pie del Modal -->
-				<div class="modal-footer">
-
-				</div>
+				<div class="modal-footer"></div>
 			</div>
 		</div>
 	</div>
@@ -245,7 +251,7 @@
 	<div class="section stat-client p-main bg-client">
 		<div class="container">
 			<div class="row">
-				<div class="page-title">
+				<div class="page-title-sponsores">
 					<h2 class="lead">PATROCINADORES</h2>
 					<div class="border-style"></div>
 				</div>

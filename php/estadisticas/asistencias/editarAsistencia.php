@@ -2,15 +2,16 @@
 include("../../conexion.php");
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $jugadorId = intval($_POST['jugadorId']);
+    $asistenciaId = intval($_POST['asistenciaId']);
     $cantidadAsistencias = intval($_POST['cantidadAsistencias']);
 
-    $sql = "UPDATE Asistencias SET cantidadAsistencias = ? WHERE jugadorId = ?";
+    // Actualizar solo la asistencia seleccionada
+    $sql = "UPDATE Asistencias SET cantidadAsistencias = ? WHERE asistenciaId = ?";
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ii", $cantidadAsistencias, $jugadorId);
+    $stmt->bind_param("ii", $cantidadAsistencias, $asistenciaId);
 
     if (!$stmt->execute()) {
-        error_log("Error al actualizar la asistencia: " . $conn->error);
+        error_log("Error al actualizar la asistencia: " . $stmt->error);
     }
 
     $stmt->close();
