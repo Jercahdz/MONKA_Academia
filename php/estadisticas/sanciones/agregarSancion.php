@@ -5,7 +5,7 @@ include("../../conexion.php");
 $jugadorId = $_POST['jugadorId'];
 $tarjetasAmarillas = $_POST['tarjetasAmarillas'];
 $tarjetasRojas = $_POST['tarjetasRojas'];
-$fecha = date('Y-m-d'); // Fecha actual
+$fecha = date('Y-m-d');
 
 // Verificar si ya existe una sanción para el jugador en la fecha actual
 $sqlVerificar = "SELECT * FROM Sanciones WHERE jugadorId = ? AND fecha = ?";

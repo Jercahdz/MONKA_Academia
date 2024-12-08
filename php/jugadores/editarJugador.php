@@ -13,13 +13,14 @@ $sql = "UPDATE Jugadores
         WHERE jugadorId = ?";
 $stmt = $conn->prepare($sql);
 
-// Nota: La cadena es "sssiii" porque hay 3 strings y 3 enteros
 $stmt->bind_param("sssiss", $nombreJugador, $apellidos, $edad, $dorsal, $pieHabil, $jugadorId);
 
 if ($stmt->execute()) {
-    echo "Jugador actualizado con éxito";  
+    http_response_code(200);
 } else {
-    echo "Error al actualizar el jugador: " . $stmt->error;  
+    http_response_code(500);
+    error_log("Error al actualizar el jugador: " . $stmt->error);
+    echo json_encode(["error" => "Error al actualizar el jugador"]);
 }
 
 $stmt->close();

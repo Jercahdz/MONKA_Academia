@@ -3,7 +3,7 @@ include("../../conexion.php");
 
 $jugadorId = $_POST['jugadorId'];
 $cantidadAsistencias = $_POST['cantidadAsistencias'];
-$fecha = date('Y-m-d'); // Fecha actual
+$fecha = date('Y-m-d');
 
 // Verificar si ya existe una asistencia para el jugador en la fecha actual
 $sqlVerificar = "SELECT * FROM Asistencias WHERE jugadorId = ? AND fecha = ?";

@@ -84,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Manejo del modal de agregar goles
+    // Manejo del modal de agregar goles
     const formAgregar = document.getElementById("formAgregar");
     if (formAgregar) {
         formAgregar.addEventListener("submit", function (event) {
@@ -97,8 +98,15 @@ document.addEventListener("DOMContentLoaded", function () {
             })
                 .then(response => response.text())
                 .then(() => {
+                    // Cerrar el modal al guardar
                     $("#modalAgregar").modal("hide");
-                    cargarDatos('php/estadisticas/anotaciones/anotaciones.php', 'tabla-anotaciones', searchTerm, currentPage);
+                    // Actualizar la tabla
+                    cargarDatos(
+                        "php/estadisticas/anotaciones/anotaciones.php",
+                        "tabla-anotaciones",
+                        searchTerm,
+                        currentPage
+                    );
                 })
                 .catch(error => console.error("Error al agregar anotación:", error));
         });

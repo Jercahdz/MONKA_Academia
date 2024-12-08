@@ -7,11 +7,11 @@ function loadFormation(formation) {
             if (response) {
                 $('#formationImage').attr('src', response); // Cambia la imagen
             } else {
-                alert('No se pudo cargar la formación. Verifica que las imágenes estén disponibles.');
+                console.error('No se pudo cargar la formación. Verifica que las imágenes estén disponibles.');
             }
         },
         error: function () {
-            alert('Ocurrió un error al intentar cargar la formación.');
+            console.error('Ocurrió un error al intentar cargar la formación.');
         }
     });
 }

@@ -10,12 +10,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
 
     // Validaciones
     if (empty($nombreUsuario) || strlen($nombreUsuario) > 50) {
-        echo "<script>alert('El nombre de usuario no es válido.');</script>";
+        echo "<script>console.log('Error: El nombre de usuario no es válido.');</script>";
+        echo "<script>window.location.href = '../../login.html';</script>";
         exit();
     }
 
     if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-        echo "<script>alert('El correo electrónico no es válido.');</script>";
+        echo "<script>console.log('Error: El correo electrónico no es válido.');</script>";
+        echo "<script>window.location.href = '../../login.html';</script>";
         exit();
     }
 
@@ -27,12 +29,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        echo "<script>alert('El correo electrónico ya está en uso.');</script>";
+        echo "<script>console.log('Error: El correo electrónico ya está en uso.');</script>";
+        echo "<script>window.location.href = '../../login.html';</script>";
         exit();
     }
 
     if (strlen($contrasenna) < 8) {
-        echo "<script>alert('La contraseña debe tener al menos 8 caracteres.');</script>";
+        echo "<script>console.log('Error: La contraseña debe tener al menos 8 caracteres.');</script>";
+        echo "<script>window.location.href = '../../login.html';</script>";
         exit();
     }
 
@@ -50,10 +54,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
         echo "<script>window.location.href = '../../login.html';</script>";
         exit();
     } else {
-        echo "Error: " . $sql . "<br>" . $stmt->error;
+        echo "<script>console.log('Error: No se pudo registrar al usuario. Detalle: " . $stmt->error . "');</script>";
+        echo "<script>window.location.href = '../../login.html';</script>";
+        exit();
     }
 
     $stmt->close();
 }
 ?>
-d

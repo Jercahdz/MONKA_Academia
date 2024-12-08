@@ -4,7 +4,7 @@ include("../../conexion.php");
 // Obtener los datos del POST
 $jugadorId = $_POST['jugadorId'];
 $evaluaciones = $_POST['evaluaciones'];
-$fecha = date('Y-m-d'); // Fecha actual
+$fecha = date('Y-m-d');
 
 // Verificar si ya existe una evaluación para el jugador en la fecha actual
 $sqlVerificar = "SELECT * FROM Evaluaciones WHERE jugadorId = ? AND fecha = ?";

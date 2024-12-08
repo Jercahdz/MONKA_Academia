@@ -4,7 +4,7 @@ include("../../conexion.php");
 // Obtener los datos del POST
 $jugadorId = $_POST['jugadorId'];
 $cantidadGoles = $_POST['cantidadGoles'];
-$fecha = date('Y-m-d'); // Fecha actual
+$fecha = date('Y-m-d');
 
 // Verificar si ya existe una anotación para el jugador en la fecha actual
 $sqlVerificar = "SELECT * FROM Anotaciones WHERE jugadorId = ? AND fecha = ?";

@@ -1,70 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MONKÁ - Inicio de Sesión</title>
-    
-    <!-- ==============================================
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MONKÁ - Inicio de Sesión</title>
+
+        <!-- ==============================================
 		Favicons
 		=============================================== -->
-	<link rel="shortcut icon" href="images/escudo.png">
-	<link rel="apple-touch-icon" href="images/escudo.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="images/escudo.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="images/escudo.png">
+        <link rel="shortcut icon" href="images/escudo.png">
+        <link rel="apple-touch-icon" href="images/escudo.png">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/escudo.png">
+        <link rel="apple-touch-icon" sizes="114x114" href="images/escudo.png">
 
-    <link rel="stylesheet" href="css/login.css">
-</head>
+        <link rel="stylesheet" href="css/login.css">
+    </head>
 
-<body>
+    <body>
 
-    <div class="container">
-        <!-- Login Form -->
-        <div class="container-form">
-            <form class="sign-in" action="php/usuarios/inicioSesion.php" method="POST">
-                <h2>Iniciar Sesión</h2>
-                <div class="container-input">
-                    <ion-icon name="mail-outline"></ion-icon>
-                    <input type="email" name="correo" placeholder="Correo electrónico" required>
-                </div>
-                <div class="container-input">
-                    <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="password" name="password" placeholder="Contraseña" required>
-                </div>
-                <button type="submit" name="login" class="button">Iniciar Sesión</button>
-            </form>
+        <div class="container">
+            <!-- FORMULARIO LOGIN -->
+            <div class="container-form">
+                <form class="sign-in" action="php/usuarios/inicioSesion.php"
+                    method="POST">
+                    <h2>Iniciar Sesión</h2>
+                    <div class="container-input">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <input type="email" name="correo"
+                            placeholder="Correo electrónico" required>
+                    </div>
+                    <div class="container-input">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <input type="password" name="password"
+                            placeholder="Contraseña" required>
+                    </div>
+                    <button type="submit" name="login" class="button">Iniciar
+                        Sesión</button>
+                </form>
 
-            <form class="sign-up" style="display: none;" action="php/usuarios/registroUsuarios.php" method="POST">
-                <h2>Registrarse</h2>
-                <div class="container-input">
-                    <ion-icon name="person-outline"></ion-icon>
-                    <input type="text" name="nombre" placeholder="Nombre" required>
-                </div>
-                <div class="container-input">
-                    <ion-icon name="mail-outline"></ion-icon>
-                    <input type="email" name="correo" placeholder="Correo electrónico" required>
-                </div>
-                <div class="container-input">
-                    <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="password" name="password" placeholder="Contraseña" required>
-                </div>
-                <button type="submit" name="register" class="button">Registrarse</button>
-            </form>
+                <!-- FORMULARIO REGISTRO -->
+                <form class="sign-up" style="display: none;"
+                    action="php/usuarios/registroUsuarios.php" method="POST">
+                    <h2>Registrarse</h2>
+                    <div class="container-input">
+                        <ion-icon name="person-outline"></ion-icon>
+                        <input type="text" name="nombre" placeholder="Nombre"
+                            required>
+                    </div>
+                    <div class="container-input">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <input type="email" name="correo"
+                            placeholder="Correo electrónico" required>
+                    </div>
+                    <div class="container-input">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <input type="password" name="password"
+                            placeholder="Contraseña" required>
+                    </div>
+                    <button type="submit" name="register"
+                        class="button">Registrarse</button>
+                </form>
+            </div>
+
+            <!-- Welcome Section -->
+            <div class="container-welcome">
+                <h3>¡Bienvenido!</h3>
+                <p>Registra una nueva cuenta o inicia sesión para acceder a
+                    nuestra plataforma</p>
+                <button class="toggle-button">Registrarse</button>
+            </div>
         </div>
 
-        <!-- Welcome Section -->
-        <div class="container-welcome">
-            <h3>¡Bienvenido!</h3>
-            <p>Registra una nueva cuenta o inicia sesión para acceder a nuestra plataforma</p>
-            <button class="toggle-button">Registrarse</button>
-        </div>
-    </div>
-
-    <script src="js/cuentas/login.js"></script>
-    <script src="js/cuentas/controlSesion.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-</body>
+        <script src="js/cuentas/login.js"></script>
+        <script type="module"
+            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule
+            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    </body>
 
 </html>

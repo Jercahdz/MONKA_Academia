@@ -2986,7 +2986,6 @@ Responsiveness
 @media (max-width: 992px) {
 	.search {
 		width: 90%;
-		/* Reduce el ancho para tablets */
 		padding: 8px;
 	}
 
@@ -3010,7 +3009,6 @@ Responsiveness
 @media (max-width: 576px) {
 	.search {
 		flex-direction: column;
-		/* Cambia el diseño a columnas para móviles */
 		gap: 5px;
 		padding: 10px;
 	}
@@ -3018,12 +3016,10 @@ Responsiveness
 	.searchTerm {
 		margin-left: 0;
 		width: 100%;
-		/* Asegura que ocupe todo el ancho */
 	}
 
 	.searchButton {
 		width: 100%;
-		/* Botón de búsqueda ocupa todo el ancho */
 		border-radius: 30px;
 		min-width: unset;
 		height: 40px;
@@ -3142,35 +3138,35 @@ Responsiveness
 
 /* Selector de categoría */
 #selector-categoria {
-    border-radius: 41px; /* Bordes redondeados como el botón */
-    color: #ffffff; /* Texto blanco */
-    padding: 10px 20px; /* Más espacio interno para mayor comodidad */
-    font-size: 16px; /* Texto un poco más grande */
-    font-weight: bold; /* Texto en negrita */
-    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Sombra ligera */
-    transition: all 0.3s ease; /* Transición suave */
-    cursor: pointer;
-    width: 260px; /* Más ancho para acomodar texto largo */
-    text-align: center; /* Centrar el texto */
-    text-transform: uppercase; /* Convertir texto a mayúsculas para mayor impacto */
-    letter-spacing: 1px; /* Espaciado entre letras para un diseño más estilizado */
+	border-radius: 41px;
+	color: #ffffff;
+	padding: 10px 20px;
+	font-size: 16px;
+	font-weight: bold;
+	box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+	transition: all 0.3s ease;
+	cursor: pointer;
+	width: 260px;
+	text-align: center;
+	text-transform: uppercase;
+	letter-spacing: 1px;
 }
 
 #selector-categoria option {
-    text-align: center; /* Asegura que las opciones estén centradas */
+	text-align: center;
 }
 
 #selector-categoria:hover {
-    background-color: #1a4747; /* Fondo más oscuro en hover */
-    color: #ffffff; /* Mantener texto blanco */
-    border-color: #1a4747; /* Cambiar borde al color del hover */
+	background-color: #1a4747;
+	color: #ffffff;
+	border-color: #1a4747;
 }
 
 #selector-categoria:focus {
-    outline: none; /* Quitar borde azul predeterminado */
-    box-shadow: 0 0 8px rgba(26, 71, 71, 0.5); /* Resaltar enfoque */
-    background-color: #1a4747; /* Mantener fondo oscuro en foco */
-    color: #ffffff; /* Mantener texto blanco */
+	outline: none;
+	box-shadow: 0 0 8px rgba(26, 71, 71, 0.5);
+	background-color: #1a4747;
+	color: #ffffff;
 }
 
 /* Contenedor de la lista de jugadores */
@@ -3178,22 +3174,22 @@ Responsiveness
     max-width: 500px;
     margin: 20px auto;
     padding: 20px;
-    background-color: #ffffff; /* Fondo blanco */
+    background-color: #ffffff;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
 }
 
 /* Título principal */
 #lista-jugadores h2 {
     text-align: center;
-    color: #115959; /* Color verde oscuro */
+    color: #115959; 
     margin-bottom: 20px;
     padding-bottom: 10px;
     position: relative;
-    font-size: 1.5rem; /* Tamaño grande */
+    font-size: 1.5rem;
     font-weight: bold;
-    text-transform: uppercase; /* Texto en mayúsculas */
-    letter-spacing: 2px; /* Espaciado entre letras */
+    text-transform: uppercase; 
+    letter-spacing: 2px; 
 }
 
 #lista-jugadores h2::before {
@@ -3202,26 +3198,26 @@ Responsiveness
 
 #lista-jugadores h2::after {
     width: 50px;
-    background-color: #32a4a4; /* Color verde claro */
+    background-color: #32a4a4;
     bottom: -5px;
 }
 
 /* Subtítulo (Filtrar por Categoría) */
 #lista-jugadores h3 {
     text-align: center;
-    color: #2c3e50; /* Color gris oscuro */
+    color: #2c3e50;
     margin-bottom: 15px;
-    font-size: 1.1rem; /* Tamaño de texto moderado */
+    font-size: 1.1rem; 
     font-weight: bold;
-    text-transform: uppercase; /* Texto en mayúsculas */
-    letter-spacing: 1px; /* Espaciado entre letras */
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 /* Selector de categoría */
 #lista-jugadores #selector-categoria {
-	display: block; /* Hacer que el selector ocupe todo el ancho */
-	margin: 0 auto; /* Centrar el selector */
-	text-align: center; /* Centrar el texto */
+	display: block; 
+	margin: 0 auto; 
+	text-align: center; 
 	background-color: #115959;
 	border: 1px solid #115959;
 	border-radius: 15px;
@@ -3233,7 +3229,7 @@ Responsiveness
 	transition: all 0.3s ease;
 	cursor: pointer;
 	text-transform: uppercase;
-	width: 260px; /* Ancho del selector */
+	width: 260px;
 }
 
 #lista-jugadores #selector-categoria:hover {
@@ -3757,16 +3753,14 @@ h4 {
 .monka-botones-grid {
 	display: grid;
 	grid-template-columns: repeat(2, 1fr);
-	gap: 30px; /* Ajusta este valor para cambiar la separación entre botones */
+	gap: 30px;
 }
 
 /* AQUÍ ESTÁN LOS PUNTOS CLAVE PARA AJUSTAR TAMAÑO */
 .monka-boton-estadistica {
-	/* Ajusta HEIGHT para cambiar altura */
-	height: 300px; /* Valor default que puedes modificar */
+	height: 300px; /* Valor default */
 	
-	/* Ajusta WIDTH para cambiar ancho */
-	width: 400px; /* Valor default que puedes modificar */
+	width: 400px; /* Valor default */
 	
 	display: flex;
 	flex-direction: column;
@@ -3812,7 +3806,7 @@ h4 {
 		grid-template-columns: 1fr;
 	}
 	.monka-boton-estadistica {
-		width: 100%; /* Botones full width en móviles */
+		width: 100%; 
 	}
 }
 
@@ -3836,9 +3830,9 @@ Graficos
     margin-bottom: 30px;
     padding-bottom: 15px;
     position: relative;
-    font-size: 2.5rem; /* Tamaño de fuente más grande */
+    font-size: 2.5rem;
     font-weight: bold;
-    text-transform: uppercase; /* Mayúsculas */
+    text-transform: uppercase; 
     letter-spacing: 2px; /* Espaciado entre letras */
 }
 
@@ -3968,7 +3962,7 @@ Graficos
 
 /* Estilo para el Encabezado del Modal */
 .modal-estilo .modal-header {
-	background-color: #115959; /* Verde oscuro */
+	background-color: #115959;
 	color: white;
   }
   
@@ -3983,12 +3977,12 @@ Graficos
   
   /* Estilo para el Cuerpo del Modal */
   .modal-estilo .modal-body {
-	background-color: #f8f8f8; /* Gris claro */
-	color: #333; /* Gris oscuro */
+	background-color: #f8f8f8;
+	color: #333;
   }
   
   .modal-estilo .form-group label {
-	color: #115959; /* Verde oscuro */
+	color: #115959;
 	font-weight: bold;
   }
   
@@ -4000,7 +3994,7 @@ Graficos
   
   /* Botón Guardar Cambios */
   .modal-estilo .boton-guardar {
-	background-color: #115959; /* Verde oscuro */
+	background-color: #115959;
 	color: white;
 	border: none;
 	padding: 6px;
@@ -4010,17 +4004,17 @@ Graficos
   }
   
   .modal-estilo .boton-guardar:hover {
-	background-color: #0e4949; /* Verde más oscuro */
+	background-color: #0e4949; 
   }
   
   /* Estilo para el Pie del Modal */
   .modal-estilo .modal-footer {
-	background-color: #115959; /* Verde oscuro */
+	background-color: #115959;
   }
   
   .modal-estilo .boton-cerrar {
-	background-color: #ffffff; /* Blanco */
-	color: #115959; /* Verde oscuro */
+	background-color: #ffffff; 
+	color: #115959; 
 	border: none;
 	padding: 10px;
 	font-size: 16px;
@@ -4028,26 +4022,26 @@ Graficos
   }
   
   .modal-estilo .boton-cerrar:hover {
-	background-color: #d9d9d9; /* Gris claro */
-	color: #0e4949; /* Verde más oscuro */
+	background-color: #d9d9d9;
+	color: #0e4949; 
   }
 
   /* MODAL VER DETALLES */
 
   /* Estilo para las filas del cuerpo del modal */
 .detalle-par {
-	background-color: #ffffff; /* Blanco */
+	background-color: #ffffff;
 	padding: 10px;
 	border-radius: 5px;
 	margin-bottom: 10px;
   }
   
   .detalle-par.alterno {
-	background-color: #e7f6f5; /* Verde claro */
+	background-color: #e7f6f5;
   }
   
   .detalle-par strong {
-	color: #115959; /* Verde oscuro */
+	color: #115959;
 	font-weight: bold;
   }
 
@@ -4056,62 +4050,62 @@ Graficos
 
 /* Estilo para la 'X' (botón de cierre) */
 .modal-header .close {
-	font-size: 1.5rem; /* Tamaño de la 'X' */
-	line-height: 1; /* Ajusta el alineamiento */
-	color: white; /* Color de la 'X' */
-	background-color: transparent; /* Sin fondo */
-	border: none; /* Sin bordes */
-	position: absolute; /* Posición absoluta */
-	top: 15px; /* Ajusta la posición vertical */
-	right: 15px; /* Ajusta la posición horizontal */
-	width: 40px; /* Aumenta el área clickeable */
-	height: 40px; /* Aumenta el área clickeable */
-	display: flex; /* Centra el contenido */
-	align-items: center; /* Centra verticalmente */
-	justify-content: center; /* Centra horizontalmente */
-	border-radius: 50%; /* Hace que el área sea circular */
-	transition: background-color 0.3s ease; /* Efecto suave al hover */
-  }
+	font-size: 1.5rem; 
+	line-height: 1; 
+	color: white; 
+	background-color: transparent; 
+	border: none; 
+	position: absolute; 
+	top: 15px; 
+	right: 15px; 
+	width: 40px; 
+	height: 40px; 
+	display: flex; 
+	align-items: center; 
+	justify-content: center; 
+	border-radius: 50%; 
+	transition: background-color 0.3s ease; 
+}
   
   /* Efecto hover para el botón de cierre */
   .modal-header .close:hover {
-	background-color: rgba(255, 255, 255, 0.2); /* Fondo semitransparente al hover */
-	cursor: pointer; /* Cambia el cursor al hover */
+	background-color: rgba(255, 255, 255, 0.2);
+	cursor: pointer;
   }
 
-  /* modal de anotaciones */
+  /* Modal de anotaciones */
 
   /* Botones del Modal */
 .modal-estilo .botonModal {
-	background-color: #115959; /* Verde oscuro */
+	background-color: #115959; 
 	color: white;
 	border: none;
 	padding: 10px;
 	font-size: 16px;
 	border-radius: 5px;
-	width: 100%; /* Botón ancho */
+	width: 100%;
 	transition: background-color 0.3s ease;
   }
   
   .modal-estilo .botonModal:hover {
-	background-color: #0e4949; /* Verde más oscuro */
+	background-color: #0e4949; 
   }
 
 
 /* Estilo adicional específico para botones de guardar cambios */
 .modal-estilo .guardar-btn {
-	background-color: #115959; /* Verde oscuro */
-	color: white; /* Texto blanco */
+	background-color: #115959;
+	color: white;
 	border: none;
 	padding: 10px;
 	font-size: 16px;
 	border-radius: 5px;
-	width: 100%; /* Botón ancho */
+	width: 100%;
 	transition: background-color 0.3s ease;
   }
   
   .modal-estilo .guardar-btn:hover {
-	background-color: #0e4949; /* Verde más oscuro */
+	background-color: #0e4949; 
   }
 
   /*Modal eliminar anotaciones*/
@@ -4119,14 +4113,14 @@ Graficos
  /* Encabezado y Pie del Modal en Rojo */
 .modal-estilo-rojo .modal-header,
 .modal-estilo-rojo .modal-footer {
-  background-color: #c9302c; /* Rojo intenso */
-  color: white; /* Texto blanco */
+  background-color: #c9302c;
+  color: white;
 }
 
-/* Botón Cancelar (Estilo Diferenciado) */
+/* Botón Cancelar */
 .modal-estilo-rojo .cancelar-btn {
-  background-color: #ffffff; /* Blanco */
-  color: #d9534f; /* Rojo intenso */
+  background-color: #ffffff;
+  color: #d9534f;
   border: none;
   padding: 10px;
   font-size: 16px;
@@ -4135,14 +4129,14 @@ Graficos
 }
 
 .modal-estilo-rojo .cancelar-btn:hover {
-  background-color: #f7e2e2; /* Rojo muy claro */
-  color: #c9302c; /* Rojo más oscuro */
+  background-color: #f7e2e2;
+  color: #c9302c;
 }
 
 /* Botón Eliminar (Color Más Oscuro) */
 .modal-estilo-rojo .eliminar-btn {
-  background-color: #ffffff; /* Rojo oscuro */
-  color: #d9534f; /* Texto blanco */
+  background-color: #ffffff;
+  color: #d9534f;
   border: none;
   padding: 10px;
   font-size: 16px;
@@ -4151,17 +4145,68 @@ Graficos
 }
 
 .modal-estilo-rojo .eliminar-btn:hover {
-	background-color: #f7e2e2; /* Rojo muy claro */
-	color: #c9302c; /* Rojo más oscuro */
+	background-color: #f7e2e2;
+	color: #c9302c;
   }
 
 /* Espaciado entre botones */
 .modal-estilo-rojo .modal-footer .btn {
-  margin: 0 5px; /* Añade espacio entre botones */
+  margin: 0 5px;
 }
 
- /**/
+/* MODAL DE ADVERTENCIA EN REGISTRO */
+.modal-advertencia .modal-dialog {
+    max-width: 500px;
+    margin: 1.75rem auto; 
+    border: 2px solid #ffc107; 
+    border-radius: 10px; 
+}
 
-  
-  
+.modal-advertencia .modal-content {
+    background-color: #fff8e1;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
 
+.modal-advertencia .modal-header {
+    background-color: #ffc107;
+    color: #212529;
+    border-bottom: 1px solid #e0a800;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    text-align: center;
+}
+
+.modal-advertencia .modal-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.modal-advertencia .modal-body {
+    color: #212529;
+    font-size: 1.1rem;
+    text-align: center;
+    padding: 20px;
+}
+
+.modal-advertencia .modal-footer {
+    background-color: #fff8e1;
+    border-top: none;
+    display: flex;
+    justify-content: center;
+}
+
+.modal-advertencia .btn-primary {
+    background-color: #ffc107;
+    border: 1px solid #e0a800;
+    color: #212529;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.modal-advertencia .btn-primary:hover {
+    background-color: #e0a800;
+    color: #fff;
+}

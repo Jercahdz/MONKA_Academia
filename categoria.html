@@ -1,159 +1,160 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
-<head>
-	<!-- Basic Page Needs
+	<head>
+		<!-- Basic Page Needs
     ================================================== -->
-	<meta charset="utf-8">
-	<!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>MONKÁ - Categoria y Plantilla</title>
-	<meta name="description"
-		content="Pro Soccer - Football Club Template. It is built using bootstrap 3.3.2 framework, works totally responsive, easy to customise, well commented codes and seo friendly.">
-	<meta name="keywords" content="prosoccer, football, club, soccer, bootstrap">
-	<meta name="author" content="rudhisasmito.com">
+		<meta charset="utf-8">
+		<!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>MONKÁ - Categoria y Plantilla</title>
+		<meta name="description"
+			content="Pro Soccer - Football Club Template. It is built using bootstrap 3.3.2 framework, works totally responsive, easy to customise, well commented codes and seo friendly.">
+		<meta name="keywords" content="prosoccer, football, club, soccer, bootstrap">
+		<meta name="author" content="rudhisasmito.com">
 
-	<!-- ==============================================
+		<!-- ==============================================
 	Favicons
 	=============================================== -->
-	<link rel="shortcut icon" href="images/escudo.png">
-	<link rel="apple-touch-icon" href="images/escudo.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="images/escudo.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="images/escudo.png">
+		<link rel="shortcut icon" href="images/escudo.png">
+		<link rel="apple-touch-icon" href="images/escudo.png">
+		<link rel="apple-touch-icon" sizes="72x72" href="images/escudo.png">
+		<link rel="apple-touch-icon" sizes="114x114" href="images/escudo.png">
 
-	<!-- ==============================================
+		<!-- ==============================================
 	CSS
 	=============================================== -->
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
-	<link rel="stylesheet" type="text/css" href="css/owl.theme.css">
-	<link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+		<link rel="stylesheet" type="text/css" href="css/owl.theme.css">
+		<link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
 
-	<!-- ==============================================
+		<!-- ==============================================
 	Google Fonts
 	=============================================== -->
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700'
+			rel='stylesheet' type='text/css'>
 
-	<!-- ==============================================
+		<!-- ==============================================
 	Custom Stylesheet
 	=============================================== -->
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
 
-	<script src="js/imagenes.js"></script>
+		<script type="text/javascript" src="js/modernizr.min.js"></script>
 
-	<script type="text/javascript" src="js/modernizr.min.js"></script>
+		<script src="js/categorias/categorias.js"></script>
+		<script src="js/categorias/plantilla.js"></script>
 
-	<script src="js/categorias/categorias.js"></script>
-	<script src="js/categorias/plantilla.js"></script>
+	</head>
 
+	<body>
 
-</head>
+		<!-- Load page -->
+		<div class="animationload">
+			<div class="loader"></div>
+		</div>
 
-<body>
+		<!-- NAVBAR SECTION -->
+		<div class="navbar navbar-main navbar-fixed-top">
+			<div class="header-top">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
 
-	<!-- Load page -->
-	<div class="animationload">
-		<div class="loader"></div>
-	</div>
-
-
-	<!-- NAVBAR SECTION -->
-	<div class="navbar navbar-main navbar-fixed-top">
-		<div class="header-top">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+						</div>
 
 					</div>
+				</div>
+			</div>
+			<div class="container">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html"><img src="images/escudo.png"
+							alt /></a>
 
+				</div>
+				<nav class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html">INICIO</a></li>
+						<li><a href="about.html">SOBRE NOSOTROS</a></li>
+						<li><a href="categoria.html">CATEGORIA</a></li>
+						<li><a href="estadisticas.html">ESTADISTICAS</a></li>
+						<li id="registroLink" style="display: none;"><a
+								href="registro.html">REGISTRO DE JUGADORES</a></li>
 
+						<!-- User Status and Dropdown -->
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
+								aria-haspopup="true"
+								aria-expanded="false" id="userName">
+								Invitado <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li id="loginOption"><a href="login.html">Iniciar Sesión</a></li>
+								<!-- Enlace para cerrar sesión -->
+								<li id="logoutOption" style="display: none;">
+									<a href="#"
+										onclick="document.getElementById('logoutForm').submit();">Cerrar
+										Sesión</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+
+					<!-- Formulario de logout (oculto) -->
+					<form id="logoutForm" action="php/usuarios/cerrarSesion.php" method="POST"
+						style="display: none;">
+						<input type="hidden" name="logout" value="true">
+					</form>
+				</nav>
+			</div>
+		</div>
+
+		<!-- BANNER -->
+		<div class="section subbanner">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 col-md-12">
+						<div class="caption">Categoria y Plantilla</div>
+					</div>
 				</div>
 			</div>
 		</div>
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="index.html"><img src="images/escudo.png" alt="" /></a>
 
-			</div>
-			<nav class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="index.html">INICIO</a></li>
-					<li><a href="about.html">SOBRE NOSOTROS</a></li>
-					<li><a href="categoria.html">CATEGORIA</a></li>
-					<li><a href="estadisticas.html">ESTADISTICAS</a></li>
-					<li id="registroLink" style="display: none;"><a href="registro.html">REGISTRO DE JUGADORES</a></li>
+		<!-- ABOUT SECTION -->
+		<div class="section singlepage">
+			<div class="container">
 
-					<!-- User Status and Dropdown -->
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false" id="userName">
-							Invitado <span class="caret"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li id="loginOption"><a href="login.html">Iniciar Sesión</a></li>
-							<!-- Enlace para cerrar sesión -->
-							<li id="logoutOption" style="display: none;">
-								<a href="#" onclick="document.getElementById('logoutForm').submit();">Cerrar Sesión</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-
-				<!-- Formulario de logout (oculto) -->
-				<form id="logoutForm" action="php/usuarios/cerrarSesion.php" method="POST" style="display: none;">
-					<input type="hidden" name="logout" value="true">
-				</form>
-			</nav>
-		</div>
-	</div>
-
-
-	<!-- BANNER -->
-	<div class="section subbanner">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12 col-md-12">
-					<div class="caption">Categoria y Plantilla</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<!-- ABOUT SECTION -->
-	<div class="section singlepage">
-		<div class="container">
-
-			<div class="row">
-				<div class="col-sm-12 col-md-12">
-					<div class="page-title">
-						<h2 class="lead">Categoria</h2>
-						<div class="border-style"></div>
-						<div class="page-description">
+				<div class="row">
+					<div class="col-sm-12 col-md-12">
+						<div class="page-title">
+							<h2 class="lead">Categoria</h2>
+							<div class="border-style"></div>
+							<div class="page-description">
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
 
-			<!-- Seccion Categoria -->
-			<div class="row">
-				<div class="col-sm-12 col-md-12">
-					<section id="lista-jugadores">
-						<h2>Lista de Jugadores</h2>
-						<h3>Filtrar por Categoría</h3>
-						<select id="selector-categoria">
-							<option value="todos">Todos</option>
-							<option value="U-15">U-15</option>
-							<option value="U-17">U-17</option>
-							<option value="U-20">U-20</option>
-						</select>
-					</section>
+				<!-- Seccion Categoria -->
+				<div class="row">
+					<div class="col-sm-12 col-md-12">
+						<section id="lista-jugadores">
+							<h2>Lista de Jugadores</h2>
+							<h3>Filtrar por Categoría</h3>
+							<select id="selector-categoria">
+								<option value="todos">Todos</option>
+								<option value="U-15">U-15</option>
+								<option value="U-17">U-17</option>
+								<option value="U-20">U-20</option>
+							</select>
+						</section>
 						<div class="table-responsive-xl">
 							<table class="table table-striped table-bordered">
 								<thead id="tabla-cabecera-jugadores" class="thead-dark">
@@ -163,335 +164,328 @@
 							</table>
 						</div>
 
-					<!-- Modal para ver detalles del jugador -->
-					<div id="detallesModal" class="modal fade modal-estilo" tabindex="-1" role="dialog"
-						aria-labelledby="detallesModalLabel" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<!-- Encabezado del Modal -->
-								<div class="modal-header">
-									<h5 class="modal-title" id="detallesModalLabel">Detalles del Jugador</h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<!-- Cuerpo del Modal -->
-								<div class="modal-body">
-									<p class="detalle-par">
-										<strong>Nombre:</strong> <span id="modal-nombre"></span>
-									</p>
-									<p class="detalle-par alterno">
-										<strong>Apellidos:</strong> <span id="modal-apellidos"></span>
-									</p>
-									<p class="detalle-par">
-										<strong>Edad:</strong> <span id="modal-edad"></span>
-									</p>
-									<p class="detalle-par alterno">
-										<strong>Dorsal:</strong> <span id="modal-dorsal"></span>
-									</p>
-									<p class="detalle-par">
-										<strong>Pie Hábil:</strong> <span id="modal-pieHabil"></span>
-									</p>
-									<p class="detalle-par alterno">
-										<strong>Categoría:</strong> <span id="modal-categoria"></span>
-									</p>
-								</div>
-								<!-- Pie del Modal -->
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary boton-cerrar"
-										data-dismiss="modal">Aceptar</button>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- Modal para editar los datos del jugador -->
-					<div id="editarModal" class="modal fade modal-estilo" tabindex="-1" role="dialog"
-						aria-labelledby="editarModalLabel" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<!-- Encabezado del Modal -->
-								<div class="modal-header">
-									<h5 class="modal-title" id="editarModalLabel">Editar Jugador</h5>
-									<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-										<span aria-hidden="true">&times;</span>
-									</button>
-								</div>
-								<!-- Cuerpo del Modal -->
-								<div class="modal-body">
-									<form id="formEditarJugador">
-										<input type="hidden" id="editar-jugador-id">
-
-										<!-- Campo Nombre -->
-										<div class="form-group">
-											<label for="editar-nombre-jugador">Nombre:</label>
-											<input type="text" id="editar-nombre-jugador" class="form-control" required>
-										</div>
-
-										<!-- Campo Apellidos -->
-										<div class="form-group">
-											<label for="editar-apellidos">Apellidos:</label>
-											<input type="text" id="editar-apellidos" class="form-control" required>
-										</div>
-
-										<!-- Campo Edad -->
-										<div class="form-group">
-											<label for="editar-edad">Edad:</label>
-											<input type="number" id="editar-edad" class="form-control" required>
-										</div>
-
-										<!-- Campo Dorsal -->
-										<div class="form-group">
-											<label for="editar-dorsal">Dorsal:</label>
-											<input type="number" id="editar-dorsal" class="form-control" required>
-										</div>
-
-										<!-- Campo Pie Hábil -->
-										<div class="form-group">
-											<label for="editar-pieHabil">Pie Hábil:</label>
-											<select id="editar-pieHabil" name="pieHabil" class="form-control">
-												<option value="Izquierdo">Izquierdo</option>
-												<option value="Derecho">Derecho</option>
-											</select>
-										</div>
-
-										<!-- Botón de Guardar Cambios -->
-										<div class="form-group">
-											<button type="submit" class="btn btn-success boton-guardar">Guardar
-												Cambios</button>
-										</div>
-									</form>
-								</div>
-								<!-- Pie del Modal -->
-								<div class="modal-footer">
-									<button type="button" class="btn btn-secondary boton-cerrar"
-										data-dismiss="modal">Cerrar</button>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<!-- Seccion Plantilla   -->
-					<div class="col-sm-12 col-md-12">
-						<div class="page-title">
-							<h2 class="lead">Plantilla</h2>
-							<div class="border-style"></div>
-							<div class="page-description">
-								<p>
-									<strong>Academia de Fútbol MONKÁ</strong>
-									Selecciona una formación y visualiza su distribución en el campo.
-								</p>
-							</div>
-						</div>
-					</div>
-					<div class="col-sm-12 col-md-12">
-						<!-- Contenedor para la sección de plantillas -->
-						<div class="container">
-							<div class="row">
-								<!-- Menú de formaciones -->
-								<div class="col-md-4">
-									<div class="list-group" id="formation-menu">
-										<button class="list-group-item list-group-item-action"
-											onclick="loadFormation('3-5-2')">3-5-2</button>
-										<button class="list-group-item list-group-item-action"
-											onclick="loadFormation('4-1-2-1-2')">4-1-2-1-2</button>
-										<button class="list-group-item list-group-item-action"
-											onclick="loadFormation('4-1-3-2')">4-1-3-2</button>
-										<button class="list-group-item list-group-item-action"
-											onclick="loadFormation('4-2-1-3')">4-2-1-3</button>
-										<button class="list-group-item list-group-item-action"
-											onclick="loadFormation('4-3-2-1')">4-3-2-1</button>
-										<button class="list-group-item list-group-item-action"
-											onclick="loadFormation('4-4-2')">4-4-2</button>
-										<button class="list-group-item list-group-item-action"
-											onclick="loadFormation('4-5-1')">4-5-1</button>
-										<button class="list-group-item list-group-item-action"
-											onclick="loadFormation('5-3-2')">5-3-2</button>
-										<button class="list-group-item list-group-item-action"
-											onclick="loadFormation('5-4-1')">5-4-1</button>
+						<!-- Modal para ver detalles del jugador -->
+						<div id="detallesModal" class="modal fade modal-estilo" tabindex="-1"
+							role="dialog"
+							aria-labelledby="detallesModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<!-- Encabezado del Modal -->
+									<div class="modal-header">
+										<h5 class="modal-title" id="detallesModalLabel">Detalles del
+											Jugador</h5>
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
 									</div>
-								</div>
-
-								<!-- Contenedor para la imagen de la formación -->
-								<div class="col-md-8 text-center">
-
-									<div class="border p-3">
-										<img id="formationImage" src="images/campoVacio.avif"
-											alt="Selecciona una formación" class="img-fluid"
-											style="max-height: 400px; max-width: 100%;">
+									<!-- Cuerpo del Modal -->
+									<div class="modal-body">
+										<p class="detalle-par">
+											<strong>Nombre:</strong> <span id="modal-nombre"></span>
+										</p>
+										<p class="detalle-par alterno">
+											<strong>Apellidos:</strong> <span id="modal-apellidos"></span>
+										</p>
+										<p class="detalle-par">
+											<strong>Edad:</strong> <span id="modal-edad"></span>
+										</p>
+										<p class="detalle-par alterno">
+											<strong>Dorsal:</strong> <span id="modal-dorsal"></span>
+										</p>
+										<p class="detalle-par">
+											<strong>Pie Hábil:</strong> <span id="modal-pieHabil"></span>
+										</p>
+										<p class="detalle-par alterno">
+											<strong>Categoría:</strong> <span id="modal-categoria"></span>
+										</p>
+									</div>
+									<!-- Pie del Modal -->
+									<div class="modal-footer">
+										<button type="button" class="btn btn-secondary boton-cerrar"
+											data-dismiss="modal">Aceptar</button>
 									</div>
 								</div>
 							</div>
 						</div>
+
+						<!-- Modal para editar los datos del jugador -->
+						<div id="editarModal" class="modal fade modal-estilo" tabindex="-1"
+							role="dialog" aria-labelledby="editarModalLabel" aria-hidden="true">
+							<div class="modal-dialog">
+								<div class="modal-content">
+									<!-- Encabezado del Modal -->
+									<div class="modal-header">
+										<h5 class="modal-title" id="editarModalLabel">Editar Jugador</h5>
+										<button type="button" class="close" data-dismiss="modal"
+											aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+										</button>
+									</div>
+									<!-- Cuerpo del Modal -->
+									<div class="modal-body">
+										<form id="formEditarJugador">
+											<input type="hidden" id="editar-jugador-id">
+											<!-- Campo Nombre -->
+											<div class="form-group">
+												<label for="editar-nombre-jugador">Nombre:</label>
+												<input type="text" id="editar-nombre-jugador" class="form-control"
+													required>
+											</div>
+											<!-- Campo Apellidos -->
+											<div class="form-group">
+												<label for="editar-apellidos">Apellidos:</label>
+												<input type="text" id="editar-apellidos" class="form-control"
+													required>
+											</div>
+											<!-- Campo Edad -->
+											<div class="form-group">
+												<label for="editar-edad">Edad:</label>
+												<input type="number" id="editar-edad" class="form-control" required>
+											</div>
+											<!-- Campo Dorsal -->
+											<div class="form-group">
+												<label for="editar-dorsal">Dorsal:</label>
+												<input type="number" id="editar-dorsal" class="form-control"
+													required>
+											</div>
+											<!-- Campo Pie Hábil -->
+											<div class="form-group">
+												<label for="editar-pieHabil">Pie Hábil:</label>
+												<select id="editar-pieHabil" name="pieHabil" class="form-control">
+													<option value="Izquierdo">Izquierdo</option>
+													<option value="Derecho">Derecho</option>
+												</select>
+											</div>
+											<!-- Botón de Guardar Cambios -->
+											<div class="form-group">
+												<button type="submit" class="btn btn-success boton-guardar">Guardar
+													Cambios</button>
+											</div>
+										</form>
+									</div>
+									<div class="modal-footer"></div>
+								</div>
+							</div>
+						</div>
+						<div class="modal-footer"></div>
+
+						<!-- Seccion Plantilla   -->
+						<div class="col-sm-12 col-md-12">
+							<div class="page-title">
+								<h2 class="lead">Plantilla</h2>
+								<div class="border-style"></div>
+								<div class="page-description">
+									<p>
+										<strong>Academia de Fútbol MONKÁ</strong>
+										Selecciona una formación y visualiza su distribución en el campo.
+									</p>
+								</div>
+							</div>
+						</div>
+						<div class="col-sm-12 col-md-12">
+							<div class="container">
+								<div class="row">
+									<!-- Menú de formaciones -->
+									<div class="col-md-4">
+										<div class="list-group" id="formation-menu">
+											<button class="list-group-item list-group-item-action"
+												onclick="loadFormation('3-5-2')">3-5-2</button>
+											<button class="list-group-item list-group-item-action"
+												onclick="loadFormation('4-1-2-1-2')">4-1-2-1-2</button>
+											<button class="list-group-item list-group-item-action"
+												onclick="loadFormation('4-1-3-2')">4-1-3-2</button>
+											<button class="list-group-item list-group-item-action"
+												onclick="loadFormation('4-2-1-3')">4-2-1-3</button>
+											<button class="list-group-item list-group-item-action"
+												onclick="loadFormation('4-3-2-1')">4-3-2-1</button>
+											<button class="list-group-item list-group-item-action"
+												onclick="loadFormation('4-4-2')">4-4-2</button>
+											<button class="list-group-item list-group-item-action"
+												onclick="loadFormation('4-5-1')">4-5-1</button>
+											<button class="list-group-item list-group-item-action"
+												onclick="loadFormation('5-3-2')">5-3-2</button>
+											<button class="list-group-item list-group-item-action"
+												onclick="loadFormation('5-4-1')">5-4-1</button>
+										</div>
+									</div>
+
+									<!-- Contenedor para la imagen de la formación -->
+									<div class="col-md-8 text-center">
+
+										<div class="border p-3">
+											<img id="formationImage" src="images/campoVacio.avif"
+												alt="Selecciona una formación" class="img-fluid"
+												style="max-height: 400px; max-width: 100%;">
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+
 					</div>
-
-
 				</div>
 			</div>
 		</div>
-	</div>
 
-
-
-	<!-- CLIENT SECTION -->
-	<div class="section stat-client p-main bg-client">
-		<div class="container">
-			<div class="row">
-				<div class="page-title-sponsores">
-					<h2 class="lead">PATROCINADORES</h2>
-					<div class="border-style"></div>
-				</div>
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/sponsor1.jpg" alt="" class="img-responsive" />
-					</div>
-				</div>
-
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/sponsor2.png" alt="" class="img-responsive" />
-					</div>
-				</div>
-
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/sponsor3.png" alt="" class="img-responsive" />
-					</div>
-				</div>
-
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/sponsor4.png" alt="" class="img-responsive" />
-					</div>
-				</div>
-
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/sponsor5.png" alt="" class="img-responsive" />
-					</div>
-				</div>
-
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/sponsor6.png" alt="" class="img-responsive" />
-					</div>
-				</div>
-
-
-			</div>
-		</div>
-	</div>
-
-
-	<!-- FOOTER SECTION -->
-	<div class="footer">
-
-		<div class="f-desc">
+		<!-- PATROCINADORES -->
+		<div class="section stat-client p-main bg-client">
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-						<div class="footer-item">
-							<div class="footer-title">
-								<h4>ACERCA DEL EQUIPO</h4>
-							</div>
-							<h5><strong>Academia Monká</strong></h5>
-							<p>Comprometidos con la formación integral de jóvenes talentos, fomentando
-								el desarrollo técnico, táctico y humano dentro y fuera del campo. ¡Unidos por el fútbol
-								y la pasión por el deporte!</p>
-							<div class="footer-sosmed">
-								<a href="https://www.facebook.com/profile.php?id=100076718043028&locale=es_LA" title="">
-									<div class="item">
-										<i class="fa fa-facebook"></i>
-									</div>
-								</a>
-								<a href="https://www.instagram.com/academia_de_futbol_monka/" title="">
-									<div class="item">
-										<i class="fa fa-instagram"></i>
-									</div>
-								</a>
-
-							</div>
+					<div class="page-title-sponsores">
+						<h2 class="lead">PATROCINADORES</h2>
+						<div class="border-style"></div>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/sponsor1.jpg" alt class="img-responsive" />
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-						<div class="footer-item">
-							<div class="footer-title">
-								<h4>INFORMACION</h4>
-							</div>
-							<ul class="sitemap">
-								<li><a href="index.html" title="">Inicio</a></li>
-								<li><a href="about.html" title="">Sobre Nosotros</a></li>
-								<li><a href="categoria.html" title="">Categoría</a></li>
-								<li><a href="estadisticas.html" title="">Estadísticas</a></li>
-								<li><a href="login.html" title="">Login</a></li>
 
-							</ul>
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/sponsor2.png" alt class="img-responsive" />
 						</div>
 					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/sponsor3.png" alt class="img-responsive" />
+						</div>
 					</div>
 
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/sponsor4.png" alt class="img-responsive" />
+						</div>
+					</div>
+
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/sponsor5.png" alt class="img-responsive" />
+						</div>
+					</div>
+
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/sponsor6.png" alt class="img-responsive" />
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- FOOTER SECTION -->
+		<div class="footer">
+
+			<div class="f-desc">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+							<div class="footer-item">
+								<div class="footer-title">
+									<h4>ACERCA DEL EQUIPO</h4>
+								</div>
+								<h5><strong>Academia Monká</strong></h5>
+								<p>Comprometidos con la formación integral de jóvenes talentos,
+									fomentando
+									el desarrollo técnico, táctico y humano dentro y fuera del campo.
+									¡Unidos por el fútbol
+									y la pasión por el deporte!</p>
+								<div class="footer-sosmed">
+									<a
+										href="https://www.facebook.com/profile.php?id=100076718043028&locale=es_LA"
+										title>
+										<div class="item">
+											<i class="fa fa-facebook"></i>
+										</div>
+									</a>
+									<a href="https://www.instagram.com/academia_de_futbol_monka/" title>
+										<div class="item">
+											<i class="fa fa-instagram"></i>
+										</div>
+									</a>
+
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+							<div class="footer-item">
+								<div class="footer-title">
+									<h4>INFORMACION</h4>
+								</div>
+								<ul class="sitemap">
+									<li><a href="index.html" title>Inicio</a></li>
+									<li><a href="about.html" title>Sobre Nosotros</a></li>
+									<li><a href="categoria.html" title>Categoría</a></li>
+									<li><a href="estadisticas.html" title>Estadísticas</a></li>
+									<li><a href="login.html" title>Login</a></li>
+
+								</ul>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+			<div class="fcopy">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<p class="ftex">&copy; 2024 Monká Academia - Derechos Reservados</p>
+						</div>
+					</div>
 				</div>
 			</div>
 
 		</div>
 
-		<div class="fcopy">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<p class="ftex">&copy; 2024 Monká Academia - Derechos Reservados</p>
-					</div>
+		<!-- Botón flotante -->
+		<button class="chat-button" id="chatButton">
+			<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+				viewBox="0 0 24 24" fill="none"
+				stroke="currentColor" stroke-width="2" stroke-linecap="round"
+				stroke-linejoin="round">
+				<path
+					d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+			</svg>
+		</button>
+
+		<!-- Contenedor del chat -->
+		<div class="chat-container" id="chatContainer">
+			<div class="chat-header">
+				<h3>Chat de Soporte</h3>
+				<button class="close-chat" id="closeChat">×</button>
+			</div>
+			<div class="chat-messages" id="chatMessages">
+				<div class="message bot-message">
+					¡Hola! ¿En qué puedo ayudarte?
 				</div>
 			</div>
-		</div>
-
-	</div>
-
-	<!-- Botón flotante -->
-	<button class="chat-button" id="chatButton">
-		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-			stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-			<path
-				d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
-		</svg>
-	</button>
-
-	<!-- Contenedor del chat -->
-	<div class="chat-container" id="chatContainer">
-		<div class="chat-header">
-			<h3>Chat de Soporte</h3>
-			<button class="close-chat" id="closeChat">×</button>
-		</div>
-		<div class="chat-messages" id="chatMessages">
-			<div class="message bot-message">
-				¡Hola! ¿En qué puedo ayudarte?
+			<div class="chat-input">
+				<input type="text" placeholder="Escribe un mensaje..." id="messageInput">
+				<button id="sendMessage">Enviar</button>
 			</div>
 		</div>
-		<div class="chat-input">
-			<input type="text" placeholder="Escribe un mensaje..." id="messageInput">
-			<button id="sendMessage">Enviar</button>
-		</div>
-	</div>
 
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type='text/javascript' src='js/jqBootstrapValidation.js'></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/owl.carousel.min.js"></script>
+		<script type="text/javascript"
+			src="js/bootstrap-hover-dropdown.min.js"></script>
+		<script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
 
+		<script type="text/javascript" src="js/script.js"></script>
+		<script type="text/javascript" src="js/cuentas/controlSesion.js"></script>
 
-
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type='text/javascript' src='js/jqBootstrapValidation.js'></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/owl.carousel.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap-hover-dropdown.min.js"></script>
-	<script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
-
-	<script type="text/javascript" src="js/script.js"></script>
-	<script type="text/javascript" src="js/cuentas/controlSesion.js"></script>
-
-
-
-
-</body>
+	</body>
 
 </html>

@@ -26,16 +26,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
             $_SESSION['nombreUsuario'] = $usuario['nombreUsuario'];
             $_SESSION['rolId'] = $usuario['rolId'];
 
+           // Redirigir al inicio
             echo "<script>window.location.href = '../../index.html';</script>";
+            exit();
         } else {
             // Contraseña incorrecta
-            echo "<script>alert('Correo o contraseña incorrectos. Inténtalo de nuevo.');</script>";
+            echo "<script>console.log('Error: Contraseña incorrecta.');</script>";
             echo "<script>window.location.href = '../../login.html';</script>";
+            exit();
         }
     } else {
         // Correo no encontrado
-        echo "<script>alert('Correo o contraseña incorrectos. Inténtalo de nuevo.');</script>";
+        echo "<script>console.log('Error: Usuario no encontrado.');</script>";
         echo "<script>window.location.href = '../../login.html';</script>";
+        exit();
     }
 
     $stmt->close();
