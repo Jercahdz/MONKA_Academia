@@ -3656,14 +3656,17 @@ Responsiveness for Tables
 .list-group-item {
 	width: 100%;
 	padding: 12px 10px;
-	border: 1px solid #dee2e6;
-	background-color: #ffffff;
+	border: 3px solid #ffffff;
+	background-color: #115959;
 	transition: all 0.3s ease;
 	text-align: center;
 	cursor: pointer;
 	border-radius: 6px !important;
 	margin: 0;
 	font-size: 0.9rem;
+	font-weight: bold;
+	color: #000;
+
 }
 
 .list-group-item:hover {

@@ -1,343 +1,357 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
-	<head>
-		<!-- Basic Page Needs
+<head>
+	<!-- Basic Page Needs
     ================================================== -->
-		<meta charset="utf-8">
-		<!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>MONKÁ - Registro</title>
-		<meta name="description"
-			content="Pro Soccer - Football Club Template. It is built using bootstrap 3.3.2 framework, works totally responsive, easy to customise, well commented codes and seo friendly.">
-		<meta name="keywords" content="prosoccer, football, club, soccer, bootstrap">
-		<meta name="author" content="rudhisasmito.com">
+	<meta charset="utf-8">
+	<!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>MONKÁ - Registro</title>
+	<meta name="description"
+		content="Pro Soccer - Football Club Template. It is built using bootstrap 3.3.2 framework, works totally responsive, easy to customise, well commented codes and seo friendly.">
+	<meta name="keywords" content="prosoccer, football, club, soccer, bootstrap">
+	<meta name="author" content="rudhisasmito.com">
 
-		<!-- ==============================================
+	<!-- ==============================================
 	Favicons
 	=============================================== -->
-		<link rel="shortcut icon" href="images/escudo.png">
-		<link rel="apple-touch-icon" href="images/escudo.png">
-		<link rel="apple-touch-icon" sizes="72x72" href="images/escudo.png">
-		<link rel="apple-touch-icon" sizes="114x114" href="images/escudo.png">
+	<link rel="shortcut icon" href="images/escudo.png">
+	<link rel="apple-touch-icon" href="images/escudo.png">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/escudo.png">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/escudo.png">
 
-		<!-- ==============================================
+	<!-- ==============================================
 	CSS
 	=============================================== -->
-		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-		<link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
-		<link rel="stylesheet" type="text/css" href="css/owl.theme.css">
-		<link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="css/owl.theme.css">
+	<link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
 
-		<!-- ==============================================
+	<!-- ==============================================
 	Google Fonts
 	=============================================== -->
-		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700'
-			rel='stylesheet' type='text/css'>
+	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
 
-		<!-- ==============================================
+	<!-- ==============================================
 	Custom Stylesheet
 	=============================================== -->
-		<link rel="stylesheet" type="text/css" href="css/style.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
 
-		<script src="js/registroJugador.js"></script>
+	<script src="js/registroJugador.js"></script>
 
-		<script type="text/javascript" src="js/modernizr.min.js"></script>
+	<script type="text/javascript" src="js/modernizr.min.js"></script>
 
-	</head>
+</head>
 
-	<body>
+<body>
 
-		<!-- Load page -->
-		<div class="animationload">
-			<div class="loader"></div>
-		</div>
+	<!-- Load page -->
+	<div class="animationload">
+		<div class="loader"></div>
+	</div>
 
-		<!-- NAVBAR SECTION -->
-		<div class="navbar navbar-main navbar-fixed-top">
-			<div class="header-top">
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
-
-						</div>
-
-					</div>
-				</div>
-			</div>
-			<div class="container">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse"
-						data-target=".navbar-collapse">
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="index.html"><img src="images/escudo.png"
-							alt /></a>
-
-				</div>
-				<nav class="navbar-collapse collapse">
-					<ul class="nav navbar-nav navbar-right">
-						<li><a href="index.html">INICIO</a></li>
-						<li><a href="about.html">SOBRE NOSOTROS</a></li>
-						<li><a href="categoria.html">CATEGORIA</a></li>
-						<li><a href="estadisticas.html">ESTADISTICAS</a></li>
-						<li id="registroLink" style="display: none;"><a
-								href="registro.html">REGISTRO DE JUGADORES</a></li>
-
-						<!-- User Status and Dropdown -->
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"
-								aria-haspopup="true"
-								aria-expanded="false" id="userName">
-								Invitado <span class="caret"></span>
-							</a>
-							<ul class="dropdown-menu">
-								<li id="loginOption"><a href="login.html">Iniciar Sesión</a></li>
-								<!-- Enlace para cerrar sesión -->
-								<li id="logoutOption" style="display: none;">
-									<a href="#"
-										onclick="document.getElementById('logoutForm').submit();">Cerrar
-										Sesión</a>
-								</li>
-							</ul>
-						</li>
-					</ul>
-
-					<!-- Formulario de logout (oculto) -->
-					<form id="logoutForm" action="php/usuarios/cerrarSesion.php" method="POST"
-						style="display: none;">
-						<input type="hidden" name="logout" value="true">
-					</form>
-				</nav>
-			</div>
-		</div>
-
-		<!-- BANNER -->
-		<div class="section subbanner">
+	<!-- NAVBAR SECTION -->
+	<div class="navbar navbar-main navbar-fixed-top">
+		<div class="header-top">
 			<div class="container">
 				<div class="row">
-					<div class="col-sm-12 col-md-12">
-						<div class="caption">REGISTRO</div>
+					<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
+
 					</div>
+
 				</div>
 			</div>
 		</div>
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html"><img src="images/escudo.png" alt /></a>
 
-		<div class="page-title">
-			<h2 class="lead">REGISTRO DE JUGADORES</h2>
-			<div class="border-style"></div>
-		</div>
+			</div>
+			<nav class="navbar-collapse collapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li><a href="index.html">INICIO</a></li>
+					<li><a href="about.html">SOBRE NOSOTROS</a></li>
+					<li><a href="categoria.html">CATEGORIA</a></li>
+					<li><a href="estadisticas.html">ESTADISTICAS</a></li>
+					<li id="registroLink" style="display: none;"><a href="registro.html">REGISTRO DE JUGADORES</a></li>
 
-		<!-- FORMULARIO DE REGISTRO -->
-		<main>
-			<section class="registro-jugador">
-				<form id="registroForm" action="php/jugadores/registro.php" method="POST">
-					<div id="mensajeServidor"></div>
+					<!-- User Status and Dropdown -->
+					<li class="dropdown">
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false" id="userName">
+							Invitado <span class="caret"></span>
+						</a>
+						<ul class="dropdown-menu">
+							<li id="loginOption"><a href="login.html">Iniciar Sesión</a></li>
+							<!-- Enlace para cerrar sesión -->
+							<li id="logoutOption" style="display: none;">
+								<a href="#" onclick="document.getElementById('logoutForm').submit();">Cerrar
+									Sesión</a>
+							</li>
+						</ul>
+					</li>
+				</ul>
 
-					<div class="form-group">
-						<label for="nombre">Nombre:</label>
-						<input type="text" id="nombre" name="nombre" required>
-					</div>
-					<div class="form-group">
-						<label for="apellidos">Apellidos:</label>
-						<input type="text" id="apellidos" name="apellidos" required>
-					</div>
-					<div class="form-group">
-						<label for="edad">Edad:</label>
-						<input type="number" id="edad" name="edad" required>
-					</div>
-					<div class="form-group">
-						<label for="posicion">Posición:</label>
-						<select id="posicion" name="posicion" required>
-							<option value>Seleccione una posición</option>
-							<option value="Portero">Portero</option>
-							<option value="Defensa">Defensa</option>
-							<option value="Mediocampo">Mediocentro</option>
-							<option value="Delantero">Delantero</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<label for="dorsal">Dorsal:</label>
-						<input type="number" id="dorsal" name="dorsal" required>
-					</div>
-					<div class="form-group">
-						<label for="pieHabil">Pie hábil:</label>
-						<select id="pieHabil" name="pieHabil" required>
-							<option value>Seleccione un pie</option>
-							<option value="Derecho">Derecho</option>
-							<option value="Izquierdo">Izquierdo</option>
-						</select>
-					</div>
-					<div class="form-group">
-						<label for="categoria">Categoría:</label>
-						<select id="categoria" name="categoria" required>
-							<option value>Seleccione una categoría</option>
-							<option value="1">U-15</option>
-							<option value="2">U-17</option>
-							<option value="3">U-20</option>
-						</select>
-					</div>
-					<button type="submit" class="btn-registrar">Registrar</button>
+				<!-- Formulario de logout (oculto) -->
+				<form id="logoutForm" action="php/usuarios/cerrarSesion.php" method="POST" style="display: none;">
+					<input type="hidden" name="logout" value="true">
 				</form>
-			</section>
-		</main>
+			</nav>
+		</div>
+	</div>
 
-		<!-- Modal de Advertencia -->
-		<div class="modal fade modal-advertencia" id="modalAdvertencia" tabindex="-1"
-			role="dialog" aria-labelledby="modalAdvertenciaLabel" aria-hidden="true">
-			<div class="modal-dialog modal-dialog-centered" role="document">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h5 class="modal-title" id="modalAdvertenciaLabel">¡Advertencia!</h5>
-						<button type="button" class="close" data-dismiss="modal"
-							aria-label="Close">
-							<span aria-hidden="true">&times;</span>
-						</button>
-					</div>
-					<div class="modal-body" id="mensajeAdvertencia">
-						<!-- Aquí se cargará el mensaje del servidor -->
-					</div>
-					<div class="modal-footer">
-						<button type="button" class="btn btn-primary"
-							id="aceptarAdvertencia">Aceptar</button>
-					</div>
+	<!-- BANNER -->
+	<div class="section subbanner">
+		<div class="container">
+			<div class="row">
+				<div class="col-sm-12 col-md-12">
+					<div class="caption">REGISTRO</div>
 				</div>
 			</div>
 		</div>
+	</div>
 
-		<!-- PATROCINADORES -->
-		<div class="section stat-client p-main bg-client">
+	<div class="page-title">
+		<h2 class="lead">REGISTRO DE JUGADORES</h2>
+		<div class="border-style"></div>
+	</div>
+
+	<!-- FORMULARIO DE REGISTRO -->
+	<main>
+		<section class="registro-jugador">
+			<form id="registroForm" action="php/jugadores/registro.php" method="POST">
+				<div id="mensajeServidor"></div>
+
+				<div class="form-group">
+					<label for="nombre">Nombre:</label>
+					<input type="text" id="nombre" name="nombre" required>
+				</div>
+				<div class="form-group">
+					<label for="apellidos">Apellidos:</label>
+					<input type="text" id="apellidos" name="apellidos" required>
+				</div>
+				<div class="form-group">
+					<label for="edad">Edad:</label>
+					<input type="number" id="edad" name="edad" required>
+				</div>
+				<div class="form-group">
+					<label for="posicion">Posición:</label>
+					<select id="posicion" name="posicion" required>
+						<option value>Seleccione una posición</option>
+						<option value="Portero">Portero</option>
+						<option value="Defensa">Defensa</option>
+						<option value="Mediocampo">Mediocentro</option>
+						<option value="Delantero">Delantero</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="dorsal">Dorsal:</label>
+					<input type="number" id="dorsal" name="dorsal" required>
+				</div>
+				<div class="form-group">
+					<label for="pieHabil">Pie hábil:</label>
+					<select id="pieHabil" name="pieHabil" required>
+						<option value>Seleccione un pie</option>
+						<option value="Derecho">Derecho</option>
+						<option value="Izquierdo">Izquierdo</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label for="categoria">Categoría:</label>
+					<select id="categoria" name="categoria" required>
+						<option value>Seleccione una categoría</option>
+						<option value="1">U-15</option>
+						<option value="2">U-17</option>
+						<option value="3">U-20</option>
+					</select>
+				</div>
+				<button type="submit" class="btn-registrar">Registrar</button>
+			</form>
+		</section>
+	</main>
+
+	<!-- Modal de Advertencia -->
+	<div class="modal fade modal-advertencia" id="modalAdvertencia" tabindex="-1" role="dialog"
+		aria-labelledby="modalAdvertenciaLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="modalAdvertenciaLabel">¡Advertencia!</h5>
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+						<span aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body" id="mensajeAdvertencia">
+					<!-- Aquí se cargará el mensaje del servidor -->
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" id="aceptarAdvertencia">Aceptar</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- PATROCINADORES -->
+	<div class="section stat-client p-main bg-client">
+		<div class="container">
+			<div class="row">
+				<div class="page-title-sponsores">
+					<h2 class="lead">PATROCINADORES</h2>
+					<div class="border-style"></div>
+				</div>
+				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+					<div class="client-img">
+						<img src="images/sponsor1.jpg" alt class="img-responsive" />
+					</div>
+				</div>
+
+				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+					<div class="client-img">
+						<img src="images/sponsor2.png" alt class="img-responsive" />
+					</div>
+				</div>
+
+				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+					<div class="client-img">
+						<img src="images/sponsor3.png" alt class="img-responsive" />
+					</div>
+				</div>
+
+				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+					<div class="client-img">
+						<img src="images/sponsor4.png" alt class="img-responsive" />
+					</div>
+				</div>
+
+				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+					<div class="client-img">
+						<img src="images/sponsor5.png" alt class="img-responsive" />
+					</div>
+				</div>
+
+				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+					<div class="client-img">
+						<img src="images/sponsor6.png" alt class="img-responsive" />
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+	<!-- FOOTER SECTION -->
+	<div class="footer">
+
+		<div class="f-desc">
 			<div class="container">
 				<div class="row">
-					<div class="page-title-sponsores">
-						<h2 class="lead">PATROCINADORES</h2>
-						<div class="border-style"></div>
-					</div>
-					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-						<div class="client-img">
-							<img src="images/sponsor1.jpg" alt class="img-responsive" />
-						</div>
-					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+						<div class="footer-item">
+							<div class="footer-title">
+								<h4>ACERCA DEL EQUIPO</h4>
+							</div>
+							<h5><strong>Academia Monká</strong></h5>
+							<p>Comprometidos con la formación integral de jóvenes talentos,
+								fomentando
+								el desarrollo técnico, táctico y humano dentro y fuera del campo.
+								¡Unidos por el fútbol
+								y la pasión por el deporte!</p>
+							<div class="footer-sosmed">
+								<a href="https://www.facebook.com/profile.php?id=100076718043028&locale=es_LA" title>
+									<div class="item">
+										<i class="fa fa-facebook"></i>
+									</div>
+								</a>
+								<a href="https://www.instagram.com/academia_de_futbol_monka/" title>
+									<div class="item">
+										<i class="fa fa-instagram"></i>
+									</div>
+								</a>
 
-					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-						<div class="client-img">
-							<img src="images/sponsor2.png" alt class="img-responsive" />
-						</div>
-					</div>
-
-					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-						<div class="client-img">
-							<img src="images/sponsor3.png" alt class="img-responsive" />
-						</div>
-					</div>
-
-					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-						<div class="client-img">
-							<img src="images/sponsor4.png" alt class="img-responsive" />
-						</div>
-					</div>
-
-					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-						<div class="client-img">
-							<img src="images/sponsor5.png" alt class="img-responsive" />
-						</div>
-					</div>
-
-					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-						<div class="client-img">
-							<img src="images/sponsor6.png" alt class="img-responsive" />
-						</div>
-					</div>
-
-				</div>
-			</div>
-		</div>
-
-		<!-- FOOTER SECTION -->
-		<div class="footer">
-
-			<div class="f-desc">
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-							<div class="footer-item">
-								<div class="footer-title">
-									<h4>ACERCA DEL EQUIPO</h4>
-								</div>
-								<h5><strong>Academia Monká</strong></h5>
-								<p>Comprometidos con la formación integral de jóvenes talentos,
-									fomentando
-									el desarrollo técnico, táctico y humano dentro y fuera del campo.
-									¡Unidos por el fútbol
-									y la pasión por el deporte!</p>
-								<div class="footer-sosmed">
-									<a
-										href="https://www.facebook.com/profile.php?id=100076718043028&locale=es_LA"
-										title>
-										<div class="item">
-											<i class="fa fa-facebook"></i>
-										</div>
-									</a>
-									<a href="https://www.instagram.com/academia_de_futbol_monka/" title>
-										<div class="item">
-											<i class="fa fa-instagram"></i>
-										</div>
-									</a>
-
-								</div>
 							</div>
 						</div>
-						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-							<div class="footer-item">
-								<div class="footer-title">
-									<h4>INFORMACION</h4>
-								</div>
-								<ul class="sitemap">
-									<li><a href="index.html" title>Inicio</a></li>
-									<li><a href="about.html" title>Sobre Nosotros</a></li>
-									<li><a href="categoria.html" title>Categoría</a></li>
-									<li><a href="estadisticas.html" title>Estadísticas</a></li>
-									<li><a href="login.html" title>Login</a></li>
-
-								</ul>
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+						<div class="footer-item">
+							<div class="footer-title">
+								<h4>INFORMACION</h4>
 							</div>
-						</div>
-						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-						</div>
+							<ul class="sitemap">
+								<li><a href="index.html" title>Inicio</a></li>
+								<li><a href="about.html" title>Sobre Nosotros</a></li>
+								<li><a href="categoria.html" title>Categoría</a></li>
+								<li><a href="estadisticas.html" title>Estadísticas</a></li>
+								<li><a href="login.html" title>Login</a></li>
 
-					</div>
-				</div>
-
-			</div>
-
-			<div class="fcopy">
-				<div class="container">
-					<div class="row">
-						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-							<p class="ftex">&copy; 2024 Monká Academia - Derechos Reservados</p>
+							</ul>
 						</div>
 					</div>
+					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+					</div>
+
 				</div>
 			</div>
 
 		</div>
 
-		<script type="text/javascript" src="js/jquery.min.js"></script>
-		<script type='text/javascript' src='js/jqBootstrapValidation.js'></script>
-		<script type="text/javascript" src="js/bootstrap.min.js"></script>
-		<script type="text/javascript" src="js/owl.carousel.min.js"></script>
-		<script type="text/javascript"
-			src="js/bootstrap-hover-dropdown.min.js"></script>
-		<script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
+		<div class="fcopy">
+			<div class="container">
+				<div class="row">
+					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+						<p class="ftex">&copy; 2024 Monká Academia - Derechos Reservados</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Botón flotante -->
+	<button class="chat-button" id="chatButton">
+		<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+			stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+			<path
+				d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+		</svg>
+	</button>
 
-		<script type="text/javascript" src="js/script.js"></script>
-		<script type="text/javascript" src="js/cuentas/controlSesion.js"></script>
+	<!-- Contenedor del chat -->
+	<div class="chat-container" id="chatContainer">
+		<div class="chat-header">
+			<h3>Chat de Soporte</h3>
+			<button class="close-chat" id="closeChat">×</button>
+		</div>
+		<div class="chat-messages" id="chatMessages">
+			<div class="message bot-message">
+				¡Hola! ¿En qué puedo ayudarte?
+			</div>
+		</div>
+		<div class="chat-input">
+			<input type="text" placeholder="Escribe un mensaje..." id="messageInput">
+			<button id="sendMessage">Enviar</button>
+		</div>
+	</div>
 
-	</body>
+
+
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type='text/javascript' src='js/jqBootstrapValidation.js'></script>
+	<script type="text/javascript" src="js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="js/owl.carousel.min.js"></script>
+	<script type="text/javascript" src="js/bootstrap-hover-dropdown.min.js"></script>
+	<script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
+
+	<script type="text/javascript" src="js/script.js"></script>
+	<script type="text/javascript" src="js/cuentas/controlSesion.js"></script>
+
+</body>
 
 </html>
