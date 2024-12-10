@@ -65,10 +65,8 @@ echo '<tr>
         <th>Apellidos</th>
         <th>Edad</th>
         <th>Dorsal</th>
-        <th>Pie Hábil</th>';
-if (isset($_SESSION['rolId']) && $_SESSION['rolId'] == 1) { // Mostrar columna de acciones para administradores
-    echo '<th>Acciones</th>';
-}
+        <th>Pie Hábil</th>
+        <th>Acciones</th>';
 echo '</tr>';
 echo '</thead>';
 
@@ -80,14 +78,19 @@ while ($row = $result->fetch_assoc()) {
             <td>" . htmlspecialchars($row['apellidos']) . "</td>
             <td>" . htmlspecialchars($row['edad']) . "</td>
             <td>" . htmlspecialchars($row['dorsal']) . "</td>
-            <td>" . htmlspecialchars($row['pieHabil'] ?: 'Desconocido') . "</td>";
-    if (isset($_SESSION['rolId']) && $_SESSION['rolId'] == 1) { // Botones solo para administradores
+            <td>" . htmlspecialchars($row['pieHabil'] ?: 'Desconocido') . "</td>
+            <td>"; // Inicia la celda de acciones
+    
+    // Botón "Ver Detalles" (visible para todos los usuarios)
+    echo "<button class='btn-ver-detalles btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Ver Detalles</button>";
+    
+    // Botones adicionales solo para administradores
+    if (isset($_SESSION['rolId']) && $_SESSION['rolId'] == 1) {
         echo "
-            <td>
-                <button class='btn-ver-detalles btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Ver Detalles</button>
-                <button class='btn-editar btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Editar</button>
-            </td>";
+                <button class='btn-editar btn-table btn-sm' data-jugador-id='" . htmlspecialchars($row['jugadorId']) . "'>Editar</button>";
     }
+    
+    echo "</td>"; // Cierra la celda de acciones
     echo "</tr>";
 }
 echo '</tbody>';

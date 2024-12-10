@@ -84,7 +84,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Manejo del modal de agregar goles
-    // Manejo del modal de agregar goles
     const formAgregar = document.getElementById("formAgregar");
     if (formAgregar) {
         formAgregar.addEventListener("submit", function (event) {
@@ -113,31 +112,34 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     // Manejo del modal de editar goles
-    const formEditar = document.getElementById("formEditar");
-    if (formEditar) {
-        formEditar.addEventListener("submit", function (event) {
-            event.preventDefault();
+    document.getElementById("formEditar").addEventListener("submit", function (event) {
+        event.preventDefault();
 
-            const cantidadGoles = document.getElementById("golesEdit").value;
-            const anotacionId = document.getElementById("anotacionSelect").value;
+        const cantidadGoles = document.getElementById("golesEdit").value;
+        const anotacionId = document.getElementById("anotacionSelect").value;
 
-            fetch("php/estadisticas/anotaciones/editarAnotacion.php", {
-                method: "POST",
-                headers: { "Content-Type": "application/x-www-form-urlencoded" },
-                body: `anotacionId=${anotacionId}&cantidadGoles=${cantidadGoles}`,
+        fetch("php/estadisticas/anotaciones/editarAnotacion.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/x-www-form-urlencoded" },
+            body: `anotacionId=${anotacionId}&cantidadGoles=${cantidadGoles}`,
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Error al procesar la solicitud");
+                }
+                return response.text();
             })
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success || typeof data.success === "undefined") {
-                        $("#modalEditar").modal("hide");
-                        cargarDatos('php/estadisticas/anotaciones/anotaciones.php', 'tabla-anotaciones', searchTerm, currentPage);
-                    } else {
-                        alert("Error: " + data.message);
-                    }
-                })
-                .catch(error => console.error("Error al editar anotación:", error));
-        });
-    }
+            .then(() => {
+                // Cerrar el modal y actualizar la tabla tras guardar
+                $("#modalEditar").modal("hide");
+                cargarDatos('php/estadisticas/anotaciones/anotaciones.php', 'tabla-anotaciones', searchTerm, currentPage);
+            })
+            .catch(error => {
+                console.error("Error al editar anotación:", error);
+                alert("Hubo un problema al guardar los cambios. Por favor, inténtalo nuevamente.");
+            });
+    });
+
 
     // Manejo del modal de borrar
     const confirmarBorrar = document.getElementById("confirmarBorrar");
