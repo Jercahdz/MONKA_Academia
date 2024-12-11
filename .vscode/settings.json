@@ -1,3 +1,5 @@
 {
-    "liveServer.settings.port": 5501
+    "liveServer.settings.port": 5501,
+    "appService.defaultWebAppToDeploy": "/subscriptions/4893be83-b6e2-4e29-950b-fd3e0d779efa/resourceGroups/MONKÁ-ACADEMIA/providers/Microsoft.Web/sites/Monka-Academia",
+    "appService.deploySubpath": "."
 }
