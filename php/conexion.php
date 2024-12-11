@@ -6,7 +6,7 @@ $db_name = getenv('DB_NAME');
 
 try {
     // Crear la conexion
-    $conn = new mysqli($servername, $username, $password, $database);
+    $conn = new mysqli($db_host, $db_user, $db_password, $db_name);
 
     // Verificar la conexion
     if ($conn->connect_error) {
