@@ -61,15 +61,12 @@ jobs:
       - name: Login to Azure
         uses: azure/login@v2
         with:
-          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_C9E44F1009AF49DFA69209FE21E8B89A }}
-          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_479A232BBAC8466DBD1E39318665FF7C }}
-          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_774FD5220216497DAEDFCCE807095E97 }}
-
+          creds: ${{ secrets.AZURE_PUBLISH_PROFILE }}
+          
       - name: 'Deploy to Azure Web App'
         uses: azure/webapps-deploy@v3
         id: deploy-to-webapp
         with:
           app-name: 'Monka-Academia'
-          slot-name: 'Production'
           package: .
           
