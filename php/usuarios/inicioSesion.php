@@ -1,6 +1,6 @@
 <?php
 session_start();
-include("../conexion.php");
+include($_SERVER['DOCUMENT_ROOT'] . "/php/conexion.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['login'])) {
     $correo = $_POST['correo'];
