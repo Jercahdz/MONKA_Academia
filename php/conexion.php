@@ -1,8 +1,8 @@
 <?php
-$servername = "localhost:3306";
-$username = "root";
-$password = "JersonHDZc18060510@";
-$database = "academiamonka";
+$db_host = getenv('DB_HOST'); // Nombre del servidor MySQL
+$db_user = getenv('DB_USER'); // Usuario JJJJ
+$db_password = getenv('DB_PASSWORD'); // Contraseña del usuario
+$db_name = getenv('DB_NAME'); // Nombre de la base de datos
 
 try {
     // Crear la conexion
