@@ -3803,14 +3803,46 @@ h4 {
 .monka-btn-sanciones { border-top: 5px solid #e74c3c; }
 .monka-btn-evaluaciones { border-top: 5px solid #f39c12; }
 
-/* Responsive */
+/* Responsive Breakpoints */
+/* Tablets */
+@media (max-width: 1024px) {
+    .monka-botones-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+}
+
+/* Móviles */
 @media (max-width: 768px) {
-	.monka-botones-grid {
-		grid-template-columns: 1fr;
-	}
-	.monka-boton-estadistica {
-		width: 100%; 
-	}
+    .monka-estadisticas-container {
+        padding: 10px;
+    }
+    
+    .monka-botones-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .monka-boton-estadistica {
+        aspect-ratio: auto; /* Permitir altura flexible */
+        max-width: none;
+        min-height: 200px;
+    }
+    
+    .monka-boton-estadistica .boton-texto {
+        font-size: clamp(0.8rem, 4vw, 1rem);
+    }
+}
+
+/* Pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .monka-boton-estadistica {
+        min-height: 180px;
+    }
+    
+    .monka-boton-estadistica .boton-icono {
+        font-size: 1.5rem;
+    }
 }
 
 /* ==========================
