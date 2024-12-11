@@ -1,8 +1,8 @@
 <?php
-$db_host = getenv('DB_HOST'); // Nombre del servidor MySQL
-$db_user = getenv('DB_USER'); // Usuario JJJJ
-$db_password = getenv('DB_PASSWORD'); // Contraseña del usuario
-$db_name = getenv('DB_NAME'); // Nombre de la base de datos
+$db_host = getenv('DB_HOST');
+$db_user = getenv('DB_USER');
+$db_password = getenv('DB_PASSWORD');
+$db_name = getenv('DB_NAME');
 
 try {
     // Crear la conexion

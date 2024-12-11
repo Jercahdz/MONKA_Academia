@@ -3656,8 +3656,8 @@ Responsiveness for Tables
 .list-group-item {
 	width: 100%;
 	padding: 12px 10px;
-	border: 3px solid #ffffff;
-	background-color: #115959;
+	border: 3px solid #115959;
+	background-color: #ffffff;
 	transition: all 0.3s ease;
 	text-align: center;
 	cursor: pointer;
@@ -4155,61 +4155,4 @@ Graficos
 /* Espaciado entre botones */
 .modal-estilo-rojo .modal-footer .btn {
   margin: 0 5px;
-}
-
-/* MODAL DE ADVERTENCIA EN REGISTRO */
-.modal-advertencia .modal-dialog {
-    max-width: 500px;
-    margin: 1.75rem auto; 
-    border: 2px solid #ffc107; 
-    border-radius: 10px; 
-}
-
-.modal-advertencia .modal-content {
-    background-color: #fff8e1;
-    border-radius: 10px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
-}
-
-.modal-advertencia .modal-header {
-    background-color: #ffc107;
-    color: #212529;
-    border-bottom: 1px solid #e0a800;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    text-align: center;
-}
-
-.modal-advertencia .modal-title {
-    font-size: 1.5rem;
-    font-weight: bold;
-}
-
-.modal-advertencia .modal-body {
-    color: #212529;
-    font-size: 1.1rem;
-    text-align: center;
-    padding: 20px;
-}
-
-.modal-advertencia .modal-footer {
-    background-color: #fff8e1;
-    border-top: none;
-    display: flex;
-    justify-content: center;
-}
-
-.modal-advertencia .btn-primary {
-    background-color: #ffc107;
-    border: 1px solid #e0a800;
-    color: #212529;
-    font-size: 1rem;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.modal-advertencia .btn-primary:hover {
-    background-color: #e0a800;
-    color: #fff;
 }
