@@ -1,13 +1,19 @@
 <?php
-$db_host = getenv('DB_HOST');
-$db_user = getenv('DB_USER');
-$db_password = getenv('DB_PASSWORD');
-$db_name = getenv('DB_NAME');
+// Obtener la URL de conexión desde la variable de entorno
+$url = parse_url(getenv("JAWSDB_URL"));
 
-$conn = new mysqli($db_host, $db_user, $db_password, $db_name);
+// Separar los valores de la URL
+$host = $url["host"];
+$user = $url["user"];
+$password = $url["pass"];
+$dbname = substr($url["path"], 1); // Elimina el '/' inicial
 
-if ($conn->connect_error) {
-    die("Error en la conexión: " . $conn->connect_error);
+// Conectar a MySQL
+$mysqli = new mysqli($host, $user, $password, $dbname);
+
+// Manejar errores de conexión
+if ($mysqli->connect_error) {
+    die("Error de conexión: " . $mysqli->connect_error);
 }
-echo "Conexión exitosa a la base de datos";
+
 ?>
