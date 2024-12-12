@@ -1,35 +1,24 @@
 <?php
-// Obtener la URL de conexión desde la variable de entorno
-$url = parse_url(getenv("JAWSDB_URL"));
+include("../conexion.php");
 
-// Separar los valores de la URL
-$host = $url["host"];
-$user = $url["user"];
-$password = $url["pass"];
-$dbname = substr($url["path"], 1); // Elimina el '/' inicial
-
-// Conectar a MySQL
-$mysqli = new mysqli($host, $user, $password, $dbname);
-
-// Verificar conexión
-if ($mysqli->connect_error) {
-    die("Error de conexión: " . $mysqli->connect_error);
+// Probar la conexión
+if ($conn->connect_error) {
+    die("Error de conexión: " . $conn->connect_error);
 } else {
-    echo "Conexión exitosa a la base de datos: $dbname";
+    echo "Conexión exitosa a la base de datos.<br>";
 }
 
-// (Opcional) Probar una consulta simple
-$query = "SHOW TABLES";
-$result = $mysqli->query($query);
+// Ejecutar una consulta simple para verificar si hay datos
+$result = $conn->query("SHOW TABLES");
 
 if ($result) {
-    echo "<br>Tablas en la base de datos:";
+    echo "Tablas disponibles:<br>";
     while ($row = $result->fetch_array()) {
-        echo "<br>" . $row[0];
+        echo $row[0] . "<br>";
     }
 } else {
-    echo "<br>Error al ejecutar la consulta: " . $mysqli->error;
+    echo "Error al consultar las tablas: " . $conn->error;
 }
 
-$mysqli->close();
+$conn->close();
 ?>
