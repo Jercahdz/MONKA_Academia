@@ -4,23 +4,16 @@ DirectoryIndex index.html
 # Activa el motor de reescritura
 RewriteEngine On
 
-# Permite el acceso directo a archivos y directorios existentes
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+# Permite el acceso directo a archivos existentes
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Permite el acceso directo a directorios existentes
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
 
 # Si no es un archivo o directorio existente, redirige a index.html
-RewriteRule ^(.*)$ index.html [L,QSA]
-
-# Manejo de las rutas a subdirectorios en PHP
-# Permite acceso a todos los archivos dentro de /php/ y sus subdirectorios
-RewriteCond %{REQUEST_URI} ^/php/
-RewriteCond %{REQUEST_FILENAME} -f
-RewriteRule .* - [L]
-
-# Opcional: Si deseas que las solicitudes incorrectas dentro de /php/ devuelvan 404
-RewriteCond %{REQUEST_URI} ^/php/
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteRule .* /404.html [L]
+RewriteRule ^ index.html [L,QSA]
 
 # Habilita compresión para mejorar la velocidad del sitio
 <IfModule mod_deflate.c>
