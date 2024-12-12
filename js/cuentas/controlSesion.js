@@ -6,7 +6,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // Solicitud AJAX para verificar el estado de sesión
     const xhr = new XMLHttpRequest();
-    xhr.open('GET', '/php/usuarios/controlSesion.php', true);
+    xhr.open('GET', 'php/usuarios/controlSesion.php', true);
     xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
             // Separar los datos recibidos
