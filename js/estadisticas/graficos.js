@@ -14,12 +14,12 @@ function inicializarGrafico() {
     chart = new Chart(ctx, {
         type: "line",
         data: {
-            labels: ["No hay datos disponibles"], // Etiqueta inicial
+            labels: ["No hay datos disponibles"],
             datasets: [{
                 label: "Sin datos",
-                data: [0], // Valor inicial
+                data: [0],
                 borderColor: "gray",
-                borderDash: [5, 5], // Líneas punteadas para indicar gráfico vacío
+                borderDash: [5, 5],
                 fill: false,
             }],
         },
@@ -30,7 +30,7 @@ function inicializarGrafico() {
                     display: true,
                 },
                 tooltip: {
-                    enabled: false, // Desactivar tooltips en el gráfico vacío
+                    enabled: false,
                 },
             },
             scales: {
@@ -54,9 +54,13 @@ function inicializarGrafico() {
 
 // Actualizar gráfico con datos
 function actualizarGrafico(data) {
+    if (!data || data.labels.length === 0) {
+        console.error("No se recibieron datos válidos del servidor.");
+        return;
+    }
+
     chart.data.labels = data.labels;
 
-    // Actualizar datasets basados en los checkboxes
     const datasets = [];
     if (checkboxes.anotaciones.checked) datasets.push(data.datasets.anotaciones);
     if (checkboxes.asistencias.checked) datasets.push(data.datasets.asistencias);

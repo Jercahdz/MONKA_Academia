@@ -8,10 +8,11 @@ $fechaFin = $_POST['fechaFin'] ?? null;
 
 $sqlBase = "
     SELECT j.nombreJugador, 
-           IFNULL(SUM(a.cantidadAnotaciones), 0) AS anotaciones,
-           IFNULL(SUM(asist.cantidadAsistencias), 0) AS asistencias,
-           IFNULL(SUM(s.amarillas + s.rojas), 0) AS sanciones,
-           IFNULL(COUNT(e.evaluacionId), 0) AS evaluaciones
+           COALESCE(SUM(DISTINCT a.cantidadAnotaciones), 0) AS anotaciones,
+           COALESCE(SUM(DISTINCT asist.cantidadAsistencias), 0) AS asistencias,
+           COALESCE(SUM(DISTINCT (s.amarillas + s.rojas)), 0) AS sanciones,
+           COALESCE((SELECT e2.evaluaciones FROM Evaluaciones e2 
+           WHERE e2.jugadorId = j.jugadorId ORDER BY e2.fecha DESC LIMIT 1), 0) AS evaluaciones
     FROM Jugadores j
     LEFT JOIN Anotaciones a ON j.jugadorId = a.jugadorId
     LEFT JOIN Asistencias asist ON j.jugadorId = asist.jugadorId
@@ -29,10 +30,10 @@ if ($fechaInicio && $fechaFin) {
         (e.fecha BETWEEN ? AND ?)
     )";
 }
-
-$sqlBase .= " GROUP BY j.nombreJugador";
+$sqlBase .= " GROUP BY j.jugadorId";
 
 $stmt = $conn->prepare($sqlBase);
+
 if ($fechaInicio && $fechaFin) {
     $stmt->bind_param("issssssss", $categoria, $fechaInicio, $fechaFin, $fechaInicio, $fechaFin, $fechaInicio, $fechaFin, $fechaInicio, $fechaFin);
 } else {
@@ -50,7 +51,7 @@ $datasets = [
 ];
 
 while ($row = $result->fetch_assoc()) {
-    $labels[] = $row['nombreJugador'];
+    $labels[] = $row['nombreJugador, apellidos'];
     $datasets["anotaciones"]["data"][] = $row['anotaciones'];
     $datasets["asistencias"]["data"][] = $row['asistencias'];
     $datasets["sanciones"]["data"][] = $row['sanciones'];
