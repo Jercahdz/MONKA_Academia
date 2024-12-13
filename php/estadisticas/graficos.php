@@ -51,7 +51,7 @@ $datasets = [
 ];
 
 while ($row = $result->fetch_assoc()) {
-    $labels[] = $row['nombreJugador'] = $row['apellidos'];
+    $labels[] = $row['nombreJugador'];
     $datasets["anotaciones"]["data"][] = $row['anotaciones'];
     $datasets["asistencias"]["data"][] = $row['asistencias'];
     $datasets["sanciones"]["data"][] = $row['sanciones'];
