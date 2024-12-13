@@ -716,7 +716,56 @@ Responsiveness for Navbar
 	background-color: #FBA301;
 	color: #fff;
 }
+.subbanner {
+    background: 
+        linear-gradient(rgba(255, 255, 255, 0.178), rgba(255, 255, 255, 0.178)),
+        url('https://pastohillary.cl/wp-content/uploads/2021/03/BANNERCANCHA.jpg') no-repeat center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 300px;
+}
 
+.subbanner .caption {
+    margin-top: 200px;
+    color: #fff;
+    font-size: 40px;
+    font-family: 'bebas_neue', sans-serif;
+    font-weight: 700;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, .6);
+}
+
+.subbanner .caption a {
+    color: #fff;
+    text-decoration: none;
+}
+
+.subbanner .caption h3 {
+    font-size: 30px;
+    color: #fff;
+    line-height: 42px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 0;
+}
+
+.subbanner .breadcrumb {
+    padding: 8px 0px;
+    margin-bottom: 20px;
+    list-style: none;
+    background-color: transparent;
+}
+
+.subbanner .breadcrumb>.active {
+    color: #fff;
+}
+
+.subbanner .breadcrumb>li+li:before {
+    padding: 0 5px;
+    color: #fff;
+    content: "/\00a0";
+}
 /* carousel */
 .carousel-caption {
     right: 0;
@@ -744,6 +793,10 @@ Responsiveness for Navbar
     padding: 15px;
     margin-bottom: -20px;
     text-shadow: none;
+	-webkit-transition: all .3s linear;
+    -moz-transition: all .3s linear;
+    -ms-transition: all .3s linear;
+    -o-transition: all .3s linear;
     transition: all .3s linear;
     opacity: 0;
 }
