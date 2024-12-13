@@ -18,7 +18,7 @@ $sqlCount = "
 ";
 
 if ($categoria !== 'todos') {
-    $sqlCount .= " WHERE c.nombreCategoria = ?";
+    $sqlCount .= " WHERE c.categoriaId = ?";
 }
 
 $stmtCount = $conn->prepare($sqlCount);
@@ -42,7 +42,7 @@ $sql = "
 ";
 
 if ($categoria !== 'todos') {
-    $sql .= " WHERE c.nombreCategoria = ?";
+    $sql .= " WHERE c.categoriaId = ?";
 }
 
 $sql .= " LIMIT ? OFFSET ?";
@@ -50,7 +50,7 @@ $sql .= " LIMIT ? OFFSET ?";
 $stmt = $conn->prepare($sql);
 
 if ($categoria !== 'todos') {
-    $stmt->bind_param("sii", $categoria, $recordsPerPage, $offset);
+    $stmt->bind_param("iii", $categoria, $recordsPerPage, $offset);
 } else {
     $stmt->bind_param("ii", $recordsPerPage, $offset);
 }
