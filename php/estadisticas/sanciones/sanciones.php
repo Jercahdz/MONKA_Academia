@@ -27,7 +27,8 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
 // Obtener registros para la página actual
 $sql = "
     SELECT 
-        j.jugadorId, j.nombreJugador, j.apellidos, j.edad, 
+        j.jugadorId, j.nombreJugador, j.apellidos, 
+        TIMESTAMPDIFF(YEAR, j.edad, CURDATE()) as edad, 
         IFNULL(SUM(s.rojas), 0) AS rojas,
         IFNULL(SUM(s.amarillas), 0) AS amarillas
     FROM Jugadores j

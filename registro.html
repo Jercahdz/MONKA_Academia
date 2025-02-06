@@ -130,15 +130,15 @@
 
 				<div class="form-group">
 					<label for="nombre">Nombre:</label>
-					<input type="text" id="nombre" name="nombre" required>
+					<input type="text" id="nombre" name="nombre" maxlength="50" required>
 				</div>
 				<div class="form-group">
 					<label for="apellidos">Apellidos:</label>
-					<input type="text" id="apellidos" name="apellidos" required>
+					<input type="text" id="apellidos" name="apellidos" maxlength="50" required>
 				</div>
 				<div class="form-group">
 					<label for="edad">Edad:</label>
-					<input type="number" id="edad" name="edad" required>
+					<input type="date" id="edad" name="edad" required>
 				</div>
 				<div class="form-group">
 					<label for="posicion">Posición:</label>
@@ -152,7 +152,7 @@
 				</div>
 				<div class="form-group">
 					<label for="dorsal">Dorsal:</label>
-					<input type="number" id="dorsal" name="dorsal" required>
+					<input type="number" id="dorsal" name="dorsal" min="1" max="99" required>
 				</div>
 				<div class="form-group">
 					<label for="pieHabil">Pie hábil:</label>
@@ -330,6 +330,8 @@
 	<script type="text/javascript" src="js/owl.carousel.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap-hover-dropdown.min.js"></script>
 	<script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
+
+	<script type="text/javascript" src="js/categorias/registro.js"></script>
 
 	<script type="text/javascript" src="js/script.js"></script>
 	<script type="text/javascript" src="js/cuentas/controlSesion.js"></script>

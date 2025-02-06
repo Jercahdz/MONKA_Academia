@@ -9,7 +9,7 @@ if ($jugadorId > 0) {
     SELECT 
         j.nombreJugador, 
         j.apellidos, 
-        j.edad, 
+        TIMESTAMPDIFF(YEAR, j.edad, CURDATE()) as edad, 
         j.dorsal, 
         j.pieHabil, 
         c.nombreCategoria, 

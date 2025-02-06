@@ -2,10 +2,9 @@
 session_start();
 include("../conexion.php");
 
-// Verificar si el usuario tiene permisos
+// Verificar permisos de usuario
 if (!isset($_SESSION['usuarioId']) || !isset($_SESSION['rolId']) || $_SESSION['rolId'] != 1) {
-    http_response_code(403);
-    echo json_encode(["error" => "Acceso no autorizado. Será redirigido al inicio de sesión."]);
+    header("Location: ../../login.html");
     exit();
 }
 
@@ -20,57 +19,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $pieHabil = $_POST['pieHabil'];
     $categoriaId = $_POST['categoria'];
 
-    // Validaciones
-    if (empty($nombreJugador) || strlen($nombreJugador) > 50) {
-        http_response_code(400);
-        echo json_encode(["error" => "El nombre del jugador no es válido."]);
-        exit();
-    }
-
-    if (empty($apellidos) || strlen($apellidos) > 50) {
-        http_response_code(400);
-        echo json_encode(["error" => "Los apellidos no son válidos."]);
-        exit();
-    }
-
-    if ($edad <= 0 || $edad > 100) {
-        http_response_code(400);
-        echo json_encode(["error" => "La edad no es válida."]);
-        exit();
-    }
-
-    if (empty($posicion) || !in_array($posicion, ['Portero', 'Defensa', 'Mediocampo', 'Delantero'])) {
-        http_response_code(400);
-        echo json_encode(["error" => "La posición no es válida."]);
-        exit();
-    }
-
-    if ($dorsal <= 0 || $dorsal > 99) {
-        http_response_code(400);
-        echo json_encode(["error" => "El número dorsal no es válido."]);
-        exit();
-    }
-
-    if (empty($pieHabil) || !in_array($pieHabil, ['Derecho', 'Izquierdo'])) {
-        http_response_code(400);
-        echo json_encode(["error" => "El pie hábil no es válido."]);
-        exit();
-    }
-
     // Insertar el jugador en la base de datos
     $sql = "INSERT INTO Jugadores (nombreJugador, apellidos, edad, posicion, dorsal, pieHabil, categoriaId) 
             VALUES (?, ?, ?, ?, ?, ?, ?)";
-
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssisisi", $nombreJugador, $apellidos, $edad, $posicion, $dorsal, $pieHabil, $categoriaId);
+    $stmt->bind_param("ssssisi", $nombreJugador, $apellidos, $edad, $posicion, $dorsal, $pieHabil, $categoriaId);
 
+    // Ejecutar la consulta
     if ($stmt->execute() === TRUE) {
-        http_response_code(200);
+        header("Location: ../../registro.html");
     } else {
-        http_response_code(500);
-        echo json_encode(["error" => "Error al registrar el jugador: " . $stmt->error]);
+        echo "Error al registrar el jugador. Por favor, intenta nuevamente.";
     }
 
     $stmt->close();
     $conn->close();
+    exit();
 }

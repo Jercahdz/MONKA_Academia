@@ -35,7 +35,9 @@ $totalPages = ceil($totalRecords / $recordsPerPage);
 // Obtener registros de la página actual
 $sql = "
     SELECT 
-        j.jugadorId, j.nombreJugador, j.apellidos, j.edad, j.dorsal,
+        j.jugadorId, j.nombreJugador, j.apellidos, 
+        TIMESTAMPDIFF(YEAR, j.edad, CURDATE()) as edad, 
+        j.dorsal,
         j.pieHabil AS pieHabil
     FROM Jugadores j
     LEFT JOIN Categoria c ON j.categoriaId = c.categoriaId

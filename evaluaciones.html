@@ -167,7 +167,7 @@
 					<form id="formAgregarEvaluacion">
 						<div class="form-group">
 							<label for="evaluacionPuntaje" class="etiquetaModal">Puntaje de Evaluación</label>
-							<input type="number" class="form-control entradaModal" id="evaluacionPuntaje" required>
+							<input type="number" class="form-control entradaModal" id="evaluacionPuntaje" min="1" max="99" required>
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn botonModal">Agregar</button>
@@ -206,7 +206,7 @@
 						<!-- Campo para editar el puntaje de evaluación -->
 						<div class="form-group">
 							<label for="evaluacionPuntajeEditar" class="etiquetaModal">Nuevo Puntaje de Evaluación:</label>
-							<input type="number" class="form-control entradaModal" id="evaluacionPuntajeEditar" required>
+							<input type="number" class="form-control entradaModal" id="evaluacionPuntajeEditar" min="1" max="99" required>
 						</div>
 						<!-- Botón para guardar cambios -->
 						<div class="form-group">
@@ -240,7 +240,7 @@
 				<!-- Pie del Modal -->
 				<div class="modal-footer">
 					<button type="button" class="btn cancelar-btn" data-dismiss="modal">Cancelar</button>
-					<button type="button" id="confirmarBorrarEvaluacion" class="btn eliminar-btn">Eliminar</button>
+					<button type="button" id="confirmarBorrarEvaluacion" class="btn eliminar-btn">Aceptar</button>
 				</div>
 			</div>
 		</div>

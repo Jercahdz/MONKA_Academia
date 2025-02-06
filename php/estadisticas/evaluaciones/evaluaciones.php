@@ -30,7 +30,7 @@ $sql = "
         j.jugadorId, 
         j.nombreJugador, 
         j.apellidos, 
-        j.edad, 
+        TIMESTAMPDIFF(YEAR, j.edad, CURDATE()) as edad, 
         (SELECT e.evaluaciones 
          FROM Evaluaciones e 
          WHERE e.jugadorId = j.jugadorId 

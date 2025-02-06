@@ -171,7 +171,7 @@
 						</div>
 						<div class="form-group">
 							<label for="tarjetasAmarillas" class="etiquetaModal">Cantidad de Tarjetas Amarillas</label>
-							<input type="number" class="form-control entradaModal" id="tarjetasAmarillas" required>
+							<input type="number" class="form-control entradaModal" id="tarjetasAmarillas" min="1" max="99" required>
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn botonModal">Agregar</button>
@@ -215,7 +215,7 @@
 						<!-- Campo para editar tarjetas amarillas -->
 						<div class="form-group">
 							<label for="tarjetasAmarillasEditar" class="etiquetaModal">Tarjetas Amarillas:</label>
-							<input type="number" class="form-control entradaModal" id="tarjetasAmarillasEditar" required>
+							<input type="number" class="form-control entradaModal" id="tarjetasAmarillasEditar" min="1" max="99" required>
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn guardar-btn">Guardar Cambios</button>
@@ -247,7 +247,7 @@
 				<!-- Pie del Modal -->
 				<div class="modal-footer">
 					<button type="button" class="btn cancelar-btn" data-dismiss="modal">Cancelar</button>
-					<button type="button" id="confirmarBorrarSancion" class="btn eliminar-btn">Eliminar</button>
+					<button type="button" id="confirmarBorrarSancion" class="btn eliminar-btn">Aceptar</button>
 				</div>
 			</div>
 		</div>

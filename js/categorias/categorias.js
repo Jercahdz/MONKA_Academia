@@ -93,31 +93,24 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             })
             .catch(error => console.error(`Error al cargar los datos del jugador: ${error.message}`));
-    }
+    }    
 
     // Manejo del formulario de edición
     document.getElementById('formEditarJugador').addEventListener('submit', function (event) {
         event.preventDefault(); // Prevenir el envío estándar del formulario
-
-        // Obtener los datos del formulario
+    
         const jugadorId = document.getElementById('editar-jugador-id').value;
-        const nombreJugador = document.getElementById('editar-nombre-jugador').value.trim();
-        const apellidos = document.getElementById('editar-apellidos').value.trim();
-        const edad = document.getElementById('editar-edad').value;
         const dorsal = document.getElementById('editar-dorsal').value;
         const pieHabil = document.getElementById('editar-pieHabil').value.trim();
-
-        // Enviar la solicitud al backend
+    
         fetch('php/jugadores/editarJugador.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: `jugadorId=${jugadorId}&nombreJugador=${encodeURIComponent(nombreJugador)}&apellidos=${encodeURIComponent(apellidos)}&edad=${edad}&dorsal=${dorsal}&pieHabil=${encodeURIComponent(pieHabil)}`,
+            body: `jugadorId=${jugadorId}&dorsal=${dorsal}&pieHabil=${encodeURIComponent(pieHabil)}`,
         })
             .then(response => {
                 if (response.ok) {
-                    // Cerrar el modal si la solicitud fue exitosa
                     $("#editarModal").modal("hide");
-                    // Actualizar la tabla después de cerrar el modal
                     cargarJugadores(categoriaSeleccionada, currentPage);
                 } else {
                     return response.json().then(errorData => {
@@ -126,33 +119,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             })
             .catch(error => console.error("Error al enviar los datos de edición:", error));
-    });
-
-    // Validar los campos del formulario de edición
-    function validarFormularioEditar() {
-        const nombre = document.getElementById('editar-nombre-jugador').value.trim();
-        const apellidos = document.getElementById('editar-apellidos').value.trim();
-        const edad = document.getElementById('editar-edad').value;
-        const dorsal = document.getElementById('editar-dorsal').value;
-        const pieHabil = document.getElementById('editar-pieHabil').value;
-
-        if (!nombre || !apellidos || !edad || !dorsal || !pieHabil) {
-            console.error("Por favor, completa todos los campos.");
-            return false;
-        }
-
-        if (isNaN(edad) || isNaN(dorsal) || edad <= 0 || dorsal <= 0) {
-            console.error("La edad y el dorsal deben ser números válidos.");
-            return false;
-        }
-
-        if (pieHabil !== 'Izquierdo' && pieHabil !== 'Derecho') {
-            console.error("El valor de 'Pie Hábil' debe ser 'Izquierdo' o 'Derecho'.");
-            return false;
-        }
-
-        return true;
-    }
+    });    
 
     // Cargar jugadores al iniciar
     cargarJugadores(categoriaSeleccionada, currentPage);

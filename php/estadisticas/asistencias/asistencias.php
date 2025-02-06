@@ -30,7 +30,7 @@ $sql = "
         j.jugadorId, 
         j.nombreJugador, 
         j.apellidos, 
-        j.edad, 
+        TIMESTAMPDIFF(YEAR, j.edad, CURDATE()) as edad, 
         IFNULL(SUM(a.cantidadAsistencias), 0) AS cantidadAsistencias
     FROM Jugadores j
     LEFT JOIN Asistencias a ON j.jugadorId = a.jugadorId

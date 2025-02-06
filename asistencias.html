@@ -167,7 +167,7 @@
 					<form id="formAgregarAsistencia">
 						<div class="form-group">
 							<label for="cantidadAsistencias" class="etiquetaModal">Cantidad de Asistencias</label>
-							<input type="number" class="form-control entradaModal" id="cantidadAsistencias" required>
+							<input type="number" class="form-control entradaModal" id="cantidadAsistencias" min="1" max="99" required>
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn botonModal">Agregar</button>
@@ -202,7 +202,7 @@
 						<!-- Campo para editar la cantidad de asistencias -->
 						<div class="form-group">
 							<label for="cantidadAsistenciasEditar" class="etiquetaModal">Nueva Cantidad de Asistencias:</label>
-							<input type="number" class="form-control entradaModal" id="cantidadAsistenciasEditar" required>
+							<input type="number" class="form-control entradaModal" id="cantidadAsistenciasEditar" min="1" max="99" required>
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn guardar-btn">Guardar Cambios</button>
@@ -233,7 +233,7 @@
 				<!-- Pie del Modal -->
 				<div class="modal-footer">
 					<button type="button" class="btn cancelar-btn" data-dismiss="modal">Cancelar</button>
-					<button type="button" id="confirmarBorrarAsistencia" class="btn eliminar-btn">Eliminar</button>
+					<button type="button" id="confirmarBorrarAsistencia" class="btn eliminar-btn">Aceptar</button>
 				</div>
 			</div>
 		</div>

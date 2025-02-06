@@ -168,7 +168,7 @@
 					<form id="formAgregar">
 						<div class="form-group">
 							<label for="goles" class="etiquetaModal">Cantidad de Anotaciones:</label>
-							<input type="number" class="form-control entradaModal" id="goles" required>
+							<input type="number" class="form-control entradaModal" id="goles" min="1" max="99" required>
 						</div>
 						<div class="form-group">
 							<button type="submit" class="btn botonModal">Agregar</button>
@@ -204,7 +204,7 @@
 						<!-- Campo para editar la cantidad de anotaciones -->
 						<div class="form-group">
 							<label for="golesEdit" class="etiquetaModal">Nueva Cantidad de Goles:</label>
-							<input type="number" class="form-control entradaModal" id="golesEdit" required>
+							<input type="number" class="form-control entradaModal" id="golesEdit" min="1" max="99" required>
 						</div>
 						<!-- Botón para guardar cambios -->
 						<div class="form-group">
@@ -232,13 +232,12 @@
 				<!-- Cuerpo del Modal -->
 				<div class="modal-body">
 					<p class="text-start"><strong>¿Estás seguro de que deseas eliminar esta anotación? Esta acción no se
-							puede
-							deshacer</strong>.</p>
+							puede deshacer</strong>.</p>
 				</div>
 				<!-- Pie del Modal -->
 				<div class="modal-footer">
 					<button type="button" class="btn cancelar-btn" data-dismiss="modal">Cancelar</button>
-					<button type="button" id="confirmarBorrar" class="btn eliminar-btn">Eliminar</button>
+					<button type="button" id="confirmarBorrar" class="btn eliminar-btn">Aceptar</button>
 				</div>
 			</div>
 		</div>
