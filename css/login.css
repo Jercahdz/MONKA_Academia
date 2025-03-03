@@ -211,3 +211,21 @@ body {
         font-size: 0.9rem;
     }
 }
+
+.error-message {
+    color: #fff;
+    background-color: #ff4d4d;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.success-message {
+    color: #fff;
+    background-color: #4CAF50;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}

@@ -10,14 +10,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
 
     // Validaciones
     if (empty($nombreUsuario) || strlen($nombreUsuario) > 50) {
-        echo "<script>console.log('Error: El nombre de usuario no es válido.');</script>";
-        echo "<script>window.location.href = '../../login.html';</script>";
+        header("Location: ../../login.html?error=El nombre de usuario no es válido.");
         exit();
     }
 
     if (!filter_var($correo, FILTER_VALIDATE_EMAIL)) {
-        echo "<script>console.log('Error: El correo electrónico no es válido.');</script>";
-        echo "<script>window.location.href = '../../login.html';</script>";
+        header("Location: ../../login.html?error=El correo electrónico no es válido.");
         exit();
     }
 
@@ -29,33 +27,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['register'])) {
     $result = $stmt->get_result();
 
     if ($result->num_rows > 0) {
-        echo "<script>console.log('Error: El correo electrónico ya está en uso.');</script>";
-        echo "<script>window.location.href = '../../login.html';</script>";
+        header("Location: ../../login.html?error=El correo electrónico ya está en uso.");
         exit();
     }
 
     if (strlen($contrasenna) < 8) {
-        echo "<script>console.log('Error: La contraseña debe tener al menos 8 caracteres.');</script>";
-        echo "<script>window.location.href = '../../login.html';</script>";
+        header("Location: ../../login.html?error=La contraseña debe tener al menos 8 caracteres.");
         exit();
     }
 
-    // Encriptar la contraseña de manera segura
+    // Encriptar la contraseña
     $contrasena = password_hash($contrasenna, PASSWORD_DEFAULT);
 
-    // Preparar la consulta para insertar el nuevo usuario
-    $sql = "INSERT INTO usuarios (nombreUsuario, correo, contrasena, rolId) 
-            VALUES (?, ?, ?, ?)";
-    
+    // Insertar usuario
+    $sql = "INSERT INTO usuarios (nombreUsuario, correo, contrasena, rolId) VALUES (?, ?, ?, ?)";
     $stmt = $conn->prepare($sql);
     $stmt->bind_param("sssi", $nombreUsuario, $correo, $contrasena, $rolId);
 
     if ($stmt->execute() === TRUE) {
-        echo "<script>window.location.href = '../../login.html';</script>";
+        header("Location: ../../login.html?success=Usuario registrado con éxito.");
         exit();
     } else {
-        echo "<script>console.log('Error: No se pudo registrar al usuario. Detalle: " . $stmt->error . "');</script>";
-        echo "<script>window.location.href = '../../login.html';</script>";
+        header("Location: ../../login.html?error=No se pudo registrar al usuario.");
         exit();
     }
 
