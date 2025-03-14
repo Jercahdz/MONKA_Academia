@@ -3105,6 +3105,7 @@ Responsiveness
     margin: 0 auto;
     overflow-x: auto; 
     padding: 0; 
+	border: 2px solid rgb(34, 134, 134);
 }
 
 /* Botones en tablas */
