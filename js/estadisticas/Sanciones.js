@@ -148,25 +148,80 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Cargar sanciones de un jugador en el modal de edición
+    // Función para limitar las fechas de inicio y fin
+    function limitarFechas() {
+        const hoy = new Date().toISOString().split("T")[0]; // Fecha actual en formato YYYY-MM-DD
+        const fechaInicio = document.getElementById("fechaInicioModalSanciones");
+        const fechaFin = document.getElementById("fechaFinModalSanciones");
+
+        if (fechaInicio && fechaFin) {
+            fechaInicio.max = hoy;
+            fechaFin.max = hoy;
+
+            fechaInicio.addEventListener("change", function () {
+                fechaFin.min = this.value;
+
+                if (fechaFin.value && fechaFin.value < this.value) {
+                    alert("⚠️ Error: La fecha de fin no puede ser menor que la fecha de inicio.");
+                    fechaFin.value = ""; 
+                }
+            });
+
+            fechaFin.addEventListener("change", function () {
+                if (this.value > hoy) {
+                    alert("⚠️ Error: No puedes seleccionar una fecha futura.");
+                    this.value = ""; 
+                }
+
+                if (fechaInicio.value && this.value < fechaInicio.value) {
+                    alert("⚠️ Error: La fecha de fin no puede ser menor que la fecha de inicio.");
+                    this.value = ""; 
+                }
+            });
+        }
+    }
+
+    // Función para cargar las sanciones de un jugador en el modal de editar
     function cargarSancionesJugador(jugadorId) {
-        fetch(`php/estadisticas/sanciones/obtenerFechaSancion.php?jugadorId=${jugadorId}`)
+        const fechaInicio = document.getElementById("fechaInicioModalSanciones")?.value || '';
+        const fechaFin = document.getElementById("fechaFinModalSanciones")?.value || '';
+
+        const url = `php/estadisticas/sanciones/obtenerFechaSancion.php?jugadorId=${jugadorId}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`;
+
+        fetch(url)
             .then(response => response.json())
             .then(data => {
                 const select = document.getElementById("sancionSelect");
                 if (select) {
-                    select.innerHTML = ""; // Limpiar opciones previas
-
-                    data.forEach(sancion => {
-                        const option = document.createElement("option");
-                        option.value = sancion.sancionId; // Usar el ID único
-                        option.textContent = `Fecha: ${sancion.fecha}, Amarillas: ${sancion.amarillas}, Rojas: ${sancion.rojas}`;
-                        select.appendChild(option);
-                    });
+                    select.innerHTML = "";
+                    if (data.length === 0) {
+                        select.innerHTML = "<option disabled>No hay sanciones</option>";
+                    } else {
+                        data.forEach(sancion => {
+                            const option = document.createElement("option");
+                            option.value = sancion.sancionId;
+                            option.textContent = `Fecha: ${sancion.fecha}, Amarillas: ${sancion.amarillas}, Rojas: ${sancion.rojas}`;
+                            select.appendChild(option);
+                        });
+                    }
                 }
             })
-            .catch(error => console.error("Error al cargar sanciones:", error));
+            .catch(error => console.error("❌ Error al cargar sanciones:", error));
     }
+
+    document.getElementById("fechaInicioModalSanciones")?.addEventListener("change", function () {
+        if (jugadorId) {
+            cargarSancionesJugador(jugadorId);
+        }
+    });
+
+    document.getElementById("fechaFinModalSanciones")?.addEventListener("change", function () {
+        if (jugadorId) {
+            cargarSancionesJugador(jugadorId);
+        }
+    });
+
+    limitarFechas();
 
     // Cargar datos iniciales de la tabla
     cargarDatos('php/estadisticas/sanciones/sanciones.php', 'tabla-sanciones');

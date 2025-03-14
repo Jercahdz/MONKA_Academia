@@ -149,25 +149,82 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Limitar las fechas de inicio y fin
+    function limitarFechasAsistencias() {
+        const hoy = new Date().toISOString().split("T")[0];
+        const fechaInicio = document.getElementById("fechaInicioModalAsistencias");
+        const fechaFin = document.getElementById("fechaFinModalAsistencias");
+
+        if (fechaInicio && fechaFin) {
+            fechaInicio.max = hoy;
+            fechaFin.max = hoy;
+
+            fechaInicio.addEventListener("change", function () {
+                fechaFin.min = this.value;
+
+                if (fechaFin.value && fechaFin.value < this.value) {
+                    alert("⚠️ Error: La fecha de fin no puede ser menor que la fecha de inicio.");
+                    fechaFin.value = ""; 
+                }
+            });
+
+            fechaFin.addEventListener("change", function () {
+                if (this.value > hoy) {
+                    alert("⚠️ Error: No puedes seleccionar una fecha futura.");
+                    this.value = ""; 
+                }
+
+                if (fechaInicio.value && this.value < fechaInicio.value) {
+                    alert("⚠️ Error: La fecha de fin no puede ser menor que la fecha de inicio.");
+                    this.value = ""; 
+                }
+            });
+        }
+    }
+
     // Cargar asistencias de un jugador en el modal de edición
     function cargarAsistenciasJugador(jugadorId) {
-        fetch(`php/estadisticas/asistencias/obtenerFechaAsistencia.php?jugadorId=${jugadorId}`)
+        const fechaInicio = document.getElementById("fechaInicioModalAsistencias")?.value || '';
+        const fechaFin = document.getElementById("fechaFinModalAsistencias")?.value || '';
+
+        const url = `php/estadisticas/asistencias/obtenerFechaAsistencia.php?jugadorId=${jugadorId}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`;
+
+        fetch(url)
             .then(response => response.json())
             .then(data => {
                 const select = document.getElementById("asistenciaSelect");
                 if (select) {
-                    select.innerHTML = ""; // Limpiar opciones previas
-
-                    data.forEach(asistencia => {
-                        const option = document.createElement("option");
-                        option.value = asistencia.asistenciaId; // Usar el ID único
-                        option.textContent = `Fecha: ${asistencia.fecha}, Asistencias: ${asistencia.cantidadAsistencias}`;
-                        select.appendChild(option);
-                    });
+                    select.innerHTML = "";
+                    if (data.length === 0) {
+                        select.innerHTML = "<option disabled>No hay asistencias</option>";
+                    } else {
+                        data.forEach(asistencia => {
+                            const option = document.createElement("option");
+                            option.value = asistencia.asistenciaId;
+                            option.textContent = `Fecha: ${asistencia.fecha}, Asistencias: ${asistencia.cantidadAsistencias}`;
+                            select.appendChild(option);
+                        });
+                    }
                 }
             })
-            .catch(error => console.error("Error al cargar asistencias:", error));
+            .catch(error => console.error("❌ Error al cargar asistencias:", error));
     }
+
+    // Agregar eventos para actualizar al cambiar fechas
+    document.getElementById("fechaInicioModalAsistencias")?.addEventListener("change", function () {
+        if (jugadorId) {
+            cargarAsistenciasJugador(jugadorId);
+        }
+    });
+
+    document.getElementById("fechaFinModalAsistencias")?.addEventListener("change", function () {
+        if (jugadorId) {
+            cargarAsistenciasJugador(jugadorId);
+        }
+    });
+
+    // Limitar fechas al cargar el script
+    limitarFechasAsistencias();
 
     // Cargar datos iniciales de la tabla
     cargarDatos('php/estadisticas/asistencias/asistencias.php', 'tabla-asistencias');

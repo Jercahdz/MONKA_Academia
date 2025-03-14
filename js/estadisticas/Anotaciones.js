@@ -161,25 +161,80 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
-    // Cargar anotaciones de un jugador en el modal de edición
+    // Limitar las fechas de inicio y fin
+    function limitarFechas() {
+        const hoy = new Date().toISOString().split("T")[0];
+        const fechaInicio = document.getElementById("fechaInicioModal");
+        const fechaFin = document.getElementById("fechaFinModal");
+
+        if (fechaInicio && fechaFin) {
+            fechaInicio.max = hoy;
+            fechaFin.max = hoy;
+
+            fechaInicio.addEventListener("change", function () {
+                fechaFin.min = this.value;
+
+                if (fechaFin.value && fechaFin.value < this.value) {
+                    alert("⚠️ Error: La fecha de fin no puede ser menor que la fecha de inicio.");
+                    fechaFin.value = ""; 
+                }
+            });
+
+            fechaFin.addEventListener("change", function () {
+                if (this.value > hoy) {
+                    alert("⚠️ Error: No puedes seleccionar una fecha futura.");
+                    this.value = ""; 
+                }
+
+                if (fechaInicio.value && this.value < fechaInicio.value) {
+                    alert("⚠️ Error: La fecha de fin no puede ser menor que la fecha de inicio.");
+                    this.value = ""; 
+                }
+            });
+        }
+    }
+
+    // Cargar las anotaciones de un jugador
     function cargarAnotacionesJugador(jugadorId) {
-        fetch(`php/estadisticas/anotaciones/obtenerFechaAnotacion.php?jugadorId=${jugadorId}`)
+        const fechaInicio = document.getElementById("fechaInicioModal")?.value || '';
+        const fechaFin = document.getElementById("fechaFinModal")?.value || '';
+    
+        const url = `php/estadisticas/anotaciones/obtenerFechaAnotacion.php?jugadorId=${jugadorId}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`;
+    
+        fetch(url)
             .then(response => response.json())
             .then(data => {
                 const select = document.getElementById("anotacionSelect");
                 if (select) {
-                    select.innerHTML = ""; // Limpiar opciones previas
-
-                    data.forEach(anotacion => {
-                        const option = document.createElement("option");
-                        option.value = anotacion.anotacionId; // Usar el ID único
-                        option.textContent = `Fecha: ${anotacion.fecha}, Goles: ${anotacion.cantidadAnotaciones}`;
-                        select.appendChild(option);
-                    });
+                    select.innerHTML = "";
+                    if (data.length === 0) {
+                        select.innerHTML = "<option disabled>No hay anotaciones</option>";
+                    } else {
+                        data.forEach(anotacion => {
+                            const option = document.createElement("option");
+                            option.value = anotacion.anotacionId;
+                            option.textContent = `Fecha: ${anotacion.fecha}, Goles: ${anotacion.cantidadAnotaciones}`;
+                            select.appendChild(option);
+                        });
+                    }
                 }
             })
-            .catch(error => console.error("Error al cargar anotaciones:", error));
+            .catch(error => console.error("❌ Error al cargar anotaciones:", error));
     }
+
+    document.getElementById("fechaInicioModal")?.addEventListener("change", function () {
+        if (jugadorId) {
+            cargarAnotacionesJugador(jugadorId);
+        }
+    });
+    
+    document.getElementById("fechaFinModal")?.addEventListener("change", function () {
+        if (jugadorId) {
+            cargarAnotacionesJugador(jugadorId);
+        }
+    });    
+
+    limitarFechas();
 
     // Cargar datos iniciales de la tabla
     cargarDatos('php/estadisticas/anotaciones/anotaciones.php', 'tabla-anotaciones');

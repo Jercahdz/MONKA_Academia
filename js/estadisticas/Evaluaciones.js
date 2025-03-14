@@ -148,25 +148,82 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }
 
+    // Limitar las fechas de inicio y fin
+    function limitarFechasEvaluaciones() {
+        const hoy = new Date().toISOString().split("T")[0];
+        const fechaInicio = document.getElementById("fechaInicioModalEvaluaciones");
+        const fechaFin = document.getElementById("fechaFinModalEvaluaciones");
+
+        if (fechaInicio && fechaFin) {
+            fechaInicio.max = hoy;
+            fechaFin.max = hoy;
+
+            fechaInicio.addEventListener("change", function () {
+                fechaFin.min = this.value;
+
+                if (fechaFin.value && fechaFin.value < this.value) {
+                    alert("⚠️ Error: La fecha de fin no puede ser menor que la fecha de inicio.");
+                    fechaFin.value = ""; 
+                }
+            });
+
+            fechaFin.addEventListener("change", function () {
+                if (this.value > hoy) {
+                    alert("⚠️ Error: No puedes seleccionar una fecha futura.");
+                    this.value = ""; 
+                }
+
+                if (fechaInicio.value && this.value < fechaInicio.value) {
+                    alert("⚠️ Error: La fecha de fin no puede ser menor que la fecha de inicio.");
+                    this.value = ""; 
+                }
+            });
+        }
+    }
+
     // Cargar evaluaciones de un jugador en el modal de edición
     function cargarEvaluacionesJugador(jugadorId) {
-        fetch(`php/estadisticas/evaluaciones/obtenerFechaEvaluacion.php?jugadorId=${jugadorId}`)
+        const fechaInicio = document.getElementById("fechaInicioModalEvaluaciones")?.value || '';
+        const fechaFin = document.getElementById("fechaFinModalEvaluaciones")?.value || '';
+
+        const url = `php/estadisticas/evaluaciones/obtenerFechaEvaluacion.php?jugadorId=${jugadorId}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`;
+
+        fetch(url)
             .then(response => response.json())
             .then(data => {
                 const select = document.getElementById("evaluacionSelect");
                 if (select) {
-                    select.innerHTML = ""; // Limpiar opciones previas
-
-                    data.forEach(evaluacion => {
-                        const option = document.createElement("option");
-                        option.value = evaluacion.evaluacionId; // Usar el ID único
-                        option.textContent = `Fecha: ${evaluacion.fecha}, Evaluación: ${evaluacion.evaluaciones}`;
-                        select.appendChild(option);
-                    });
+                    select.innerHTML = "";
+                    if (data.length === 0) {
+                        select.innerHTML = "<option disabled>No hay evaluaciones</option>";
+                    } else {
+                        data.forEach(evaluacion => {
+                            const option = document.createElement("option");
+                            option.value = evaluacion.evaluacionId;
+                            option.textContent = `Fecha: ${evaluacion.fecha}, Evaluación: ${evaluacion.evaluaciones}`;
+                            select.appendChild(option);
+                        });
+                    }
                 }
             })
-            .catch(error => console.error("Error al cargar evaluaciones:", error));
+            .catch(error => console.error("❌ Error al cargar evaluaciones:", error));
     }
+
+    // Agregar eventos para actualizar al cambiar fechas
+    document.getElementById("fechaInicioModalEvaluaciones")?.addEventListener("change", function () {
+        if (jugadorId) {
+            cargarEvaluacionesJugador(jugadorId);
+        }
+    });
+
+    document.getElementById("fechaFinModalEvaluaciones")?.addEventListener("change", function () {
+        if (jugadorId) {
+            cargarEvaluacionesJugador(jugadorId);
+        }
+    });
+
+    // Limitar fechas al cargar el script
+    limitarFechasEvaluaciones();
 
     // Cargar datos iniciales de la tabla
     cargarDatos('php/estadisticas/evaluaciones/evaluaciones.php', 'tabla-evaluaciones');

@@ -200,6 +200,20 @@
 				<!-- Cuerpo del Modal -->
 				<div class="modal-body">
 					<form id="formEditarSancion">
+						<!-- Filtro de fechas -->
+						<div class="form-group">
+							<label class="stats-subdal">Filtrar por fecha:</label>
+							<div class="row">
+								<div class="col-md-6">
+									<label for="fechaInicioModalSanciones">Fecha inicio:</label>
+									<input type="date" id="fechaInicioModalSanciones" class="form-control">
+								</div>
+								<div class="col-md-6">
+									<label for="fechaFinModalSanciones">Fecha fin:</label>
+									<input type="date" id="fechaFinModalSanciones" class="form-control">
+								</div>
+							</div>
+						</div>	
 						<!-- Campo para seleccionar sanción -->
 						<div class="form-group">
 							<label for="sancionSelect" class="etiquetaModal">Selecciona una Sanción:</label>
@@ -381,7 +395,8 @@
 		</div>
 		<div class="chat-messages" id="chatMessages">
 			<div class="message bot-message">
-				¡Bienvenido a la Academia Monká! Pregúntame, ¿En qué temas te puedo ayudar?
+				¡Bienvenido a la Academia Monká! Pregúntame, ¿En qué temas te puedo ayudar? 
+				o escribe "preguntas" para ver una lista de las preguntas en las que te puedo ayudar.
 			</div>
 		</div>
 		<div class="chat-input">

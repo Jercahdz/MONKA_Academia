@@ -1,31 +1,51 @@
-document.getElementById("registroForm").addEventListener("submit", function (event) {
-    // Obtener valores de los campos
-    const nombre = document.getElementById("nombre").value.trim();
-    const apellidos = document.getElementById("apellidos").value.trim();
-    const edad = parseInt(document.getElementById("edad").value, 10);
-    const posicion = document.getElementById("posicion").value;
-    const dorsal = parseInt(document.getElementById("dorsal").value, 10);
-    const pieHabil = document.getElementById("pieHabil").value;
-    const categoria = document.getElementById("categoria").value;
+// Función para limitar la fecha de nacimiento
+function limitarFechaNacimiento() {
+    const fechaNacimientoInput = document.getElementById("edad");
 
-    // Validar campos obligatorios
-    if (!nombre || !apellidos || !posicion || !pieHabil || !categoria) {
-        alert("Por favor, complete todos los campos obligatorios.");
-        event.preventDefault();
-        return;
-    }
+    if (fechaNacimientoInput) {
+        const hoy = new Date();
+        const minEdad = 8;
+        const maxEdad = 22;
 
-    // Validar dorsal
-    if (isNaN(dorsal) || dorsal < 1 || dorsal > 99) {
-        alert("El número dorsal debe estar entre 1 y 99.");
-        event.preventDefault();
-        return;
-    }
+        // Calcular las fechas límite
+        const maxFecha = new Date(hoy.getFullYear() - minEdad, hoy.getMonth(), hoy.getDate()).toISOString().split("T")[0];
+        const minFecha = new Date(hoy.getFullYear() - maxEdad, hoy.getMonth(), hoy.getDate()).toISOString().split("T")[0];
 
-    // Validar longitud del nombre y apellidos
-    if (nombre.length > 50 || apellidos.length > 50) {
-        alert("El nombre y los apellidos no pueden exceder los 50 caracteres.");
-        event.preventDefault();
-        return;
+        // Establecer valores mínimo y máximo
+        fechaNacimientoInput.min = minFecha;
+        fechaNacimientoInput.max = maxFecha;
+
+        // Validación en el evento change
+        fechaNacimientoInput.addEventListener("change", function () {
+            const fechaSeleccionada = new Date(this.value);
+            const minFechaDate = new Date(minFecha);
+            const maxFechaDate = new Date(maxFecha);
+
+            if (fechaSeleccionada < minFechaDate || fechaSeleccionada > maxFechaDate) {
+                alert("⚠️ Error: La fecha de nacimiento debe estar entre 8 y 22 años de edad.");
+                this.value = ""; // Vaciar el campo si la fecha es inválida
+            }
+        });
     }
+}
+
+document.addEventListener("DOMContentLoaded", limitarFechaNacimiento);
+
+document.addEventListener("DOMContentLoaded", function () {
+    verificarAcceso();
 });
+
+function verificarAcceso() {
+    fetch("php/jugadores/verificarSesion.php")
+        .then(response => response.json())
+        .then(data => {
+            if (data.rolId !== 1) { // Si el usuario no es administrador
+                alert("⚠️ Solo los administradores pueden acceder a este módulo.");
+                window.location.href = 'login.html';
+            }
+        })
+        .catch(error => {
+            alert("⚠️ Hubo un error en verificar tu sesión.");
+            window.location.href = 'login.html';
+        });
+}

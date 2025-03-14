@@ -40,6 +40,7 @@
 		Custom Stylesheet
 		=============================================== -->
 	<link rel="stylesheet" type="text/css" href="css/estadisticas.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
 
 	<!-- ==============================================
 		JavaScript
@@ -193,6 +194,20 @@
 				</div>
 				<div class="modal-body">
 					<form id="formEditarAsistencia">
+						<!-- Filtro de fechas -->
+						<div class="form-group">
+							<label class="stats-subdal">Filtrar por fecha:</label>
+							<div class="row">
+								<div class="col-md-6">
+									<label for="fechaInicioModalAsistencias">Fecha inicio:</label>
+									<input type="date" id="fechaInicioModalAsistencias" class="form-control">
+								</div>
+								<div class="col-md-6">
+									<label for="fechaFinModalAsistencias">Fecha fin:</label>
+									<input type="date" id="fechaFinModalAsistencias" class="form-control">
+								</div>
+							</div>
+						</div>	
 						<!-- Campo para seleccionar asistencia -->
 						<div class="form-group">
 							<label for="asistenciaSelect" class="etiquetaModal">Selecciona una Asistencia:</label>
@@ -371,7 +386,8 @@
 		</div>
 		<div class="chat-messages" id="chatMessages">
 			<div class="message bot-message">
-				¡Bienvenido a la Academia Monká! Pregúntame, ¿En qué temas te puedo ayudar?
+				¡Bienvenido a la Academia Monká! Pregúntame, ¿En qué temas te puedo ayudar? 
+				o escribe "preguntas" para ver una lista de las preguntas en las que te puedo ayudar.
 			</div>
 		</div>
 		<div class="chat-input">

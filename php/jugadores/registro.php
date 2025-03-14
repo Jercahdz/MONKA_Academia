@@ -4,7 +4,9 @@ include("../conexion.php");
 
 // Verificar permisos de usuario
 if (!isset($_SESSION['usuarioId']) || !isset($_SESSION['rolId']) || $_SESSION['rolId'] != 1) {
-    header("Location: ../../login.html");
+    echo "<script>
+        window.location.href = '../../login.html';
+    </script>";
     exit();
 }
 

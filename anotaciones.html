@@ -195,6 +195,20 @@
 				<!-- Cuerpo del Modal -->
 				<div class="modal-body">
 					<form id="formEditar">
+						<!-- Filtro de fechas -->
+						<div class="form-group">
+							<label class="stats-subdal">Filtrar por fecha:</label>
+							<div class="row">
+								<div class="col-md-6">
+									<label for="fechaInicioModal">Fecha inicio:</label>
+									<input type="date" id="fechaInicioModal" class="form-control">
+								</div>
+								<div class="col-md-6">
+									<label for="fechaFinModal">Fecha fin:</label>
+									<input type="date" id="fechaFinModal" class="form-control">
+								</div>
+							</div>
+						</div>						
 						<!-- Campo para seleccionar anotación -->
 						<div class="form-group">
 							<label for="anotacionSelect" class="etiquetaModal">Selecciona una Anotación:</label>
@@ -375,7 +389,8 @@
 		</div>
 		<div class="chat-messages" id="chatMessages">
 			<div class="message bot-message">
-				¡Bienvenido a la Academia Monká! Pregúntame, ¿En qué temas te puedo ayudar?
+				¡Bienvenido a la Academia Monká! Pregúntame, ¿En qué temas te puedo ayudar? 
+				o escribe "preguntas" para ver una lista de las preguntas en las que te puedo ayudar.
 			</div>
 		</div>
 		<div class="chat-input">
