@@ -719,7 +719,7 @@ Responsiveness for Navbar
 .subbanner {
     background: 
         linear-gradient(rgba(255, 255, 255, 0.178), rgba(255, 255, 255, 0.178)),
-        url('https://pastohillary.cl/wp-content/uploads/2021/03/BANNERCANCHA.jpg') no-repeat center center;
+        url('../images/fondo.webp') no-repeat center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -3105,7 +3105,6 @@ Responsiveness
     margin: 0 auto;
     overflow-x: auto; 
     padding: 0; 
-	border: 2px solid rgb(34, 134, 134);
 }
 
 /* Botones en tablas */
