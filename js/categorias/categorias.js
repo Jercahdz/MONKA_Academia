@@ -89,24 +89,27 @@ document.addEventListener("DOMContentLoaded", function () {
                     document.getElementById('editar-dorsal').value = data.dorsal;
                     const pieHabilSelect = document.getElementById('editar-pieHabil');
                     pieHabilSelect.value = data.pieHabil === 'Izquierdo' || data.pieHabil === 'Derecho' ? data.pieHabil : '';
+                    const categoriaSelect = document.getElementById('editar-categoria');
+                    categoriaSelect.value = data.categoriaId;
                     $('#editarModal').modal('show');
                 }
             })
             .catch(error => console.error(`Error al cargar los datos del jugador: ${error.message}`));
-    }    
+    }
 
     // Manejo del formulario de edición
     document.getElementById('formEditarJugador').addEventListener('submit', function (event) {
         event.preventDefault(); // Prevenir el envío estándar del formulario
-    
+
         const jugadorId = document.getElementById('editar-jugador-id').value;
         const dorsal = document.getElementById('editar-dorsal').value;
         const pieHabil = document.getElementById('editar-pieHabil').value.trim();
-    
+        const categoriaId = document.getElementById('editar-categoria').value;
+
         fetch('php/jugadores/editarJugador.php', {
             method: 'POST',
             headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-            body: `jugadorId=${jugadorId}&dorsal=${dorsal}&pieHabil=${encodeURIComponent(pieHabil)}`,
+            body: `jugadorId=${jugadorId}&dorsal=${dorsal}&pieHabil=${encodeURIComponent(pieHabil)}&categoriaId=${categoriaId}`,
         })
             .then(response => {
                 if (response.ok) {
@@ -119,7 +122,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             })
             .catch(error => console.error("Error al enviar los datos de edición:", error));
-    });    
+    });
 
     // Cargar jugadores al iniciar
     cargarJugadores(categoriaSeleccionada, currentPage);

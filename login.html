@@ -1,72 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MONKÁ - Inicio de Sesión</title>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>MONKÁ - Inicio de Sesión</title>
 
-    <!-- ==============================================
+        <!-- ==============================================
     Favicons
     =============================================== -->
-    <link rel="shortcut icon" href="images/escudo.png">
-    <link rel="apple-touch-icon" href="images/escudo.png">
-    <link rel="apple-touch-icon" sizes="72x72" href="images/escudo.png">
-    <link rel="apple-touch-icon" sizes="114x114" href="images/escudo.png">
+        <link rel="shortcut icon" href="images/escudo.webp">
+        <link rel="apple-touch-icon" href="images/escudo.webp">
+        <link rel="apple-touch-icon" sizes="72x72" href="images/escudo.webp">
+        <link rel="apple-touch-icon" sizes="114x114" href="images/escudo.webp">
 
-    <link rel="stylesheet" href="css/login.css">
-</head>
+        <link rel="stylesheet" href="css/login.css">
+    </head>
 
-<body>
+    <body>
 
-    <div class="container">
-        <!-- FORMULARIO LOGIN -->
-        <div class="container-form">
-            <form class="sign-in" action="php/usuarios/inicioSesion.php" method="POST">
-                <h2>Iniciar Sesión</h2>
-                <div class="container-input">
-                    <ion-icon name="mail-outline"></ion-icon>
-                    <input type="email" name="correo" placeholder="Correo electrónico" required>
-                </div>
-                <div class="container-input password-container">
-                    <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="password" name="password" id="passwordLogin" placeholder="Contraseña" required>
-                    <ion-icon name="eye-outline" class="toggle-password" onclick="togglePassword('passwordLogin', this)"></ion-icon>
-                </div>
-                <button type="submit" name="login" class="button">Iniciar Sesión</button>
-            </form>
+        <div class="container">
+            <!-- FORMULARIO LOGIN -->
+            <div class="container-form">
+                <form class="sign-in" action="php/usuarios/inicioSesion.php"
+                    method="POST">
+                    <h2>Iniciar Sesión</h2>
+                    <div class="container-input">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <input type="email" name="correo"
+                            placeholder="Correo electrónico" required>
+                    </div>
+                    <div class="container-input password-container">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <input type="password" name="password"
+                            id="passwordLogin" placeholder="Contraseña"
+                            required>
+                        <ion-icon name="eye-outline" class="toggle-password"
+                            onclick="togglePassword('passwordLogin', this)"></ion-icon>
+                    </div>
+                    <a href="#" class="forgot-password link"
+                        onclick="openRecoveryModal()">
+                        <span class="forgot-text">¿Olvidaste tu
+                            contraseña?</span>
+                    </a>
+                    <button type="submit" name="login" class="button">Iniciar
+                        Sesión</button>
+                </form>
 
-            <!-- FORMULARIO REGISTRO -->
-            <form class="sign-up" style="display: none;" action="php/usuarios/registroUsuarios.php" method="POST">
-                <h2>Registrarse</h2>
-                <div class="container-input">
-                    <ion-icon name="person-outline"></ion-icon>
-                    <input type="text" name="nombre" placeholder="Nombre" required>
-                </div>
-                <div class="container-input">
-                    <ion-icon name="mail-outline"></ion-icon>
-                    <input type="email" name="correo" placeholder="Correo electrónico" required>
-                </div>
-                <div class="container-input password-container">
-                    <ion-icon name="lock-closed-outline"></ion-icon>
-                    <input type="password" name="password" id="passwordRegister" placeholder="Contraseña" required>
-                    <ion-icon name="eye-outline" class="toggle-password" onclick="togglePassword('passwordRegister', this)"></ion-icon>
-                </div>
-                <button type="submit" name="register" class="button">Registrarse</button>
-            </form>
+                <!-- FORMULARIO REGISTRO -->
+                <form class="sign-up" style="display: none;"
+                    action="php/usuarios/registroUsuarios.php" method="POST">
+                    <h2>Registrarse</h2>
+                    <div class="container-input">
+                        <ion-icon name="person-outline"></ion-icon>
+                        <input type="text" name="nombre" placeholder="Nombre"
+                            required>
+                    </div>
+                    <div class="container-input">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <input type="email" name="correo"
+                            placeholder="Correo electrónico" required>
+                    </div>
+                    <div class="container-input password-container">
+                        <ion-icon name="lock-closed-outline"></ion-icon>
+                        <input type="password" name="password"
+                            id="passwordRegister" placeholder="Contraseña"
+                            required>
+                        <ion-icon name="eye-outline" class="toggle-password"
+                            onclick="togglePassword('passwordRegister', this)"></ion-icon>
+                    </div>
+                    <button type="submit" name="register"
+                        class="button">Registrarse</button>
+                </form>
+            </div>
+
+            <!-- Welcome Section -->
+            <div class="container-welcome">
+                <h3>¡Bienvenido!</h3>
+                <p>Registra una nueva cuenta o inicia sesión para acceder a
+                    nuestra plataforma</p>
+                <button class="toggle-button">Registrarse</button>
+            </div>
         </div>
 
-        <!-- Welcome Section -->
-        <div class="container-welcome">
-            <h3>¡Bienvenido!</h3>
-            <p>Registra una nueva cuenta o inicia sesión para acceder a nuestra plataforma</p>
-            <button class="toggle-button">Registrarse</button>
+        <!-- Modal de Recuperación de Contraseña -->
+        <div id="modalRecuperacion" class="modal modal-estilo"
+            style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Encabezado del Modal -->
+                    <div class="modal-header">
+                        <h5 class="modal-title">Recuperar Contraseña</h5>
+                        <button type="button" class="close"
+                            onclick="cerrarModal('modalRecuperacion')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- Cuerpo del Modal -->
+                    <div class="modal-body">
+                        <form id="formRecuperacion">
+                            <div class="form-group">
+                                <label for="correoRecuperacion"
+                                    class="etiquetaModal">Correo
+                                    Electrónico:</label>
+                                <input type="email"
+                                    class="form-control entradaModal"
+                                    id="correoRecuperacion"
+                                    name="correoRecuperacion" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="palabraSeguridad"
+                                    class="etiquetaModal">Palabra de
+                                    Seguridad:</label>
+                                <input type="text"
+                                    class="form-control entradaModal"
+                                    id="palabraSeguridad"
+                                    name="palabraSeguridad" required>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn botonModal"
+                                    onclick="verificarDatos()">Verificar</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Pie del Modal -->
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <script src="js/cuentas/login.js"></script>
-    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-</body>
+        <!-- Modal para cambiar la contraseña -->
+        <div id="modalCambioContrasena" class="modal modal-estilo"
+            style="display: none;">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <!-- Encabezado del Modal -->
+                    <div class="modal-header">
+                        <h5 class="modal-title">Cambiar Contraseña</h5>
+                        <button type="button" class="close"
+                            onclick="cerrarModal('modalCambioContrasena')">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <!-- Cuerpo del Modal -->
+                    <div class="modal-body">
+                        <form id="formCambioContrasena">
+                            <div class="form-group">
+                                <label for="nuevaContrasena"
+                                    class="etiquetaModal">Nueva
+                                    Contraseña:</label>
+                                <div class="password-container">
+                                    <input type="password"
+                                        class="form-control entradaModal"
+                                        id="nuevaContrasena"
+                                        name="nuevaContrasena" required>
+                                    <ion-icon name="eye-outline"
+                                        class="toggle-password"
+                                        onclick="togglePassword('nuevaContrasena', this)"></ion-icon>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="confirmarContrasena"
+                                    class="etiquetaModal">Confirmar
+                                    Contraseña:</label>
+                                <div class="password-container">
+                                    <input type="password"
+                                        class="form-control entradaModal"
+                                        id="confirmarContrasena"
+                                        name="confirmarContrasena" required>
+                                    <ion-icon name="eye-outline"
+                                        class="toggle-password"
+                                        onclick="togglePassword('confirmarContrasena', this)"></ion-icon>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <button type="button" class="btn botonModal"
+                                    onclick="cambiarContrasena()">Cambiar
+                                    Contraseña</button>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- Pie del Modal -->
+                    <div class="modal-footer"></div>
+                </div>
+            </div>
+        </div>
+
+        <script src="js/cuentas/login.js"></script>
+        <script type="module"
+            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule
+            src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    </body>
 
 </html>

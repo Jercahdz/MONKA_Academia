@@ -1,5 +1,6 @@
 const categoriaSelect = document.getElementById("categoria");
-const aplicarFiltroBtn = document.getElementById("aplicarFiltro");
+const fechaInicioInput = document.getElementById("fechaInicio");
+const fechaFinInput = document.getElementById("fechaFin");
 const checkboxes = {
     anotaciones: document.getElementById("mostrarAnotaciones"),
     asistencias: document.getElementById("mostrarAsistencias"),
@@ -7,6 +8,25 @@ const checkboxes = {
     evaluaciones: document.getElementById("mostrarEvaluaciones"),
 };
 let chart;
+
+// Establecer límites en los inputs de fecha
+const hoy = new Date().toISOString().split("T")[0];
+fechaInicioInput.setAttribute("max", hoy);
+fechaFinInput.setAttribute("max", hoy);
+
+fechaInicioInput.addEventListener("change", validarFechas);
+fechaFinInput.addEventListener("change", validarFechas);
+
+function validarFechas() {
+    let fechaInicio = fechaInicioInput.value;
+    let fechaFin = fechaFinInput.value;
+
+    if (fechaInicio && fechaFin && fechaInicio > fechaFin) {
+        alert("La fecha de inicio no puede ser mayor que la fecha de fin.");
+        fechaInicioInput.value = "";
+        fechaFinInput.value = "";
+    }
+}
 
 // Inicializar gráfico vacío
 function inicializarGrafico() {
@@ -26,27 +46,12 @@ function inicializarGrafico() {
         options: {
             responsive: true,
             plugins: {
-                legend: {
-                    display: true,
-                },
-                tooltip: {
-                    enabled: false,
-                },
+                legend: { display: true },
+                tooltip: { enabled: true },
             },
             scales: {
-                x: {
-                    title: {
-                        display: true,
-                        text: "Jugadores",
-                    },
-                },
-                y: {
-                    title: {
-                        display: true,
-                        text: "Estadísticas",
-                    },
-                    beginAtZero: true,
-                },
+                x: { title: { display: true, text: "Jugadores" } },
+                y: { title: { display: true, text: "Estadísticas" }, beginAtZero: true },
             },
         },
     });
@@ -68,56 +73,61 @@ function actualizarGrafico(data) {
     if (checkboxes.evaluaciones.checked) datasets.push(data.datasets.evaluaciones);
 
     chart.data.datasets = datasets;
+
+    // Actualizar el título del gráfico con las fechas
+    if (data.fechaInicio && data.fechaFin) {
+        chart.options.plugins.title = {
+            display: true,
+            text: `Estadísticas desde ${data.fechaInicio} hasta ${data.fechaFin}`
+        };
+    } else {
+        chart.options.plugins.title = {
+            display: false
+        };
+    }
+
     chart.update();
 }
 
 // Obtener datos con AJAX
-function obtenerDatos(categoria, fechaInicio, fechaFin) {
+function obtenerDatos() {
+    const categoria = categoriaSelect.value;
+    if (!categoria) return;
+
+    const fechaInicio = fechaInicioInput.value.trim();
+    const fechaFin = fechaFinInput.value.trim();
+
     const xhr = new XMLHttpRequest();
     xhr.open("POST", "php/estadisticas/graficos.php", true);
     xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
     xhr.onload = function () {
         if (xhr.status === 200) {
-            const response = JSON.parse(xhr.responseText);
-            actualizarGrafico(response);
+            try {
+                const response = JSON.parse(xhr.responseText);
+                actualizarGrafico(response);
+            } catch (error) {
+                console.error("Error procesando los datos del servidor:", error);
+            }
         } else {
             console.error("Error al obtener datos.");
         }
     };
 
-    // Crear los parámetros para el envío
-    const params = `categoria=${categoria}&fechaInicio=${fechaInicio || ''}&fechaFin=${fechaFin || ''}`;
+    const params = `categoria=${categoria}&fechaInicio=${fechaInicio}&fechaFin=${fechaFin}`;
     xhr.send(params);
 }
 
 // Evento al seleccionar una categoría
-categoriaSelect.addEventListener("change", function () {
-    const categoria = categoriaSelect.value;
-    obtenerDatos(categoria);
-});
+categoriaSelect.addEventListener("change", obtenerDatos);
 
-// Evento para aplicar filtro de fechas
-aplicarFiltroBtn.addEventListener("click", function () {
-    const categoria = categoriaSelect.value;
-    const fechaInicio = document.getElementById("fechaInicio").value || null;
-    const fechaFin = document.getElementById("fechaFin").value || null;
+// Evento para actualizar el gráfico al cambiar fechas
+fechaInicioInput.addEventListener("change", obtenerDatos);
+fechaFinInput.addEventListener("change", obtenerDatos);
 
-    if (categoria) {
-        obtenerDatos(categoria, fechaInicio, fechaFin);
-    } else {
-        alert("Por favor, selecciona una categoría.");
-    }
-});
-
-// Actualizar gráfico al cambiar los checkboxes
+// Evento para actualizar el gráfico al cambiar checkboxes
 Object.values(checkboxes).forEach((checkbox) => {
-    checkbox.addEventListener("change", function () {
-        const categoria = categoriaSelect.value;
-        if (categoria) {
-            obtenerDatos(categoria);
-        }
-    });
+    checkbox.addEventListener("change", obtenerDatos);
 });
 
 // Inicializar gráfico vacío al cargar la página

@@ -17,10 +17,10 @@
 	<!-- ==============================================
 		Favicons
 		=============================================== -->
-	<link rel="shortcut icon" href="images/escudo.png">
-	<link rel="apple-touch-icon" href="images/escudo.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="images/escudo.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="images/escudo.png">
+	<link rel="shortcut icon" href="images/escudo.webp">
+	<link rel="apple-touch-icon" href="images/escudo.webp">
+	<link rel="apple-touch-icon" sizes="72x72" href="images/escudo.webp">
+	<link rel="apple-touch-icon" sizes="114x114" href="images/escudo.webp">
 
 	<!-- ==============================================
 		CSS
@@ -74,37 +74,41 @@
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</button>
-				<a class="navbar-brand" href="index.html"><img src="images/escudo.png" alt /></a>
+				<a class="navbar-brand" href="index.html"><img src="images/escudo.webp" alt /></a>
 			</div>
 			<nav class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
 					<li><a href="index.html">INICIO</a></li>
 					<li><a href="about.html">SOBRE NOSOTROS</a></li>
 					<li><a href="categoria.html">CATEGORIA</a></li>
-					<li><a href="estadisticas.html">ESTADISITCAS</a></li>
-					<li id="registroLink" style="display: none;"><a href="registro.html">REGISTRO DE JUGADORES</a></li>
+					<li><a href="estadisticas.html">ESTADISTICAS</a></li>
+					<!-- Botón de registro -->
+					<li id="registroLink" style="display: none;"><a
+							href="registro.html">REGISTRO DE
+							JUGADORES</a></li>
 
 					<!-- User Status and Dropdown -->
 					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false" id="userName">
+						<a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button"
+							aria-haspopup="true" aria-expanded="false"
+							id="userName">
 							Invitado <span class="caret"></span>
 						</a>
 						<ul class="dropdown-menu">
-							<li id="loginOption"><a href="login.html">Iniciar Sesión</a></li>
-							<!-- Enlace para cerrar sesión -->
+							<li id="loginOption"><a
+									href="login.html">Iniciar
+									Sesión</a></li>
+							<li id="recoveryOption"
+								style="display: none;"><a
+									href="palabraSeguridad.html">Palabra de
+									Seguridad</a></li>
 							<li id="logoutOption" style="display: none;">
-								<a href="#" onclick="document.getElementById('logoutForm').submit();">Cerrar
-									Sesión</a>
+								<a href="#" id="logoutLink">Cerrar Sesión</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
-
-				<!-- Formulario de logout (oculto) -->
-				<form id="logoutForm" action="php/usuarios/cerrarSesion.php" method="POST" style="display: none;">
-					<input type="hidden" name="logout" value="true">
-				</form>
 			</nav>
 		</div>
 	</div>
@@ -414,6 +418,7 @@
 
 	<script type="text/javascript" src="js/script.js"></script>
 	<script type="text/javascript" src="js/cuentas/controlSesion.js"></script>
+	<script type="text/javascript" src="js/cuentas/cerrarSesion.js"></script>
 </body>
 
 </html>

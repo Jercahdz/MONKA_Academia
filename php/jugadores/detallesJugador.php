@@ -12,11 +12,10 @@ if ($jugadorId > 0) {
         TIMESTAMPDIFF(YEAR, j.edad, CURDATE()) as edad, 
         j.dorsal, 
         j.pieHabil, 
-        c.nombreCategoria, 
-        IFNULL(a.cantidadAnotaciones, 0) AS cantidadAnotaciones
+        j.categoriaId, 
+        c.nombreCategoria
     FROM Jugadores j
     LEFT JOIN Categoria c ON j.categoriaId = c.categoriaId
-    LEFT JOIN Anotaciones a ON j.jugadorId = a.jugadorId
     WHERE j.jugadorId = ?
     ";
 

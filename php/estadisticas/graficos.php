@@ -1,47 +1,55 @@
 <?php
 include("../conexion.php");
 
-// Obtener los datos enviados
 $categoria = $_POST['categoria'];
 $fechaInicio = $_POST['fechaInicio'] ?? null;
 $fechaFin = $_POST['fechaFin'] ?? null;
 
+// Construir la consulta dinámicamente
 $sqlBase = "
     SELECT j.nombreJugador, 
-           COALESCE(SUM(DISTINCT a.cantidadAnotaciones), 0) AS anotaciones,
-           COALESCE(SUM(DISTINCT asist.cantidadAsistencias), 0) AS asistencias,
-           COALESCE(SUM(DISTINCT (s.amarillas + s.rojas)), 0) AS sanciones,
-           COALESCE((SELECT e2.evaluaciones FROM Evaluaciones e2 
-           WHERE e2.jugadorId = j.jugadorId ORDER BY e2.fecha DESC LIMIT 1), 0) AS evaluaciones
+           COALESCE(SUM(a.cantidadAnotaciones), 0) AS anotaciones,
+           COALESCE(SUM(asist.cantidadAsistencias), 0) AS asistencias,
+           COALESCE(SUM(s.amarillas + s.rojas), 0) AS sanciones,
+           COALESCE((SELECT e2.evaluaciones 
+                     FROM Evaluaciones e2 
+                     WHERE e2.jugadorId = j.jugadorId 
+                     " . ($fechaInicio && $fechaFin ? "AND e2.fecha BETWEEN ? AND ?" : "") . "
+                     ORDER BY e2.fecha DESC 
+                     LIMIT 1), 0) AS evaluaciones
     FROM Jugadores j
-    LEFT JOIN Anotaciones a ON j.jugadorId = a.jugadorId
-    LEFT JOIN Asistencias asist ON j.jugadorId = asist.jugadorId
-    LEFT JOIN Sanciones s ON j.jugadorId = s.jugadorId
-    LEFT JOIN Evaluaciones e ON j.jugadorId = e.jugadorId
-    WHERE j.categoriaId = ?
-";
+    LEFT JOIN Anotaciones a ON j.jugadorId = a.jugadorId 
+        " . ($fechaInicio && $fechaFin ? "AND a.fecha BETWEEN ? AND ?" : "") . "
+    LEFT JOIN Asistencias asist ON j.jugadorId = asist.jugadorId 
+        " . ($fechaInicio && $fechaFin ? "AND asist.fecha BETWEEN ? AND ?" : "") . "
+    LEFT JOIN Sanciones s ON j.jugadorId = s.jugadorId 
+        " . ($fechaInicio && $fechaFin ? "AND s.fecha BETWEEN ? AND ?" : "") . "
+    WHERE j.categoriaId = ? 
+    GROUP BY j.jugadorId";
 
-// Agregar filtros de fecha
-if ($fechaInicio && $fechaFin) {
-    $sqlBase .= " AND (
-        (a.fecha BETWEEN ? AND ?) OR
-        (asist.fecha BETWEEN ? AND ?) OR
-        (s.fecha BETWEEN ? AND ?) OR
-        (e.fecha BETWEEN ? AND ?)
-    )";
-}
-$sqlBase .= " GROUP BY j.jugadorId";
-
+// Preparar la consulta
 $stmt = $conn->prepare($sqlBase);
 
+// Vincular parámetros
+$params = [];
+$types = "";
+
 if ($fechaInicio && $fechaFin) {
-    $stmt->bind_param("issssssss", $categoria, $fechaInicio, $fechaFin, $fechaInicio, $fechaFin, $fechaInicio, $fechaFin, $fechaInicio, $fechaFin);
-} else {
-    $stmt->bind_param("i", $categoria);
+    array_push($params, $fechaInicio, $fechaFin); // Para Evaluaciones
+    array_push($params, $fechaInicio, $fechaFin); // Para Anotaciones
+    array_push($params, $fechaInicio, $fechaFin); // Para Asistencias
+    array_push($params, $fechaInicio, $fechaFin); // Para Sanciones
+    $types .= "ssssssss";
 }
+
+array_push($params, $categoria);
+$types .= "i";
+
+$stmt->bind_param($types, ...$params);
 $stmt->execute();
 $result = $stmt->get_result();
 
+// Procesar los datos
 $labels = [];
 $datasets = [
     "anotaciones" => ["label" => "Anotaciones", "data" => [], "borderColor" => "blue", "fill" => false],
@@ -58,9 +66,12 @@ while ($row = $result->fetch_assoc()) {
     $datasets["evaluaciones"]["data"][] = $row['evaluaciones'];
 }
 
+// Enviar la respuesta en formato JSON
 echo json_encode([
-    "labels" => $labels,
+    "labels" => $labels, 
     "datasets" => $datasets,
+    "fechaInicio" => $fechaInicio,
+    "fechaFin" => $fechaFin
 ]);
 
 $conn->close();

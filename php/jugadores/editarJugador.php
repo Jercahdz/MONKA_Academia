@@ -2,16 +2,16 @@
 include("../conexion.php");
 
 $jugadorId = intval($_POST['jugadorId']);
-$edad = intval($_POST['edad']);
 $dorsal = intval($_POST['dorsal']);
 $pieHabil = $_POST['pieHabil'];
+$categoriaId = intval($_POST['categoriaId']);
 
 $sql = "UPDATE Jugadores 
-        SET edad = ?, dorsal = ?, pieHabil = ?
+        SET dorsal = ?, pieHabil = ?, categoriaId = ? 
         WHERE jugadorId = ?";
 $stmt = $conn->prepare($sql);
 
-$stmt->bind_param("iisi", $edad, $dorsal, $pieHabil, $jugadorId);
+$stmt->bind_param("isii", $dorsal, $pieHabil, $categoriaId, $jugadorId);
 
 if ($stmt->execute()) {
     http_response_code(200);

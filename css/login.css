@@ -22,7 +22,7 @@ body {
     background: 
         linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.7) 100%), 
         linear-gradient(135deg, rgba(17, 89, 89, 0.1) 0%, rgba(17, 89, 89, 0.3) 100%), 
-        url('../images/fondoLogin.jpeg') no-repeat center center fixed;
+        url('../images/fondoLogin.webp') no-repeat center center fixed;
     background-size: cover;
     padding: 20px;
     background-color: var(--primary-color);
@@ -228,4 +228,180 @@ body {
     text-align: center;
     margin-bottom: 10px;
     border-radius: 5px;
+}
+
+.forgot-password {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    font-size: 0.85rem;
+    color: #6c757d;
+    margin: 12px 0;
+    transition: color 0.3s ease;
+    text-decoration: none;
+}
+
+.forgot-password:hover {
+    color:#115959;
+}
+
+/* ESTILOS PARA LOS MODALES */
+
+/* Estilo base para el modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1050;
+}
+
+.modal-dialog {
+    position: relative;
+    width: auto;
+    margin: 0.5rem;
+    max-width: 500px; 
+    pointer-events: auto;
+    width: 80%; 
+}
+
+.modal-content {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #fff;
+    border-radius: 0.3rem;
+    outline: 0;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+/* Estilo para el Encabezado del Modal */
+.modal-estilo .modal-header {
+    background-color: #115959;
+    color: white;
+    padding: 1rem;
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+    position: relative;
+}
+  
+.modal-estilo .modal-title {
+    margin: 0;
+    font-weight: bold;
+}
+  
+/* Estilo para el Cuerpo del Modal */
+.modal-estilo .modal-body {
+    background-color: #f8f8f8;
+    color: #333;
+    padding: 1rem;
+}
+  
+.modal-estilo .form-group {
+    margin-bottom: 1rem;
+}
+
+.modal-estilo .form-group label {
+    color: #115959;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 0.5rem;
+}
+  
+.modal-estilo .form-control {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 6px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Botones del Modal */
+.modal-estilo .botonModal {
+    background-color: #115959; 
+    color: white;
+    border: none;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    width: 100%;
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+  
+.modal-estilo .botonModal:hover {
+    background-color: #0e4949; 
+}
+
+/* Estilo para el Pie del Modal */
+.modal-estilo .modal-footer {
+    background-color: #115959;
+    padding: 0.75rem;
+    border-bottom-left-radius: 0.3rem;
+    border-bottom-right-radius: 0.3rem;
+}
+
+/* Estilo para la 'X' (botón de cierre) */
+.modal-estilo .close {
+    font-size: 1.5rem; 
+    line-height: 1; 
+    color: white; 
+    background-color: transparent; 
+    border: none; 
+    position: absolute; 
+    top: 15px; 
+    right: 15px; 
+    width: 30px; 
+    height: 30px; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    border-radius: 50%; 
+    transition: background-color 0.3s ease;
+    cursor: pointer;
+}
+  
+/* Efecto hover para el botón de cierre */
+.modal-estilo .close:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+/* Estilo para el contenedor de contraseña */
+.password-container {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.password-container ion-icon:first-child {
+    position: absolute;
+    left: 10px;
+    color: #115959;
+    font-size: 1.2rem;
+}
+
+.password-container input {
+    padding-left: 35px;
+    padding-right: 35px;
+}
+
+.password-container .toggle-password {
+    position: absolute;
+    right: 10px;
+    color: #115959;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.password-container .toggle-password:hover {
+    color: #0e4949;
 }

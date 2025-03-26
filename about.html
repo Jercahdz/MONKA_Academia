@@ -1,377 +1,381 @@
 <!DOCTYPE html>
 <html class="no-js" lang="en">
 
-<head>
-	<!-- Basic Page Needs
+	<head>
+		<!-- Basic Page Needs
     ================================================== -->
-	<meta charset="utf-8">
-	<!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>MONKÁ - Sobre Nosotros</title>
-	<meta name="description"
-		content="Pro Soccer - Football Club Template. It is built using bootstrap 3.3.2 framework, works totally responsive, easy to customise, well commented codes and seo friendly.">
-	<meta name="keywords" content="prosoccer, football, club, soccer, bootstrap">
-	<meta name="author" content="rudhisasmito.com">
+		<meta charset="utf-8">
+		<!--[if IE]><meta http-equiv="x-ua-compatible" content="IE=9" /><![endif]-->
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<title>MONKÁ - Sobre Nosotros</title>
+		<meta name="description"
+			content="Pro Soccer - Football Club Template. It is built using bootstrap 3.3.2 framework, works totally responsive, easy to customise, well commented codes and seo friendly.">
+		<meta name="keywords" content="prosoccer, football, club, soccer, bootstrap">
+		<meta name="author" content="rudhisasmito.com">
 
-	<!-- ==============================================
+		<!-- ==============================================
 	Favicons
 	=============================================== -->
-	<link rel="shortcut icon" href="images/escudo.png">
-	<link rel="apple-touch-icon" href="images/escudo.png">
-	<link rel="apple-touch-icon" sizes="72x72" href="images/escudo.png">
-	<link rel="apple-touch-icon" sizes="114x114" href="images/escudo.png">
+		<link rel="shortcut icon" href="images/escudo.webp">
+		<link rel="apple-touch-icon" href="images/escudo.webp">
+		<link rel="apple-touch-icon" sizes="72x72" href="images/escudo.webp">
+		<link rel="apple-touch-icon" sizes="114x114" href="images/escudo.webp">
 
-	<!-- ==============================================
+		<!-- ==============================================
 	CSS
 	=============================================== -->
-	<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
-	<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
-	<link rel="stylesheet" type="text/css" href="css/owl.theme.css">
-	<link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
+		<link rel="stylesheet" type="text/css" href="css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="css/owl.carousel.css">
+		<link rel="stylesheet" type="text/css" href="css/owl.theme.css">
+		<link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
 
-
-	<!-- ==============================================
+		<!-- ==============================================
 	Google Fonts
 	=============================================== -->
-	<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700'
+			rel='stylesheet' type='text/css'>
 
-	<!-- ==============================================
+		<!-- ==============================================
 	Custom Stylesheet
 	=============================================== -->
-	<link rel="stylesheet" type="text/css" href="css/style.css" />
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
 
-	<script type="text/javascript" src="js/modernizr.min.js"></script>
+		<script type="text/javascript" src="js/modernizr.min.js"></script>
 
+	</head>
 
+	<body>
 
-</head>
+		<!-- Load page -->
+		<div class="animationload">
+			<div class="loader"></div>
+		</div>
 
-<body>
+		<!-- NAVBAR SECTION -->
+		<div class="navbar navbar-main navbar-fixed-top">
+			<div class="header-top">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
 
-	<!-- Load page -->
-	<div class="animationload">
-		<div class="loader"></div>
-	</div>
+						</div>
 
-
-	<!-- NAVBAR SECTION -->
-	<div class="navbar navbar-main navbar-fixed-top">
-		<div class="header-top">
+					</div>
+				</div>
+			</div>
 			<div class="container">
-				<div class="row">
-					<div class="col-xs-12 col-sm-7 col-md-7 col-lg-7">
-
-					</div>
-
-
-				</div>
-			</div>
-		</div>
-		<div class="container">
-			<div class="navbar-header">
-				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-					<span class="icon-bar"></span>
-				</button>
-				<a class="navbar-brand" href="index.html"><img src="images/escudo.png" alt="" /></a>
-
-			</div>
-			<nav class="navbar-collapse collapse">
-				<ul class="nav navbar-nav navbar-right">
-					<li><a href="index.html">INICIO</a></li>
-					<li><a href="about.html">SOBRE NOSOTROS</a></li>
-					<li><a href="categoria.html">CATEGORIA</a></li>
-					<li><a href="estadisticas.html">ESTADISTICAS</a></li>
-					<li id="registroLink" style="display: none;"><a href="registro.html">REGISTRO DE JUGADORES</a></li>
-
-					<!-- User Status and Dropdown -->
-					<li class="dropdown">
-						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-							aria-expanded="false" id="userName">
-							Invitado <span class="caret"></span>
-						</a>
-						<ul class="dropdown-menu">
-							<li id="loginOption"><a href="login.html">Iniciar Sesión</a></li>
-							<!-- Enlace para cerrar sesión -->
-							<li id="logoutOption" style="display: none;">
-								<a href="#" onclick="document.getElementById('logoutForm').submit();">Cerrar Sesión</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-
-				<!-- Formulario de logout (oculto) -->
-				<form id="logoutForm" action="php/usuarios/cerrarSesion.php" method="POST" style="display: none;">
-					<input type="hidden" name="logout" value="true">
-				</form>
-			</nav>
-		</div>
-	</div>
-
-	<!-- BANNER -->
-	<div class="section subbanner">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12 col-md-12">
-					<div class="caption">ACERCA DEL CLUB</div>
-				</div>
-			</div>
-		</div>
-	</div>
-
-
-	<!-- ABOUT SECTION -->
-	<div class="section singlepage">
-		<div class="container">
-
-			<div class="row">
-				<div class="col-sm-12 col-md-12">
-					<div class="page-title">
-						<h2 class="lead">ACERCA DEL CLUB</h2>
-						<div class="border-style"></div>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-
-				<div class="col-sm-12 col-md-6">
-
-					<div class="welcome">
-						<div class="title-block">BIENVENIDO AL EQUIPO</div>
-						<p><strong>¡Bienvenido al equipo!</strong> Nos emociona que formes parte de esta gran familia.
-							Aquí no solo entrenamos para mejorar nuestras habilidades en el fútbol, sino que también
-							aprendemos valores como la disciplina, el trabajo en equipo, el respeto y la pasión por lo
-							que hacemos. </p>
-						<p>Nuestro objetivo es ayudarte a alcanzar tu máximo potencial, tanto dentro como fuera del
-							campo. Juntos celebraremos cada logro, enfrentaremos cada desafío y creceremos como
-							jugadores y personas.</p>
-						<p>Prepárate para vivir una experiencia única, llena de aprendizaje, esfuerzo y grandes
-							momentos. ¡Ponte los botines, sal al campo y demostremos lo que somos capaces de lograr!</p>
-					</div>
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse"
+						data-target=".navbar-collapse">
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="index.html"><img src="images/escudo.webp"
+							alt /></a>
 
 				</div>
+				<nav class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="index.html">INICIO</a></li>
+						<li><a href="about.html">SOBRE NOSOTROS</a></li>
+						<li><a href="categoria.html">CATEGORIA</a></li>
+						<li><a href="estadisticas.html">ESTADISTICAS</a></li>
+						<!-- Botón de registro -->
+						<li id="registroLink" style="display: none;"><a
+								href="registro.html">REGISTRO DE
+								JUGADORES</a></li>
 
-				<div class="col-sm-12 col-md-6">
-
-					<div id="about-caro" class="owl-carousel owl-theme">
-						<div class="item">
-							<img src="images/img3.webp" alt="" class="img-responsive" />
-						</div>
-						<div class="item">
-							<img src="images/img7.webp" alt="" class="img-responsive" />
-						</div>
-						<div class="item">
-							<img src="images/img4.webp" alt="" class="img-responsive" />
-						</div>
-					</div>
-
-				</div>
-
-
-			</div>
-		</div>
-	</div>
-
-
-	<!-- COACH SECTION -->
-	<div class="section coach bg-coach">
-		<div class="container">
-			<div class="row">
-				<div class="col-sm-12 col-md-12">
-					<div class="page-title">
-						<h2 class="lead">CONOCE A NUESTROS ENTRENADORES</h2>
-						<div class="border-style"></div>
-					</div>
-				</div>
-			</div>
-			<div class="row">
-				<div class="col-sm-12 col-md-4">
-					<div class="coach-item">
-						<div class="gambar">
-							<img src="http://placehold.it/370x370" alt="" class="img-responsive">
-						</div>
-						<div class="item-body">
-							<div class="name">
-								ANDREY MONTES
-							</div>
-							<div class="position">
-								DIRECTOR DE LA ACADEMIA
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-12 col-md-4">
-					<div class="coach-item">
-						<div class="gambar">
-							<img src="http://placehold.it/370x370" alt="" class="img-responsive">
-						</div>
-						<div class="item-body">
-							<div class="name">
-								ERROL SOLANO
-							</div>
-							<div class="position">
-								ENTRENADOR
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col-sm-12 col-md-4">
-					<div class="coach-item">
-						<div class="gambar">
-							<img src="http://placehold.it/370x370" alt="" class="img-responsive">
-						</div>
-						<div class="item-body">
-							<div class="name">
-								KEVIN MONTES
-							</div>
-							<div class="position">
-								ENTRENADOR
-							</div>
-						</div>
-					</div>
-				</div>
-
-			</div>
-
-		</div>
-	</div>
-
-
-	<!-- PATROCINADORES -->
-	<div class="section stat-client p-main bg-client">
-		<div class="container">
-			<div class="row">
-				<div class="page-title-sponsores">
-					<h2 class="lead">PATROCINADORES</h2>
-					<div class="border-style"></div>
-				</div>
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/sponsor1.webp" alt="" class="img-responsive" />
-					</div>
-				</div>
-
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/sponsor2.webp" alt="" class="img-responsive" />
-					</div>
-				</div>
-
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/sponsor3.webp" alt="" class="img-responsive" />
-					</div>
-				</div>
-
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/sponsor4.webp" alt="" class="img-responsive" />
-					</div>
-				</div>
-
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/sponsor5.webp" alt="" class="img-responsive" />
-					</div>
-				</div>
-
-				<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
-					<div class="client-img">
-						<img src="images/sponsor6.webp" alt="" class="img-responsive" />
-					</div>
-				</div>
-
-
-			</div>
-		</div>
-	</div>
-
-
-	<!-- FOOTER SECTION -->
-	<div class="footer">
-
-		<div class="f-desc">
-			<div class="container">
-				<div class="row">
-					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-						<div class="footer-item">
-							<div class="footer-title">
-								<h4>ACERCA DEL EQUIPO</h4>
-							</div>
-							<h5><strong>Academia Monká</strong></h5>
-							<p>Comprometidos con la formación integral de jóvenes talentos, fomentando
-								el desarrollo técnico, táctico y humano dentro y fuera del campo. ¡Unidos por el fútbol
-								y la pasión por el deporte!</p>
-							<div class="footer-sosmed">
-								<a href="https://www.facebook.com/profile.php?id=100076718043028&locale=es_LA" title="">
-									<div class="item">
-										<i class="fa fa-facebook"></i>
-									</div>
-								</a>
-								<a href="https://www.instagram.com/academia_monka/" title="">
-									<div class="item">
-										<i class="fa fa-instagram"></i>
-									</div>
-								</a>
-
-							</div>
-						</div>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-						<div class="footer-item">
-							<div class="footer-title">
-								<h4>INFORMACION</h4>
-							</div>
-							<ul class="sitemap">
-								<li><a href="index.html" title="">Inicio</a></li>
-								<li><a href="about.html" title="">Sobre Nosotros</a></li>
-								<li><a href="categoria.html" title="">Categoría</a></li>
-								<li><a href="estadisticas.html" title="">Estadísticas</a></li>
-								<li><a href="login.html" title="">Login</a></li>
-
+						<!-- User Status and Dropdown -->
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle"
+								data-toggle="dropdown" role="button"
+								aria-haspopup="true" aria-expanded="false"
+								id="userName">
+								Invitado <span class="caret"></span>
+							</a>
+							<ul class="dropdown-menu">
+								<li id="loginOption"><a
+										href="login.html">Iniciar
+										Sesión</a></li>
+								<li id="recoveryOption"
+									style="display: none;"><a
+										href="palabraSeguridad.html">Palabra de
+										Seguridad</a></li>
+								<li id="logoutOption" style="display: none;">
+									<a href="#" id="logoutLink">Cerrar Sesión</a>
+								</li>
 							</ul>
-						</div>
-					</div>
-					<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
-					</div>
-
-				</div>
+						</li>
+					</ul>
+				</nav>
 			</div>
-
 		</div>
 
-		<div class="fcopy">
+		<!-- BANNER -->
+		<div class="section subbanner">
 			<div class="container">
 				<div class="row">
-					<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-						<p class="ftex">&copy; 2024 Monká Academia - Derechos Reservados</p>
+					<div class="col-sm-12 col-md-12">
+						<div class="caption">ACERCA DEL CLUB</div>
 					</div>
 				</div>
 			</div>
 		</div>
 
-	</div>
+		<!-- ABOUT SECTION -->
+		<div class="section singlepage">
+			<div class="container">
 
+				<div class="row">
+					<div class="col-sm-12 col-md-12">
+						<div class="page-title">
+							<h2 class="lead">ACERCA DEL CLUB</h2>
+							<div class="border-style"></div>
+						</div>
+					</div>
+				</div>
 
+				<div class="row">
 
+					<div class="col-sm-12 col-md-6">
 
-	<script type="text/javascript" src="js/jquery.min.js"></script>
-	<script type='text/javascript' src='js/jqBootstrapValidation.js'></script>
-	<script type="text/javascript" src="js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="js/owl.carousel.min.js"></script>
-	<script type="text/javascript" src="js/bootstrap-hover-dropdown.min.js"></script>
-	<script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
+						<div class="welcome">
+							<div class="title-block">BIENVENIDO AL EQUIPO</div>
+							<p><strong>¡Bienvenido al equipo!</strong> Nos emociona que formes parte
+								de esta gran familia.
+								Aquí no solo entrenamos para mejorar nuestras habilidades en el fútbol,
+								sino que también
+								aprendemos valores como la disciplina, el trabajo en equipo, el respeto
+								y la pasión por lo
+								que hacemos. </p>
+							<p>Nuestro objetivo es ayudarte a alcanzar tu máximo potencial, tanto
+								dentro como fuera del
+								campo. Juntos celebraremos cada logro, enfrentaremos cada desafío y
+								creceremos como
+								jugadores y personas.</p>
+							<p>Prepárate para vivir una experiencia única, llena de aprendizaje,
+								esfuerzo y grandes
+								momentos. ¡Ponte los botines, sal al campo y demostremos lo que somos
+								capaces de lograr!</p>
+						</div>
 
-	<script type="text/javascript" src="js/script.js"></script>
-	<script type="text/javascript" src="js/cuentas/controlSesion.js"></script>
+					</div>
 
+					<div class="col-sm-12 col-md-6">
 
+						<div id="about-caro" class="owl-carousel owl-theme">
+							<div class="item">
+								<img src="images/img3.webp" alt class="img-responsive" />
+							</div>
+							<div class="item">
+								<img src="images/img7.webp" alt class="img-responsive" />
+							</div>
+							<div class="item">
+								<img src="images/img4.webp" alt class="img-responsive" />
+							</div>
+						</div>
 
-</body>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- COACH SECTION -->
+		<div class="section coach bg-coach">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 col-md-12">
+						<div class="page-title">
+							<h2 class="lead">CONOCE A NUESTROS ENTRENADORES</h2>
+							<div class="border-style"></div>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-sm-12 col-md-4">
+						<div class="coach-item">
+							<div class="gambar">
+								<img src="http://placehold.it/370x370" alt class="img-responsive">
+							</div>
+							<div class="item-body">
+								<div class="name">
+									ANDREY MONTES
+								</div>
+								<div class="position">
+									DIRECTOR DE LA ACADEMIA
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-12 col-md-4">
+						<div class="coach-item">
+							<div class="gambar">
+								<img src="http://placehold.it/370x370" alt class="img-responsive">
+							</div>
+							<div class="item-body">
+								<div class="name">
+									ERROL SOLANO
+								</div>
+								<div class="position">
+									ENTRENADOR
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-sm-12 col-md-4">
+						<div class="coach-item">
+							<div class="gambar">
+								<img src="http://placehold.it/370x370" alt class="img-responsive">
+							</div>
+							<div class="item-body">
+								<div class="name">
+									KEVIN MONTES
+								</div>
+								<div class="position">
+									ENTRENADOR
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+			</div>
+		</div>
+
+		<!-- PATROCINADORES -->
+		<div class="section stat-client p-main bg-client">
+			<div class="container">
+				<div class="row">
+					<div class="page-title-sponsores">
+						<h2 class="lead">PATROCINADORES</h2>
+						<div class="border-style"></div>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/sponsor1.webp" alt class="img-responsive" />
+						</div>
+					</div>
+
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/sponsor2.webp" alt class="img-responsive" />
+						</div>
+					</div>
+
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/sponsor3.webp" alt class="img-responsive" />
+						</div>
+					</div>
+
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/sponsor4.webp" alt class="img-responsive" />
+						</div>
+					</div>
+
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/sponsor5.webp" alt class="img-responsive" />
+						</div>
+					</div>
+
+					<div class="col-xs-6 col-sm-6 col-md-2 col-lg-2">
+						<div class="client-img">
+							<img src="images/sponsor6.webp" alt class="img-responsive" />
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+
+		<!-- FOOTER SECTION -->
+		<div class="footer">
+
+			<div class="f-desc">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+							<div class="footer-item">
+								<div class="footer-title">
+									<h4>ACERCA DEL EQUIPO</h4>
+								</div>
+								<h5><strong>Academia Monká</strong></h5>
+								<p>Comprometidos con la formación integral de jóvenes talentos,
+									fomentando
+									el desarrollo técnico, táctico y humano dentro y fuera del campo.
+									¡Unidos por el fútbol
+									y la pasión por el deporte!</p>
+								<div class="footer-sosmed">
+									<a
+										href="https://www.facebook.com/profile.php?id=100076718043028&locale=es_LA"
+										title>
+										<div class="item">
+											<i class="fa fa-facebook"></i>
+										</div>
+									</a>
+									<a href="https://www.instagram.com/academia_monka/" title>
+										<div class="item">
+											<i class="fa fa-instagram"></i>
+										</div>
+									</a>
+
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+							<div class="footer-item">
+								<div class="footer-title">
+									<h4>INFORMACION</h4>
+								</div>
+								<ul class="sitemap">
+									<li><a href="index.html" title>Inicio</a></li>
+									<li><a href="about.html" title>Sobre Nosotros</a></li>
+									<li><a href="categoria.html" title>Categoría</a></li>
+									<li><a href="estadisticas.html" title>Estadísticas</a></li>
+									<li><a href="login.html" title>Login</a></li>
+
+								</ul>
+							</div>
+						</div>
+						<div class="col-xs-12 col-sm-6 col-md-3 col-lg-3">
+						</div>
+
+					</div>
+				</div>
+
+			</div>
+
+			<div class="fcopy">
+				<div class="container">
+					<div class="row">
+						<div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+							<p class="ftex">&copy; 2024 Monká Academia - Derechos Reservados</p>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type='text/javascript' src='js/jqBootstrapValidation.js'></script>
+		<script type="text/javascript" src="js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="js/owl.carousel.min.js"></script>
+		<script type="text/javascript"
+			src="js/bootstrap-hover-dropdown.min.js"></script>
+		<script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
+
+		<script type="text/javascript" src="js/script.js"></script>
+		<script type="text/javascript" src="js/cuentas/controlSesion.js"></script>
+		<script type="text/javascript" src="js/cuentas/cerrarSesion.js"></script>
+	</body>
 
 </html>

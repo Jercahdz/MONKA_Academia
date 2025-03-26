@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
-    const userNameElement = document.getElementById('userName');
-    const registroLink = document.getElementById('registroLink');
-    const logoutOption = document.getElementById('logoutOption');
-    const loginOption = document.getElementById('loginOption');
+    const userNameElement = document.getElementById('userName'); 
+    const registroLink = document.getElementById('registroLink'); // Elemento de "Registro de Jugadores"
+    const logoutOption = document.getElementById('logoutOption'); // Elemento de "Cerrar Sesión"
+    const loginOption = document.getElementById('loginOption'); // Elemento de "Iniciar Sesión"
+    const recoveryOption = document.getElementById('recoveryOption'); // Elemento de "Palabra de Seguridad"
 
     // Solicitud AJAX para verificar el estado de sesión
     const xhr = new XMLHttpRequest();
@@ -21,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
             if (status === 'Conectado') {
                 logoutOption.style.display = 'block';
                 loginOption.style.display = 'none';
+                recoveryOption.style.display = 'block';
 
                 if (rolId === 1) { // Mostrar "Registro de Jugadores" solo si es admin
                     registroLink.style.display = 'block';
@@ -32,8 +34,9 @@ document.addEventListener('DOMContentLoaded', function () {
                 logoutOption.style.display = 'none';
                 loginOption.style.display = 'block';
                 registroLink.style.display = 'none';
+                recoveryOption.style.display = 'none'; // Ocultar la opción si el usuario no está autenticado
             }
         }
     };
-    xhr.send(); // Enviar la solicitud
+    xhr.send(); 
 });
