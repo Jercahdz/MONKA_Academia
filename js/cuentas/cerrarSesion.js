@@ -83,8 +83,7 @@ function mostrarMensajeCierre() {
 // Reiniciar el contador cuando el usuario interactúa
 function reiniciarTemporizador() {
     clearTimeout(tiempoInactivo);
-    tiempoInactivo = setTimeout(cerrarSesion, 5000); // Cerrar sesión automáticamente después de 5 segundos
-    //tiempoInactivo = setTimeout(cerrarSesion, 300000); // Cerrar sesión automáticamente después de 5 minutos
+    tiempoInactivo = setTimeout(cerrarSesion, 300000); // Cerrar sesión automáticamente después de 5 minutos
 }
 
 // Detectar eventos de actividad
