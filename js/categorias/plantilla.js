@@ -1,11 +1,11 @@
 function loadFormation(formation) {
     $.ajax({
-        url: 'php/jugadores/plantilla.php', // Ruta corregida
+        url: 'php/jugadores/plantilla.php',
         type: 'GET',
-        data: { formation: formation }, // Parámetro enviado al PHP
+        data: { formation: formation },
         success: function (response) {
             if (response) {
-                $('#formationImage').attr('src', response); // Cambia la imagen
+                $('#formationImage').attr('src', response);
             } else {
                 console.error('No se pudo cargar la formación. Verifica que las imágenes estén disponibles.');
             }

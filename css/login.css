@@ -374,6 +374,34 @@ body {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
+/* Estilo para el mensaje del modal */
+.modal-message {
+    width: 85%;
+    padding: 10px;
+    margin: 8px auto 8px;
+    border-radius: 4px;
+    text-align: center;
+    font-size: 14px;
+    display: block;
+}
+
+.modal-message.error-message {
+    color: #fff;
+    background-color: #ff4d4d;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+
+.modal-message.success-message {
+    color: #fff;
+    background-color: #4CAF50;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
 
 /* Estilo para el contenedor de contraseña */
 .password-container {

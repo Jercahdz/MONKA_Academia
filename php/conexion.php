@@ -6,7 +6,7 @@ $url = parse_url(getenv("JAWSDB_URL"));
 $host = $url["host"];
 $user = $url["user"];
 $password = $url["pass"];
-$dbname = substr($url["path"], 1); // Elimina el '/' inicial
+$dbname = substr($url["path"], 1);
 
 // Conectar a MySQL
 $conn = new mysqli($host, $user, $password, $dbname);

@@ -29,6 +29,7 @@ function togglePassword(inputId, icon) {
     }
 }
 
+// Evento para mostrar la contraseña en el formulario de inicio de sesión
 document.addEventListener("DOMContentLoaded", function () {
     const urlParams = new URLSearchParams(window.location.search);
     const errorMessage = urlParams.get("error");
@@ -39,6 +40,40 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     if (successMessage) {
         showMessage(successMessage, "success");
+    }
+
+    const recoveryModal = document.getElementById('modalRecuperacion');
+    if (recoveryModal) {
+        const inputs = recoveryModal.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('keypress', function(event) {
+                // Verificar si la tecla presionada es Enter (código 13)
+                if (event.key === 'Enter') {
+                    // Prevenir el comportamiento por defecto del Enter
+                    event.preventDefault();
+                    
+                    // Llamar a la función de verificación de datos
+                    verificarDatos();
+                }
+            });
+        });
+    }
+
+    const changePasswordModal = document.getElementById('modalCambioContrasena');
+    if (changePasswordModal) {
+        const inputs = changePasswordModal.querySelectorAll('input');
+        inputs.forEach(input => {
+            input.addEventListener('keypress', function(event) {
+                // Verificar si la tecla presionada es Enter (código 13)
+                if (event.key === 'Enter') {
+                    // Prevenir el comportamiento por defecto del Enter
+                    event.preventDefault();
+                    
+                    // Llamar a la función de cambio de contraseña
+                    cambiarContrasena();
+                }
+            });
+        });
     }
 });
 
@@ -56,6 +91,30 @@ function showMessage(message, type) {
     }, 5000);
 }
 
+// Función para mostrar mensajes en modales
+function showModalMessage(modalId, message, type) {
+    // Primero, remover cualquier mensaje existente
+    const existingMessage = document.querySelector(`#${modalId} .modal-message`);
+    if (existingMessage) {
+        existingMessage.remove();
+    }
+
+    // Crear contenedor de mensaje
+    const messageContainer = document.createElement("div");
+    messageContainer.classList.add('modal-message');
+    messageContainer.classList.add(type === 'error' ? 'error-message' : 'success-message');
+    messageContainer.textContent = message;
+
+    // Insertar el mensaje justo después del encabezado del modal
+    const modalHeader = document.querySelector(`#${modalId} .modal-header`);
+    modalHeader.insertAdjacentElement('afterend', messageContainer);
+
+    // Remover el mensaje después de 5 segundos
+    setTimeout(() => {
+        messageContainer.remove();
+    }, 5000);
+}
+
 // Para abrir un modal
 function abrirModal(id) {
     document.getElementById(id).style.display = 'flex';
@@ -66,6 +125,15 @@ function abrirModal(id) {
 function cerrarModal(id) {
     document.getElementById(id).style.display = 'none';
     document.body.style.overflow = 'auto'
+
+    // Limpiar formularios y mensajes
+    const modal = document.getElementById(id);
+    modal.querySelectorAll('input').forEach(input => input.value = '');
+    
+    const existingMessage = modal.querySelector('.modal-message');
+    if (existingMessage) {
+        existingMessage.remove();
+    }
 }
 
 // Evento para abrir el modal de recuperación al hacer clic en "¿Olvidaste tu contraseña?"
@@ -90,8 +158,13 @@ function verificarDatos() {
             cerrarModal("modalRecuperacion");
             abrirModal("modalCambioContrasena");
         } else {
-            alert(data.message);
+            // Cambiar de alert a showModalMessage
+            showModalMessage("modalRecuperacion", data.message, "error");
         }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showModalMessage("modalRecuperacion", "Ocurrió un error. Intente de nuevo.", "error");
     });
 }
 
@@ -101,7 +174,8 @@ function cambiarContrasena() {
     const confirmarContrasena = document.getElementById("confirmarContrasena").value;
 
     if (nuevaContrasena !== confirmarContrasena) {
-        alert("Las contraseñas no coinciden.");
+        // Cambiar de alert a showModalMessage
+        showModalMessage("modalCambioContrasena", "Las contraseñas no coinciden.", "error");
         return;
     }
 
@@ -113,10 +187,20 @@ function cambiarContrasena() {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            cerrarModal("modalCambioContrasena"); // Cerrar modal de cambio de contraseña
-            alert("Contraseña cambiada con éxito.");
+            // Mostrar mensaje de éxito en el modal
+            showModalMessage("modalCambioContrasena", "Contraseña cambiada con éxito.", "success");
+            
+            // Redirigir después de un breve tiempo
+            setTimeout(() => {
+                window.location.href = 'login.html';
+            }, 1500);
         } else {
-            alert(data.message);
+            // Mostrar mensaje de error en el modal
+            showModalMessage("modalCambioContrasena", data.message, "error");
         }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        showModalMessage("modalCambioContrasena", "Ocurrió un error. Intente de nuevo.", "error");
     });
 }
