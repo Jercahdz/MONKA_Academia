@@ -1,11 +1,26 @@
 let tiempoInactivo;
 
+// Función para verificar si hay sesión activa antes de cerrar sesión
+function verificarSesionYCerrar() {
+    fetch('php/usuarios/controlSesion.php')
+        .then(response => response.text())
+        .then(data => {
+            const response = data.trim().split(', ');
+            const status = response[1]; // 'Conectado' o 'Desconectado'
+
+            if (status === 'Conectado') {
+                cerrarSesion(); // Solo cerrar si hay sesión activa
+            }
+        })
+        .catch(error => console.error("Error al verificar la sesión:", error));
+}
+
 // Función para cerrar sesión automáticamente
 function cerrarSesion() {
     fetch('php/usuarios/cerrarSesion.php', { method: 'POST' })
         .then(response => response.json())
         .then(data => {
-            if (data.status === "success" || data.status === "no_session") {
+            if (data.status === "success") {
                 mostrarMensajeCierre();
             }
         })
@@ -83,7 +98,8 @@ function mostrarMensajeCierre() {
 // Reiniciar el contador cuando el usuario interactúa
 function reiniciarTemporizador() {
     clearTimeout(tiempoInactivo);
-    tiempoInactivo = setTimeout(cerrarSesion, 300000); // Cerrar sesión automáticamente después de 5 minutos
+    tiempoInactivo = setTimeout(verificarSesionYCerrar, 5000); // 5 segundos
+    //tiempoInactivo = setTimeout(verificarSesionYCerrar, 300000); // 5 minutos
 }
 
 // Detectar eventos de actividad
