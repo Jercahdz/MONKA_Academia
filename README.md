@@ -50,6 +50,8 @@ Note: A demo link will be available soon.
 
 This project was built for a real client and can be customized and sold for other soccer academies.
 
+
+
 🇪🇸 Español
 
 💼 Descripción General
