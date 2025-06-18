@@ -1,4 +1,4 @@
-#Monka Academia
+Monka Academia
 
 Web system for soccer academies — Gestión de jugadores, estadísticas y más
 
