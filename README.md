@@ -198,9 +198,9 @@ Una vez instalado, accedé al sistema desde el navegador. La página principal m
 ## 📸 Capturas de Pantalla
 
 > 
-![alt text](Monka1.png)
-![alt text](Monka2.png)
-![alt text](Monka3.png)
+![alt text](/images/Monka1.png)
+![alt text](/images/Monka2.png)
+![alt text](/images/Monka3.png)
 
 ---
 
